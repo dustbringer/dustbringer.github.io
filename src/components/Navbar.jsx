@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import styled from "styled-components";
+import { Link, useLocation } from "react-router-dom";
+import styled, { css } from "styled-components";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -53,24 +53,41 @@ const MyLink = styled(Link)`
   }
 `;
 
+// inline-block is for border bottom to not hidden by overflow
 const NavLink = styled(MyLink)`
+  display: inline-block;
   margin: 0 8px;
   color: #cccccc;
   &:hover {
     color: #ffffff;
   }
+  border-bottom: 2px solid
+    ${(props) => (props.cur === props.to ? "#cccccc" : "transparent")};
 `;
+
+const links = [
+  { name: "Test MD", path: "/testmd" },
+  { name: "About", path: "/about" },
+];
+
+/**
+ * NOTE: We use `replace={path === location.pathname}` on links to
+ *       avoid HashRouter warning.
+ *
+ * Couldn't be bothered to implement 'reload if link to same page',
+ * since the website is more or less static
+ */
 
 const Navbar = () => {
   const classes = useStyles();
-  // const history = useHistory();
+  const location = useLocation();
 
   return (
     <div>
       <AppBar position="static" elevation={1}>
         <Toolbar className={classes.toolbar}>
           <Container maxWidth="md" className={classes.container}>
-            <MyLink to="/">
+            <MyLink replace={"/" === location.pathname} to="/">
               <DivRowSpaceBetween>
                 {/* Icon */}
                 {/*<img
@@ -84,10 +101,17 @@ const Navbar = () => {
               </DivRowSpaceBetween>
             </MyLink>
             <NavLinkList>
-              <li>
-                {/*remove this*/}
-                <NavLink to="/">Home</NavLink>
-              </li>
+              {links.map((link) => (
+                <li key={link}>
+                  <NavLink
+                    replace={link.path === location.pathname}
+                    cur={location.pathname}
+                    to={link.path}
+                  >
+                    {link.name}
+                  </NavLink>
+                </li>
+              ))}
             </NavLinkList>
           </Container>
         </Toolbar>

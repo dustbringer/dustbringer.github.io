@@ -6,6 +6,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
+import { GlobalContext } from "../GlobalContext";
 import { DivFlexCenterHInside } from "../components/styled/Divs";
 
 const useStyles = makeStyles((theme) => ({
@@ -20,19 +21,18 @@ const useStyles = makeStyles((theme) => ({
 const HomePage = () => {
   const classes = useStyles();
   // const history = useHistory();
+  const context = React.useContext(GlobalContext);
+  const { showError, showSuccess } = context;
 
   return (
     <>
       <Container maxWidth="md" className={classes.container}>
         <Typography variant="h4" className={classes.title}>
-          Home!!!
+          Boring home page
         </Typography>
         <DivFlexCenterHInside>
-          <Button
-            variant="outlined"
-            color="primary"
-          >
-            Do nothing!!!
+          <Button variant="outlined" color="primary">
+            Press me! I do nothing!!!
           </Button>
         </DivFlexCenterHInside>
       </Container>
