@@ -1,7 +1,7 @@
 import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import GlobalProvider from "./GlobalContext";
-import Alerts from './components/Alerts';
+import Alerts from "./components/Alerts";
 import "./App.css";
 
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
@@ -12,6 +12,7 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import TestMdPage from "./pages/TestMdPage";
 
+// https://material-ui.com/customization/default-theme/
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -22,14 +23,18 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: `"Open Sans", "sans-serif"`,
+    fontFamily: "'Open Sans', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'",
     fontSize: 14,
-    fontWeightLight: 300,
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
+    h1: {
+      fontSize: "3.75rem",
+      fontWeight: 400,
+    },
+    h2: {
+      fontSize: "3.25rem",
+      fontWeight: 400,
+    },
   },
 });
-
 
 // TODO: Dynamic Header with https://www.npmjs.com/package/react-helmet
 

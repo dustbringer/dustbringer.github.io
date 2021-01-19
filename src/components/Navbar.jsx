@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -102,7 +102,7 @@ const Navbar = () => {
             </MyLink>
             <NavLinkList>
               {links.map((link) => (
-                <li key={link}>
+                <li key={link.name + link.path}>
                   <NavLink
                     replace={link.path === location.pathname}
                     cur={location.pathname}
