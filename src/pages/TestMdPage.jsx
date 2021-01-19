@@ -35,7 +35,7 @@ const TestMdPage = () => {
     <>
       <Container maxWidth="md" className={classes.container}>
         <Typography variant="h4" className={classes.title}>
-          Test Page for Markdown rendering
+          Test Page for Markdown Rendering
         </Typography>
         <Markdown children={md} />
       </Container>
