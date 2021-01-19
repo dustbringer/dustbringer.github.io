@@ -34,7 +34,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -t -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -56,5 +56,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "http://dustbringer.github.io/dustbringer.github.io/"
+  "homepage": "http://dustbringer.github.io/"
 }
