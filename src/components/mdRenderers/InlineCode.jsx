@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Inline = styled.code`
   color: #000;
   background-color: #f0f0f0;
-  border-radius: 3px;
+  border-radius: 2px;
   padding: 0.2em 0.3em;
 `;
 

@@ -10,7 +10,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pretium bib
 
 Mauris fringilla accumsan sem, vitae elementum nulla varius at. Vivamus fermentum vestibulum dui, id ultricies nunc ultricies id. In quis tellus sapien. Mauris egestas justo in ante iaculis euismod. Donec consequat quis tellus vel sollicitudin. Sed sollicitudin sagittis dignissim. Duis nec augue vel turpis vestibulum finibus eget ut urna.
 
-![shrek](https://img1.looper.com/img/gallery/things-only-adults-notice-in-shrek/intro-1573597941.jpg)
+![shrek](https://img1.looper.com/img/gallery/things-only-adults-notice-in-shrek/intro-1573597941.jpg "wonderful shrek")
 
 ## Subheading 1...
 
@@ -20,16 +20,27 @@ Sed sed ex eget nibh interdum posuere non eget sapien. Integer magna nisl, tinci
 
 -   List element 1
 -   List element 2
--   List element 3
--   List element 4
+    -   List element 3
+    -   List element 4
 -   List element 5
+    -   List element 3
+        -   List element 4
+        -   List element 5
 -   List element 6
 
-Some text not space before the list
+1. appples
+2. oranges
+3. bananas
+4. grapefruits
+    1. babab
+    2. babah
+5. bebe
 
+Some text not space before the list
 -   That
 -   This
 -   More of that
+
 
 ## Section 3, Math
 
@@ -78,9 +89,10 @@ int main () {
 > single :(
 > nobreak
 
-| fly   | bye | chiken |
-| ----- | --- | ------ |
-| 12311 | 123 | jjhabs |
+| Name  | Quantity |
+| ----- | -------- |
+| Apple | 3        |
+| Egg   | 12       |
 
 https://github.com/robinweser/react-markdown-github-renderers
 Check the code for the different renderers that this is missing
@@ -103,7 +115,13 @@ www.example.com, https://example.com, and contact@example.com.
 | --- | :-- | --: | :-: |
 
 #### Tasklist
-
+-   bruh
+-   [ ] to do
+-   [x] done
+-   [ ] to do
+-   [x] done
+-   [ ] to do
+-   [x] done
 -   [ ] to do
 -   [x] done
 

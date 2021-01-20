@@ -13,6 +13,12 @@ import YamlRenderer from "./mdRenderers/Yaml";
 import BlockCodeRenderer from "./mdRenderers/BlockCode";
 import InlineCodeRenderer from "./mdRenderers/InlineCode";
 import BlockQuoteRenderer from "./mdRenderers/BlockQuote";
+import LinkRenderer from "./mdRenderers/Link";
+import TableRenderer from "./mdRenderers/Table";
+import TableHeadRenderer from "./mdRenderers/TableHead";
+import TableRowRenderer from "./mdRenderers/TableRow";
+import TableCellRenderer from "./mdRenderers/TableCell";
+import ListItemRenderer from "./mdRenderers/ListItem";
 
 /**
  * NOTES
@@ -28,7 +34,7 @@ const FormatDiv = styled.div`
  * Default Renderers
  * https://github.com/remarkjs/react-markdown/blob/main/src/renderers.js
  *
- * Some Reference Renderers: 
+ * Some Reference Renderers:
  * https://github.com/robinweser/react-markdown-github-renderers
  *
  * Check the code for the different renderers that this is missing
@@ -41,13 +47,18 @@ const _mapProps = (props) => ({
   plugins: [RemarkMathPlugin, RemarkGFMPlugin, RemarkFrontmatterPlugin],
   renderers: {
     ...props.renderers,
+
     heading: HeadingRenderer,
     yaml: YamlRenderer,
     inlineCode: InlineCodeRenderer,
     code: BlockCodeRenderer,
     blockquote: BlockQuoteRenderer,
-    // list
-    // listItem
+    link: LinkRenderer,
+    table: TableRenderer,
+    tableHead: TableHeadRenderer,
+    tableRow: TableRowRenderer,
+    tableCell: TableCellRenderer,
+    listItem: ListItemRenderer,
 
     math: ({ value }) => <TeX block>{value}</TeX>,
     inlineMath: ({ value }) => <TeX>{value}</TeX>,
