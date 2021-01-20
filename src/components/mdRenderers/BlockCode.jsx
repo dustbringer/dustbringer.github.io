@@ -2,7 +2,7 @@
 import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
-const CodeBlock = ({ language, value }) => {
+const BlockCode = ({ language, value }) => {
   return (
     <SyntaxHighlighter language={language}>
       {value}
@@ -10,4 +10,4 @@ const CodeBlock = ({ language, value }) => {
   );
 };
 
-export default CodeBlock;
+export default BlockCode;

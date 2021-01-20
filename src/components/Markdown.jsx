@@ -6,51 +6,34 @@ import RemarkMathPlugin from "remark-math";
 import RemarkGFMPlugin from "remark-gfm";
 import RemarkFrontmatterPlugin from "remark-frontmatter";
 import TeX from "@matejmazur/react-katex";
-import "katex/dist/katex.min.css";
-import yaml from "js-yaml";
+import "katex/dist/katex.min.css"; // styling math symbols to look like latex
 
-import Typography from "@material-ui/core/Typography";
+import HeadingRenderer from "./mdRenderers/Heading";
+import YamlRenderer from "./mdRenderers/Yaml";
+import BlockCodeRenderer from "./mdRenderers/BlockCode";
+import InlineCodeRenderer from "./mdRenderers/InlineCode";
+import BlockQuoteRenderer from "./mdRenderers/BlockQuote";
 
-import CodeBlock from "./CodeBlock";
-
-const FontDiv = styled.div`
+/**
+ * NOTES
+ *     white-space is for single new lines to be registered
+ */
+const FormatDiv = styled.div`
   font-family: "Open Sans", "Roboto", "Helvetica", "Arial", "sans-serif";
   font-size: 16px;
+  white-space: pre-line;
 `;
 
 /**
- * Renderers https://github.com/remarkjs/react-markdown/blob/main/src/renderers.js
- */
-
-/** https://github.com/robinweser/react-markdown-github-renderers
+ * Default Renderers
+ * https://github.com/remarkjs/react-markdown/blob/main/src/renderers.js
+ *
+ * Some Reference Renderers: 
+ * https://github.com/robinweser/react-markdown-github-renderers
+ *
  * Check the code for the different renderers that this is missing
  * - also place renderers in their own folder
  */
-
-const headingRenderer = (props) => (
-  <Typography variant={`h${props.level}`}>{props.children}</Typography>
-);
-
-// TODO style this up
-const yamlRenderer = (props) => {
-  const obj = yaml.load(props.value);
-  const ret = `Written by ${obj.author} on ${obj.date}`;
-  return (
-    <Typography gutterBottom variant="body2">
-      {ret}
-    </Typography>
-  );
-};
-
-const inlineCodeRenderer = (props) => {
-  const Inline = styled.code`
-    color: #000;
-    background-color: #f0f0f0;
-    border-radius: 3px;
-    padding: 0.2em 0.2em;
-  `;
-  return <Inline>{props.value}</Inline>;
-};
 
 const _mapProps = (props) => ({
   ...props,
@@ -58,19 +41,23 @@ const _mapProps = (props) => ({
   plugins: [RemarkMathPlugin, RemarkGFMPlugin, RemarkFrontmatterPlugin],
   renderers: {
     ...props.renderers,
-    heading: headingRenderer,
-    yaml: yamlRenderer,
-    inlineCode: inlineCodeRenderer,
-    code: CodeBlock,
+    heading: HeadingRenderer,
+    yaml: YamlRenderer,
+    inlineCode: InlineCodeRenderer,
+    code: BlockCodeRenderer,
+    blockquote: BlockQuoteRenderer,
+    // list
+    // listItem
+
     math: ({ value }) => <TeX block>{value}</TeX>,
     inlineMath: ({ value }) => <TeX>{value}</TeX>,
   },
 });
 
 const Markdown = (props) => (
-  <FontDiv>
+  <FormatDiv>
     <ReactMarkdown {..._mapProps(props)} />
-  </FontDiv>
+  </FormatDiv>
 );
 
 export default Markdown;

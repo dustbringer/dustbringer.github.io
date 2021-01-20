@@ -23,7 +23,6 @@ const TestMdPage = () => {
   const [md, setMd] = React.useState("");
 
   React.useEffect(() => {
-    console.log(TestMarkdown);
     fetch(TestMarkdown)
       .then((res) => res.text())
       .then((text) => {
