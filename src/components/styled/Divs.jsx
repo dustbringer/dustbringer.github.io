@@ -4,6 +4,7 @@ export const DivRowSpaceBetween = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const DivMarginCenterH = styled.div`
