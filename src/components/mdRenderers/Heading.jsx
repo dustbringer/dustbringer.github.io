@@ -74,11 +74,12 @@ const Anchor = styled.a`
  * Base code from https://github.com/remarkjs/react-markdown/issues/69
  */
 
-let i = 0;
+// Not a very nice way to generate incrementing id
+let id = 0;
 const generateId = (() => {
   return (prefix = '') => {
-    i += 1;
-    return `${prefix}-${i}`;
+    id += 1;
+    return `${prefix}-${id}`;
   };
 })();
 
@@ -133,7 +134,7 @@ const Heading = (props) => {
     .replace(/\W/g, "-"));
 
   React.useEffect(() => {
-    i = 0;
+    id = 0; // reset id
     if (qs.parse(location.search, { ignoreQueryPrefix: true }).ref === slug) {
       headingRef.current.scrollIntoView();
     }
