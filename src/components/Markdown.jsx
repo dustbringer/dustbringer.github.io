@@ -6,7 +6,7 @@ import RemarkMathPlugin from "remark-math";
 import RemarkGFMPlugin from "remark-gfm";
 import RemarkFrontmatterPlugin from "remark-frontmatter";
 
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath, BlockMath } from "react-katex";
 import "katex/dist/katex.min.css"; // styling math symbols to look like latex
 
 import HeadingRenderer from "./mdRenderers/Heading";
@@ -21,8 +21,6 @@ import TableRowRenderer from "./mdRenderers/TableRow";
 import TableCellRenderer from "./mdRenderers/TableCell";
 import ListItemRenderer from "./mdRenderers/ListItem";
 import HorizontalRuleRenderer from "./mdRenderers/HorizontalRule";
-
-import toc from "markdown-toc";
 
 /**
  * NOTES
@@ -49,11 +47,7 @@ const FormatDiv = styled.div`
 const _mapProps = (props) => ({
   ...props,
   escapeHtml: false,
-  plugins: [
-    RemarkMathPlugin,
-    RemarkGFMPlugin,
-    RemarkFrontmatterPlugin,
-  ],
+  plugins: [RemarkMathPlugin, RemarkGFMPlugin, RemarkFrontmatterPlugin],
   renderers: {
     ...props.renderers,
 
@@ -74,6 +68,13 @@ const _mapProps = (props) => ({
     inlineMath: ({ value }) => <InlineMath>{value}</InlineMath>,
   },
 });
+
+// TODO: make table of contents like hackmd
+// - tracking
+// - same links as on headers
+//
+// Try: save header props as they load (only keep important props), into list in global context
+//      clear that list on mount of THIS component
 
 const Markdown = (props) => (
   <FormatDiv>
