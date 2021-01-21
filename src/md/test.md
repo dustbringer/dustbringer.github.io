@@ -41,6 +41,21 @@ Some text not space before the list
 -   This
 -   More of that
 
+## Section 2, Headings
+
+> # H1
+> Text
+> ## H2
+> Text
+> ### H3
+> Text
+> #### H4
+> Text
+> ##### H5
+> Text
+> ###### H6
+> Text
+
 
 ## Section 3, Math
 
@@ -113,6 +128,10 @@ www.example.com, https://example.com, and contact@example.com.
 
 | a   | b   |   c |  d  |
 | --- | :-- | --: | :-: |
+| a   | b   |   c |  d  |
+| a   | b   |   c |  d  |
+| a   | b   |   c |  d  |
+| a   | b   |   c |  d  |
 
 #### Tasklist
 -   bruh
