@@ -1,6 +1,11 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+function getCoreProps(props) {
+  const source = props["data-sourcepos"];
+  return source ? { "data-sourcepos": source } : {};
+}
+
 const cellStyling = css`
   border: 1px solid #dddddd;
   padding: 6px 13px;
@@ -14,11 +19,6 @@ const StyledCell = styled.td`
   ${cellStyling};
 `;
 
-function getCoreProps(props) {
-  const source = props["data-sourcepos"];
-  /* istanbul ignore next - nodes from plugins w/o position */
-  return source ? { "data-sourcepos": source } : {};
-}
 
 // Original with edit for borders and jsx
 const TableCell = (props) => {

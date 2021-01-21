@@ -6,6 +6,7 @@ const StyledTable = styled.table`
   border: 1px solid #dddddd;
   border-spacing: 0;
   border-collapse: collapse;
+  margin: 1em 0;
 `;
 
 const Table = (props) => {

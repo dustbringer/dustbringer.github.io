@@ -41,6 +41,11 @@ Some text not space before the list
 -   This
 -   More of that
 
+---
+
+## Same
+## Same
+
 ## Section 2, Headings
 
 > # H1
@@ -55,7 +60,6 @@ Some text not space before the list
 > Text
 > ###### H6
 > Text
-
 
 ## Section 3, Math
 

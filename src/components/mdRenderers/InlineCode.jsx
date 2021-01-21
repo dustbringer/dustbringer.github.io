@@ -1,6 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
+function getCoreProps(props) {
+  const source = props['data-sourcepos']
+  return source ? {'data-sourcepos': source} : {}
+}
+
 const Inline = styled.code`
   color: #000;
   background-color: #f0f0f0;
@@ -9,7 +14,7 @@ const Inline = styled.code`
 `;
 
 const InlineCode = (props) => {
-  return <Inline>{props.value}</Inline>;
+  return <Inline {...getCoreProps(props)}>{props.value}</Inline>;
 };
 
 
