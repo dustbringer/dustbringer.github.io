@@ -16,6 +16,7 @@ import YamlRenderer from "./mdRenderers/Yaml";
 import BlockCodeRenderer from "./mdRenderers/BlockCode";
 import InlineCodeRenderer from "./mdRenderers/InlineCode";
 import BlockQuoteRenderer from "./mdRenderers/BlockQuote";
+import ImageRenderer from "./mdRenderers/Image";
 import LinkRenderer from "./mdRenderers/Link";
 import TableRenderer from "./mdRenderers/Table";
 import TableHeadRenderer from "./mdRenderers/TableHead";
@@ -64,6 +65,7 @@ const _mapProps = (props) => ({
     yaml: YamlRenderer,
     inlineCode: InlineCodeRenderer,
     code: BlockCodeRenderer,
+    image: ImageRenderer,
     blockquote: BlockQuoteRenderer,
     link: LinkRenderer,
     table: TableRenderer,
