@@ -5,6 +5,16 @@ export const GlobalContext = React.createContext(null);
 
 const GlobalProvider = ({ children }) => {
   const [alertQueue, setAlertQueue] = React.useState([]);
+  const [mdHeadings, setMdHeadings] = React.useState([]);
+  const addMdHeading = (text, depth, ref) =>
+    setMdHeadings((h) => [
+      ...h,
+      {
+        text,
+        depth,
+        ref,
+      },
+    ]);
 
   const store = {
     AlertQueue: [alertQueue, setAlertQueue],
@@ -26,7 +36,10 @@ const GlobalProvider = ({ children }) => {
         },
       ]);
     },
+    MdHeadings: [mdHeadings, setMdHeadings],
+    addMdHeading,
   };
+
   return (
     <GlobalContext.Provider value={store}>{children}</GlobalContext.Provider>
   );

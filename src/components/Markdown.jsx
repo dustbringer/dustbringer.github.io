@@ -9,6 +9,8 @@ import RemarkFrontmatterPlugin from "remark-frontmatter";
 import { InlineMath, BlockMath } from "react-katex";
 import "katex/dist/katex.min.css"; // styling math symbols to look like latex
 
+import { GlobalContext } from "../GlobalContext";
+import MarkdownContents from "./MarkdownContents";
 import HeadingRenderer from "./mdRenderers/Heading";
 import YamlRenderer from "./mdRenderers/Yaml";
 import BlockCodeRenderer from "./mdRenderers/BlockCode";
@@ -30,6 +32,12 @@ const FormatDiv = styled.div`
   font-family: "Open Sans", "Roboto", "Helvetica", "Arial", "sans-serif";
   font-size: 16px;
   white-space: pre-line;
+  display: flex;
+  flex-direction: row;
+`;
+
+const DivWidth100 = styled.div`
+  width: 100%;
 `;
 
 /**
@@ -76,10 +84,29 @@ const _mapProps = (props) => ({
 // Try: save header props as they load (only keep important props), into list in global context
 //      clear that list on mount of THIS component
 
-const Markdown = (props) => (
-  <FormatDiv>
-    <ReactMarkdown {..._mapProps(props)} />
-  </FormatDiv>
-);
+const Markdown = (props) => {
+  const context = React.useContext(GlobalContext);
+  const { MdHeadings } = context;
+  const [headings, setMdHeadings] = MdHeadings;
+
+  React.useEffect(() => {
+    return () => {
+      setMdHeadings([]);
+    };
+  }, [setMdHeadings]);
+
+  return (
+    <FormatDiv>
+      <div>
+        <MarkdownContents headings={headings} />
+      </div>
+
+      {/* So that this div stays inside the parent flex container */}
+      <DivWidth100>
+        <ReactMarkdown {..._mapProps(props)} />
+      </DivWidth100>
+    </FormatDiv>
+  );
+};
 
 export default Markdown;

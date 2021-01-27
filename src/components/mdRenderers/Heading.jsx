@@ -4,6 +4,9 @@ import { LinkIcon } from "@primer/octicons-react";
 import { useLocation } from "react-router-dom";
 import qs from "qs";
 
+import { GlobalContext } from "../../GlobalContext";
+import { createTag } from "../../util/mdHeadings";
+
 // From default renderer
 function getCoreProps(props) {
   const source = props["data-sourcepos"];
@@ -23,42 +26,36 @@ const hover = css`
 
 const StyledH1 = styled.h1`
   ${removeMargin};
-  ${hover};
   font-size: 3em;
   font-weight: 500;
 `;
 
 const StyledH2 = styled.h2`
   ${removeMargin};
-  ${hover};
   font-size: 2.5em;
   font-weight: 500;
 `;
 
 const StyledH3 = styled.h3`
   ${removeMargin};
-  ${hover};
   font-size: 2em;
   font-weight: 600;
 `;
 
 const StyledH4 = styled.h4`
   ${removeMargin};
-  ${hover};
   font-size: 1.75em;
   font-weight: 600;
 `;
 
 const StyledH5 = styled.h5`
   ${removeMargin};
-  ${hover};
   font-size: 1.5em;
   font-weight: 700;
 `;
 
 const StyledH6 = styled.h6`
   ${removeMargin};
-  ${hover};
   font-size: 1.25em;
   font-weight: 700;
 `;
@@ -76,12 +73,7 @@ const Anchor = styled.a`
 
 // Not a very nice way to generate incrementing id
 let id = 0;
-const generateId = (() => {
-  return (prefix = '') => {
-    id += 1;
-    return `${prefix}-${id}`;
-  };
-})();
+const generateId = () => ++id;
 
 function flatten(text, child) {
   return typeof child === "string"
@@ -90,6 +82,8 @@ function flatten(text, child) {
 }
 
 const Heading = (props) => {
+  const context = React.useContext(GlobalContext);
+  const { addMdHeading } = context;
   const location = useLocation();
   const headingRef = React.useRef(null);
 
@@ -127,27 +121,36 @@ const Heading = (props) => {
   const children = React.Children.toArray(props.children);
   const text = children.reduce(flatten, "");
 
-  // Remove non-(alphanumeric+whitespace) characters and replace non-word with dashes
-  const slug = generateId(text
-    .toLowerCase()
-    .replace(/[^0-9A-Z\s]+/gi, "")
-    .replace(/\W/g, "-"));
+  /* FOR anchor link:
+    Remove non-(alphanumeric+whitespace) characters and replace non-word with dashes
+  */
+  // const slug = createTag(text, generateId());
 
+  React.useEffect(() => {
+    // Add heading to list (for table of contents)
+    addMdHeading(text, props.level, headingRef);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+/*
   React.useEffect(() => {
     id = 0; // reset id
     if (qs.parse(location.search, { ignoreQueryPrefix: true }).ref === slug) {
       headingRef.current.scrollIntoView();
     }
   }, [location.search, slug]);
+*/
 
   return (
     <HeadingType ref={headingRef} {...getCoreProps(props)}>
       {props.children}
-      {props.children.length > 0 && (
+      {/* Anchor links (not aligned on fresh pages)
+
+      props.children.length > 0 && (
         <Anchor href={`#${location.pathname}?ref=${slug}`}>
           <LinkIcon verticalAlign="middle" />
         </Anchor>
-      )}
+      )*/}
     </HeadingType>
   );
 };
