@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
+import ResumePage from "./pages/ResumePage";
 import TestMdPage from "./pages/TestMdPage";
 
 // https://material-ui.com/customization/default-theme/
@@ -48,6 +49,7 @@ function App() {
             <div id="content">
               <Switch>
                 <Route path="/testmd" component={TestMdPage} />
+                <Route path="/resume" component={ResumePage} />
                 <Route path="/about" component={AboutPage} />
                 <Route path="/" component={HomePage} />
               </Switch>
