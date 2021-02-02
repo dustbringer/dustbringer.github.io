@@ -16,7 +16,6 @@ const useStyles = makeStyles({
   root: {
     textAlign: "left",
     margin: "10px",
-    width: "100%",
     backgroundColor: "#fafafa",
   },
   media: {
