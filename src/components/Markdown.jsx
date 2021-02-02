@@ -79,13 +79,6 @@ const _mapProps = (props) => ({
   },
 });
 
-// TODO: make table of contents like hackmd
-// - tracking
-// - same links as on headers
-//
-// Try: save header props as they load (only keep important props), into list in global context
-//      clear that list on mount of THIS component
-
 const Markdown = (props) => {
   const context = React.useContext(GlobalContext);
   const { MdHeadings } = context;

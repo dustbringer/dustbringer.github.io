@@ -1,5 +1,5 @@
 import React from "react";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const HomePage = () => {
   const classes = useStyles();
-  // const history = useHistory();
+  const history = useHistory();
   const context = React.useContext(GlobalContext);
   const { showError, showSuccess } = context;
 
@@ -31,8 +31,12 @@ const HomePage = () => {
           Boring home page
         </Typography>
         <DivFlexCenterHInside>
-          <Button variant="outlined" color="primary">
-            Press me! I do nothing!!!
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => history.push("/posts")}
+          >
+            Preceed to the mildly interesting page
           </Button>
         </DivFlexCenterHInside>
       </Container>

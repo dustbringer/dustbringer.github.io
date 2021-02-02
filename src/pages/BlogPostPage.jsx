@@ -1,10 +1,11 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 
+import { GlobalContext } from "../GlobalContext";
 import Markdown from "../components/Markdown";
 
 const useStyles = makeStyles((theme) => ({
@@ -18,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
 
 const BlogPostPage = ({ match }) => {
   const classes = useStyles();
+  const history = useHistory();
+  const context = React.useContext(GlobalContext);
+  const { showError } = context;
   const postName = match.params.postName;
   const [md, setMd] = React.useState("");
 
@@ -30,7 +34,12 @@ const BlogPostPage = ({ match }) => {
         .then((text) => {
           setMd(text);
         })
-    );
+    )
+    .catch((err) => {
+      showError(`Failed to load ${postName}.md`);
+      history.push("/404");
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postName, setMd]);
 
   return (

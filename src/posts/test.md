@@ -2,6 +2,10 @@
 title: example title
 author: dustbringer
 date: 19-01-2021
+tags:
+    - bread
+    - butter
+    - test page
 ---
 
 # Test markdown page title
