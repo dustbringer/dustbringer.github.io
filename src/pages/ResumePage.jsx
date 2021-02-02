@@ -26,6 +26,9 @@ const ResumePage = () => {
   return (
     <>
       <Container maxWidth="md" className={classes.container}>
+        <Typography>
+          Congrats. You found some stuff about me:
+        </Typography>
         <div
           style={{
             position: "relative",

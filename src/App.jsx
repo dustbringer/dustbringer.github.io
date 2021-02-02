@@ -12,6 +12,9 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ResumePage from "./pages/ResumePage";
 import TestMdPage from "./pages/TestMdPage";
+import BlogListPage from "./pages/BlogListPage";
+import BlogPostPage from "./pages/BlogPostPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 // https://material-ui.com/customization/default-theme/
 const theme = createMuiTheme({
@@ -49,9 +52,13 @@ function App() {
             <div id="content">
               <Switch>
                 <Route path="/testmd" component={TestMdPage} />
+                <Route path="/posts/:postName" component={BlogPostPage} />
+                <Route path="/posts" component={BlogListPage} />
                 <Route path="/resume" component={ResumePage} />
                 <Route path="/about" component={AboutPage} />
-                <Route path="/" component={HomePage} />
+                <Route path="/404" component={NotFoundPage} />
+                <Route path="/" exact component={HomePage} />
+                <Route component={NotFoundPage} />
               </Switch>
             </div>
           </Router>

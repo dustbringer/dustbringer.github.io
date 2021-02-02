@@ -67,6 +67,7 @@ const NavLink = styled(MyLink)`
 
 const links = [
   { name: "Test MD", path: "/testmd" },
+  { name: "Posts", path: "/posts" },
   { name: "About", path: "/about" },
 ];
 
