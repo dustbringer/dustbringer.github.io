@@ -42,9 +42,11 @@ const StyledSpan = styled.span`
   text-overflow: ellipsis;
 `;
 
-/* MEDIA QUERY SYNTAX
+/**
+ * NOTE
+ * This current system has a global "contents" state. Contents will only
+ * display correctly if only one Markdown document is displayed per page
  */
-
 const MarkdownContents = ({ headings }) => {
   return (
     <FormatDiv>

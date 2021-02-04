@@ -93,6 +93,7 @@ const Markdown = (props) => {
   return (
     <FormatDiv>
       <div>
+        {/* See MarkdownContents.jsx for drawbacks */}
         <MarkdownContents headings={headings} />
       </div>
 
