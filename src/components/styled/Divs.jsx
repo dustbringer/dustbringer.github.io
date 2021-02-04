@@ -7,6 +7,13 @@ export const DivRowSpaceBetween = styled.div`
   align-items: center;
 `;
 
+export const DivColSpaceBetween = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const DivMarginCenterH = styled.div`
   margin: 0 auto;
 `;

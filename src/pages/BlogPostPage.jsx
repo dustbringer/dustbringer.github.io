@@ -26,28 +26,26 @@ const BlogPostPage = ({ match }) => {
   const [md, setMd] = React.useState("");
 
   React.useEffect(() => {
-    import(`../posts/${postName}.md`).then((file) =>
-      // Note, file.default is the file name
-      // (unlike normal imports where the filename is directly imported)
-      fetch(file.default)
-        .then((res) => res.text())
-        .then((text) => {
-          setMd(text);
-        })
-    )
-    .catch((err) => {
-      showError(`Failed to load ${postName}.md`);
-      history.push("/404");
-    });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    import(`../posts/${postName}.md`)
+      .then((file) =>
+        // Note, file.default is the file name
+        // (unlike normal imports where the filename is directly imported)
+        fetch(file.default)
+          .then((res) => res.text())
+          .then((text) => {
+            setMd(text);
+          })
+      )
+      .catch((err) => {
+        showError(`Failed to load ${postName}.md`);
+        history.push("/404");
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postName, setMd]);
 
   return (
     <>
       <Container maxWidth="md" className={classes.container}>
-        <Typography variant="h4" className={classes.title}>
-          Some post with name "{postName}"
-        </Typography>
         <Markdown children={md} />
       </Container>
     </>
