@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   },
 });
 
-const BlogListCard = ({ name, title, date, tags }) => {
+const BlogListCard = ({ name, title, description, date, tags }) => {
   const classes = useStyles();
   const history = useHistory();
 
@@ -39,12 +39,18 @@ const BlogListCard = ({ name, title, date, tags }) => {
       >
         <CardContent>
           <Box mb={1}>
-            <Typography variant="h5" component="h2" display="inline">
+            <Typography variant="h5" component="h5" display="inline">
               {title ? title : "Unknown Title"}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="i">
               {" "}
-              {(date && moment(date, "DD-MM-YYYY", true).isValid()) ? date : "Unknown Date"}
+              {date && moment(date).isValid()
+                ? moment(date).format("YYYY-MM-DD")
+                : "Unknown Date"}
+            </Typography>
+
+            <Typography variant="body2" component="p">
+              {description}
             </Typography>
           </Box>
           {tags &&

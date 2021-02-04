@@ -14,8 +14,8 @@ const StyledTypography = styled(Typography)`
 const Yaml = (props) => {
   const { date, author } = yaml.load(props.value);
   const display = `Written by ${author} on ${
-    date && moment(date, "DD-MM-YYYY", true).isValid()
-      ? moment(date, "DD-MM-YYYY").format("Do MMMM YYYY")
+    date && moment(date, "YYYY-MM-DD", true).isValid()
+      ? moment(date, "YYYY-MM-DD").format("Do MMMM YYYY")
       : "Unknown Date"
   }`;
   return (

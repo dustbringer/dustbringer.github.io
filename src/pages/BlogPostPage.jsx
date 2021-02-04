@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { withRouter, useHistory } from "react-router-dom";
 import yamlParser from "markdown-yaml-metadata-parser";
 

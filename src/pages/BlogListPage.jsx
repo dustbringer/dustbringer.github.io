@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
 import { useLocation, useHistory } from "react-router-dom";
 import qs from "qs";
@@ -103,8 +103,12 @@ const BlogListPage = () => {
       .then(() => {
         setPosts((posts) =>
           [...posts].sort((p1, p2) => {
-            const diff = moment(p2.meta.date, "DD-MM-YYYY", true).diff(
-              moment(p1.meta.date, "DD-MM-YYYY", true),
+            // Sort invalid dates to bottom
+            if (!moment(p1.meta.date).isValid()) return 1
+            else if (!moment(p2.meta.date).isValid()) return -1;
+
+            const diff = moment(p2.meta.date).diff(
+              moment(p1.meta.date),
               "days"
             );
             return diff;
@@ -140,6 +144,7 @@ const BlogListPage = () => {
                     <BlogListCard
                       key={i}
                       title={meta.title}
+                      description={meta.description}
                       date={meta.date}
                       tags={meta.tags}
                       name={name}

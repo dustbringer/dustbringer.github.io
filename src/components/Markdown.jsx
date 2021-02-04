@@ -6,7 +6,11 @@ import RemarkMathPlugin from "remark-math";
 import RemarkGFMPlugin from "remark-gfm";
 import RemarkFrontmatterPlugin from "remark-frontmatter";
 
-import { InlineMath, BlockMath } from "react-katex";
+// react-katex
+// import { InlineMath, BlockMath } from "react-katex";
+
+/* @matejmazur/react-katex */
+import TeX from "@matejmazur/react-katex";
 import "katex/dist/katex.min.css"; // styling math symbols to look like latex
 
 import { GlobalContext } from "../GlobalContext";
@@ -74,8 +78,8 @@ const _mapProps = (props) => ({
     tableCell: TableCellRenderer,
     listItem: ListItemRenderer,
 
-    math: ({ value }) => <BlockMath>{value}</BlockMath>,
-    inlineMath: ({ value }) => <InlineMath>{value}</InlineMath>,
+    math: ({ value }) => <TeX block>{value}</TeX>,
+    inlineMath: ({ value }) => <TeX>{value}</TeX>,
   },
 });
 
