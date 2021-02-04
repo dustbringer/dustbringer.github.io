@@ -1,5 +1,6 @@
 import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import GlobalProvider from "./GlobalContext";
 import Alerts from "./components/Alerts";
 import "./App.css";
@@ -43,24 +44,26 @@ function App() {
   return (
     <div id="root">
       <GlobalProvider>
-        <ThemeProvider theme={theme}>
-          <Router>
-            <Navbar />
-            <div id="content">
-              <Switch>
-                <Route path="/posts/:postName" component={BlogPostPage} />
-                <Route path="/posts" component={BlogListPage} />
-                <Route path="/resume" component={ResumePage} />
-                <Route path="/about" component={AboutPage} />
-                <Route path="/404" component={NotFoundPage} />
-                <Route path="/" exact component={HomePage} />
-                <Route component={NotFoundPage} />
-              </Switch>
-            </div>
-          </Router>
-          <Footer />
-          <Alerts />
-        </ThemeProvider>
+        <HelmetProvider>
+          <ThemeProvider theme={theme}>
+            <Router>
+              <Navbar />
+              <div id="content">
+                <Switch>
+                  <Route path="/posts/:postName" component={BlogPostPage} />
+                  <Route path="/posts" component={BlogListPage} />
+                  <Route path="/resume" component={ResumePage} />
+                  <Route path="/about" component={AboutPage} />
+                  <Route path="/404" component={NotFoundPage} />
+                  <Route path="/" exact component={HomePage} />
+                  <Route component={NotFoundPage} />
+                </Switch>
+              </div>
+            </Router>
+            <Footer />
+            <Alerts />
+          </ThemeProvider>
+        </HelmetProvider>
       </GlobalProvider>
     </div>
   );
