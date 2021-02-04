@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
@@ -43,7 +44,7 @@ const BlogListCard = ({ name, title, date, tags }) => {
             </Typography>
             <Typography variant="body2" color="textSecondary" component="i">
               {" "}
-              {date ? date : "Unknown Date"}
+              {(date && moment(date, "DD-MM-YYYY", true).isValid()) ? date : "Unknown Date"}
             </Typography>
           </Box>
           {tags &&
