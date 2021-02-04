@@ -5,6 +5,11 @@ import moment from "moment";
 import yaml from "js-yaml";
 import Typography from "@material-ui/core/Typography";
 
+const StyledTypography = styled(Typography)`
+  font-size: 0.75em;
+  color: #aaaaaa;
+`;
+
 // TODO style this up
 const Yaml = (props) => {
   const { date, author } = yaml.load(props.value);
@@ -14,9 +19,9 @@ const Yaml = (props) => {
       : "Unknown Date"
   }`;
   return (
-    <Typography gutterBottom variant="body2">
+    <StyledTypography variant="body2">
       {display}
-    </Typography>
+    </StyledTypography>
   );
 };
 
