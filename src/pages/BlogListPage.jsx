@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { useLocation, useHistory } from "react-router-dom";
 import qs from "qs";
@@ -117,6 +118,10 @@ const BlogListPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Posts - dustbringer.github.io</title>
+        <meta name="description" content="List of my blog posts" />
+      </Helmet>
       <Container maxWidth="md" className={classes.container}>
         <Typography variant="h4" className={classes.title}>
           Mildly Interesting Blog Posts

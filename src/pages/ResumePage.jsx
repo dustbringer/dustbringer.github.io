@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 // import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
@@ -25,10 +26,12 @@ const ResumePage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Resume - dustbringer.github.io</title>
+        <meta name="description" content="Resume Page" />
+      </Helmet>
       <Container maxWidth="md" className={classes.container}>
-        <Typography>
-          Congrats. You found some stuff about me:
-        </Typography>
+        <Typography>Congrats. You found some stuff about me:</Typography>
         <div
           style={{
             position: "relative",

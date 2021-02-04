@@ -11,7 +11,6 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ResumePage from "./pages/ResumePage";
-import TestMdPage from "./pages/TestMdPage";
 import BlogListPage from "./pages/BlogListPage";
 import BlogPostPage from "./pages/BlogPostPage";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -40,8 +39,6 @@ const theme = createMuiTheme({
   },
 });
 
-// TODO: Dynamic Header with https://www.npmjs.com/package/react-helmet
-
 function App() {
   return (
     <div id="root">
@@ -51,7 +48,6 @@ function App() {
             <Navbar />
             <div id="content">
               <Switch>
-                <Route path="/testmd" component={TestMdPage} />
                 <Route path="/posts/:postName" component={BlogPostPage} />
                 <Route path="/posts" component={BlogListPage} />
                 <Route path="/resume" component={ResumePage} />

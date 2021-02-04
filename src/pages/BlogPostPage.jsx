@@ -1,5 +1,7 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { withRouter, useHistory } from "react-router-dom";
+import yamlParser from "markdown-yaml-metadata-parser";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -23,6 +25,7 @@ const BlogPostPage = ({ match }) => {
   const context = React.useContext(GlobalContext);
   const { showError } = context;
   const postName = match.params.postName;
+  const [meta, setMeta] = React.useState({});
   const [md, setMd] = React.useState("");
 
   React.useEffect(() => {
@@ -34,6 +37,7 @@ const BlogPostPage = ({ match }) => {
           .then((res) => res.text())
           .then((text) => {
             setMd(text);
+            setMeta(yamlParser(text).metadata);
           })
       )
       .catch((err) => {
@@ -45,6 +49,12 @@ const BlogPostPage = ({ match }) => {
 
   return (
     <>
+      <Helmet>
+        <title>
+          {meta.title ? meta.title : postName} - dustbringer.github.io
+        </title>
+        <meta name="description" content={`Blog Post, ${postName}.md`} />
+      </Helmet>
       <Container maxWidth="md" className={classes.container}>
         <Markdown children={md} />
       </Container>

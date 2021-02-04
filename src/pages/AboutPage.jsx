@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 // import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
@@ -15,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const LinkBold = styled(Link)`
   font-weight: 600;
 `;
@@ -26,6 +26,10 @@ const AboutPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>About - dustbringer.github.io</title>
+        <meta name="description" content="About Page" />
+      </Helmet>
       <Container maxWidth="md" className={classes.container}>
         <Typography variant="h4" className={classes.title}>
           About

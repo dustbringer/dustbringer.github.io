@@ -10,6 +10,11 @@ tags:
 
 # Test markdown page title
 
+Testing resources
+- https://levelup.gitconnected.com/adding-katex-and-markdown-in-react-7b70694004ef
+- https://stackoverflow.com/questions/42928530/how-do-i-load-a-markdown-file-into-a-react-component
+
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pretium bibendum erat, et faucibus metus bibendum ut. In dignissim elit a vestibulum maximus. Quisque risus nunc, scelerisque quis odio quis, molestie euismod purus. Proin ut varius nunc, at sollicitudin ipsum. Aliquam dolor neque, fringilla vitae massa id, eleifend mattis enim. Aliquam pretium leo sed commodo pulvinar. Fusce semper risus massa.
 
 Mauris fringilla accumsan sem, vitae elementum nulla varius at. Vivamus fermentum vestibulum dui, id ultricies nunc ultricies id. In quis tellus sapien. Mauris egestas justo in ante iaculis euismod. Donec consequat quis tellus vel sollicitudin. Sed sollicitudin sagittis dignissim. Duis nec augue vel turpis vestibulum finibus eget ut urna.

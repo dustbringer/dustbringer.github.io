@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -26,6 +27,10 @@ const HomePage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Home - dustbringer.github.io</title>
+        <meta name="description" content="Home Page" />
+      </Helmet>
       <Container maxWidth="md" className={classes.container}>
         <Typography variant="h4" className={classes.title}>
           Boring home page
