@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -48,6 +49,18 @@ const IconButton = ({ Icon, href }) => {
   );
 };
 
+const ReactText = styled.span`
+  @media(max-width: 450px) {
+    display: none;
+  }
+`;
+
+const SocialIcons = styled.div`
+  @media(max-width: 310px) {
+    display: none;
+  }
+`;
+
 const Footer = () => {
   const classes = useStyles();
 
@@ -58,27 +71,31 @@ const Footer = () => {
           <Container maxWidth="md" className={classes.container}>
             <DivRowSpaceBetween>
               <Typography variant="body2" className={classes.text}>
-                Produced by{" "}
+                Copyright &copy; 2021
                 <Link
                   href="https://github.com/dustbringer"
                   className={classes.link}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
+                  {" "}
                   dustbringer
                 </Link>
-                , 2021. Powered by{" "}
-                <Link
-                  href="https://reactjs.org/"
-                  className={classes.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  ReactJS
-                </Link>
-                .
+                {". "}
+                <ReactText>
+                  Powered by{" "}
+                  <Link
+                    href="https://reactjs.org/"
+                    className={classes.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    ReactJS
+                  </Link>
+                  .
+                </ReactText>
               </Typography>
-              <div>
+              <SocialIcons>
                 <IconButton
                   Icon={GitHubIcon}
                   href="https://github.com/dustbringer"
@@ -91,7 +108,7 @@ const Footer = () => {
                   Icon={InstagramIcon}
                   href="https://www.instagram.com/dustbringr/"
                 />
-              </div>
+              </SocialIcons>
             </DivRowSpaceBetween>
           </Container>
         </Toolbar>
