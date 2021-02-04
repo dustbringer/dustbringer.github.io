@@ -5,7 +5,10 @@ Personal website to have lots of stuff!
 - Hosted on GitHub Pages
 
 ## Currently in progress
-- Render markdown style files
+- nothing really
 
 ## Completed
 - Basic structure
+- Custom Markdown renderer
+- Listing multiple posts by metadata
+- Dynamically rendering posts
