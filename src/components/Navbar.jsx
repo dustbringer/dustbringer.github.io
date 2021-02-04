@@ -9,7 +9,11 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 
 import { DivRowSpaceBetween } from "./styled/Divs";
+import FullList from "./navbar/FullList";
+import DropdownList from "./navbar/DropdownList";
 // import wombatIcon from "../img/flaticon-polar-bear.svg";
+
+const RESPONSIVE_WIDTH = "600px";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -25,18 +29,13 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: "35px",
     maxWidth: "35px",
   },
+  title: {
+    margin: "auto 0",
+    "@media(max-width: 600px)": {
+      fontSize: "1.2em",
+    },
+  },
 }));
-
-const NavLinkList = styled.ul`
-  list-style-type: none;
-  margin: auto 0;
-  padding: 0;
-  overflow: hidden;
-  & > li {
-    display: inline-block;
-    margin: 0 3px;
-  }
-`;
 
 const MyLink = styled(Link)`
   text-decoration: none;
@@ -53,30 +52,27 @@ const MyLink = styled(Link)`
   }
 `;
 
-// inline-block is for border bottom to not hidden by overflow
-const NavLink = styled(MyLink)`
-  display: inline-block;
-  margin: 0 8px;
-  color: #cccccc;
-  &:hover {
-    color: #ffffff;
+const StyledDivRowSpaceBetween = styled(DivRowSpaceBetween)`
+  height: 100%;
+`;
+
+const ResponsiveFullList = styled(FullList)`
+  @media (max-width: 600px) {
+    display: none;
   }
-  border-bottom: 2px solid
-    ${(props) => (props.cur === props.to ? "#cccccc" : "transparent")};
+`;
+
+const ResponsiveDropdownList = styled(DropdownList)`
+  display: none;
+  @media (max-width: ${RESPONSIVE_WIDTH}) {
+    display: block;
+  }
 `;
 
 const links = [
   { name: "Posts", path: "/posts" },
   { name: "About", path: "/about" },
 ];
-
-/**
- * NOTE: We use `replace={path === location.pathname}` on links to
- *       avoid HashRouter warning.
- *
- * Couldn't be bothered to implement 'reload if link to same page',
- * since the website is more or less static
- */
 
 const Navbar = () => {
   const classes = useStyles();
@@ -88,7 +84,7 @@ const Navbar = () => {
         <Toolbar className={classes.toolbar}>
           <Container maxWidth="md" className={classes.container}>
             <MyLink replace={"/" === location.pathname} to="/">
-              <DivRowSpaceBetween>
+              <StyledDivRowSpaceBetween>
                 {/* Icon */}
                 {/*<img
                   src={wombatIcon}
@@ -98,21 +94,10 @@ const Navbar = () => {
                 <Typography variant="h5" className={classes.title}>
                   <code>dustbringer.github.io</code>
                 </Typography>
-              </DivRowSpaceBetween>
+              </StyledDivRowSpaceBetween>
             </MyLink>
-            <NavLinkList>
-              {links.map((link) => (
-                <li key={link.name + link.path}>
-                  <NavLink
-                    replace={link.path === location.pathname}
-                    cur={location.pathname}
-                    to={link.path}
-                  >
-                    {link.name}
-                  </NavLink>
-                </li>
-              ))}
-            </NavLinkList>
+            <ResponsiveFullList links={links} />
+            <ResponsiveDropdownList links={links} />
           </Container>
         </Toolbar>
       </AppBar>
