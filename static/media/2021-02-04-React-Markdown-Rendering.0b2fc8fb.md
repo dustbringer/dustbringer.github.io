@@ -147,7 +147,7 @@ It was very insightful and interesting experience digging into `ReactMarkdown` a
 
 ---
 
-#### (Appendix) Helpful Sources
+## (Appendix) Helpful Sources
 Some websites that got me started,
 - https://levelup.gitconnected.com/adding-katex-and-markdown-in-react-7b70694004ef
 - https://stackoverflow.com/questions/42928530/how-do-i-load-a-markdown-file-into-a-react-component
