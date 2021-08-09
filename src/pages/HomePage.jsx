@@ -10,12 +10,18 @@ import Button from "@material-ui/core/Button";
 import { GlobalContext } from "../GlobalContext";
 import { DivFlexCenterHInside } from "../components/styled/Divs";
 
+import Latex from "react-latex";
+
 const useStyles = makeStyles((theme) => ({
   button: {},
   container: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+  },
+  latex: {
+    fontFamily: "Computer Modern",
+    fontSize: "2.1rem"
   },
 }));
 
@@ -44,6 +50,10 @@ const HomePage = () => {
             Preceed to the mildly interesting page
           </Button>
         </DivFlexCenterHInside>
+
+        <Typography variant="p" className={classes.latex}>
+          Boring home page
+        </Typography>
       </Container>
     </>
   );
