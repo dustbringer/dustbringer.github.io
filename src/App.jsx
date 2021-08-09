@@ -15,6 +15,7 @@ import ResumePage from "./pages/ResumePage";
 import BlogListPage from "./pages/BlogListPage";
 import BlogPostPage from "./pages/BlogPostPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import MarkdownRendererPage from "./pages/tools/MarkdownRenderPage";
 
 // https://material-ui.com/customization/default-theme/
 const theme = createTheme({
@@ -50,6 +51,10 @@ function App() {
               <Navbar />
               <div id="content">
                 <Switch>
+                  {/* Tools */}
+                  <Route path="/tools/markdown-renderer" component={MarkdownRendererPage} />
+
+                  {/* Main */}
                   <Route path="/posts/:postName" component={BlogPostPage} />
                   <Route path="/posts" component={BlogListPage} />
                   <Route path="/resume" component={ResumePage} />

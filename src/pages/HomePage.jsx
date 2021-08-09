@@ -1,16 +1,15 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 
 import { GlobalContext } from "../GlobalContext";
 import { DivFlexCenterHInside } from "../components/styled/Divs";
-
-import Latex from "react-latex";
 
 const useStyles = makeStyles((theme) => ({
   button: {},
@@ -21,7 +20,18 @@ const useStyles = makeStyles((theme) => ({
   },
   latex: {
     fontFamily: "Computer Modern",
-    fontSize: "2.1rem"
+    fontSize: "1.4rem",
+  },
+  mono: {
+    fontFamily: "Roboto Mono",
+  },
+  link: {
+    fontWeight: "600",
+    color: "#2f3241",
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "underline",
+    },
   },
 }));
 
@@ -38,22 +48,24 @@ const HomePage = () => {
         <meta name="description" content="Home Page" />
       </Helmet>
       <Container maxWidth="md" className={classes.container}>
-        <Typography variant="h4" className={classes.title}>
-          Boring home page
+        <Typography variant="h4">Home</Typography>
+        <Typography variant="p" gutterBottom>
+          Hi, Welcome to my website! Here are some links to some of my stuff...
         </Typography>
-        <DivFlexCenterHInside>
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() => history.push("/posts")}
-          >
-            Preceed to the mildly interesting page
-          </Button>
-        </DivFlexCenterHInside>
+        <ul>
+          <li>
+            <Link className={classes.link} to="/posts">Posts</Link>
+          </li>
+          <li>
+            Tools
+            <ul>
+              <li>
+                <Link className={classes.link} to="/tools/markdown-renderer">Markdown Renderer</Link>
+              </li>
+            </ul>
+          </li>
+        </ul>
 
-        <Typography variant="p" className={classes.latex}>
-          Boring home page
-        </Typography>
       </Container>
     </>
   );

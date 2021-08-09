@@ -31,12 +31,16 @@ import HorizontalRuleRenderer from "./mdRenderers/HorizontalRule";
 
 const FormatDiv = styled.div`
   font-family: "Open Sans", "Roboto", "Helvetica", "Arial", "sans-serif";
-  font-size: 16px;
   display: flex;
   flex-direction: row;
 `;
 
-/* 
+const NoFormatDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+/*
  * Break text so it doesnt overflow in div
  * https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
  */
@@ -81,8 +85,8 @@ const MarkdownFormatDiv = styled.div`
 
 // Plugins: https://github.com/remarkjs/remark/blob/main/doc/plugins.md
 const _mapProps = (props) => ({
-  ...props,
   escapeHtml: false,
+  ...props,
   plugins: [RemarkMathPlugin, RemarkGFMPlugin, RemarkFrontmatterPlugin],
   renderers: {
     ...props.renderers,
@@ -129,6 +133,28 @@ const Markdown = (props) => {
         <ReactMarkdown {..._mapProps(props)} />
       </MarkdownFormatDiv>
     </FormatDiv>
+  );
+};
+
+export const MarkdownNoContents = (props) => {
+  return (
+    <FormatDiv>
+      {/* ReactMarkdown renders multiple ungrouped components */}
+      <MarkdownFormatDiv>
+        <ReactMarkdown {..._mapProps(props)} escapeHtml />
+      </MarkdownFormatDiv>
+    </FormatDiv>
+  );
+};
+
+export const MarkdownNoFormat = (props) => {
+  return (
+    <NoFormatDiv>
+      {/* ReactMarkdown renders multiple ungrouped components */}
+      <MarkdownFormatDiv>
+        <ReactMarkdown {..._mapProps(props)} escapeHtml />
+      </MarkdownFormatDiv>
+    </NoFormatDiv>
   );
 };
 
