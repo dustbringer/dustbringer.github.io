@@ -47,6 +47,8 @@ function App() {
       <GlobalProvider>
         <HelmetProvider>
           <ThemeProvider theme={theme}>
+            {/* For browser router */}
+            {/* <Router basemname={`/${process.env.PUBLIC_URL}`}> */}
             <Router>
               <Navbar />
               <div id="content">
