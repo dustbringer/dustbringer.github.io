@@ -1,20 +1,19 @@
 import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
-import GlobalProvider from "./GlobalContext";
-import Alerts from "./components/Alerts";
-import "./App.css";
+import GlobalProvider from "../GlobalContext";
+import Alerts from "../components/Alerts";
+import "./index.css";
 
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
-import ResumePage from "./pages/ResumePage";
-import BlogListPage from "./pages/BlogListPage";
-import BlogPostPage from "./pages/BlogPostPage";
-import NotFoundPage from "./pages/NotFoundPage";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import HomePage from "./HomePage";
+import AboutPage from "./AboutPage";
+import ResumePage from "./ResumePage";
+import BlogListPage from "./BlogListPage";
+import BlogPostPage from "./BlogPostPage";
+import NotFoundPage from "./NotFoundPage";
 
 // https://material-ui.com/customization/default-theme/
 const theme = createMuiTheme({
@@ -43,8 +42,8 @@ const theme = createMuiTheme({
 function App() {
   return (
     <div id="root">
+      Jeff
       <GlobalProvider>
-        <HelmetProvider>
           <ThemeProvider theme={theme}>
             <Router>
               <Navbar />
@@ -63,7 +62,6 @@ function App() {
             <Footer />
             <Alerts />
           </ThemeProvider>
-        </HelmetProvider>
       </GlobalProvider>
     </div>
   );

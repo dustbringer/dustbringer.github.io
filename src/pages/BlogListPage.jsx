@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { useLocation, useHistory } from "react-router-dom";
 import qs from "qs";
@@ -75,50 +75,50 @@ const BlogListPage = () => {
   }, [location.search, posts.length]);
 
   // Load all the posts
-  React.useEffect(() => {
-    setLoading(true);
-    setPage(1);
-    const postFiles = require.context("../posts", false, /\.md$/);
-    const markdownFiles = importAll(postFiles);
-    Promise.all(
-      markdownFiles.map((fileData) =>
-        fetch(fileData.file.default)
-          .then((res) => res.text())
-          .then((text) => {
-            const yaml = yamlParser(text);
-            setPosts((posts) => [
-              ...posts,
-              {
-                meta: yaml.metadata,
-                // Match file name without extension
-                name: fileData.key.match(/.*\/(.+)\.md/)[1],
-              },
-            ]);
-          })
-          .catch((err) =>
-            console.log(`Failed to fetch ${fileData.file.default}`)
-          )
-      )
-    )
-      .then(() => {
-        setPosts((posts) =>
-          [...posts].sort((p1, p2) => {
-            // Sort invalid dates to bottom
-            if (!moment(p1.meta.date).isValid()) return 1
-            else if (!moment(p2.meta.date).isValid()) return -1;
+  // React.useEffect(() => {
+  //   setLoading(true);
+  //   setPage(1);
+  //   const postFiles = require.context("../posts", false, /\.md$/);
+  //   const markdownFiles = importAll(postFiles);
+  //   Promise.all(
+  //     markdownFiles.map((fileData) =>
+  //       fetch(fileData.file.default)
+  //         .then((res) => res.text())
+  //         .then((text) => {
+  //           const yaml = yamlParser(text);
+  //           setPosts((posts) => [
+  //             ...posts,
+  //             {
+  //               meta: yaml.metadata,
+  //               // Match file name without extension
+  //               name: fileData.key.match(/.*\/(.+)\.md/)[1],
+  //             },
+  //           ]);
+  //         })
+  //         .catch((err) =>
+  //           console.log(`Failed to fetch ${fileData.file.default}`)
+  //         )
+  //     )
+  //   )
+  //     .then(() => {
+  //       setPosts((posts) =>
+  //         [...posts].sort((p1, p2) => {
+  //           // Sort invalid dates to bottom
+  //           if (!moment(p1.meta.date).isValid()) return 1
+  //           else if (!moment(p2.meta.date).isValid()) return -1;
 
-            const diff = moment(p2.meta.date).diff(
-              moment(p1.meta.date),
-              "days"
-            );
-            return diff;
-          })
-        );
-      })
-      .catch((err) => showError(err.message))
-      .finally(() => setLoading(false));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  //           const diff = moment(p2.meta.date).diff(
+  //             moment(p1.meta.date),
+  //             "days"
+  //           );
+  //           return diff;
+  //         })
+  //       );
+  //     })
+  //     .catch((err) => showError(err.message))
+  //     .finally(() => setLoading(false));
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <>

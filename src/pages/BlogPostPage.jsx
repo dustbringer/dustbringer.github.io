@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import { withRouter, useHistory } from "react-router-dom";
 import yamlParser from "markdown-yaml-metadata-parser";
 
@@ -28,24 +28,24 @@ const BlogPostPage = ({ match }) => {
   const [meta, setMeta] = React.useState({});
   const [md, setMd] = React.useState("");
 
-  React.useEffect(() => {
-    import(`../posts/${postName}.md`)
-      .then((file) =>
-        // Note, file.default is the file name
-        // (unlike normal imports where the filename is directly imported)
-        fetch(file.default)
-          .then((res) => res.text())
-          .then((text) => {
-            setMd(text);
-            setMeta(yamlParser(text).metadata);
-          })
-      )
-      .catch((err) => {
-        showError(`Failed to load ${postName}.md`);
-        history.push("/404");
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [postName, setMd]);
+  // React.useEffect(() => {
+  //   import(`../posts/${postName}.md`)
+  //     .then((file) =>
+  //       // Note, file.default is the file name
+  //       // (unlike normal imports where the filename is directly imported)
+  //       fetch(file.default)
+  //         .then((res) => res.text())
+  //         .then((text) => {
+  //           setMd(text);
+  //           setMeta(yamlParser(text).metadata);
+  //         })
+  //     )
+  //     .catch((err) => {
+  //       showError(`Failed to load ${postName}.md`);
+  //       history.push("/404");
+  //     });
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [postName, setMd]);
 
   return (
     <>
