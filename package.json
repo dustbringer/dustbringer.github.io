@@ -17,6 +17,7 @@
     "gatsby-plugin-react-helmet": "^4.12.0",
     "gatsby-plugin-sitemap": "^4.8.0",
     "gatsby-plugin-styled-components": "^4.12.0",
+    "gatsby-remark-katex": "^5.9.0",
     "gatsby-source-filesystem": "^3.12.0",
     "gatsby-theme-material-ui": "^2.0.1",
     "gatsby-theme-material-ui-top-layout": "^2.0.1",
