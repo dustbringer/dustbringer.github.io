@@ -13,7 +13,7 @@ import RemarkFrontmatterPlugin from "remark-frontmatter";
 import TeX from "@matejmazur/react-katex";
 import "katex/dist/katex.min.css"; // styling math symbols to look like latex
 
-import { GlobalContext } from "../GlobalContext";
+import { GlobalContext } from "../context/GlobalContext";
 import MarkdownContents from "./MarkdownContents";
 import HeadingRenderer from "./mdRenderers/Heading";
 import YamlRenderer from "./mdRenderers/Yaml";

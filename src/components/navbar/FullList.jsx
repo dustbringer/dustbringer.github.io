@@ -1,5 +1,7 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { navigate } from "gatsby";
+import { useLocation } from "@reach/router"
+import { Link } from "gatsby-theme-material-ui";
 import styled from "styled-components";
 
 const NavLinkList = styled.ul`
@@ -38,6 +40,7 @@ const NavLink = styled(MyLink)`
   }
   border-bottom: 2px solid
     ${(props) => (props.cur === props.to ? "#cccccc" : "transparent")};
+  font-size: 1rem;
 `;
 
 /**

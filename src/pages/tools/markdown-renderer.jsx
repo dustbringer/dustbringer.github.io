@@ -1,6 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -30,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
 
 const MarkdownRendererPage = () => {
   const classes = useStyles();
-  const history = useHistory();
   const [text, setText] = React.useState("");
 
   return (
@@ -41,7 +39,7 @@ const MarkdownRendererPage = () => {
       </Helmet>
       <Container maxWidth="md" className={classes.container}>
         <Typography variant="h4">Markdown Renderer</Typography>
-        <Typography variant="p" gutterBottom>
+        <Typography variant="body1" gutterBottom>
           Enter text into the box to render it in markdown. There is support for
           bold, italics, headings, images, code, links, lists, tables and math.
           Note for block math, put new lines between the delimiters and LaTeX.
@@ -65,7 +63,7 @@ const MarkdownRendererPage = () => {
           onChange={(e) => setText(e.target.value)}
         />
 
-        <Typography variant="p" className={classes.latex}>
+        <Typography variant="body1" className={classes.latex}>
           <MarkdownNoContents children={text} />
         </Typography>
       </Container>

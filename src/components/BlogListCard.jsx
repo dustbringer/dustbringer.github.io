@@ -11,8 +11,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
-import { GlobalContext } from "../GlobalContext";
-
 const useStyles = makeStyles({
   root: {
     textAlign: "left",

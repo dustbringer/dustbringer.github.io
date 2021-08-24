@@ -4,7 +4,7 @@ import { LinkIcon } from "@primer/octicons-react";
 import { useLocation } from "react-router-dom";
 import qs from "qs";
 
-import { GlobalContext } from "../../GlobalContext";
+import { GlobalContext } from "../../context/GlobalContext";
 import { createTag } from "../../util/mdHeadings";
 
 // From default renderer

@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { Link, navigate } from "gatsby";
+import { useLocation } from "@reach/router"
 import styled from "styled-components";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -25,7 +26,6 @@ const StyledMenuItem = styled(MenuItem)`
 const DropdownList = ({ links, className }) => {
   const classes = useStyles();
   const location = useLocation();
-  const history = useHistory();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const openMenu = (event) => {
@@ -61,7 +61,7 @@ const DropdownList = ({ links, className }) => {
             to={link.path}
             onClick={() => {
               closeMenu();
-              link.path !== location.pathname && history.push(link.path);
+              link.path !== location.pathname && navigate(link.path);
               // USE history.go(0) if we want reload when same path
               // (currently it is same as FullList)
             }}

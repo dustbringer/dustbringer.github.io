@@ -1,4 +1,5 @@
 ---
+slug: "/posts/2021-02-04-React-Markdown-Rendering"
 title: Rendering Markdown in ReactJS
 description: My process in developing the markdown renderers and more for this website.
 author: dustbringer

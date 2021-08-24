@@ -1,7 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
-import { useLocation, useHistory } from "react-router-dom";
+import { Link, navigate } from "gatsby";
+import { useLocation } from "@reach/router";
 import qs from "qs";
 import yamlParser from "markdown-yaml-metadata-parser";
 import moment from "moment";
@@ -11,7 +12,6 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import { GlobalContext } from "../GlobalContext";
 import BlogListCard from "../components/BlogListCard";
 import PageNavigation from "../components/PageNavigation";
 
@@ -54,16 +54,14 @@ const getPage = (list, page, nPerPage) =>
 const BlogListPage = () => {
   const classes = useStyles();
   const location = useLocation();
-  const history = useHistory();
-  const context = React.useContext(GlobalContext);
-  const { showError } = context;
   const [posts, setPosts] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [page, setPage] = React.useState(1);
 
   React.useEffect(() => {
-    const queryPage = qs.parse(location.search, { ignoreQueryPrefix: true })
-      .page;
+    const queryPage = qs.parse(location.search, {
+      ignoreQueryPrefix: true,
+    }).page;
     if (
       queryPage &&
       !isNaN(parseInt(queryPage, 10)) &&
@@ -156,13 +154,11 @@ const BlogListPage = () => {
                 text={page}
                 onPrev={() =>
                   page > 1 &&
-                  history.push(
-                    `${location.pathname}?page=${Math.max(page - 1, 1)}`
-                  )
+                  navigate(`${location.pathname}?page=${Math.max(page - 1, 1)}`)
                 }
                 onNext={() =>
                   page < Math.ceil(posts.length / N_PER_PAGE) &&
-                  history.push(
+                  navigate(
                     `${location.pathname}?page=${Math.min(
                       page + 1,
                       Math.ceil(posts.length / N_PER_PAGE)

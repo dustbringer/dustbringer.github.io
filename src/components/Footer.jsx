@@ -49,14 +49,8 @@ const IconButton = ({ Icon, href }) => {
   );
 };
 
-const ReactText = styled.span`
-  @media(max-width: 450px) {
-    display: none;
-  }
-`;
-
 const SocialIcons = styled.div`
-  @media(max-width: 310px) {
+  @media (max-width: 310px) {
     display: none;
   }
 `;
@@ -71,8 +65,7 @@ const Footer = () => {
           <Container maxWidth="md" className={classes.container}>
             <DivRowSpaceBetween>
               <Typography variant="body2" className={classes.text}>
-                Copyright &copy; 2021
-                {" "}
+                Copyright &copy; 2021{" "}
                 <Link
                   href="https://github.com/dustbringer"
                   className={classes.link}
@@ -81,19 +74,6 @@ const Footer = () => {
                 >
                   dustbringer
                 </Link>
-                {". "}
-                <ReactText>
-                  Powered by{" "}
-                  <Link
-                    href="https://reactjs.org/"
-                    className={classes.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    ReactJS
-                  </Link>
-                  .
-                </ReactText>
               </Typography>
               <SocialIcons>
                 <IconButton

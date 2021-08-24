@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "gatsby";
 import styled from "styled-components";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -79,14 +79,13 @@ const links = [
 
 const Navbar = () => {
   const classes = useStyles();
-  const location = useLocation();
 
   return (
     <div>
       <AppBar position="static" elevation={1}>
         <Toolbar className={classes.toolbar}>
           <Container maxWidth="md" className={classes.container}>
-            <MyLink replace={"/" === location.pathname} to="/">
+            <MyLink to="/">
               <StyledDivRowSpaceBetween>
                 {/* Icon */}
                 {/*<img
