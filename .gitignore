@@ -24,3 +24,6 @@ yarn-error.log*
 
 # eslint cache
 .eslintcache
+
+# For gatsby
+/public
