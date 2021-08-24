@@ -1,9 +1,10 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
+    siteUrl: "https://dustbringer.github.io",
     title: "My Gatsby Site",
   },
   plugins: [
+    // These mateiral-ui plugins are making a problem for the builder
     {
       resolve: `gatsby-plugin-material-ui`,
       options: {
@@ -12,7 +13,9 @@ module.exports = {
         },
       },
     },
+    // "gatsby-theme-material-ui",
     "gatsby-theme-material-ui-top-layout",
+
     "gatsby-plugin-styled-components",
     "gatsby-plugin-sitemap",
     {

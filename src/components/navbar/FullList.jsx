@@ -1,7 +1,7 @@
 import React from "react";
-import { navigate } from "gatsby";
-import { useLocation } from "@reach/router"
-import { Link } from "gatsby-theme-material-ui";
+import { Link, navigate } from "gatsby";
+import { useLocation } from "@reach/router";
+// import { Link } from "gatsby-theme-material-ui";
 import styled from "styled-components";
 
 const NavLinkList = styled.ul`
@@ -59,8 +59,6 @@ const FullList = ({ links, className }) => {
       {links.map((link) => (
         <li key={link.name + link.path}>
           <NavLink
-            replace={link.path === location.pathname}
-            cur={location.pathname}
             to={link.path}
           >
             {link.name}
