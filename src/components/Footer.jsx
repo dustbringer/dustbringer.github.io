@@ -72,13 +72,13 @@ const Footer = () => {
             <DivRowSpaceBetween>
               <Typography variant="body2" className={classes.text}>
                 Copyright &copy; 2021
+                {" "}
                 <Link
                   href="https://github.com/dustbringer"
                   className={classes.link}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {" "}
                   dustbringer
                 </Link>
                 {". "}

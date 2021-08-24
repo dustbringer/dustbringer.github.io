@@ -1,6 +1,6 @@
 // Original code from https://levelup.gitconnected.com/adding-katex-and-markdown-in-react-7b70694004ef
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import ReactMarkdown from "react-markdown";
 import RemarkMathPlugin from "remark-math";
 import RemarkGFMPlugin from "remark-gfm";
@@ -29,20 +29,47 @@ import TableCellRenderer from "./mdRenderers/TableCell";
 import ListItemRenderer from "./mdRenderers/ListItem";
 import HorizontalRuleRenderer from "./mdRenderers/HorizontalRule";
 
-/**
- * NOTES
- *     white-space is for single new lines to be registered
- */
 const FormatDiv = styled.div`
   font-family: "Open Sans", "Roboto", "Helvetica", "Arial", "sans-serif";
-  font-size: 16px;
-  white-space: pre-line;
   display: flex;
   flex-direction: row;
 `;
 
-const DivWidth100 = styled.div`
+const NoFormatDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+/*
+ * Break text so it doesnt overflow in div
+ * https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
+ */
+const breakText = css`
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+`;
+
+/*
+ * NOTES
+ *     white-space is for single new lines to be registered
+ */
+const MarkdownFormatDiv = styled.div`
   width: 100%;
+  white-space: pre-line;
+  ${breakText};
 `;
 
 /**
@@ -58,8 +85,8 @@ const DivWidth100 = styled.div`
 
 // Plugins: https://github.com/remarkjs/remark/blob/main/doc/plugins.md
 const _mapProps = (props) => ({
-  ...props,
   escapeHtml: false,
+  ...props,
   plugins: [RemarkMathPlugin, RemarkGFMPlugin, RemarkFrontmatterPlugin],
   renderers: {
     ...props.renderers,
@@ -97,15 +124,37 @@ const Markdown = (props) => {
   return (
     <FormatDiv>
       <div>
-        {/* See MarkdownContents.jsx for drawbacks */}
+        {/* See MarkdownContents.jsx for drawbacks of these contents*/}
         <MarkdownContents headings={headings} />
       </div>
 
-      {/* So that this div stays inside the parent flex container */}
-      <DivWidth100>
+      {/* ReactMarkdown renders multiple ungrouped components */}
+      <MarkdownFormatDiv>
         <ReactMarkdown {..._mapProps(props)} />
-      </DivWidth100>
+      </MarkdownFormatDiv>
     </FormatDiv>
+  );
+};
+
+export const MarkdownNoContents = (props) => {
+  return (
+    <FormatDiv>
+      {/* ReactMarkdown renders multiple ungrouped components */}
+      <MarkdownFormatDiv>
+        <ReactMarkdown {..._mapProps(props)} escapeHtml />
+      </MarkdownFormatDiv>
+    </FormatDiv>
+  );
+};
+
+export const MarkdownNoFormat = (props) => {
+  return (
+    <NoFormatDiv>
+      {/* ReactMarkdown renders multiple ungrouped components */}
+      <MarkdownFormatDiv>
+        <ReactMarkdown {..._mapProps(props)} escapeHtml />
+      </MarkdownFormatDiv>
+    </NoFormatDiv>
   );
 };
 

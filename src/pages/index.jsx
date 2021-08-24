@@ -4,7 +4,7 @@ import GlobalProvider from "../GlobalContext";
 import Alerts from "../components/Alerts";
 import "./index.css";
 
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -14,9 +14,10 @@ import ResumePage from "./ResumePage";
 import BlogListPage from "./BlogListPage";
 import BlogPostPage from "./BlogPostPage";
 import NotFoundPage from "./NotFoundPage";
+import MarkdownRendererPage from "./tools/MarkdownRenderPage";
 
 // https://material-ui.com/customization/default-theme/
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: "#2f3241",
@@ -45,10 +46,16 @@ function App() {
       Jeff
       <GlobalProvider>
           <ThemeProvider theme={theme}>
+            {/* For browser router */}
+            {/* <Router basemname={`/${process.env.PUBLIC_URL}`}> */}
             <Router>
               <Navbar />
               <div id="content">
                 <Switch>
+                  {/* Tools */}
+                  <Route path="/tools/markdown-renderer" component={MarkdownRendererPage} />
+
+                  {/* Main */}
                   <Route path="/posts/:postName" component={BlogPostPage} />
                   <Route path="/posts" component={BlogListPage} />
                   <Route path="/resume" component={ResumePage} />

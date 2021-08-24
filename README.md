@@ -12,3 +12,4 @@ Personal website to have lots of stuff!
 - Custom Markdown renderer
 - Listing multiple posts by metadata
 - Dynamically rendering posts
+- Markdown renderer from input
