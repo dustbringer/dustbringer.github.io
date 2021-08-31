@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     color: "#dddddd",
     fontSize: "0.875rem",
-    margin: "0 3px",
+    margin: "auto 3px",
   },
 }));
 
@@ -50,6 +50,7 @@ const IconButton = ({ Icon, href }) => {
 };
 
 const SocialIcons = styled.div`
+  line-height: normal;
   @media (max-width: 310px) {
     display: none;
   }

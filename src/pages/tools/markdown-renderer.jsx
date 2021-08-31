@@ -77,7 +77,7 @@ const MarkdownRendererPage = () => {
           onChange={(e) => setText(e.target.value)}
         />
 
-        <Typography variant="body1" className={classes.rendered}>
+        <Typography variant="body1" component="div" className={classes.rendered}>
           <MarkdownNoContents children={text} />
         </Typography>
       </Container>

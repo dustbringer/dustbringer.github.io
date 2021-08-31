@@ -44,7 +44,7 @@ const HomePage = () => {
         <Typography variant="body1" gutterBottom>
           Hi, Welcome to my website! Here are some links to some of my stuff...
         </Typography>
-        <Typography variant="body1" gutterBottom>
+        <Typography variant="body1" component="div" gutterBottom>
           <ul>
             <li>
               <Link className={classes.link} to="/posts">
