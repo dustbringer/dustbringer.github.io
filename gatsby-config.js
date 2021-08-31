@@ -19,6 +19,18 @@ module.exports = {
     "gatsby-plugin-layout",
     "gatsby-plugin-styled-components",
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `dustbringer.github.io`,
+        short_name: `dustbringer`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#ffffff`,
+        display: `standalone`,
+        icon: `src/images/icon.svg`
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-blog-posts`,

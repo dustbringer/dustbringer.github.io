@@ -21,11 +21,29 @@ const useStyles = makeStyles((theme) => ({
   mono: {
     fontFamily: "Roboto Mono",
   },
+  rendered: {
+    fontSize: "1.4rem",
+  },
 }));
+
+const getInitialText = () =>
+  sessionStorage.getItem("markdownRendererText") || "";
 
 const MarkdownRendererPage = () => {
   const classes = useStyles();
-  const [text, setText] = React.useState("");
+  const [text, _setText] = React.useState("");
+
+  const setText = (newText) => {
+    sessionStorage.setItem('markdownRendererText', newText);
+    _setText(newText);
+  }
+
+  // Replace text with stored if it exists
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      _setText(sessionStorage.getItem("markdownRendererText") || "");
+    }
+  }, [])
 
   return (
     <>
@@ -59,7 +77,7 @@ const MarkdownRendererPage = () => {
           onChange={(e) => setText(e.target.value)}
         />
 
-        <Typography variant="body1" className={classes.latex}>
+        <Typography variant="body1" className={classes.rendered}>
           <MarkdownNoContents children={text} />
         </Typography>
       </Container>
