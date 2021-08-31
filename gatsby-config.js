@@ -4,20 +4,27 @@ module.exports = {
     title: "My Gatsby Site",
   },
   plugins: [
-    // These mateiral-ui plugins are making a problem for the builder
     {
-      resolve: `gatsby-plugin-material-ui`,
+      resolve: `gatsby-theme-material-ui`,
       options: {
-        stylesProvider: {
-          injectFirst: true,
+        stylesConfig: {
+          // TODO Enabling autoprefixer breaks something
+          disableAutoprefixing: true,
+          // disableMinification: true
         },
       },
     },
-    // "gatsby-theme-material-ui",
-    "gatsby-theme-material-ui-top-layout",
-
-    "gatsby-plugin-styled-components",
     "gatsby-plugin-sitemap",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-layout",
+    "gatsby-plugin-styled-components",
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-blog-posts`,
+        path: `${__dirname}/src/posts`,
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -35,15 +42,6 @@ module.exports = {
             },
           },
         ],
-      },
-    },
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-layout",
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `markdown-blog-posts`,
-        path: `./src/posts`,
       },
     },
   ],

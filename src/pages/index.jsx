@@ -17,10 +17,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "space-between",
   },
-  latex: {
-    fontFamily: "Computer Modern",
-    fontSize: "1.4rem",
-  },
   mono: {
     fontFamily: "Roboto Mono",
   },

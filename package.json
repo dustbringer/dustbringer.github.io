@@ -9,20 +9,15 @@
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@material-ui/styles": "^4.11.4",
     "@primer/octicons-react": "^11.2.0",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "clsx": "^1.1.1",
-    "gatsby": "^3.12.0",
+    "gatsby": "^3.12.1",
     "gatsby-plugin-layout": "^2.12.0",
-    "gatsby-plugin-material-ui": "^3.0.1",
     "gatsby-plugin-react-helmet": "^4.12.0",
     "gatsby-plugin-sitemap": "^4.8.0",
     "gatsby-plugin-styled-components": "^4.12.0",
     "gatsby-remark-katex": "^5.9.0",
     "gatsby-source-filesystem": "^3.12.0",
     "gatsby-theme-material-ui": "^2.0.1",
-    "gatsby-theme-material-ui-top-layout": "^2.0.1",
     "gatsby-transformer-remark": "^4.9.0",
     "js-yaml": "^4.0.0",
     "katex": "^0.12.0",
@@ -32,17 +27,13 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "react-helmet-async": "^1.0.7",
     "react-markdown": "^5.0.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
     "react-syntax-highlighter": "^15.4.3",
     "remark-frontmatter": "^3.0.0",
     "remark-gfm": "^1.0.0",
     "remark-math": "^4.0.0",
-    "styled-components": "^5.2.1",
-    "uuid": "^8.3.2",
-    "web-vitals": "^0.2.4"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "gh-pages": "^3.1.0",
@@ -50,12 +41,13 @@
   },
   "scripts": {
     "develop": "gatsby develop",
-    "start": "yarn develop",
+    "start": "gatsby develop",
     "build": "gatsby build",
+    "clean": "gatsby clean",
+    "cleanbuild": "gatsby clean && gatsby build",
+    "serve": "gatsby serve",
     "predeploy": "gatsby build",
-    "deploy": "gh-pages -t -d public",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "deploy": "gh-pages -t -d public"
   },
   "eslintConfig": {
     "extends": [

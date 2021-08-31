@@ -1,16 +1,24 @@
 import React from "react";
+import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-import "./index.css";
+const DivRoot = styled.div`
+  position: relative;
+  min-height: 100vh;
+`;
+
+const DivContent = styled.div`
+  padding: 2vh 0 calc(2vh + 30px);
+`;
 
 const Layout = ({ children }) => {
   return (
-    <div id="root">
+    <DivRoot>
       <Navbar />
-      <div id="content">{children}</div>
+      <DivContent>{children}</DivContent>
       <Footer />
-    </div>
+    </DivRoot>
   );
 };
 

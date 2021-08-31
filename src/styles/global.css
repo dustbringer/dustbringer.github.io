@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
-@font-face {
+/* @font-face {
   font-family: "Computer Modern";
   src: url("../fonts/ComputerModern/woff/cmunrm-webfont.woff2") format("woff2"),
     url("../fonts/ComputerModern/woff/cmunrm-webfont.woff") format("woff"),
@@ -37,7 +37,7 @@
     url("../fonts/ComputerModern/otf/cmunbi.otf") format("opentype");
   font-weight: bold;
   font-style: italic;
-}
+} */
 
 html {
   scroll-behavior: smooth;
@@ -48,11 +48,11 @@ body {
   margin: 0;
 }
 
-#root {
+/* #root {
   position: relative;
-  /* min-height: 100vh; */
+  min-height: 100vh;
 }
 
 #content {
   padding: 2vh 0 calc(2vh + 30px);
-}
+} */

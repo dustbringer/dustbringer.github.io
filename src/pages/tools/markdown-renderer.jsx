@@ -21,10 +21,6 @@ const useStyles = makeStyles((theme) => ({
   mono: {
     fontFamily: "Roboto Mono",
   },
-  latex: {
-    fontFamily: "Computer Modern",
-    fontSize: "1.4rem",
-  },
 }));
 
 const MarkdownRendererPage = () => {
