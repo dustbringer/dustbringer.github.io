@@ -16,6 +16,7 @@ import BlogListPage from "./pages/BlogListPage";
 import BlogPostPage from "./pages/BlogPostPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import MarkdownRendererPage from "./pages/tools/MarkdownRenderPage";
+import ImageViewerPage from "./pages/tools/ImageViewer";
 
 // https://material-ui.com/customization/default-theme/
 const theme = createTheme({
@@ -55,6 +56,7 @@ function App() {
                 <Switch>
                   {/* Tools */}
                   <Route path="/tools/markdown-renderer" component={MarkdownRendererPage} />
+                  <Route path="/tools/syncshack2021-imageviewer" component={ImageViewerPage} />
 
                   {/* Main */}
                   <Route path="/posts/:postName" component={BlogPostPage} />

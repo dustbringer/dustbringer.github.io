@@ -62,6 +62,9 @@ const HomePage = () => {
               <li>
                 <Link className={classes.link} to="/tools/markdown-renderer">Markdown Renderer</Link>
               </li>
+              <li>
+                <Link className={classes.link} to="/tools/syncshack2021-imageviewer">Image Viewer</Link>
+              </li>
             </ul>
           </li>
         </ul>
