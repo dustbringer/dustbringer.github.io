@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Link, navigate } from "gatsby";
+import { GlobalContext } from "../context/GlobalContext";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -59,17 +60,30 @@ const HomePage = () => {
                     Markdown Renderer
                   </Link>
                 </li>
-                
+
                 <li>
-                  <Link className={classes.link} to="/tools/syncshack2021-image-viewer">
+                  <Link
+                    className={classes.link}
+                    to="/tools/syncshack2021-image-viewer"
+                  >
                     Image Viewer from list of links
                   </Link>
                 </li>
-
               </ul>
             </li>
           </ul>
         </Typography>
+        <GlobalContext.Consumer>
+          {(value) => (
+            <>
+              {console.log("rerender")}
+              <Button onClick={() => value.showError("Alert: Error")}>Alert 1</Button>
+              <Button onClick={() => value.showSuccess("Alert: Success")}>
+                Alert 2
+              </Button>
+            </>
+          )}
+        </GlobalContext.Consumer>
       </Container>
     </>
   );
