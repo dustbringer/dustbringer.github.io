@@ -57,7 +57,7 @@ const MarkdownContents = ({ headings }) => {
             title={h.text}
             role="button"
             key={i}
-            onClick={() => h.ref.current.scrollIntoView()}
+            onClick={() => h && h.ref && h.ref.current && h.ref.current.scrollIntoView()}
           >
             {h.text}
           </StyledSpan>

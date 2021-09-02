@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { LinkIcon } from "@primer/octicons-react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "@reach/router";
 import qs from "qs";
 
 import { GlobalContext } from "../../context/GlobalContext";

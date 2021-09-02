@@ -111,7 +111,13 @@ const _mapProps = (props) => ({
 });
 
 const Markdown = (props) => {
-  const context = React.useContext(GlobalContext);
+  let context = React.useContext(GlobalContext);
+
+  // In case context not setup yet
+  if (!context) {
+    context = { MdHeadings: [[{text: "Error, no context", depth: 1, ref: null}], () => {}] }
+  }
+
   const { MdHeadings } = context;
   const [headings, setMdHeadings] = MdHeadings;
 

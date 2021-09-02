@@ -6,7 +6,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 
-import {
+import Markdown, {
   MarkdownNoContents,
   MarkdownNoFormat,
 } from "../../components/Markdown";
@@ -34,16 +34,16 @@ const MarkdownRendererPage = () => {
   const [text, _setText] = React.useState("");
 
   const setText = (newText) => {
-    sessionStorage.setItem('markdownRendererText', newText);
+    sessionStorage.setItem("markdownRendererText", newText);
     _setText(newText);
-  }
+  };
 
   // Replace text with stored if it exists
   React.useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       _setText(sessionStorage.getItem("markdownRendererText") || "");
     }
-  }, [])
+  }, []);
 
   return (
     <>
@@ -77,8 +77,13 @@ const MarkdownRendererPage = () => {
           onChange={(e) => setText(e.target.value)}
         />
 
-        <Typography variant="body1" component="div" className={classes.rendered}>
+        <Typography
+          variant="body1"
+          component="div"
+          className={classes.rendered}
+        >
           <MarkdownNoContents children={text} />
+          {/* <Markdown children={text} /> */}
         </Typography>
       </Container>
     </>

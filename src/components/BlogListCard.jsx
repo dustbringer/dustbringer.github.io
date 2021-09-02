@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { navigate } from "gatsby";
 import moment from "moment";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -27,12 +27,11 @@ const useStyles = makeStyles({
 
 const BlogListCard = ({ name, title, description, date, tags }) => {
   const classes = useStyles();
-  const history = useHistory();
 
   return (
     <Card className={classes.root} variant="outlined">
       <CardActionArea
-        onClick={() => history.push(`posts/${name}`)}
+        onClick={() => navigate(`posts/${name}`)}
         title={`${name}.md`}
       >
         <CardContent>
