@@ -59,6 +59,13 @@ const HomePage = () => {
                     Markdown Renderer
                   </Link>
                 </li>
+                
+                <li>
+                  <Link className={classes.link} to="/tools/syncshack2021-image-viewer">
+                    Image Viewer from list of links
+                  </Link>
+                </li>
+
               </ul>
             </li>
           </ul>
