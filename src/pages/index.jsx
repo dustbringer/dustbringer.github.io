@@ -73,7 +73,7 @@ const HomePage = () => {
             </li>
           </ul>
         </Typography>
-        <GlobalContext.Consumer>
+        {/* <GlobalContext.Consumer>
           {(value) => (
             <>
               {console.log("rerender")}
@@ -83,7 +83,7 @@ const HomePage = () => {
               </Button>
             </>
           )}
-        </GlobalContext.Consumer>
+        </GlobalContext.Consumer> */}
       </Container>
     </>
   );
