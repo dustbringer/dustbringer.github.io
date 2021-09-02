@@ -1,6 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
-import { useHistory } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -9,10 +8,6 @@ import TextField from "@material-ui/core/TextField";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
-import {
-  MarkdownNoContents,
-  MarkdownNoFormat,
-} from "../../components/Markdown";
 import PageNavigation from "../../components/PageNavigation";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 
 const ImageViewerPage = () => {
   const classes = useStyles();
-  const history = useHistory();
   const [text, setText] = React.useState("");
   const [json, setJson] = React.useState([]);
   const [counter, setCounter] = React.useState(0);
