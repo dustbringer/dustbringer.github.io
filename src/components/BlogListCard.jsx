@@ -25,13 +25,13 @@ const useStyles = makeStyles({
   },
 });
 
-const BlogListCard = ({ name, title, description, date, tags }) => {
+const BlogListCard = ({ name, title, description, date, tags, path }) => {
   const classes = useStyles();
 
   return (
     <Card className={classes.root} variant="outlined">
       <CardActionArea
-        onClick={() => navigate(`posts/${name}`)}
+        onClick={() => navigate(path)}
         title={`${name}.md`}
       >
         <CardContent>

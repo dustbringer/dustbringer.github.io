@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
     siteUrl: "https://dustbringer.github.io",
-    title: "My Gatsby Site",
+    title: "Victa's personal website",
+    description: "My portfolio and blog, built with ReactJS and Gatsby.js!",
   },
   plugins: [
     {
@@ -27,7 +28,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#ffffff`,
         display: `standalone`,
-        icon: `src/images/icon.svg`
+        icon: `src/images/icon.svg`,
       },
     },
     {
