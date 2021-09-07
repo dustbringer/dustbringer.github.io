@@ -1,11 +1,12 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import rehypeReact from "rehype-react";
 
 import { makeStyles } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
 
 // Components
 import BlockQuote from "../components/gatsbyMdRenderers/BlockQuote";
@@ -27,6 +28,7 @@ import TableCellHeader from "../components/gatsbyMdRenderers/TableCellHeader";
 import TableCellData from "../components/gatsbyMdRenderers/TableCellData";
 import TableHead from "../components/gatsbyMdRenderers/TableHead";
 import TableRow from "../components/gatsbyMdRenderers/TableRow";
+import Contents from "../components/gatsbyMdRenderers/Contents";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -36,10 +38,49 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const Frontmatter = styled(Typography)`
+  font-size: 0.8em;
+  color: #aaaaaa;
+`;
+
+/*
+ * Break text so it doesnt overflow in div
+ * https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
+ */
+const breakText = css`
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+`;
+
+const MarkdownFormatDiv = styled.div`
+  width: 100%;
+  // white-space: pre-line;
+  ${breakText};
+`;
+
+const ContentsPositionDiv = styled.div`
+  font-family: "Open Sans", "Roboto", "Helvetica", "Arial", "sans-serif";
+  display: flex;
+  flex-direction: row;
+`;
+
 const PostTemplate = ({ data }) => {
   const classes = useStyles();
   const { markdownRemark } = data;
-  const { frontmatter: meta, htmlAst } = markdownRemark;
+  const { frontmatter: meta, htmlAst, headings } = markdownRemark;
 
   const renderAst = new rehypeReact({
     createElement: React.createElement,
@@ -70,10 +111,19 @@ const PostTemplate = ({ data }) => {
         <title>{meta.title} - dustbringer.github.io</title>
         <meta name="description" content={`Blog - ${meta.title}`} />
       </Helmet>
+
       <Container maxWidth="md" className={classes.container}>
-        <h1>{meta.title}</h1>
-        <h2>{meta.date}</h2>
-        {renderAst(htmlAst)}
+        <Frontmatter variant="body2">
+          {meta.title}, written by {meta.author} on {meta.date}
+        </Frontmatter>
+
+        <ContentsPositionDiv>
+          <div>
+            {/* The wrapping div is required to not mess up the styles */}
+            <Contents headings={headings} />
+          </div>
+          <MarkdownFormatDiv>{renderAst(htmlAst)}</MarkdownFormatDiv>
+        </ContentsPositionDiv>
       </Container>
     </>
   );
@@ -89,6 +139,12 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         slug
         title
+        author
+      }
+      headings {
+        depth
+        id
+        value
       }
     }
   }

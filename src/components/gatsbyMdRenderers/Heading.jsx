@@ -1,20 +1,9 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { LinkIcon } from "@primer/octicons-react";
-import { useLocation } from "@reach/router";
-
-import { GlobalContext } from "../../context/GlobalContext";
-import { createTag } from "../../util/mdHeadings";
 
 // Styled components
 const removeMargin = css`
   margin: 0;
-`;
-
-const hover = css`
-  &:hover a {
-    visibility: visible;
-  }
 `;
 
 export const StyledH1 = styled.h1`
@@ -52,100 +41,3 @@ export const StyledH6 = styled.h6`
   font-size: 1.25em;
   font-weight: 700;
 `;
-
-const Anchor = styled.a`
-  color: #24292e;
-  padding: 8px;
-  visibility: hidden;
-`;
-
-/**
- * Anchor helper functions.
- * Base code from https://github.com/remarkjs/react-markdown/issues/69
- */
-
-// Not a very nice way to generate incrementing id
-let id = 0;
-const generateId = () => ++id;
-
-function flatten(text, child) {
-  return typeof child === "string"
-    ? text + child
-    : React.Children.toArray(child.props.children).reduce(flatten, text);
-}
-
-const Heading = (props) => {
-  const context = React.useContext(GlobalContext);
-  const { addMdHeading } = context;
-  const location = useLocation();
-  const headingRef = React.useRef(null);
-
-  // Get styled heading type
-  let HeadingType;
-  switch (props.level) {
-    case 1:
-      HeadingType = StyledH1;
-      break;
-    case 2:
-      HeadingType = StyledH2;
-      break;
-    case 3:
-      HeadingType = StyledH3;
-      break;
-    case 4:
-      HeadingType = StyledH4;
-      break;
-    case 5:
-      HeadingType = StyledH5;
-      break;
-    case 6:
-      HeadingType = StyledH6;
-      break;
-    default:
-      HeadingType = "p";
-  }
-
-  /*
-   * remark-slug and remark-autolink-headings plugins not working, so I did it myself
-   * (see above for the original slug generator code)
-   */
-
-  // Get text in children
-  const children = React.Children.toArray(props.children);
-  const text = children.reduce(flatten, "");
-
-  /* FOR anchor link:
-    Remove non-(alphanumeric+whitespace) characters and replace non-word with dashes
-  */
-  // const slug = createTag(text, generateId());
-
-  React.useEffect(() => {
-    // Add heading to list (for table of contents)
-    addMdHeading(text, props.level, headingRef);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  /*
-  React.useEffect(() => {
-    id = 0; // reset id
-    if (qs.parse(location.search, { ignoreQueryPrefix: true }).ref === slug) {
-      headingRef.current.scrollIntoView();
-    }
-  }, [location.search, slug]);
-*/
-
-  return (
-    <HeadingType ref={headingRef} {...getCoreProps(props)}>
-      {props.children}
-      {/* Anchor links (not aligned on fresh pages)
-
-      props.children.length > 0 && (
-        <Anchor href={`#${location.pathname}?ref=${slug}`}>
-          <LinkIcon verticalAlign="middle" />
-        </Anchor>
-      )*/}
-    </HeadingType>
-  );
-};
-
-export default Heading;

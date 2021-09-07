@@ -13,9 +13,19 @@ const StyledMUILink = styled(MUILink)`
 
 const Link = (props) => {
   return (
-    <StyledMUILink href={props.href} target="_blank" rel="noopener noreferrer">
-      {props.children}
-    </StyledMUILink>
+    <>
+      {!props.className || !props.className.includes("header-link-class") ? (
+        <StyledMUILink
+          href={props.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {props.children}
+        </StyledMUILink>
+      ) : (
+        <a {...props} />
+      )}
+    </>
   );
 };
 
