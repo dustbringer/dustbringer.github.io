@@ -37,12 +37,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     // overflowAnchor: "auto",
   },
+  frontmatter: {
+    fontSize: "0.8em",
+    color: "#aaaaaa",
+  },
 }));
-
-const Frontmatter = styled(Typography)`
-  font-size: 0.8em;
-  color: #aaaaaa;
-`;
 
 /*
  * Break text so it doesnt overflow in div
@@ -125,9 +124,9 @@ const PostTemplate = ({ data, location }) => {
       </Helmet>
 
       <Container maxWidth="md" className={classes.container}>
-        <Frontmatter variant="body2">
+        <Typography variant="body2" className={classes.frontmatter}>
           {meta.title}, written by {meta.author} on {meta.date}
-        </Frontmatter>
+        </Typography>
 
         <ContentsPositionDiv>
           <div>
