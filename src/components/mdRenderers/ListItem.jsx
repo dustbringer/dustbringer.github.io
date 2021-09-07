@@ -21,8 +21,12 @@ const StyledLi = styled.li`
 `;
 
 const StyledCheckbox = styled(Checkbox)`
-  color: #1976d2;
-  &:checked {
+  // color: #1976d2;
+  // &:checked {
+  //   color: #1976d2;
+  // }
+
+  &.MuiIconButton-root.Mui-disabled {
     color: #1976d2;
   }
 `;
@@ -35,7 +39,13 @@ const ListItem = (props) => {
       checked={props.checked}
     >
       {props.checked !== null && (
-        <StyledCheckbox color="default" checked={props.checked} size="small" />
+        <StyledCheckbox
+          color="default"
+          checked={props.checked}
+          size="small"
+          disableRipple
+          disabled
+        />
       )}
       {props.children}
     </StyledLi>

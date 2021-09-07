@@ -5,7 +5,7 @@ const StyledImg = styled.img`
   max-width: 100%;
 `;
 
-const CenterDiv = styled.div`
+const CenterDiv = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;

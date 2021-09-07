@@ -64,7 +64,7 @@ const BlogListPage = ({ location, data }) => {
       </Helmet>
       <Container maxWidth="md" className={classes.container}>
         <Typography variant="h4" className={classes.title}>
-          Mildly Interesting Blog Posts
+          Posts
         </Typography>
         <div>
           {posts.length > 0 ? (
