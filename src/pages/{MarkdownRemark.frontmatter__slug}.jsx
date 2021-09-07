@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    // overflowAnchor: "auto",
   },
 }));
 
@@ -77,11 +78,12 @@ const ContentsPositionDiv = styled.div`
   flex-direction: row;
 `;
 
-const PostTemplate = ({ data }) => {
+const PostTemplate = ({ data, location }) => {
   const classes = useStyles();
   const { markdownRemark } = data;
   const { frontmatter: meta, htmlAst, headings } = markdownRemark;
 
+  // https://using-remark.gatsbyjs.org/custom-components/
   const renderAst = new rehypeReact({
     createElement: React.createElement,
     components: {
@@ -104,6 +106,16 @@ const PostTemplate = ({ data }) => {
       tr: TableRow,
     },
   }).Compiler;
+
+  // React.useEffect(() => {
+  //   const hash = location.hash;
+  //   if (!hash) return;
+
+  //   const element = document.querySelector(hash);
+  //   if (!element) return;
+
+  //   element.scrollIntoView();
+  // }, []);
 
   return (
     <>
