@@ -31,11 +31,19 @@ module.exports = {
         icon: `src/images/icon.svg`,
       },
     },
+    "gatsby-plugin-sharp",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-blog-posts`,
         path: `${__dirname}/src/posts`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-blog-post-resources`,
+        path: `${__dirname}/src/post_resources`,
       },
     },
     {
@@ -47,10 +55,7 @@ module.exports = {
         gfm: true,
         // Plugins configs
         plugins: [
-          // 'gatsby-remark-headings',
-
-          // see how to deal with heading link uniqueness
-          // make sure that this component is not messing with other custom components
+          // 'gatsby-remark-headings', // incomplete custom plugin, useless for now
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
@@ -79,6 +84,14 @@ module.exports = {
               strict: `ignore`,
             },
           },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 600,
+              linkImagesToOriginal: false,
+            },
+          },
+          "gatsby-remark-static-images",
         ],
       },
     },

@@ -10,6 +10,7 @@ import Markdown, {
   MarkdownNoContents,
   MarkdownNoFormat,
 } from "../../components/Markdown";
+import Link from "../../components/Link";
 
 const useStyles = makeStyles((theme) => ({
   button: {},
@@ -57,6 +58,8 @@ const MarkdownRendererPage = () => {
           Enter text into the box to render it in markdown. There is support for
           bold, italics, headings, images, code, links, lists, tables and math.
           Note for block math, put new lines between the delimiters and LaTeX.
+          Similar tool to{" "}
+          <Link href="https://arachnoid.com/latex/">this tool</Link>.
         </Typography>
 
         <TextField
