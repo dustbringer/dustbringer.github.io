@@ -1,15 +1,15 @@
 import React from "react";
-import styled from "styled-components";
-
+import { styled } from "@material-ui/core/styles";
 import MUILink from "@material-ui/core/Link";
 
-const StyledMUILink = styled(MUILink)`
-  color: #0f6dd8;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
+const StyledMUILink = styled(MUILink)({
+  fontWeight: "600",
+  color: "#2f3241",
+  textDecoration: "none",
+  "&:hover": {
+    textDecoration: "underline",
+  },
+});
 
 const Link = (props) => {
   return (

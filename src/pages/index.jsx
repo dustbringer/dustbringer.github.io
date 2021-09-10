@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { Link, navigate } from "gatsby";
+import { navigate } from "gatsby";
 import { GlobalContext } from "../context/GlobalContext";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
+import InternalLink from "../components/InternalLink";
 import { DivFlexCenterHInside } from "../components/styled/Divs";
 
 const useStyles = makeStyles((theme) => ({
@@ -20,14 +21,6 @@ const useStyles = makeStyles((theme) => ({
   },
   mono: {
     fontFamily: "Roboto Mono",
-  },
-  link: {
-    fontWeight: "600",
-    color: "#2f3241",
-    textDecoration: "none",
-    "&:hover": {
-      textDecoration: "underline",
-    },
   },
 }));
 
@@ -48,26 +41,21 @@ const HomePage = () => {
         <Typography variant="body1" component="div" gutterBottom>
           <ul>
             <li>
-              <Link className={classes.link} to="/posts">
-                Posts
-              </Link>
+              <InternalLink to="/posts">Posts</InternalLink>
             </li>
             <li>
               Tools
               <ul>
                 <li>
-                  <Link className={classes.link} to="/tools/markdown-renderer">
+                  <InternalLink to="/tools/markdown-renderer">
                     Markdown Renderer
-                  </Link>
+                  </InternalLink>
                 </li>
 
                 <li>
-                  <Link
-                    className={classes.link}
-                    to="/tools/syncshack2021-image-viewer"
-                  >
+                  <InternalLink to="/tools/syncshack2021-image-viewer">
                     Image Viewer from list of links
-                  </Link>
+                  </InternalLink>
                 </li>
               </ul>
             </li>
