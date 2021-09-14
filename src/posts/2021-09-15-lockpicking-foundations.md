@@ -1,9 +1,9 @@
 ---
-slug: "/posts/2021-09-08-lockpicking-foundations"
+slug: "/posts/2021-09-15-lockpicking-foundations"
 title: Lockpicking Foundations
 description: Notes for UNSW secsoc talk about lockpicking
 author: dustbringer
-date: 2021-09-08
+date: 2021-09-15
 tags:
     - lockpicking
     - security
@@ -26,7 +26,7 @@ Laws around owning, carrying and using lock picking tools vary between countries
 
 Read more from [this document](https://www.pickpals.com.au/wp-content/uploads/2018/08/pickpals-ebook.pdf) from PickPals that outlines lockpicking ethics and laws in Australia.
 
-> **Note** that rules in other countries may be much stricter. For example in Japan, it is illegal to have posession of lock manipulation tools with a penalty of one year imprisonment or a 500,000 yen $\approx$ $6000 AUD fine.
+> **Note** that rules in other countries may be much stricter. For example in Japan, it is illegal to have possession of lock manipulation tools with a penalty of one year imprisonment or a 500,000 yen $\approx$ $6000 AUD fine.
 
 So, this is talk is not about teaching you how to do something illegal, but to spark an interest in and appreciation of locks and lockpicking.
 
@@ -50,9 +50,9 @@ When we look at a lock, it is made up of different parts.
 ![Lock deconstructed](../post_resources/2021-09-08-lockpicking-foundations/lock-parts.png)
 - **yellow**: the housing for the mechanism, in this case a padlock body
 - **blue**: the locking mechanism the key interacts with
-- **red**: individial pieces that make up the mechanism (varies between lock types)
+- **red**: individual pieces that make up the mechanism (varies between lock types)
 
-There are an assortment of (physical) key-oriented locking mechanisms that exist. Here are some that you might see today (wikipedia images are linked)
+There are an assortment of (physical) key-oriented locking mechanisms that exist. Here are some that you might see today (Wikipedia images are linked)
 - [Pin and tumbler lock](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Pin_tumbler_with_key.svg/200px-Pin_tumbler_with_key.svg.png): Used in doors and padlocks
 - [Wafer lock](https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Disc_tumbler_with_key.png/300px-Disc_tumbler_with_key.png): Used in harsh low-security areas eg. cupboard; some variations used in vehicles
 - [Tubular lock](https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Tubular_locked.png/300px-Tubular_locked.png): Used in elevators, coin operated machines
@@ -134,13 +134,13 @@ First lets watch this animation of single pin picking before we do any explainin
 
 **What is happening?**
 
-We are applying moderate tension to the tension wrench in the direction that a key would turn the core. This causes *some* of the pins to start **binding** (ie. get stuck). Why?
+We are applying moderate tension to the tension wrench in the direction that a key would turn the core. This causes *some* of the pins to start **binding** (i.e. get stuck). Why?
 
 Ideally we want all the pin-holes in the lock to be perfectly aligned, but in reality there are machining imperfections causing them to be misaligned from the axis of rotation. (The imperfections are much more subtle than the image.)
 
 ![Misaligned pin holes](../post_resources/2021-09-08-lockpicking-foundations/plug-misaligned-holes.png)
 
-- If we rotate the core in the direction indicated by the red arrow, the pins in holes that furthest from the center in the upwards direction will bind up. In this case one of the pins in holes labeled 3 or 5 will bind.
+- If we rotate the core in the direction indicated by the red arrow, the pins in holes that furthest from the centre in the upwards direction will bind up. In this case one of the pins in holes labelled 3 or 5 will bind.
 
 We can **feel for the binding pin** with our hook by gently pushing up each pin. The binding pin will feel much tougher to push up than any other pins (which will all feel springy). When we feel a binding pin, keep pushing up the pin until we feel the core turn slightly and hear a click! This means that the pin we were pushing has *just* gone over the sheer line, and the core has rotated a very miniscule amount, causing another pin to bind up (making a click sound). We say these pins are **set**.
 
@@ -155,7 +155,7 @@ When we feel for binding pins later, the set pins will feel empty instead of spr
 Repeat this process of finding a binding pin and pushing it up to hear a click, until the core turns completely and we can unlock the lock!
 
 ### Raking
-Raking is another lock picking techinique that is cool but arguably less fun. We will need a new class of tools, called **rakes**. Here is an image of a Peterson's wave rake (also called a Bogota).
+Raking is another lock picking technique that is cool but arguably less fun. We will need a new class of tools, called **rakes**. Here is an image of a Peterson's wave rake (also called a Bogota).
 
 ![Peterson's wave rake](../post_resources/2021-09-08-lockpicking-foundations/peterson-wave-rake.jpg)
 
@@ -189,10 +189,10 @@ As an example lets look at **spool pins**. They have a `I` (spool) shape, and ca
 
 The difficulty in these pins is that rotating the core backwards can cause previously set pins to fall down (or even reset the whole lock), so we have to set them again. Working with these security pins are a delicate task and we need to learn a new set of skills, such as easing tension just enough to set spool pins.
 
-### False gates
+<!-- ### False gates
 For rotation based mechanisms such as disk detainer locks and combination locks, manufacturers can modify the disks so that a disk may feel set even though it isn't. These are called **false gates**.
 
-> Look up the mechanisms for these locks if you are interested, or want to know the reason for the name.
+> Look up the mechanisms for these locks if you are interested, or want to know the reason for the name. -->
 
 ### More than just pins in the lock
 Locks may also include more little pieces or moving parts that prohibit the core from turning unless the right key is inserted. These could be hidden pins (usually at the back-bottom of the keyway) or a sidebar etc. Sidebars are often spring loaded bars in the cylinder which may be retracted when the certain conditions are met (these vary from lock to lock).
@@ -218,7 +218,7 @@ The picks, sets and locks linked below are a little bit more expensive, but are 
 
 **Lockpick Sets**
 - [Sparrows Kick start](https://www.sparrowslockpicks.ca/kick_start_p/s0.htm)
-  - [Expansion set](https://www.sparrowslockpicks.ca/Expansion_lock_pick_set_p/s1.htm), you dont really need this
+  - [Expansion set](https://www.sparrowslockpicks.ca/Expansion_lock_pick_set_p/s1.htm), you don't really need this
 - [Sparrows Tuxedo set](https://www.sparrowslockpicks.ca/product_p/tux1.htm), variety of rakes and picks
 - [Sparrows Spirit set](https://www.sparrowslockpicks.ca/product_p/sspirit.htm), tools focused on single pin picking
 - [PickPals Intro Lock Pick Set](https://www.pickpals.com.au/buy-lockpicks/sets/product-pickpals-intro-set/)
@@ -233,14 +233,14 @@ The picks, sets and locks linked below are a little bit more expensive, but are 
   - [Reload kit](https://www.sparrowslockpicks.ca/product_p/qreload.htm) if you want to try your hand at changing the pins
 - [Sparrows revolver](https://www.sparrowslockpicks.ca/product_p/rev.htm)
 - Almost all standard size Master Locks (they are easy to pick no matter what the label tells you)
-- More difficult locks (with loads of security pins, harder bitting, tigher keyways)
+- More difficult locks (with loads of security pins, harder bitting, tighter keyways)
   - [Master Lock Red Lockout Safety Lock](https://www.bunnings.com.au/master-lock-red-kd-safety-lockout-padlock_p0055605)
   - American Lock 1100
   - Abus Titalium 80Ti/50
 
 
 ## Resources
-There are many fantastic websites, comminities and youtube channels that help alot with getting to know lockpicking. Examples include
+There are many fantastic websites, communities and Youtube channels that help a lot with getting to know lockpicking. Examples include
 - [BosbianBill (Youtube)](https://www.youtube.com/user/bosnianbill)
 - [LockPickingLawyer (Youtube)](https://www.youtube.com/channel/UCm9K6rby98W8JigLoZOh6FQ)
 - [LockNoob (Youtube)](https://www.youtube.com/channel/UCxZRF3OG7gapQ8kacWUwj2A)

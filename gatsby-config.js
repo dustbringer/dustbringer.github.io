@@ -95,5 +95,22 @@ module.exports = {
         ],
       },
     },
+    // Google Analytics
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-L87GEXEG9G", // Measurement ID
+        ],
+        gtagConfig: {
+          anonymize_ip: true,
+          // optimize_id: "OPT_CONTAINER_ID",
+          // cookie_expires: 0,
+        },
+        pluginConfig: {
+          head: true,
+        },
+      },
+    },
   ],
 };

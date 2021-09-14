@@ -25,6 +25,9 @@ yarn-error.log*
 # eslint cache
 .eslintcache
 
+# VsCode
+.vscode/
+
 # For gatsby
 .cache/
 public
