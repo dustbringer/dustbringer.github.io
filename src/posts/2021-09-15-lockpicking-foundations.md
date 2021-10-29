@@ -14,6 +14,8 @@ tags:
 # Lockpicking Foundations
 > Diagrams and images are sourced from [Art of Lockpicking](https://www.art-of-lockpicking.com/), Wikipedia and online store pages
 
+> Slides for this talk are [here on Canva](https://www.canva.com/design/DAEp9qYT_pQ/Pp1XErle3E52z5tE0PKAnw/view?utm_content=DAEp9qYT_pQ&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
+
 ## Ethics and Law
 **Important rules that should always be kept in mind**
 - **Do not** attempt to pick a lock that you do not have **explicit written permission** to pick.
@@ -153,6 +155,9 @@ We can **feel for the binding pin** with our hook by gently pushing up each pin.
 When we feel for binding pins later, the set pins will feel empty instead of springy/binding.
 
 Repeat this process of finding a binding pin and pushing it up to hear a click, until the core turns completely and we can unlock the lock!
+
+> Demo of what it looks and sounds like (https://youtu.be/WAXj7NK0G9I)
+> <iframe width="560" height="315" src="https://www.youtube.com/embed/WAXj7NK0G9I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Raking
 Raking is another lock picking technique that is cool but arguably less fun. We will need a new class of tools, called **rakes**. Here is an image of a Peterson's wave rake (also called a Bogota).
