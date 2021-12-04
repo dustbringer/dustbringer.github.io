@@ -13,6 +13,27 @@ import RemarkFrontmatterPlugin from "remark-frontmatter";
 import TeX from "@matejmazur/react-katex";
 import "katex/dist/katex.min.css"; // styling math symbols to look like latex
 
+import { MathJax, MathJaxContext } from "better-react-mathjax";
+const mathjaxconfig = {
+  loader: { load: ["[tex]/html"] },
+  tex: {
+    packages: { "[+]": ["html"] },
+    inlineMath: [
+      ["$", "$"],
+      ["\\(", "\\)"],
+    ],
+    displayMath: [
+      ["$$", "$$"],
+      ["\\[", "\\]"],
+    ],
+  },
+};
+
+const typesettingOptions = {
+  fn: "tex2chtml",
+  options: { scale: 1.1 },
+};
+
 import { GlobalContext } from "../context/GlobalContext";
 import MarkdownContents from "./MarkdownContents";
 import HeadingRenderer from "./mdRenderers/Heading";
@@ -105,17 +126,50 @@ const _mapProps = (props) => ({
     tableCell: TableCellRenderer,
     listItem: ListItemRenderer,
 
-    math: ({ value }) => <TeX block>{value}</TeX>,
-    inlineMath: ({ value }) => <TeX>{value}</TeX>,
+    math: ({ value }) =>
+      !props.mathjax ? (
+        <TeX block>{value}</TeX>
+      ) : (
+        <MathJax
+        renderMode={"pre"}
+        typesettingOptions={typesettingOptions}
+          text={value || " "}
+        />
+      ),
+    inlineMath: ({ value }) =>
+      !props.mathjax ? (
+        <TeX>{value}</TeX>
+      ) : (
+        <MathJax
+          renderMode={"pre"}
+          typesettingOptions={typesettingOptions}
+          text={value || " "}
+          inline
+        />
+      ),
   },
 });
+
+// Repeated code
+const _Markdown = (props) => (
+  <MathJaxContext version={3} config={mathjaxconfig}>
+    <MarkdownFormatDiv>
+      <ReactMarkdown {..._mapProps(props)} escapeHtml={props.escapeHtml} />
+    </MarkdownFormatDiv>
+  </MathJaxContext>
+);
 
 const Markdown = (props) => {
   let context = React.useContext(GlobalContext);
 
   // In case context not setup yet
   if (!context) {
-    context = { MdHeadings: [[{text: "Error, no context", depth: 1, ref: null}], () => {}] }
+    context = {
+      MdHeadings: [
+        [{ text: "Error, no context", depth: 1, ref: null }],
+        () => {},
+      ],
+    };
   }
 
   const { MdHeadings } = context;
@@ -135,9 +189,7 @@ const Markdown = (props) => {
       </div>
 
       {/* ReactMarkdown renders multiple ungrouped components */}
-      <MarkdownFormatDiv>
-        <ReactMarkdown {..._mapProps(props)} />
-      </MarkdownFormatDiv>
+      <_Markdown {...props} />
     </FormatDiv>
   );
 };
@@ -146,9 +198,7 @@ export const MarkdownNoContents = (props) => {
   return (
     <FormatDiv>
       {/* ReactMarkdown renders multiple ungrouped components */}
-      <MarkdownFormatDiv>
-        <ReactMarkdown {..._mapProps(props)} escapeHtml />
-      </MarkdownFormatDiv>
+      <_Markdown {...props} escapeHtml />
     </FormatDiv>
   );
 };
@@ -157,9 +207,7 @@ export const MarkdownNoFormat = (props) => {
   return (
     <NoFormatDiv>
       {/* ReactMarkdown renders multiple ungrouped components */}
-      <MarkdownFormatDiv>
-        <ReactMarkdown {..._mapProps(props)} escapeHtml />
-      </MarkdownFormatDiv>
+      <_Markdown {...props} escapeHtml />
     </NoFormatDiv>
   );
 };
