@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import InstagramIcon from "@material-ui/icons/Instagram";
+import makeStyles from '@mui/styles/makeStyles';
+import Container from "@mui/material/Container";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 import { DivRowSpaceBetween } from "./styled/Divs";
 
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 const IconButton = ({ Icon, href }) => {
   const classes = useStyles();
   return (
-    <Link href={href} target="_blank" rel="noopener noreferrer">
+    <Link href={href} target="_blank" rel="noopener noreferrer" underline="hover">
       <Icon className={classes.icon} />
     </Link>
   );
@@ -72,23 +72,20 @@ const Footer = () => {
                   className={classes.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                >
+                  underline="hover">
                   dustbringer
                 </Link>
               </Typography>
               <SocialIcons>
-                <IconButton
-                  Icon={GitHubIcon}
-                  href="https://github.com/dustbringer"
-                />
+                <IconButton Icon={GitHubIcon} href="https://github.com/dustbringer" size="large" />
                 <IconButton
                   Icon={LinkedInIcon}
                   href="https://www.linkedin.com/in/victor-zhang-576848192/"
-                />
+                  size="large" />
                 <IconButton
                   Icon={InstagramIcon}
                   href="https://www.instagram.com/dustbringr/"
-                />
+                  size="large" />
               </SocialIcons>
             </DivRowSpaceBetween>
           </Container>

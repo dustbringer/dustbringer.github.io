@@ -1,6 +1,6 @@
 import React from "react";
-import { styled } from "@material-ui/core/styles";
-import MUILink from "@material-ui/core/Link";
+import { styled } from "@mui/material/styles";
+import MUILink from "@mui/material/Link";
 
 const StyledMUILink = styled(MUILink)({
   color: "#0f6dd8",

@@ -4,9 +4,9 @@ import { graphql } from "gatsby";
 import styled, { css } from "styled-components";
 import rehypeReact from "rehype-react";
 
-import { makeStyles } from "@material-ui/core";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
+import makeStyles from '@mui/styles/makeStyles';
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 
 // Components
 import BlockQuote from "../components/gatsbyMdRenderers/BlockQuote";

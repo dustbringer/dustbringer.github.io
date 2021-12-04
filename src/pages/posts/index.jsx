@@ -6,10 +6,10 @@ import styled from "styled-components";
 import moment from "moment";
 import qs from "query-string";
 
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import makeStyles from '@mui/styles/makeStyles';
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import BlogListCard from "../../components/BlogListCard";
 import PageNavigation from "../../components/PageNavigation";
@@ -56,59 +56,57 @@ const BlogListPage = ({ location, data }) => {
     }
   }, [location.search, posts.length]);
 
-  return (
-    <>
-      <Helmet>
-        <title>Posts - dustbringer.github.io</title>
-        <meta name="description" content="List of blog posts" />
-      </Helmet>
-      <Container maxWidth="md" className={classes.container}>
-        <Typography variant="h4" className={classes.title}>
-          Posts
-        </Typography>
-        <div>
-          {posts.length > 0 ? (
-            <>
-              <PostsList>
-                {getPage(posts, page, N_PER_PAGE).map((post, i) => {
-                  const { id, path, frontmatter: meta } = post;
-                  return (
-                    <BlogListCard
-                      key={`${i}-${id}`}
-                      title={meta.title}
-                      description={meta.description}
-                      date={meta.date}
-                      tags={meta.tags}
-                      name={meta.slug.match(/^.*\/(.+?)$/)[1]}
-                      path={path}
-                    />
-                  );
-                })}
-              </PostsList>
-              <PageNavigation
-                text={page}
-                onPrev={() =>
-                  page > 1 &&
-                  navigate(`${location.pathname}?page=${Math.max(page - 1, 1)}`)
-                }
-                onNext={() =>
-                  page < Math.ceil(posts.length / N_PER_PAGE) &&
-                  navigate(
-                    `${location.pathname}?page=${Math.min(
-                      page + 1,
-                      Math.ceil(posts.length / N_PER_PAGE)
-                    )}`
-                  )
-                }
-              />
-            </>
-          ) : (
-            <Typography>There seems to be nothing here...</Typography>
-          )}
-        </div>
-      </Container>
-    </>
-  );
+  return <>
+    <Helmet>
+      <title>Posts - dustbringer.github.io</title>
+      <meta name="description" content="List of blog posts" />
+    </Helmet>
+    <Container maxWidth="md" className={classes.container}>
+      <Typography variant="h4" className={classes.title}>
+        Posts
+      </Typography>
+      <div>
+        {posts.length > 0 ? (
+          <>
+            <PostsList>
+              {getPage(posts, page, N_PER_PAGE).map((post, i) => {
+                const { id, path, frontmatter: meta } = post;
+                return (
+                  <BlogListCard
+                    key={`${i}-${id}`}
+                    title={meta.title}
+                    description={meta.description}
+                    date={meta.date}
+                    tags={meta.tags}
+                    name={meta.slug.match(/^.*\/(.+?)$/)[1]}
+                    path={path}
+                  />
+                );
+              })}
+            </PostsList>
+            <PageNavigation
+              text={page}
+              onPrev={() =>
+                page > 1 &&
+                navigate(`${location.pathname}?page=${Math.max(page - 1, 1)}`)
+              }
+              onNext={() =>
+                page < Math.ceil(posts.length / N_PER_PAGE) &&
+                navigate(
+                  `${location.pathname}?page=${Math.min(
+                    page + 1,
+                    Math.ceil(posts.length / N_PER_PAGE)
+                  )}`
+                )
+              }
+            />
+          </>
+        ) : (
+          <Typography>There seems to be nothing here...</Typography>
+        )}
+      </div>
+    </Container>
+  </>;
 };
 
 export default BlogListPage;

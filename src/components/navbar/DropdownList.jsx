@@ -3,11 +3,11 @@ import { Link, navigate } from "gatsby";
 import { useLocation } from "@reach/router"
 import styled from "styled-components";
 
-import { makeStyles } from "@material-ui/core/styles";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import makeStyles from '@mui/styles/makeStyles';
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const useStyles = makeStyles((theme) => ({
   menuIcon: {
@@ -44,7 +44,7 @@ const DropdownList = ({ links, className }) => {
         aria-haspopup="true"
         onClick={openMenu}
         className={classes.menuIcon}
-      >
+        size="large">
         <MenuIcon />
       </IconButton>
       <Menu

@@ -1,10 +1,10 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
+import makeStyles from '@mui/styles/makeStyles';
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 

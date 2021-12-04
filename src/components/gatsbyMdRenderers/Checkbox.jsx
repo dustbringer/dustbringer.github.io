@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import MUICheckbox from "@material-ui/core/Checkbox";
+import MUICheckbox from "@mui/material/Checkbox";
 import clsx from "clsx";
 
 const StyledCheckbox = styled(MUICheckbox)`

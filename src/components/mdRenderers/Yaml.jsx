@@ -3,7 +3,7 @@ import styled from "styled-components";
 import moment from "moment";
 
 import yaml from "js-yaml";
-import Typography from "@material-ui/core/Typography";
+import Typography from "@mui/material/Typography";
 
 const StyledTypography = styled(Typography)`
   font-size: 0.75em;

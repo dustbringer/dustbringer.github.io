@@ -3,11 +3,11 @@ import { Helmet } from "react-helmet";
 import { navigate } from "gatsby";
 import { GlobalContext } from "../context/GlobalContext";
 
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+import makeStyles from '@mui/styles/makeStyles';
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 
 import InternalLink from "../components/InternalLink";
 import { DivFlexCenterHInside } from "../components/styled/Divs";
@@ -34,6 +34,7 @@ const HomePage = () => {
         <meta name="description" content="Home Page" />
       </Helmet>
       <Container maxWidth="md" className={classes.container}>
+        <Button>ADS</Button>
         <Typography variant="h4">Home</Typography>
         <Typography variant="body1" gutterBottom>
           Hi, Welcome to my website! Here are some links to some of my stuff...
