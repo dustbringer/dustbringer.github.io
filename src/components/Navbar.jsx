@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
-import makeStyles from '@mui/styles/makeStyles';
 import Container from "@mui/material/Container";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -15,9 +14,10 @@ import DropdownList from "./navbar/DropdownList";
 
 const RESPONSIVE_WIDTH = "600px";
 
-const useStyles = makeStyles((theme) => ({
+const styles = {
   container: {
     display: "flex",
+    flexDirection: "row",
     justifyContent: "space-between",
   },
   toolbar: {
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "0.8em",
     },
   },
-}));
+};
 
 const MyLink = styled(Link)`
   text-decoration: none;
@@ -78,22 +78,20 @@ const links = [
 ];
 
 const Navbar = () => {
-  const classes = useStyles();
-
   return (
     <div>
       <AppBar position="static" elevation={1}>
-        <Toolbar className={classes.toolbar}>
-          <Container maxWidth="md" className={classes.container}>
+        <Toolbar sx={styles.toolbar}>
+          <Container maxWidth="md" sx={styles.container}>
             <MyLink to="/">
               <StyledDivRowSpaceBetween>
                 {/* Icon */}
                 {/*<img
                   src={wombatIcon}
                   alt="Wombat icon"
-                  className={classes.icon}
+                  sx={styles.icon}
                 />*/}
-                <Typography variant="h5" className={classes.title}>
+                <Typography variant="h5" sx={styles.title}>
                   <code>dustbringer.github.io</code>
                 </Typography>
               </StyledDivRowSpaceBetween>

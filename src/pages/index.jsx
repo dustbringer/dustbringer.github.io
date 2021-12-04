@@ -34,7 +34,6 @@ const HomePage = () => {
         <meta name="description" content="Home Page" />
       </Helmet>
       <Container maxWidth="md" className={classes.container}>
-        <Button>ADS</Button>
         <Typography variant="h4">Home</Typography>
         <Typography variant="body1" gutterBottom>
           Hi, Welcome to my website! Here are some links to some of my stuff...
