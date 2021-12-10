@@ -5,6 +5,7 @@ module.exports = {
     description: "My portfolio and blog, built with ReactJS and Gatsby.js!",
   },
   plugins: [
+    "gatsby-plugin-styled-components",
     {
       resolve: `gatsby-theme-material-ui`,
       options: {
@@ -15,7 +16,6 @@ module.exports = {
         },
       },
     },
-    "gatsby-plugin-styled-components",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-layout",

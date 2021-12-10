@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { navigate } from "gatsby";
 import moment from "moment";
 
-import makeStyles from '@mui/styles/makeStyles';
 import Chip from "@mui/material/Chip";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
@@ -11,7 +10,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-const useStyles = makeStyles({
+const styles = {
   root: {
     textAlign: "left",
     margin: "10px",
@@ -23,13 +22,11 @@ const useStyles = makeStyles({
   tag: {
     margin: "0 2px",
   },
-});
+};
 
 const BlogListCard = ({ name, title, description, date, tags, path }) => {
-  const classes = useStyles();
-
   return (
-    <Card className={classes.root} variant="outlined">
+    <Card sx={styles.root} variant="outlined">
       <CardActionArea
         onClick={() => navigate(path)}
         title={`${name}.md`}
@@ -55,7 +52,7 @@ const BlogListCard = ({ name, title, description, date, tags, path }) => {
               return (
                 <Chip
                   key={i}
-                  className={classes.tag}
+                  sx={styles.tag}
                   size="small"
                   label={tag}
                 />

@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
+// import { styled } from "@mui/material/styles";
 
 import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -14,31 +16,34 @@ import DropdownList from "./navbar/DropdownList";
 
 const RESPONSIVE_WIDTH = "600px";
 
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  toolbar: {
-    maxHeight: "100px",
-    minHeight: "50px",
-  },
-  icon: {
-    margin: "0 10px 0",
-    maxHeight: "35px",
-    maxWidth: "35px",
-  },
-  title: {
-    margin: "auto 0",
-    "@media(max-width: 600px)": {
-      fontSize: "1.2em",
-    },
-    "@media(max-width: 350px)": {
-      fontSize: "0.8em",
-    },
-  },
-};
+// const styles = {
+//   icon: {
+//     margin: "0 10px 0",
+//     maxHeight: "35px",
+//     maxWidth: "35px",
+//   },
+// };
+
+const StyledToolbar = styled(Toolbar)`
+  max-height: 100px;
+  min-height: 50px;
+`;
+
+const StyledContainer = styled(Container)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const TitleTypography = styled(Typography)`
+  margin: auto 0;
+  @media (max-width: 600px) {
+    font-size: 1.2em;
+  }
+  @media (max-width: 350px) {
+    font-size: 0.8em;
+  }
+`;
 
 const MyLink = styled(Link)`
   text-decoration: none;
@@ -81,8 +86,8 @@ const Navbar = () => {
   return (
     <div>
       <AppBar position="static" elevation={1}>
-        <Toolbar sx={styles.toolbar}>
-          <Container maxWidth="md" sx={styles.container}>
+        <StyledToolbar>
+          <StyledContainer maxWidth="md">
             <MyLink to="/">
               <StyledDivRowSpaceBetween>
                 {/* Icon */}
@@ -91,15 +96,15 @@ const Navbar = () => {
                   alt="Wombat icon"
                   sx={styles.icon}
                 />*/}
-                <Typography variant="h5" sx={styles.title}>
+                <TitleTypography variant="h5">
                   <code>dustbringer.github.io</code>
-                </Typography>
+                </TitleTypography>
               </StyledDivRowSpaceBetween>
             </MyLink>
             <ResponsiveFullList links={links} />
             <ResponsiveDropdownList links={links} />
-          </Container>
-        </Toolbar>
+          </StyledContainer>
+        </StyledToolbar>
       </AppBar>
     </div>
   );
