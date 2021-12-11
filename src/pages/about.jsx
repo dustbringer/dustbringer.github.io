@@ -2,21 +2,12 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
-import makeStyles from '@mui/styles/makeStyles';
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Link from "../components/Link";
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-}));
+import Container from "../components/Container";
 
 const AboutPage = () => {
-  const classes = useStyles();
   // const history = useHistory();
 
   return (
@@ -25,10 +16,8 @@ const AboutPage = () => {
         <title>About - dustbringer.github.io</title>
         <meta name="description" content="About Page" />
       </Helmet>
-      <Container maxWidth="md" className={classes.container}>
-        <Typography variant="h4" className={classes.title}>
-          About
-        </Typography>
+      <Container maxWidth="md">
+        <Typography variant="h4">About</Typography>
         <Typography variant="body2">
           Produced by{" "}
           <Link href="https://github.com/dustbringer">dustbringer</Link>, 2021.

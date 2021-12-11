@@ -4,11 +4,10 @@ import { graphql } from "gatsby";
 import styled, { css } from "styled-components";
 import rehypeReact from "rehype-react";
 
-import makeStyles from '@mui/styles/makeStyles';
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
 // Components
+import Container from "../components/Container";
 import BlockQuote from "../components/gatsbyMdRenderers/BlockQuote";
 import {
   StyledH1,
@@ -30,18 +29,10 @@ import TableHead from "../components/gatsbyMdRenderers/TableHead";
 import TableRow from "../components/gatsbyMdRenderers/TableRow";
 import Contents from "../components/gatsbyMdRenderers/Contents";
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    // overflowAnchor: "auto",
-  },
-  frontmatter: {
-    fontSize: "0.8em",
-    color: "#aaaaaa",
-  },
-}));
+const Frontmatter = styled(Typography)`
+  font-size: 0.8em;
+  color: #aaaaaa;
+`;
 
 /*
  * Break text so it doesnt overflow in div
@@ -78,7 +69,6 @@ const ContentsPositionDiv = styled.div`
 `;
 
 const PostTemplate = ({ data, location }) => {
-  const classes = useStyles();
   const { markdownRemark } = data;
   const { frontmatter: meta, htmlAst, headings } = markdownRemark;
 
@@ -123,10 +113,10 @@ const PostTemplate = ({ data, location }) => {
         <meta name="description" content={`Blog - ${meta.title}`} />
       </Helmet>
 
-      <Container maxWidth="md" className={classes.container}>
-        <Typography variant="body2" className={classes.frontmatter}>
+      <Container maxWidth="md">
+        <Frontmatter variant="body1">
           {meta.title}, written by {meta.author} on {meta.date}
-        </Typography>
+        </Frontmatter>
 
         <ContentsPositionDiv>
           <div>

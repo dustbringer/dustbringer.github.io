@@ -1,22 +1,19 @@
 import React from "react";
 import { Link, navigate } from "gatsby";
-import { useLocation } from "@reach/router"
+import { useLocation } from "@reach/router";
 import styled from "styled-components";
 
-import makeStyles from '@mui/styles/makeStyles';
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import IconButton from "@mui/material/IconButton";
 
-const useStyles = makeStyles((theme) => ({
-  menuIcon: {
-    color: "#cccccc",
-    "&:hover": {
-      color: "#ffffff",
-    },
-  },
-}));
+const StyledIconButton = styled(IconButton)`
+  color: #cccccc;
+  &:hover {
+    color: #ffffff;
+  }
+`;
 
 const StyledMenuItem = styled(MenuItem)`
   border-left: 2px solid
@@ -24,7 +21,6 @@ const StyledMenuItem = styled(MenuItem)`
 `;
 
 const DropdownList = ({ links, className }) => {
-  const classes = useStyles();
   const location = useLocation();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -38,15 +34,15 @@ const DropdownList = ({ links, className }) => {
 
   return (
     <div className={className}>
-      <IconButton
+      <StyledIconButton
         aria-label="open navigation dropdown"
         aria-controls="nav-menu"
         aria-haspopup="true"
         onClick={openMenu}
-        className={classes.menuIcon}
-        size="large">
+        size="large"
+      >
         <MenuIcon />
-      </IconButton>
+      </StyledIconButton>
       <Menu
         id="nav-menu"
         anchorEl={anchorEl}

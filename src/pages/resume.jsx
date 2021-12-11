@@ -2,25 +2,16 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
-import makeStyles from '@mui/styles/makeStyles';
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-}));
+import Container from "../components/Container";
 
 const LinkBold = styled(Link)`
   font-weight: 600;
 `;
 
 const ResumePage = () => {
-  const classes = useStyles();
   // const history = useHistory();
 
   return (
@@ -29,8 +20,9 @@ const ResumePage = () => {
         <title>Resume - dustbringer.github.io</title>
         <meta name="description" content="Resume Page" />
       </Helmet>
-      <Container maxWidth="md" className={classes.container}>
+      <Container maxWidth="md">
         <Typography>Congrats. You found some stuff about me:</Typography>
+        {/* Copied from Canva embed */}
         <div
           style={{
             position: "relative",

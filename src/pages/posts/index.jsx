@@ -6,25 +6,15 @@ import styled from "styled-components";
 import moment from "moment";
 import qs from "query-string";
 
-import makeStyles from '@mui/styles/makeStyles';
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
 
+import Container from "../../components/Container";
 import BlogListCard from "../../components/BlogListCard";
 import PageNavigation from "../../components/PageNavigation";
 
 // HELPFUL https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
 // In gatsby: https://www.gatsbyjs.com/blog/2017-07-19-creating-a-blog-with-gatsby/
-
-const useStyles = makeStyles((theme) => ({
-  button: {},
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-}));
 
 const PostsList = styled.div`
   min-height: 75vh;
@@ -35,7 +25,6 @@ const getPage = (list, page, nPerPage) =>
   list.slice(nPerPage * (page - 1), nPerPage * page).map((e) => e.node);
 
 const BlogListPage = ({ location, data }) => {
-  const classes = useStyles();
 
   const { edges: posts } = data.allMarkdownRemark;
   // const [posts, setPosts] = React.useState([]);
@@ -61,8 +50,8 @@ const BlogListPage = ({ location, data }) => {
       <title>Posts - dustbringer.github.io</title>
       <meta name="description" content="List of blog posts" />
     </Helmet>
-    <Container maxWidth="md" className={classes.container}>
-      <Typography variant="h4" className={classes.title}>
+    <Container maxWidth="md">
+      <Typography variant="h4">
         Posts
       </Typography>
       <div>

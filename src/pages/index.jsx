@@ -3,37 +3,22 @@ import { Helmet } from "react-helmet";
 import { navigate } from "gatsby";
 import { GlobalContext } from "../context/GlobalContext";
 
-import makeStyles from '@mui/styles/makeStyles';
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
+import Container from "../components/Container";
 import InternalLink from "../components/InternalLink";
 import { DivFlexCenterHInside } from "../components/styled/Divs";
 
-const useStyles = makeStyles((theme) => ({
-  button: {},
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-  mono: {
-    fontFamily: "Roboto Mono",
-  },
-}));
-
 const HomePage = () => {
-  const classes = useStyles();
-
   return (
     <>
       <Helmet>
         <title>Home - dustbringer.github.io</title>
         <meta name="description" content="Home Page" />
       </Helmet>
-      <Container maxWidth="md" className={classes.container}>
+      <Container maxWidth="md">
         <Typography variant="h4">Home</Typography>
         <Typography variant="body1" gutterBottom>
           Hi, Welcome to my website! Here are some links to some of my stuff...

@@ -1,33 +1,15 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 
-import makeStyles from '@mui/styles/makeStyles';
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
+import Container from "../../components/Container";
 import PageNavigation from "../../components/PageNavigation";
 
-const useStyles = makeStyles((theme) => ({
-  button: {},
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-  mono: {
-    fontFamily: "Roboto Mono",
-  },
-  latex: {
-    fontFamily: "Computer Modern",
-    fontSize: "1.4rem",
-  },
-}));
-
 const ImageViewerPage = () => {
-  const classes = useStyles();
   const [text, setText] = React.useState("");
   const [json, setJson] = React.useState([]);
   const [counter, setCounter] = React.useState(0);
@@ -49,7 +31,7 @@ const ImageViewerPage = () => {
         <title>Image Viewer - dustbringer.github.io</title>
         <meta name="description" content="Markdown Renderer" />
       </Helmet>
-      <Container maxWidth="md" className={classes.container}>
+      <Container maxWidth="md">
         <Typography variant="h4">Image Viewer</Typography>
         <Typography variant="body1" gutterBottom>
           Tool for SYNCS Hackathon 2021. Views images with json input, format is
@@ -75,8 +57,8 @@ const ImageViewerPage = () => {
           autoFocus
           variant="outlined"
           InputProps={{
-            classes: {
-              input: classes.mono,
+            sx: {
+              fontFamily: "Roboto Mono",
             },
           }}
           value={text}
