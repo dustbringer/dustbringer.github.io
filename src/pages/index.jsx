@@ -11,6 +11,11 @@ import Container from "../components/Container";
 import InternalLink from "../components/InternalLink";
 import { DivFlexCenterHInside } from "../components/styled/Divs";
 
+
+import TeX from "@matejmazur/react-katex";
+import "katex/dist/katex.min.css"; // styling math symbols to look like latex
+
+
 const HomePage = () => {
   return (
     <>
@@ -57,6 +62,11 @@ const HomePage = () => {
             </>
           )}
         </GlobalContext.Consumer> */}
+
+
+
+      <TeX>\int inline \ dx</TeX>
+      <TeX block>\int block \ dx</TeX>
       </Container>
     </>
   );

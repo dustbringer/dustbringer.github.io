@@ -5,49 +5,39 @@ import ReactMarkdown from "react-markdown";
 import RemarkMathPlugin from "remark-math";
 import RemarkGFMPlugin from "remark-gfm";
 import RemarkFrontmatterPlugin from "remark-frontmatter";
-
-// react-katex
-// import { InlineMath, BlockMath } from "react-katex";
-
-/* @matejmazur/react-katex */
-import TeX from "@matejmazur/react-katex";
+import rehypeRaw from "rehype-raw";
+import rehypeSanitize from "rehype-sanitize";
+import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css"; // styling math symbols to look like latex
 
-import { MathJax, MathJaxContext } from "better-react-mathjax";
-const mathjaxconfig = {
-  loader: { load: ["[tex]/html"] },
-  tex: {
-    packages: { "[+]": ["html"] },
-    inlineMath: [
-      ["$", "$"],
-      ["\\(", "\\)"],
-    ],
-    displayMath: [
-      ["$$", "$$"],
-      ["\\[", "\\]"],
-    ],
-  },
-};
+// This doesnt work for now, try again later
+// import rehypeMathjax from "rehype-mathjax";
+// import rehypeMathjaxChtml from "rehype-mathjax/chtml.js";
 
-const typesettingOptions = {
-  fn: "tex2chtml",
-  options: { scale: 1.1 },
-};
+/* @matejmazur/react-katex */
+// import TeX from "@matejmazur/react-katex";
 
 import { GlobalContext } from "../context/GlobalContext";
 import MarkdownContents from "./MarkdownContents";
-import HeadingRenderer from "./mdRenderers/Heading";
+import Heading1Renderer from "./mdRenderers/Heading1";
+import Heading2Renderer from "./mdRenderers/Heading2";
+import Heading3Renderer from "./mdRenderers/Heading3";
+import Heading4Renderer from "./mdRenderers/Heading4";
+import Heading5Renderer from "./mdRenderers/Heading5";
+import Heading6Renderer from "./mdRenderers/Heading6";
 import YamlRenderer from "./mdRenderers/Yaml";
-import BlockCodeRenderer from "./mdRenderers/BlockCode";
-import InlineCodeRenderer from "./mdRenderers/InlineCode";
+import CodeRenderer from "./mdRenderers/Code";
+import CodePreRenderer from "./mdRenderers/CodePre";
 import BlockQuoteRenderer from "./mdRenderers/BlockQuote";
 import ImageRenderer from "./mdRenderers/Image";
 import LinkRenderer from "./mdRenderers/Link";
 import TableRenderer from "./mdRenderers/Table";
 import TableHeadRenderer from "./mdRenderers/TableHead";
 import TableRowRenderer from "./mdRenderers/TableRow";
-import TableCellRenderer from "./mdRenderers/TableCell";
+import TableHeaderCellRenderer from "./mdRenderers/TableHeaderCell";
+import TableDataCellRenderer from "./mdRenderers/TableDataCell";
 import ListItemRenderer from "./mdRenderers/ListItem";
+import InputRenderer from "./mdRenderers/Input";
 import HorizontalRuleRenderer from "./mdRenderers/HorizontalRule";
 
 const FormatDiv = styled.div`
@@ -89,74 +79,51 @@ const breakText = css`
  */
 const MarkdownFormatDiv = styled.div`
   width: 100%;
-  white-space: pre-line;
   ${breakText};
 `;
 
-/**
- * Default Renderers
- * https://github.com/remarkjs/react-markdown/blob/main/src/renderers.js
- *
- * Some Reference Renderers:
- * https://github.com/robinweser/react-markdown-github-renderers
- *
- * Check the code for the different renderers that this is missing
- * - also place renderers in their own folder
- */
-
-// Plugins: https://github.com/remarkjs/remark/blob/main/doc/plugins.md
 const _mapProps = (props) => ({
-  escapeHtml: false,
   ...props,
   plugins: [RemarkMathPlugin, RemarkGFMPlugin, RemarkFrontmatterPlugin],
-  renderers: {
-    ...props.renderers,
 
-    thematicBreak: HorizontalRuleRenderer,
-    heading: HeadingRenderer,
-    yaml: YamlRenderer,
-    inlineCode: InlineCodeRenderer,
-    code: BlockCodeRenderer,
+  // More rehype plugins https://github.com/rehypejs/rehype/blob/main/doc/plugins.md
+  rehypePlugins: [
+    ...(props.allowHTML ? [rehypeRaw, rehypeSanitize] : []),
+    rehypeKatex,
+    // ...(!props.mathJax ? [rehypeKatex] : [rehypeMathjax]),
+  ],
+  components: {
+    ...props.components,
+
+    hr: HorizontalRuleRenderer,
+    h1: Heading1Renderer,
+    h2: Heading2Renderer,
+    h3: Heading3Renderer,
+    h4: Heading4Renderer,
+    h5: Heading5Renderer,
+    h6: Heading6Renderer,
+    code: CodeRenderer,
+    pre: CodePreRenderer,
     image: ImageRenderer,
     blockquote: BlockQuoteRenderer,
-    link: LinkRenderer,
+    a: LinkRenderer,
     table: TableRenderer,
-    tableHead: TableHeadRenderer,
-    tableRow: TableRowRenderer,
-    tableCell: TableCellRenderer,
-    listItem: ListItemRenderer,
-
-    math: ({ value }) =>
-      !props.mathjax ? (
-        <TeX block>{value}</TeX>
-      ) : (
-        <MathJax
-        renderMode={"pre"}
-        typesettingOptions={typesettingOptions}
-          text={value || " "}
-        />
-      ),
-    inlineMath: ({ value }) =>
-      !props.mathjax ? (
-        <TeX>{value}</TeX>
-      ) : (
-        <MathJax
-          renderMode={"pre"}
-          typesettingOptions={typesettingOptions}
-          text={value || " "}
-          inline
-        />
-      ),
+    thead: TableHeadRenderer,
+    tr: TableRowRenderer,
+    td: TableDataCellRenderer,
+    th: TableHeaderCellRenderer,
+    li: ListItemRenderer,
+    input: InputRenderer, // for checkboxes
+    yaml: YamlRenderer,
   },
 });
 
 // Repeated code
+// Add support for html https://github.com/remarkjs/react-markdown#appendix-a-html-in-markdown
 const _Markdown = (props) => (
-  <MathJaxContext version={3} config={mathjaxconfig}>
-    <MarkdownFormatDiv>
-      <ReactMarkdown {..._mapProps(props)} escapeHtml={props.escapeHtml} />
-    </MarkdownFormatDiv>
-  </MathJaxContext>
+  <MarkdownFormatDiv>
+    <ReactMarkdown {..._mapProps(props)} />
+  </MarkdownFormatDiv>
 );
 
 const Markdown = (props) => {
@@ -189,7 +156,7 @@ const Markdown = (props) => {
       </div>
 
       {/* ReactMarkdown renders multiple ungrouped components */}
-      <_Markdown {...props} />
+      <_Markdown allowHTML {...props} />
     </FormatDiv>
   );
 };
@@ -198,7 +165,7 @@ export const MarkdownNoContents = (props) => {
   return (
     <FormatDiv>
       {/* ReactMarkdown renders multiple ungrouped components */}
-      <_Markdown {...props} escapeHtml />
+      <_Markdown {...props} />
     </FormatDiv>
   );
 };
@@ -207,7 +174,7 @@ export const MarkdownNoFormat = (props) => {
   return (
     <NoFormatDiv>
       {/* ReactMarkdown renders multiple ungrouped components */}
-      <_Markdown {...props} escapeHtml />
+      <_Markdown {...props} />
     </NoFormatDiv>
   );
 };

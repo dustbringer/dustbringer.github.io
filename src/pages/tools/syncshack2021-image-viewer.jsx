@@ -55,7 +55,7 @@ const ImageViewerPage = () => {
           size="small"
           fullWidth
           autoFocus
-          variant="outlined"
+          variant="filled"
           InputProps={{
             sx: {
               fontFamily: "Roboto Mono",

@@ -2,6 +2,9 @@
  * Default renderers for react-markdown
  * From https://github.com/remarkjs/react-markdown/blob/main/src/renderers.js
  * Date: 20-01-2021
+ * 
+ * This has since been updates and no longer needed
+ * 
  */
 
 /* eslint-disable react/prop-types, react/no-multi-comp */

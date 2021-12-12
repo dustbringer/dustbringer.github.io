@@ -1,12 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-function getCoreProps(props) {
-  const source = props['data-sourcepos']
-  return source ? {'data-sourcepos': source} : {}
-}
-
-const Quote = styled.blockquote`
+const BlockQuote = styled.blockquote`
   color: #6a737d;
   border-left: 4px solid #dfe2e5;
   padding: 0.25em 1em;
@@ -16,8 +11,4 @@ const Quote = styled.blockquote`
   }
 `;
 
-const InlineCode = (props) => {
-  return <Quote {...getCoreProps(props)}>{props.children}</Quote>;
-};
-
-export default InlineCode;
+export default BlockQuote;
