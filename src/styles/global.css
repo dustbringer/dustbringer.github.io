@@ -44,7 +44,7 @@ html {
 }
 
 body {
-  font-size: 14px;
+  font-size: 14px; /* see whats up with this */
   padding: 0;
   margin: 0;
 }

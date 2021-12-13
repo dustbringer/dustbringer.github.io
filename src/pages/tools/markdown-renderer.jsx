@@ -54,9 +54,9 @@ const MarkdownRendererPage = () => {
           size="small"
           fullWidth
           autoFocus
-          variant="filled"
-          InputProps={{
-            sx: {
+          variant="outlined"
+          inputProps={{
+            style: {
               fontFamily: "Roboto Mono",
             },
           }}
