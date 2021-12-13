@@ -17,28 +17,28 @@ import "katex/dist/katex.min.css"; // styling math symbols to look like latex
 /* @matejmazur/react-katex */
 // import TeX from "@matejmazur/react-katex";
 
-import { GlobalContext } from "../context/GlobalContext";
+import { GlobalContext } from "../../context/GlobalContext";
 import MarkdownContents from "./MarkdownContents";
-import Heading1Renderer from "./mdRenderers/Heading1";
-import Heading2Renderer from "./mdRenderers/Heading2";
-import Heading3Renderer from "./mdRenderers/Heading3";
-import Heading4Renderer from "./mdRenderers/Heading4";
-import Heading5Renderer from "./mdRenderers/Heading5";
-import Heading6Renderer from "./mdRenderers/Heading6";
-import YamlRenderer from "./mdRenderers/Yaml";
-import CodeRenderer from "./mdRenderers/Code";
-import CodePreRenderer from "./mdRenderers/CodePre";
-import BlockQuoteRenderer from "./mdRenderers/BlockQuote";
-import ImageRenderer from "./mdRenderers/Image";
-import LinkRenderer from "./mdRenderers/Link";
-import TableRenderer from "./mdRenderers/Table";
-import TableHeadRenderer from "./mdRenderers/TableHead";
-import TableRowRenderer from "./mdRenderers/TableRow";
-import TableHeaderCellRenderer from "./mdRenderers/TableHeaderCell";
-import TableDataCellRenderer from "./mdRenderers/TableDataCell";
-import ListItemRenderer from "./mdRenderers/ListItem";
-import InputRenderer from "./mdRenderers/Input";
-import HorizontalRuleRenderer from "./mdRenderers/HorizontalRule";
+import Heading1Renderer from "./Heading1";
+import Heading2Renderer from "./Heading2";
+import Heading3Renderer from "./Heading3";
+import Heading4Renderer from "./Heading4";
+import Heading5Renderer from "./Heading5";
+import Heading6Renderer from "./Heading6";
+import YamlRenderer from "./Yaml";
+import CodeRenderer from "./Code";
+import CodePreRenderer from "./CodePre";
+import BlockQuoteRenderer from "./BlockQuote";
+import ImageRenderer from "./Image";
+import LinkRenderer from "./Link";
+import TableRenderer from "./Table";
+import TableHeadRenderer from "./TableHead";
+import TableRowRenderer from "./TableRow";
+import TableHeaderCellRenderer from "./TableHeaderCell";
+import TableDataCellRenderer from "./TableDataCell";
+import ListItemRenderer from "./ListItem";
+import InputRenderer from "./Input";
+import HorizontalRuleRenderer from "./HorizontalRule";
 
 const FormatDiv = styled.div`
   font-family: "Open Sans", "Roboto", "Helvetica", "Arial", "sans-serif";

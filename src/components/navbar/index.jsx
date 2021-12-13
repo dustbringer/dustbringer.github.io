@@ -9,9 +9,9 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
-import { DivRowSpaceBetween } from "./styled/Divs";
-import FullList from "./navbar/FullList";
-import DropdownList from "./navbar/DropdownList";
+import { DivRowSpaceBetween } from "../styled/Divs";
+import FullList from "./FullList";
+import DropdownList from "./DropdownList";
 // import wombatIcon from "../img/flaticon-polar-bear.svg";
 
 const RESPONSIVE_WIDTH = "600px";
