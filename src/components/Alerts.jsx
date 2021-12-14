@@ -1,13 +1,13 @@
 import React from "react";
 import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from '@mui/material/Alert';
+import MuiAlert from "@mui/material/Alert";
 
 import { GlobalContext } from "../context/GlobalContext";
 
 const Alerts = () => {
   const context = React.useContext(GlobalContext);
   if (!context) {
-    return (null);
+    return null;
   }
 
   const { AlertQueue } = context;
@@ -36,7 +36,12 @@ const Alerts = () => {
 
   return (
     <>
-      <Snackbar open={alertOpen} autoHideDuration={2000} onClose={handleClose}>
+      <Snackbar
+        open={alertOpen}
+        autoHideDuration={2000}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        onClose={handleClose}
+      >
         <MuiAlert
           elevation={5}
           variant="filled"

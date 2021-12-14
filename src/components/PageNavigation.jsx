@@ -8,7 +8,7 @@ import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 const PageNavigation = ({ text, onPrev, onNext }) => {
-  return <>
+  return (
     <Box
       display="flex"
       flexDirection="row"
@@ -23,7 +23,7 @@ const PageNavigation = ({ text, onPrev, onNext }) => {
         <NavigateNextIcon fontSize="small" />
       </IconButton>
     </Box>
-  </>;
+  );
 };
 
 PageNavigation.propTypes = {
