@@ -15,7 +15,11 @@ import { GlobalContext } from "../../context/GlobalContext";
 
 const ImageViewerPage = () => {
   const context = React.useContext(GlobalContext);
-  const { showError, showSuccess } = context;
+  const { showError, showSuccess } = context || {
+    // Default values if context is null
+    showError: () => {},
+    showSuccess: () => {},
+  };
   const [text, setText] = React.useState("");
   const [json, setJson] = React.useState([]);
   const [counter, setCounter] = React.useState(0);
@@ -25,11 +29,11 @@ const ImageViewerPage = () => {
       const output = JSON.parse(text);
       setJson(output);
       setCounter(0);
-      showSuccess("Successfully parsed");
+      showSuccess && showSuccess("Successfully parsed");
     } catch (err) {
       setJson([]);
       setCounter(0);
-      showError(err.message);
+      showError && showError(err.message);
     }
   };
 
