@@ -10,10 +10,12 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 const PageNavigation = ({ text, onPrev, onNext }) => {
   return (
     <Box
-      display="flex"
-      flexDirection="row"
-      justifyContent="center"
-      alignItems="center"
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
       <IconButton color="primary" onClick={onPrev} size="large">
         <NavigateBeforeIcon fontSize="small" />

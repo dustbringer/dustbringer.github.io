@@ -32,7 +32,7 @@ const BlogListCard = ({ name, title, description, date, tags, path }) => {
         title={`${name}.md`}
       >
         <CardContent>
-          <Box mb={1}>
+          <Box sx={{marginBottom: 1}}>
             <Typography variant="h5" component="h5" display="inline">
               {title ? title : "Unknown Title"}
             </Typography>
