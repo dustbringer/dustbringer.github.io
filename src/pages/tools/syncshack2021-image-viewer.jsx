@@ -101,7 +101,7 @@ const ImageViewerPage = () => {
             disableRipple
             sx={{ margin: "8px", marginRight: 0 }}
             onClick={parseInput}
-            title="Parse"
+            title="Run"
           >
             <DirectionsRunIcon />
           </Button>

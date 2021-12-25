@@ -42,6 +42,12 @@ const HomePage = () => {
                     Image Viewer from list of links
                   </InternalLink>
                 </li>
+
+                <li>
+                  <InternalLink to="/tools/duplicate-remover">
+                    Duplicate Remover
+                  </InternalLink>
+                </li>
               </ul>
             </li>
           </ul>

@@ -65,7 +65,7 @@ const StyledDivRowSpaceBetween = styled(DivRowSpaceBetween)`
 `;
 
 const ResponsiveFullList = styled(FullList)`
-  @media (max-width: 600px) {
+  @media (max-width: ${RESPONSIVE_WIDTH}) {
     display: none;
   }
 `;
