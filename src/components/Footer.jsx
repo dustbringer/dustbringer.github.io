@@ -18,10 +18,16 @@ const StyledAppBar = styled(AppBar)`
   left: 0;
 `;
 
-const StyledToolbar = styled(Toolbar)`
-  max-height: 30px;
-  min-height: 30px;
+const StyledToolbar = styled(Toolbar)`  
+  max-height: 42px;
+  min-height: 42px;
   height: 100%;
+`;
+
+const StyledContainer = styled(Container)`
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 2px solid #eee;
 `;
 
 const StyledTextLink = styled(Link)``;
@@ -36,8 +42,8 @@ const IconButton = ({ Icon, href }) => {
     >
       <Icon
         sx={{
-          color: "#dddddd",
-          fontSize: "0.875rem",
+          color: "#424242",
+          fontSize: "1rem",
           margin: "auto 3px",
         }}
       />
@@ -55,14 +61,14 @@ const SocialIcons = styled.div`
 const Footer = () => {
   return (
     <div>
-      <StyledAppBar position="static" elevation={0}>
+      <StyledAppBar position="static" color="transparent" elevation={0}>
         <StyledToolbar>
-          <Container maxWidth="md">
+          <StyledContainer maxWidth="md">
             <DivRowSpaceBetween>
               <Typography
                 variant="body2"
                 sx={{
-                  color: "#dddddd",
+                  color: "#424242",
                   fontSize: "0.75rem",
                 }}
               >
@@ -72,10 +78,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   underline="hover"
-                  sx={{
-                    color: "white",
-                    fontWeight: "bold",
-                  }}
+                  sx={{ fontWeight: "bold" }}
                 >
                   dustbringer
                 </Link>
@@ -98,7 +101,7 @@ const Footer = () => {
                 />
               </SocialIcons>
             </DivRowSpaceBetween>
-          </Container>
+          </StyledContainer>
         </StyledToolbar>
       </StyledAppBar>
     </div>

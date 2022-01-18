@@ -33,10 +33,18 @@ const StyledContainer = styled(Container)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
 `;
 
 const TitleTypography = styled(Typography)`
   margin: auto 0;
+  color: #424242;
+  font-weight: bold;
+  &:hover {
+    color: #616161;
+  }
   @media (max-width: 600px) {
     font-size: 1.2em;
   }
@@ -85,7 +93,7 @@ const links = [
 const Navbar = () => {
   return (
     <div>
-      <AppBar position="static" elevation={1}>
+      <AppBar position="static" color="transparent" elevation={0}>
         <StyledToolbar>
           <StyledContainer maxWidth="md">
             <MyLink to="/">

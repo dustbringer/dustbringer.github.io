@@ -34,12 +34,17 @@ const MyLink = styled(Link)`
 const NavLink = styled(MyLink)`
   display: inline-block;
   margin: 0 8px;
-  color: #cccccc;
+  color: #202020;
   &:hover {
-    color: #ffffff;
+    color: #717171;
   }
   border-bottom: 2px solid
-    ${(props) => (props.cur === props.to ? "#cccccc" : "transparent")};
+    ${(props) =>
+      props.cur &&
+      props.to &&
+      props.cur.replace(/^\/+|\/+$/g, "") === props.to.replace(/^\/+|\/+$/g, "")
+        ? "#ddd"
+        : "transparent"};
   font-size: 1rem;
 `;
 
@@ -58,9 +63,7 @@ const FullList = ({ links, className }) => {
     <NavLinkList className={className}>
       {links.map((link) => (
         <li key={link.name + link.path}>
-          <NavLink
-            to={link.path}
-          >
+          <NavLink cur={location.pathname} to={link.path}>
             {link.name}
           </NavLink>
         </li>
