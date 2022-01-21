@@ -44,7 +44,7 @@ For all the different kinds of locking mechanisms, there are a spectrum of tools
 
 ![lockpicks](../post_resources/2021-09-08-lockpicking-foundations/assorted-lockpicks.png "Assorted lockpicks")
 
-The picks labelled blue are enough to get past most locks we see today, we will be learning about them later on. The picks labelled yellow are assorted rakes and the ones labelled red are specialised tools (left is for a dimple lock, right is for pulling out snapped keys).
+The picks labelled blue are enough to get past most locks we see today, we will be learning about them later on. The picks labelled yellow are assorted rakes and the ones labelled red  are more specialised tools (left is for a dimple lock, right is a different type of rake but can be used to pull out snapped keys).
 
 ### Locks
 When we look at a lock, it is made up of different parts.
