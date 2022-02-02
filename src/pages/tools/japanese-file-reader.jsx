@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import Encoding from "encoding-japanese";
+import ReactFuri from "react-furi";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -10,41 +11,58 @@ import Typography from "@mui/material/Typography";
 import Container from "../../components/Container";
 import Link from "../../components/Link";
 
-const parseAttributes = (text) => {
+/**
+ * Regex for most kanji
+ * https://stackoverflow.com/questions/15033196/using-javascript-to-check-whether-a-string-contains-japanese-characters-includi
+ * https://gist.github.com/terrancesnyder/1345094
+ */
+const furiganaRegex = /\｜?([\u4e00-\u9faf\u3400-\u4dbf]*?)《(.*?)》/g;
+const parseFurigana = (text) => {
   const result = {};
-  const match = [...text.trim().matchAll(/(src|title)=(["'])(.*?)\2/g)];
+  const match = [...text.trim().matchAll(/(kanji|furi)=(["'])(.*?)\2/g)];
   match.forEach((e) => {
     result[e[1]] = e[3];
   });
   return result;
 };
 
-const removeTags = (text) => text.trim().replace(/<.*?>/g, "");
-
 const Input = styled.input`
   display: none;
 `;
 
-// TODO: style these
 const Text = styled.div`
   white-space: pre-line;
+  font-family: "Noto Serif JP", sans-serif;
+  font-size: 1.25rem;
 `;
 
 const Divider = styled.hr`
-  white-space: pre-line;
+  height: 0.25em;
+  padding: 0;
+  margin: 12px 0;
+  background-color: #e1e4e8;
+  border: 0;
 `;
 
-const Furigana = styled.span`
-  color: #bd7777;
-  direction: rtl;
+// Removing preloaded styles from ReactFuri components
+const ReactFuriWrapper = styled(ReactFuri.Wrapper)`
+  font-family: inherit;
+`;
+const ReactFuriPair = styled(ReactFuri.Pair)`
+  font-size: inherit;
+  position: relative;
+`;
+const ReactFuriFuri = styled(ReactFuri.Furi)`
+  color: #666666;
   display: inline-block;
-  font-size: 0.5em;
-  margin-top: -1em;
-  user-select: none;
+  position: absolute;
+  top: -1.25em;
   vertical-align: top;
   white-space: nowrap;
-  width: 0;
+  font-size: 0.5em;
+  user-select: none;
 `;
+const ReactFuriText = styled(ReactFuri.Text)``;
 
 const JapaneseFileReaderPage = () => {
   const [fileName, setFileName] = React.useState("No File Selected");
@@ -93,9 +111,11 @@ const JapaneseFileReaderPage = () => {
         type: "string",
       });
       const parsedContents = fileContents
-        .replace(/<img.*?src=(["'])(.*?)\1.*?>/g, "［＃（$2）］\n") // images wont load, replace with text (only include src)
-        .replace(/［＃改ページ］/g, "<hr></hr>") // replace page breaks
-        .replace(/《(.*?)》/g, "<span class='furigana'>$1</span>"); // replace furigana
+        .replace(/<img.*?src=(["'])(.*?)\1.*?>/g, "［＃（$2）］\n") // replace img tags with text (only include src)
+        .replace(/［＃改ページ］/g, "<hr></hr>") // render page breaks
+        .replace(furiganaRegex, "<Furigana kanji='$1' furi='$2' />"); // render furigana
+      // TODO: handle footnotes (hover?)
+      // TODO: handle other aozora bunko features
 
       setYPos("0");
       setFileName(file.name);
@@ -112,36 +132,65 @@ const JapaneseFileReaderPage = () => {
     <>
       <Helmet>
         <title>
-          {`Japanese File Reader: [${fileName}] at ${yPos} - dustbringer.github.io`}
+          {`[${fileName}] at ${yPos} - Japanese File Reader - dustbringer.github.io`}
         </title>
         <meta name="description" content="Japanese File Reader" />
       </Helmet>
       <Container maxWidth="md">
-        <Typography variant="h4">Japanese File Reader</Typography>
-        <Typography variant="body1" gutterBottom>
-          BlahBlahBlah
+        <Typography variant="h4" gutterBottom>
+          Japanese File Reader
         </Typography>
-        <label>
-          <Input onChange={handleFileChange} type="file" />
-          <Button variant="contained" component="span">
-            Upload
-          </Button>
-        </label>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="body1" gutterBottom>
+          Display japanese encoded text files with included furigana. Inspired
+          from website by{" "}
+          <Link href="https://www.reddit.com/r/LearnJapanese/comments/9x1oqd/guide_use_rikai_to_read_light_novels_in_your/">
+            u/raseru on Reddit
+          </Link>{" "}
+          .
+        </Typography>
+        <Box sx={{ alignSelf: "center", margin: "10px 0" }}>
+          <label>
+            <Input onChange={handleFileChange} type="file" />
+            <Button variant="contained" component="span">
+              Upload
+            </Button>
+          </label>
+        </Box>
+        <Typography
+          align="center"
+          variant="h6"
+          gutterBottom
+          sx={{ fontFamily: "'Noto Serif JP', sans-serif" }}
+        >
           {fileName}
         </Typography>
+        <Divider />
         <Text>
-          {fileContents
-            .split(/(<hr><\/hr>|<span class='furigana'>.*?<\/span>)/)
-            .map((e, i) => {
-              if (/<hr><\/hr>/.test(e)) {
-                return <Divider key={`${i}`} />;
-              } else if (/<span class='furigana'>.*?<\/span>/.test(e)) {
-                return <Furigana key={`${i}`}>{removeTags(e)}</Furigana>;
-              } else {
-                return e;
-              }
-            })}
+          {fileContents.split(/(<hr><\/hr>|<Furigana.*?>)/).map((e, i) => {
+            if (/<hr><\/hr>/.test(e)) {
+              return <Divider key={`${i}`} />;
+            } else if (/<Furigana.*?>/.test(e)) {
+              const attr = parseFurigana(e);
+              return (
+                <ReactFuri
+                  word={attr.kanji}
+                  reading={attr.furi}
+                  render={({ pairs }) => (
+                    <ReactFuriWrapper lang="ja">
+                      {pairs.map(([furigana, text], index) => (
+                        <ReactFuriPair key={index}>
+                          <ReactFuriFuri>{furigana}</ReactFuriFuri>
+                          <ReactFuriText>{text}</ReactFuriText>
+                        </ReactFuriPair>
+                      ))}
+                    </ReactFuriWrapper>
+                  )}
+                />
+              );
+            } else {
+              return e;
+            }
+          })}
         </Text>
       </Container>
     </>
