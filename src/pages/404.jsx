@@ -15,7 +15,9 @@ function NotFoundPage() {
         <meta name="description" content="404 Not Found" />
       </Helmet>
       <Container maxWidth="md">
-        <Typography variant="h4">404, Page Not Found.</Typography>
+        <Typography align="center" variant="h4">
+          404, Page Not Found.
+        </Typography>
       </Container>
     </>
   );
