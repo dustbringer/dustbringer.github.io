@@ -5,7 +5,10 @@ Personal website!
 - Hosted on GitHub Pages
 
 ## Currently in progress
-- Migrating posts to gatsby
+- Removing remaining context artifacts from the jurassic period
+- Changing the styling and layout
+- Adding dark mode
+- Replacing alert display from queue to stack
 - Adding search of text and tags
 
 ## Completed
@@ -15,3 +18,4 @@ Personal website!
 - Dynamically rendering posts
 - Markdown renderer from input
 - Migrating from CRA to gatsby
+- Migrating posts to gatsby
