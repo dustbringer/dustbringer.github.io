@@ -48,6 +48,12 @@ function HomePage() {
                     Duplicate Remover
                   </InternalLink>
                 </li>
+
+                <li>
+                  <InternalLink to="/tools/japanese-file-reader">
+                    Japanese file reader
+                  </InternalLink>
+                </li>
               </ul>
             </li>
           </ul>

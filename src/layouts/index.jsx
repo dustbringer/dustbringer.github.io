@@ -7,6 +7,7 @@ import Alerts from "../components/Alerts";
 const DivRoot = styled.div`
   position: relative;
   min-height: 100vh;
+  font-size: 14px;
 `;
 
 const DivContent = styled.div`
