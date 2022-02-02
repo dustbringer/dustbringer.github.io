@@ -15,7 +15,7 @@ const StyledCheckbox = styled(MUICheckbox)`
   }
 `;
 
-const Checkbox = (props) => {
+function Checkbox(props) {
   return (
     <>
       {props.type === "checkbox" ? (
@@ -32,6 +32,6 @@ const Checkbox = (props) => {
       )}
     </>
   );
-};
+}
 
 export default Checkbox;

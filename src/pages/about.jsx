@@ -7,7 +7,7 @@ import Link from "../components/Link";
 
 import Container from "../components/Container";
 
-const AboutPage = () => {
+function AboutPage() {
   // const history = useHistory();
 
   return (
@@ -26,6 +26,6 @@ const AboutPage = () => {
       </Container>
     </>
   );
-};
+}
 
 export default AboutPage;

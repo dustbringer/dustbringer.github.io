@@ -11,7 +11,7 @@ const StyledMUILink = styled(MUILink)({
   },
 });
 
-const Link = (props) => {
+function Link(props) {
   return (
     <StyledMUILink
       target="_blank"
@@ -19,6 +19,6 @@ const Link = (props) => {
       {...props}
     ></StyledMUILink>
   );
-};
+}
 
 export default Link;

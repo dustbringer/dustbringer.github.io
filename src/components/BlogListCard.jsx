@@ -24,15 +24,12 @@ const styles = {
   },
 };
 
-const BlogListCard = ({ name, title, description, date, tags, path }) => {
+function BlogListCard({ name, title, description, date, tags, path }) {
   return (
     <Card sx={styles.root} variant="outlined">
-      <CardActionArea
-        onClick={() => navigate(path)}
-        title={`${name}.md`}
-      >
+      <CardActionArea onClick={() => navigate(path)} title={`${name}.md`}>
         <CardContent>
-          <Box sx={{marginBottom: 1}}>
+          <Box sx={{ marginBottom: 1 }}>
             <Typography variant="h5" component="h5" display="inline">
               {title ? title : "Unknown Title"}
             </Typography>
@@ -49,19 +46,12 @@ const BlogListCard = ({ name, title, description, date, tags, path }) => {
           </Box>
           {tags &&
             tags.map((tag, i) => {
-              return (
-                <Chip
-                  key={i}
-                  sx={styles.tag}
-                  size="small"
-                  label={tag}
-                />
-              );
+              return <Chip key={i} sx={styles.tag} size="small" label={tag} />;
             })}
         </CardContent>
       </CardActionArea>
     </Card>
   );
-};
+}
 
 export default BlogListCard;

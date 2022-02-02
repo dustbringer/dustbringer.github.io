@@ -5,8 +5,8 @@ const StyledHead = styled.thead`
   border-bottom: 2px solid #dddddd;
 `;
 
-const TableHead = (props) => {
+function TableHead(props) {
   return <StyledHead>{props.children}</StyledHead>;
-};
+}
 
 export default TableHead;

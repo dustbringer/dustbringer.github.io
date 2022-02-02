@@ -18,7 +18,7 @@ const StyledAppBar = styled(AppBar)`
   left: 0;
 `;
 
-const StyledToolbar = styled(Toolbar)`  
+const StyledToolbar = styled(Toolbar)`
   max-height: 42px;
   min-height: 42px;
   height: 100%;
@@ -58,7 +58,7 @@ const SocialIcons = styled.div`
   }
 `;
 
-const Footer = () => {
+function Footer() {
   return (
     <div>
       <StyledAppBar position="static" color="transparent" elevation={0}>
@@ -106,6 +106,6 @@ const Footer = () => {
       </StyledAppBar>
     </div>
   );
-};
+}
 
 export default Footer;

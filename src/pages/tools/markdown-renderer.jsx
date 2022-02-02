@@ -16,7 +16,7 @@ const RenderedText = styled(Typography)`
   font-size: 1.4rem;
 `;
 
-const MarkdownRendererPage = () => {
+function MarkdownRendererPage() {
   const [text, _setText] = React.useState("");
 
   const setText = (newText) => {
@@ -71,6 +71,6 @@ const MarkdownRendererPage = () => {
       </Container>
     </>
   );
-};
+}
 
 export default MarkdownRendererPage;

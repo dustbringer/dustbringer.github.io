@@ -90,7 +90,7 @@ const links = [
   { name: "About", path: "/about" },
 ];
 
-const Navbar = () => {
+function Navbar() {
   return (
     <div>
       <AppBar position="static" color="transparent" elevation={0}>
@@ -116,6 +116,6 @@ const Navbar = () => {
       </AppBar>
     </div>
   );
-};
+}
 
 export default Navbar;

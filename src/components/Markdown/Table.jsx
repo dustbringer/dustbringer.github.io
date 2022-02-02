@@ -9,12 +9,8 @@ const StyledTable = styled.table`
   margin: 1em 0;
 `;
 
-const Table = (props) => {
-  return (
-    <StyledTable>
-      {props.children}
-    </StyledTable>
-  );
-};
+function Table(props) {
+  return <StyledTable>{props.children}</StyledTable>;
+}
 
 export default Table;

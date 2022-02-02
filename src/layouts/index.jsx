@@ -13,7 +13,7 @@ const DivContent = styled.div`
   padding: 2vh 0 calc(2vh + 30px);
 `;
 
-const Layout = ({ children }) => {
+function Layout({ children }) {
   return (
     <DivRoot>
       <Navbar />
@@ -22,6 +22,6 @@ const Layout = ({ children }) => {
       <Alerts />
     </DivRoot>
   );
-};
+}
 
 export default Layout;

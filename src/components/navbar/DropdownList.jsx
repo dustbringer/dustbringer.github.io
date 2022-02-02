@@ -20,7 +20,7 @@ const StyledMenuItem = styled(MenuItem)`
     ${(props) => (props.cur === props.to ? "#555555" : "transparent")};
 `;
 
-const DropdownList = ({ links, className }) => {
+function DropdownList({ links, className }) {
   const location = useLocation();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -68,6 +68,6 @@ const DropdownList = ({ links, className }) => {
       </Menu>
     </div>
   );
-};
+}
 
 export default DropdownList;

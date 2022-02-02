@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
-const PageNavigation = ({ text, onPrev, onNext }) => {
+function PageNavigation({ text, onPrev, onNext }) {
   return (
     <Box
       sx={{
@@ -26,7 +26,7 @@ const PageNavigation = ({ text, onPrev, onNext }) => {
       </IconButton>
     </Box>
   );
-};
+}
 
 PageNavigation.propTypes = {
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,

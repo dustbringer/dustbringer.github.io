@@ -68,7 +68,7 @@ const ContentsPositionDiv = styled.div`
   flex-direction: row;
 `;
 
-const PostTemplate = ({ data, location }) => {
+function PostTemplate({ data, location }) {
   const { markdownRemark } = data;
   const { frontmatter: meta, htmlAst, headings } = markdownRemark;
 
@@ -128,7 +128,7 @@ const PostTemplate = ({ data, location }) => {
       </Container>
     </>
   );
-};
+}
 
 export default PostTemplate;
 

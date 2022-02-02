@@ -11,7 +11,7 @@ const StyledMUILink = styled(MUILink)({
   },
 });
 
-const Link = (props) => {
+function Link(props) {
   return (
     <>
       {!props.className || !props.className.includes("header-link-class") ? (
@@ -27,6 +27,6 @@ const Link = (props) => {
       )}
     </>
   );
-};
+}
 
 export default Link;

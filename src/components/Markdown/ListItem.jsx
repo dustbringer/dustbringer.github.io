@@ -13,15 +13,12 @@ const StyledLi = styled.li`
     `};
 `;
 
-const ListItem = (props) => {
+function ListItem(props) {
   return (
-    <StyledLi
-      ordered={props.ordered}
-      checked={props.checked}
-    >
+    <StyledLi ordered={props.ordered} checked={props.checked}>
       {props.children}
     </StyledLi>
   );
-};
+}
 
 export default ListItem;

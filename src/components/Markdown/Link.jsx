@@ -11,12 +11,12 @@ const StyledMUILink = styled(MUILink)({
   },
 });
 
-const Link = (props) => {
+function Link(props) {
   return (
     <StyledMUILink href={props.href} target="_blank" rel="noopener noreferrer">
       {props.children}
     </StyledMUILink>
   );
-};
+}
 
 export default Link;

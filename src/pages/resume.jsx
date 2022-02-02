@@ -11,7 +11,7 @@ const LinkBold = styled(Link)`
   font-weight: 600;
 `;
 
-const ResumePage = () => {
+function ResumePage() {
   // const history = useHistory();
 
   return (
@@ -66,6 +66,6 @@ const ResumePage = () => {
       </Container>
     </>
   );
-};
+}
 
 export default ResumePage;

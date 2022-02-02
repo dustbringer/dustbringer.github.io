@@ -47,7 +47,7 @@ const StyledSpan = styled.span`
  * This current system has a global "contents" state. Contents will only
  * display correctly if only one Markdown document is displayed per page
  */
-const MarkdownContents = ({ headings }) => {
+function MarkdownContents({ headings }) {
   return (
     <FormatDiv>
       {headings.map((h, i) => {
@@ -57,7 +57,9 @@ const MarkdownContents = ({ headings }) => {
             title={h.text}
             role="button"
             key={i}
-            onClick={() => h && h.ref && h.ref.current && h.ref.current.scrollIntoView()}
+            onClick={() =>
+              h && h.ref && h.ref.current && h.ref.current.scrollIntoView()
+            }
           >
             {h.text}
           </StyledSpan>
@@ -65,6 +67,6 @@ const MarkdownContents = ({ headings }) => {
       })}
     </FormatDiv>
   );
-};
+}
 
 export default MarkdownContents;

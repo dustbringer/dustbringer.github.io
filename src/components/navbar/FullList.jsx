@@ -56,7 +56,7 @@ const NavLink = styled(MyLink)`
  * since the website is more or less static
  */
 
-const FullList = ({ links, className }) => {
+function FullList({ links, className }) {
   const location = useLocation();
 
   return (
@@ -70,6 +70,6 @@ const FullList = ({ links, className }) => {
       ))}
     </NavLinkList>
   );
-};
+}
 
 export default FullList;

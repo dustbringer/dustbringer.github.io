@@ -11,12 +11,12 @@ const CenterDiv = styled.span`
   align-items: center;
 `;
 
-const Image = (props) => {
+function Image(props) {
   return (
     <CenterDiv>
       <StyledImg {...props} />
     </CenterDiv>
   );
-};
+}
 
 export default Image;

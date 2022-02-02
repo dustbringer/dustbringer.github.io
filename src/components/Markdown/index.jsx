@@ -120,13 +120,15 @@ const _mapProps = (props) => ({
 
 // Repeated code
 // Add support for html https://github.com/remarkjs/react-markdown#appendix-a-html-in-markdown
-const _Markdown = (props) => (
-  <MarkdownFormatDiv>
-    <ReactMarkdown {..._mapProps(props)} />
-  </MarkdownFormatDiv>
-);
+function _Markdown(props) {
+  return (
+    <MarkdownFormatDiv>
+      <ReactMarkdown {..._mapProps(props)} />
+    </MarkdownFormatDiv>
+  );
+}
 
-const Markdown = (props) => {
+function Markdown(props) {
   let context = React.useContext(GlobalContext);
 
   // In case context not setup yet
@@ -159,24 +161,24 @@ const Markdown = (props) => {
       <_Markdown allowHTML {...props} />
     </FormatDiv>
   );
-};
+}
 
-export const MarkdownNoContents = (props) => {
+export function MarkdownNoContents(props) {
   return (
     <FormatDiv>
       {/* ReactMarkdown renders multiple ungrouped components */}
       <_Markdown {...props} />
     </FormatDiv>
   );
-};
+}
 
-export const MarkdownNoFormat = (props) => {
+export function MarkdownNoFormat(props) {
   return (
     <NoFormatDiv>
       {/* ReactMarkdown renders multiple ungrouped components */}
       <_Markdown {...props} />
     </NoFormatDiv>
   );
-};
+}
 
 export default Markdown;

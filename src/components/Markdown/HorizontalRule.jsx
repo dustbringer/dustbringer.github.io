@@ -9,8 +9,8 @@ const StyledHr = styled.hr`
   border: 0;
 `;
 
-const HorizontalRule = (props) => {
+function HorizontalRule(props) {
   return <StyledHr />;
-};
+}
 
 export default HorizontalRule;

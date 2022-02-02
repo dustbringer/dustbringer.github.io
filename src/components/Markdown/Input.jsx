@@ -14,7 +14,7 @@ const StyledCheckbox = styled(Checkbox)`
   }
 `;
 
-const ListItem = (props) => {
+function Input(props) {
   return props.checked !== null && props.type === "checkbox" ? (
     <StyledCheckbox
       color="default"
@@ -26,6 +26,6 @@ const ListItem = (props) => {
   ) : (
     <input {...props} />
   );
-};
+}
 
-export default ListItem;
+export default Input;

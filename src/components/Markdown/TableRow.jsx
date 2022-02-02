@@ -7,8 +7,8 @@ const StyledRow = styled.tr`
   }
 `;
 
-const TableRow = (props) => {
+function TableRow(props) {
   return <StyledRow>{props.children}</StyledRow>;
-};
+}
 
 export default TableRow;

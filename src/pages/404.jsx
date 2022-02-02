@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 
 import Container from "../components/Container";
 
-const NotFoundPage = () => {
+function NotFoundPage() {
   // const history = useHistory();
 
   return (
@@ -19,6 +19,6 @@ const NotFoundPage = () => {
       </Container>
     </>
   );
-};
+}
 
 export default NotFoundPage;

@@ -84,7 +84,7 @@ const parseInput = (
   return { inputSize: temp.length, result: result };
 };
 
-const DuplicateRemoverPage = () => {
+function DuplicateRemoverPage() {
   const [input, setInput] = React.useState("");
   const [output, setOutput] = React.useState("");
 
@@ -351,6 +351,6 @@ const DuplicateRemoverPage = () => {
       </Container>
     </>
   );
-};
+}
 
 export default DuplicateRemoverPage;

@@ -64,7 +64,7 @@ const ReactFuriFuri = styled(ReactFuri.Furi)`
 `;
 const ReactFuriText = styled(ReactFuri.Text)``;
 
-const JapaneseFileReaderPage = () => {
+function JapaneseFileReaderPage() {
   const [fileName, setFileName] = React.useState("No File Selected");
   const [fileContents, setFileContents] = React.useState("");
   const [yPos, setYPos] = React.useState("0");
@@ -195,6 +195,6 @@ const JapaneseFileReaderPage = () => {
       </Container>
     </>
   );
-};
+}
 
 export default JapaneseFileReaderPage;

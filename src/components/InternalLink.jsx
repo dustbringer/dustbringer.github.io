@@ -11,7 +11,7 @@ const StyledLink = styled(GatsbyLink)`
   }
 `;
 
-const Link = (props) => {
+function Link(props) {
   return (
     <StyledLink
       target="_blank"
@@ -19,6 +19,6 @@ const Link = (props) => {
       {...props}
     ></StyledLink>
   );
-};
+}
 
 export default Link;

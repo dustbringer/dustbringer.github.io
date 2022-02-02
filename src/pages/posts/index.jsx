@@ -24,8 +24,7 @@ const N_PER_PAGE = 6;
 const getPage = (list, page, nPerPage) =>
   list.slice(nPerPage * (page - 1), nPerPage * page).map((e) => e.node);
 
-const BlogListPage = ({ location, data }) => {
-
+function BlogListPage({ location, data }) {
   const { edges: posts } = data.allMarkdownRemark;
   // const [posts, setPosts] = React.useState([]);
   // const [loading, setLoading] = React.useState(true);
@@ -45,58 +44,58 @@ const BlogListPage = ({ location, data }) => {
     }
   }, [location.search, posts.length]);
 
-  return <>
-    <Helmet>
-      <title>Posts - dustbringer.github.io</title>
-      <meta name="description" content="List of blog posts" />
-    </Helmet>
-    <Container maxWidth="md">
-      <Typography variant="h4">
-        Posts
-      </Typography>
-      <div>
-        {posts.length > 0 ? (
-          <>
-            <PostsList>
-              {getPage(posts, page, N_PER_PAGE).map((post, i) => {
-                const { id, path, frontmatter: meta } = post;
-                return (
-                  <BlogListCard
-                    key={`${i}-${id}`}
-                    title={meta.title}
-                    description={meta.description}
-                    date={meta.date}
-                    tags={meta.tags}
-                    name={meta.slug.match(/^.*\/(.+?)$/)[1]}
-                    path={path}
-                  />
-                );
-              })}
-            </PostsList>
-            <PageNavigation
-              text={page}
-              onPrev={() =>
-                page > 1 &&
-                navigate(`${location.pathname}?page=${Math.max(page - 1, 1)}`)
-              }
-              onNext={() =>
-                page < Math.ceil(posts.length / N_PER_PAGE) &&
-                navigate(
-                  `${location.pathname}?page=${Math.min(
-                    page + 1,
-                    Math.ceil(posts.length / N_PER_PAGE)
-                  )}`
-                )
-              }
-            />
-          </>
-        ) : (
-          <Typography>There seems to be nothing here...</Typography>
-        )}
-      </div>
-    </Container>
-  </>;
-};
+  return (
+    <>
+      <Helmet>
+        <title>Posts - dustbringer.github.io</title>
+        <meta name="description" content="List of blog posts" />
+      </Helmet>
+      <Container maxWidth="md">
+        <Typography variant="h4">Posts</Typography>
+        <div>
+          {posts.length > 0 ? (
+            <>
+              <PostsList>
+                {getPage(posts, page, N_PER_PAGE).map((post, i) => {
+                  const { id, path, frontmatter: meta } = post;
+                  return (
+                    <BlogListCard
+                      key={`${i}-${id}`}
+                      title={meta.title}
+                      description={meta.description}
+                      date={meta.date}
+                      tags={meta.tags}
+                      name={meta.slug.match(/^.*\/(.+?)$/)[1]}
+                      path={path}
+                    />
+                  );
+                })}
+              </PostsList>
+              <PageNavigation
+                text={page}
+                onPrev={() =>
+                  page > 1 &&
+                  navigate(`${location.pathname}?page=${Math.max(page - 1, 1)}`)
+                }
+                onNext={() =>
+                  page < Math.ceil(posts.length / N_PER_PAGE) &&
+                  navigate(
+                    `${location.pathname}?page=${Math.min(
+                      page + 1,
+                      Math.ceil(posts.length / N_PER_PAGE)
+                    )}`
+                  )
+                }
+              />
+            </>
+          ) : (
+            <Typography>There seems to be nothing here...</Typography>
+          )}
+        </div>
+      </Container>
+    </>
+  );
+}
 
 export default BlogListPage;
 
@@ -113,9 +112,7 @@ export const pageQuery = graphql`
             date(formatString: "YYYY-MM-DD")
             tags
           }
-          path: gatsbyPath(
-            filePath: "/{MarkdownRemark.frontmatter__slug}"
-          )
+          path: gatsbyPath(filePath: "/{MarkdownRemark.frontmatter__slug}")
         }
       }
     }

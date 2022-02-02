@@ -11,7 +11,7 @@ import Container from "../components/Container";
 import InternalLink from "../components/InternalLink";
 import { DivFlexCenterHInside } from "../components/styled/Divs";
 
-const HomePage = () => {
+function HomePage() {
   return (
     <>
       <Helmet>
@@ -66,6 +66,6 @@ const HomePage = () => {
       </Container>
     </>
   );
-};
+}
 
 export default HomePage;

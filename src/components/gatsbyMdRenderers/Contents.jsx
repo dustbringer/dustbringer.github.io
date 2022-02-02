@@ -59,7 +59,7 @@ const Top = styled.span`
 
 const stripHTMLTags = (str) => str.replace(/(<([^>]+)>)/gi, "");
 
-const Contents = ({ headings }) => {
+function Contents({ headings }) {
   return (
     <FormatDiv>
       <Top
@@ -86,6 +86,6 @@ const Contents = ({ headings }) => {
       })}
     </FormatDiv>
   );
-};
+}
 
 export default Contents;

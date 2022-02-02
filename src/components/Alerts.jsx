@@ -4,7 +4,7 @@ import MuiAlert from "@mui/material/Alert";
 
 import { GlobalContext } from "../context/GlobalContext";
 
-const Alerts = () => {
+function Alerts() {
   const context = React.useContext(GlobalContext);
   if (!context) {
     return null;
@@ -53,6 +53,6 @@ const Alerts = () => {
       </Snackbar>
     </>
   );
-};
+}
 
 export default Alerts;

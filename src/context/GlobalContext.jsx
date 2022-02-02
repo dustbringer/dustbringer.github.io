@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export const GlobalContext = React.createContext(null);
 
-const GlobalProvider = ({ children }) => {
+function GlobalProvider({ children }) {
   const [alertQueue, setAlertQueue] = React.useState([]);
   const [mdHeadings, setMdHeadings] = React.useState([]);
   const addMdHeading = (text, depth, ref) =>
@@ -43,7 +43,7 @@ const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider value={store}>{children}</GlobalContext.Provider>
   );
-};
+}
 
 GlobalProvider.propTypes = {
   children: PropTypes.node.isRequired,

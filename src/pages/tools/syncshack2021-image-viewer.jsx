@@ -13,7 +13,7 @@ import Container from "../../components/Container";
 import PageNavigation from "../../components/PageNavigation";
 import { GlobalContext } from "../../context/GlobalContext";
 
-const ImageViewerPage = () => {
+function ImageViewerPage() {
   const context = React.useContext(GlobalContext);
   const { showError, showSuccess } = context || {
     // Default values if context is null
@@ -116,6 +116,6 @@ const ImageViewerPage = () => {
       </Container>
     </>
   );
-};
+}
 
 export default ImageViewerPage;
