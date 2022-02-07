@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
+// import TextField from "@mui/material/TextField";
+import TextField from "../../components/TextFieldPaddingFixed";
 
 import Container from "../../components/Container";
 import Markdown, {
@@ -63,7 +64,6 @@ function MarkdownRendererPage() {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-
         <RenderedText variant="body1" component="div">
           <MarkdownNoContents children={text} />
           {/* <Markdown children={text} /> */}

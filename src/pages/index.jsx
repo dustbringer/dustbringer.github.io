@@ -5,7 +5,6 @@ import { GlobalContext } from "../context/GlobalContext";
 
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 
 import Container from "../components/Container";
 import InternalLink from "../components/InternalLink";
