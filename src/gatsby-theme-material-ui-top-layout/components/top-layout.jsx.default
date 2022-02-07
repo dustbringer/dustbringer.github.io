@@ -1,0 +1,10 @@
+import React from "react";
+import ThemeTopLayout from "gatsby-theme-material-ui-top-layout/src/components/top-layout";
+
+import createStore from "../../state/createStore";
+
+export default function TopLayout({ children, theme }) {
+  const store = createStore();
+
+  return <ThemeTopLayout theme={theme}>{children}</ThemeTopLayout>;
+}
