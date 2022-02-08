@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledRow = styled.tr`
-  &:nth-child(2n) {
+  &:nth-child(2n + 1) {
     background-color: #f6f8fa;
   }
 `;

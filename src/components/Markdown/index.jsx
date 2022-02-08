@@ -2,13 +2,15 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import ReactMarkdown from "react-markdown";
-import RemarkMathPlugin from "remark-math";
-import RemarkGFMPlugin from "remark-gfm";
-import RemarkFrontmatterPlugin from "remark-frontmatter";
+import remarkMathPlugin from "remark-math";
+import remarkGFMPlugin from "remark-gfm";
+import remarkFrontmatterPlugin from "remark-frontmatter";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css"; // styling math symbols to look like latex
+
+import katexMacros from "./katexMacros";
 
 // This doesnt work for now, try again later
 // import rehypeMathjax from "rehype-mathjax";
@@ -84,12 +86,20 @@ const MarkdownFormatDiv = styled.div`
 
 const _mapProps = (props) => ({
   ...props,
-  plugins: [RemarkMathPlugin, RemarkGFMPlugin, RemarkFrontmatterPlugin],
+  remarkPlugins: [remarkMathPlugin, remarkGFMPlugin, remarkFrontmatterPlugin],
 
   // More rehype plugins https://github.com/rehypejs/rehype/blob/main/doc/plugins.md
   rehypePlugins: [
     ...(props.allowHTML ? [rehypeRaw, rehypeSanitize] : []),
-    rehypeKatex,
+    [
+      rehypeKatex,
+      {
+        // Input options from https://katex.org/docs/options.html
+        // Supported latex https://katex.org/docs/supported.html
+        // Macros with inputs: https://github.com/KaTeX/KaTeX/issues/2070#issuecomment-519833558
+        macros: katexMacros,
+      },
+    ],
     // ...(!props.mathJax ? [rehypeKatex] : [rehypeMathjax]),
   ],
   components: {

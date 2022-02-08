@@ -36,3 +36,7 @@ export const DivFlexCenterInside = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const DivMarginBottom = styled.div`
+  margin-bottom: 0.35em;
+`;

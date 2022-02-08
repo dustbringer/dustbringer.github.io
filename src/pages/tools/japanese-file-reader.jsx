@@ -168,7 +168,7 @@ function JapaneseFileReaderPage() {
         <Text>
           {fileContents.split(/(<hr><\/hr>|<Furigana.*?>)/).map((e, i) => {
             if (/<hr><\/hr>/.test(e)) {
-              return <Divider key={`${i}`} />;
+              return <Divider key={i} />;
             } else if (/<Furigana.*?>/.test(e)) {
               const attr = parseFurigana(e);
               return (
@@ -177,8 +177,8 @@ function JapaneseFileReaderPage() {
                   reading={attr.furi}
                   render={({ pairs }) => (
                     <ReactFuriWrapper lang="ja">
-                      {pairs.map(([furigana, text], index) => (
-                        <ReactFuriPair key={index}>
+                      {pairs.map(([furigana, text], i) => (
+                        <ReactFuriPair key={i}>
                           <ReactFuriFuri>{furigana}</ReactFuriFuri>
                           <ReactFuriText>{text}</ReactFuriText>
                         </ReactFuriPair>
