@@ -12,6 +12,8 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 
 import { DivRowSpaceBetween } from "./styled/Divs";
 
+import { currYear } from "../data/upToDate";
+
 const StyledAppBar = styled(AppBar)`
   position: absolute;
   bottom: 0;
@@ -72,7 +74,7 @@ function Footer() {
                   fontSize: "0.75rem",
                 }}
               >
-                Copyright &copy; 2021{" "}
+                Copyright &copy; {`${currYear} `}
                 <Link
                   href="https://github.com/dustbringer"
                   target="_blank"

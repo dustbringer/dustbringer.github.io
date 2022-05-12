@@ -4,8 +4,9 @@ import styled from "styled-components";
 
 import Typography from "@mui/material/Typography";
 import Link from "../components/Link";
-
 import Container from "../components/Container";
+
+import { currYear } from "../data/upToDate";
 
 function AboutPage() {
   // const history = useHistory();
@@ -20,7 +21,7 @@ function AboutPage() {
         <Typography variant="h4">About</Typography>
         <Typography variant="body2">
           Produced by{" "}
-          <Link href="https://github.com/dustbringer">dustbringer</Link>, 2021.
+          <Link href="https://github.com/dustbringer">dustbringer</Link>, {currYear}.
           Powered by <Link href="https://reactjs.org/">ReactJS</Link>.
         </Typography>
       </Container>

@@ -60,7 +60,9 @@ function MarkdownRendererPage() {
         </Typography>
         <Typography variant="body1" gutterBottom>
           Similar tool:{" "}
-          <Link href="https://arachnoid.com/latex/">arachnoid.com/latex</Link>.
+          <Link href="https://arachnoid.com/latex/">arachnoid.com/latex</Link>{" "}
+          and{" "}
+          <Link href="https://editor.codecogs.com/">editor.codecogs.com</Link>.
         </Typography>
 
         <DivMarginBottom>

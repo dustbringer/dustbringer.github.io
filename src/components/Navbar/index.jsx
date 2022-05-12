@@ -14,6 +14,8 @@ import FullList from "./FullList";
 import DropdownList from "./DropdownList";
 // import wombatIcon from "../img/flaticon-polar-bear.svg";
 
+import navLinks from "../../data/navLinks";
+
 const RESPONSIVE_WIDTH = "600px";
 
 // const styles = {
@@ -85,11 +87,6 @@ const ResponsiveDropdownList = styled(DropdownList)`
   }
 `;
 
-const links = [
-  { name: "Posts", path: "/posts" },
-  { name: "About", path: "/about" },
-];
-
 function Navbar() {
   return (
     <div>
@@ -109,8 +106,8 @@ function Navbar() {
                 </TitleTypography>
               </StyledDivRowSpaceBetween>
             </MyLink>
-            <ResponsiveFullList links={links} />
-            <ResponsiveDropdownList links={links} />
+            <ResponsiveFullList links={navLinks} />
+            <ResponsiveDropdownList links={navLinks} />
           </StyledContainer>
         </StyledToolbar>
       </AppBar>
