@@ -73,7 +73,7 @@ function FullList({ links, className }) {
   const location = useLocation();
 
   // Distance to align underline
-  const [underlineDist, setUnderlineDist] = React.useState(0);
+  const [underlineDist, setUnderlineDist] = React.useState(16);
 
   const listRef = React.useCallback((node) => {
     if (node !== null) {
