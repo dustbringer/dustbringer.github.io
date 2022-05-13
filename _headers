@@ -142,14 +142,6 @@
   Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-7030dd5fa3a8289a25ba.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/posts/2021-02-04-react-markdown-rendering/page-data.json>; rel=preload; as=fetch; crossorigin
-/posts/2021-11-27-git-prompt/
-  Link: </webpack-runtime-175a6e0f556afed9665c.js>; rel=preload; as=script
-  Link: </framework-c9b636d51fbd36d15ae5.js>; rel=preload; as=script
-  Link: </app-0705fc0ba5a2d880e069.js>; rel=preload; as=script
-  Link: </fc670f8f2ed9e40ed1fc68c8966a128188761ee6-d05ae3bffc23b3c2d75c.js>; rel=preload; as=script
-  Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-7030dd5fa3a8289a25ba.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/posts/2021-11-27-git-prompt/page-data.json>; rel=preload; as=fetch; crossorigin
 /posts/2021-09-15-lockpicking-foundations/
   Link: </webpack-runtime-175a6e0f556afed9665c.js>; rel=preload; as=script
   Link: </framework-c9b636d51fbd36d15ae5.js>; rel=preload; as=script
@@ -158,3 +150,11 @@
   Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-7030dd5fa3a8289a25ba.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/posts/2021-09-15-lockpicking-foundations/page-data.json>; rel=preload; as=fetch; crossorigin
+/posts/2021-11-27-git-prompt/
+  Link: </webpack-runtime-175a6e0f556afed9665c.js>; rel=preload; as=script
+  Link: </framework-c9b636d51fbd36d15ae5.js>; rel=preload; as=script
+  Link: </app-0705fc0ba5a2d880e069.js>; rel=preload; as=script
+  Link: </fc670f8f2ed9e40ed1fc68c8966a128188761ee6-d05ae3bffc23b3c2d75c.js>; rel=preload; as=script
+  Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-7030dd5fa3a8289a25ba.js>; rel=preload; as=script
+  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
+  Link: </page-data/posts/2021-11-27-git-prompt/page-data.json>; rel=preload; as=fetch; crossorigin
