@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
 // import TextField from "@mui/material/TextField";
 import TextField from "../../components/TextFieldPaddingFixed";
 
@@ -16,6 +17,7 @@ import Markdown, {
 import Link from "../../components/Link";
 import Accordion from "../../components/Accordion";
 import Code from "../../components/Markdown/Code";
+import HorizontalRule from "../../components/Markdown/HorizontalRule";
 import Table from "../../components/Markdown/Table";
 import THead from "../../components/Markdown/TableHead";
 import TR from "../../components/Markdown/TableRow";
@@ -30,6 +32,7 @@ const RenderedText = styled(Typography)`
 
 function MarkdownRendererPage() {
   const [text, _setText] = React.useState("");
+  const [renderScale, setRenderScale] = React.useState(1.4);
 
   const setText = (newText) => {
     sessionStorage.setItem("markdownRendererText", newText);
@@ -93,11 +96,21 @@ function MarkdownRendererPage() {
                 </TR>
               ))}
             </Table>
-
             <Typography variant="body2">
               Note: <Code inline>#n</Code> corresponds to the nth argument
               passed in by <Code inline>{"\\command{arg1}{arg2}..."}</Code>
             </Typography>
+            <HorizontalRule />
+            Rendered font size (in <Code inline>rem</Code>)
+            <Slider
+              value={renderScale}
+              onChange={(e) => setRenderScale(e.target.value)}
+              step={0.1}
+              marks
+              min={0.5}
+              max={3.0}
+              valueLabelDisplay="auto"
+            />
           </Accordion>
         </DivMarginBottom>
 
@@ -118,10 +131,16 @@ function MarkdownRendererPage() {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <RenderedText variant="body1" component="div">
+
+        {/* Rendered Text */}
+        <Typography
+          variant="body1"
+          component="div"
+          sx={{ fontSize: `${renderScale}rem` }}
+        >
           <MarkdownNoContents children={text} />
           {/* <Markdown children={text} /> */}
-        </RenderedText>
+        </Typography>
       </Container>
     </>
   );
