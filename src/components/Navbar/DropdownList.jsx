@@ -8,6 +8,10 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 
+import { LinkBare as InternalLink } from "../InternalLink";
+
+import { isSamePrefix } from "../../util/links";
+
 const StyledIconButton = styled(IconButton)`
   color: #cccccc;
   &:hover {
@@ -16,8 +20,8 @@ const StyledIconButton = styled(IconButton)`
 `;
 
 const StyledMenuItem = styled(MenuItem)`
-  border-left: 2px solid
-    ${(props) => (props.cur === props.to ? "#555555" : "transparent")};
+  ${(props) =>
+    isSamePrefix(props.cur, props.to) ? "border-left: 2px solid #555555" : ""};
 `;
 
 function DropdownList({ links, className }) {
@@ -51,19 +55,15 @@ function DropdownList({ links, className }) {
         onClose={closeMenu}
       >
         {links.map((link, i) => (
-          <StyledMenuItem
-            key={link.name + link.path}
-            cur={location.pathname}
-            to={link.path}
-            onClick={() => {
-              closeMenu();
-              link.path !== location.pathname && navigate(link.path);
-              // USE history.go(0) if we want reload when same path
-              // (currently it is same as FullList)
-            }}
-          >
-            {link.name}
-          </StyledMenuItem>
+          <InternalLink key={link.name + link.path} to={link.path}>
+            <StyledMenuItem
+              cur={location.pathname}
+              to={link.path}
+              onClick={() => closeMenu()}
+            >
+              {link.name}
+            </StyledMenuItem>
+          </InternalLink>
         ))}
       </Menu>
     </div>

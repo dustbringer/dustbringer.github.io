@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 // import { styled } from "@mui/material/styles";
+import { useMediaQuery } from "react-responsive";
 
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
@@ -16,7 +17,7 @@ import DropdownList from "./DropdownList";
 
 import navLinks from "../../data/navLinks";
 
-const RESPONSIVE_WIDTH = "600px";
+const RESPONSIVE_WIDTH = "700px";
 
 // const styles = {
 //   icon: {
@@ -74,20 +75,11 @@ const StyledDivRowSpaceBetween = styled(DivRowSpaceBetween)`
   height: 100%;
 `;
 
-const ResponsiveFullList = styled(FullList)`
-  @media (max-width: ${RESPONSIVE_WIDTH}) {
-    display: none;
-  }
-`;
-
-const ResponsiveDropdownList = styled(DropdownList)`
-  display: none;
-  @media (max-width: ${RESPONSIVE_WIDTH}) {
-    display: block;
-  }
-`;
-
 function Navbar() {
+  const isMobile = useMediaQuery({
+    query: `(max-width: ${RESPONSIVE_WIDTH})`,
+  });
+
   return (
     <div>
       <AppBar position="static" color="transparent" elevation={0}>
@@ -106,8 +98,11 @@ function Navbar() {
                 </TitleTypography>
               </StyledDivRowSpaceBetween>
             </MyLink>
-            <ResponsiveFullList links={navLinks} />
-            <ResponsiveDropdownList links={navLinks} />
+            {isMobile ? (
+              <DropdownList links={navLinks} />
+            ) : (
+              <FullList links={navLinks} />
+            )}
           </StyledContainer>
         </StyledToolbar>
       </AppBar>

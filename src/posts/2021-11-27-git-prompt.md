@@ -10,7 +10,7 @@ tags:
 ---
 
 # `git-prompt.sh`
-> Allows you to see repository status in your prompt.
+> Allows you to see repository status in your command prompt.
 
 The script can be found [here](https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh).
 

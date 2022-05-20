@@ -27,6 +27,15 @@ const NoStyleLink = styled(GatsbyLink)`
   font-weight: normal;
   color: ${theme.palette.primary.main};
   text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
 `;
 
 export function LinkBare(props) {

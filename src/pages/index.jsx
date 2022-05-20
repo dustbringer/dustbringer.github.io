@@ -10,7 +10,6 @@ import Button from "@mui/material/Button";
 import Container from "../components/Container";
 import InternalLink from "../components/InternalLink";
 import CardSmall from "../components/CardSmall";
-import { DivMarginCenterH } from "../components/styled/Divs";
 
 import ProfileBird from "../images/profile-bird-md.jpg";
 

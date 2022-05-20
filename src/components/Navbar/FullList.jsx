@@ -2,7 +2,8 @@ import React from "react";
 import { Link, navigate } from "gatsby";
 import { useLocation } from "@reach/router";
 // import { Link } from "gatsby-theme-material-ui";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { isSamePrefix } from "../../util/links";
 
 const NavLinkList = styled.ul`
   list-style-type: none;
@@ -18,7 +19,6 @@ const NavLinkList = styled.ul`
 
 const MyLink = styled(Link)`
   text-decoration: none;
-  color: white;
   font-family: "Open Sans";
 
   &:focus,
@@ -58,17 +58,6 @@ const Underline = styled.div`
   background-color: #424242;
 `;
 
-const isSameLink = (l1, l2) =>
-  l1 && l2 && l1.replace(/^\/+|\/+$/g, "") === l2.replace(/^\/+|\/+$/g, "");
-
-/**
- * NOTE: We use `replace={path === location.pathname}` on links to
- *       avoid HashRouter warning.
- *
- * Couldn't be bothered to implement 'reload if link to same page',
- * since the website is more or less static
- */
-
 function FullList({ links, className }) {
   const location = useLocation();
 
@@ -89,7 +78,7 @@ function FullList({ links, className }) {
         <li key={link.name + link.path}>
           <NavLink to={link.path}>{link.name}</NavLink>
           <Underline
-            show={isSameLink(location.pathname, link.path)}
+            show={isSamePrefix(location.pathname, link.path)}
             dist={underlineDist}
           />
         </li>
