@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { navigate } from "gatsby";
 import moment from "moment";
 
 import Chip from "@mui/material/Chip";
@@ -30,7 +29,7 @@ function BlogListCard({ name, title, description, date, tags, path }) {
   return (
     <Card sx={styles.root} variant="outlined">
       <InternalLink to={path}>
-        <CardActionArea onClick={() => console.log(path)} title={`${name}.md`}>
+        <CardActionArea title={`${name}.md`}>
           <CardContent>
             <Box sx={{ marginBottom: 1 }}>
               <Typography variant="h5" component="h5" display="inline">
