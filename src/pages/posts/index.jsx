@@ -1,4 +1,3 @@
-// For serving markdown files
 import React from "react";
 import { Link, navigate, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
@@ -13,16 +12,14 @@ import Container from "../../components/Container";
 import BlogListCard from "../../components/BlogListCard";
 import PageNavigation from "../../components/PageNavigation";
 
+import { N_PER_PAGE, getPage } from "../../util/pagination";
+
 // HELPFUL https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
 // In gatsby: https://www.gatsbyjs.com/blog/2017-07-19-creating-a-blog-with-gatsby/
 
-const PostsList = styled.div`
+const ListContainer = styled.div`
   min-height: 75vh;
 `;
-
-const N_PER_PAGE = 6;
-const getPage = (list, page, nPerPage) =>
-  list.slice(nPerPage * (page - 1), nPerPage * page).map((e) => e.node);
 
 function BlogListPage({ location, data }) {
   const { edges: posts } = data.allMarkdownRemark;
@@ -40,7 +37,7 @@ function BlogListPage({ location, data }) {
       queryPage > 0 &&
       queryPage <= Math.ceil(posts.length / N_PER_PAGE)
     ) {
-      setPage(queryPage);
+      setPage(parseInt(queryPage, 10));
     }
   }, [location.search, posts.length]);
 
@@ -55,9 +52,9 @@ function BlogListPage({ location, data }) {
         <div>
           {posts.length > 0 ? (
             <>
-              <PostsList>
-                {getPage(posts, page, N_PER_PAGE).map((post, i) => {
-                  const { id, path, frontmatter: meta } = post;
+              <ListContainer>
+                {getPage(posts, page, N_PER_PAGE).map((e, i) => {
+                  const { id, path, frontmatter: meta } = e.node;
                   return (
                     <BlogListCard
                       key={`${i}-${id}`}
@@ -70,7 +67,7 @@ function BlogListPage({ location, data }) {
                     />
                   );
                 })}
-              </PostsList>
+              </ListContainer>
               <PageNavigation
                 text={page}
                 onPrev={() =>

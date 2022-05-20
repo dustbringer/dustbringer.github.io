@@ -1,7 +1,7 @@
 ---
 slug: "/posts/2021-09-15-lockpicking-foundations"
 title: Lockpicking Foundations
-description: Notes for UNSW secsoc talk about lockpicking
+description: UNSW SecSoc talk about lockpicking
 author: dustbringer
 date: 2021-09-15
 tags:

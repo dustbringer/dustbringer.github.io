@@ -9,15 +9,43 @@ import Button from "@mui/material/Button";
 
 import Container from "../components/Container";
 import InternalLink from "../components/InternalLink";
+import CardSmall from "../components/CardSmall";
 import { DivMarginCenterH } from "../components/styled/Divs";
 
 import ProfileBird from "../images/profile-bird-md.jpg";
 
 const CircleImage = styled.img`
   border-radius: 50%;
-  width: 40%;
+  width: 35%;
   height: auto;
   margin: 3vh auto;
+`;
+
+const quickLinks = [
+  {
+    type: "Tool",
+    title: "Markdown Renderer",
+    description: "Online renderer for Markdown and LaTeX",
+    path: "/tools/markdown-renderer",
+  },
+  {
+    type: "Tool",
+    title: "Duplicate Remover",
+    description: "Remove duplicate items from a list",
+    path: "/tools/duplicate-remover",
+  },
+  {
+    type: "Post",
+    title: "Lockpicking Foundations",
+    description: "Writeup of my UNSW SecSoc talk",
+    path: "/posts/2021-09-15-lockpicking-foundations",
+  },
+];
+
+const QuickLinkContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 `;
 
 function HomePage() {
@@ -48,7 +76,7 @@ function HomePage() {
           <InternalLink to="/resume">Resume</InternalLink> to learn more about
           me. You'll also find a handful of blog posts in{" "}
           <InternalLink to="/posts">Posts</InternalLink>, and various
-          paraphernalia in <InternalLink to="/posts">Tools</InternalLink>. There
+          paraphernalia in <InternalLink to="/tools">Tools</InternalLink>. There
           is much to see so enjoy your stay!
         </Typography>
 
@@ -56,38 +84,18 @@ function HomePage() {
           Quick Links
         </Typography>
 
-        <Typography variant="body1" component="div" gutterBottom>
-          <ul>
-            <li>
-              Tools
-              <ul>
-                <li>
-                  <InternalLink to="/tools/markdown-renderer">
-                    Markdown Renderer
-                  </InternalLink>
-                </li>
+        <QuickLinkContainer>
+          {quickLinks.map((l, i) => (
+            <CardSmall
+              key={`${i}-${l.title}`}
+              type={l.type}
+              title={l.title}
+              description={l.description}
+              path={l.path}
+            />
+          ))}
+        </QuickLinkContainer>
 
-                <li>
-                  <InternalLink to="/tools/syncshack2021-image-viewer">
-                    Image Viewer from list of links
-                  </InternalLink>
-                </li>
-
-                <li>
-                  <InternalLink to="/tools/duplicate-remover">
-                    Duplicate Remover
-                  </InternalLink>
-                </li>
-
-                <li>
-                  <InternalLink to="/tools/japanese-file-reader">
-                    Japanese file reader
-                  </InternalLink>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </Typography>
         {/* <GlobalContext.Consumer>
           {(value) => (
             <>
