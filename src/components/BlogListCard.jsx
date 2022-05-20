@@ -15,7 +15,11 @@ const styles = {
   root: {
     textAlign: "left",
     margin: "10px",
-    backgroundColor: "#fafafa",
+    backgroundColor: "#fdfdfd",
+    transition: "border-color 0.25s",
+    "&:hover": {
+      borderColor: "secondary.main",
+    },
   },
   media: {
     height: 140,

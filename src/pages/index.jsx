@@ -15,9 +15,9 @@ import ProfileBird from "../images/profile-bird-md.jpg";
 
 const CircleImage = styled.img`
   border-radius: 50%;
-  width: 35%;
+  width: 25%;
   height: auto;
-  margin: 3vh auto;
+  margin: 0 auto 2rem;
 `;
 
 const quickLinks = [
@@ -54,14 +54,14 @@ function HomePage() {
         <title>Home - dustbringer.github.io</title>
         <meta name="description" content="Home Page" />
       </Helmet>
-      <Container maxWidth="md">
+      <Container maxWidth="md" sx={{ paddingTop: "6vh" }}>
         <CircleImage
           src={ProfileBird}
           alt="Profile Bird"
           height="476"
           width="476"
         />
-        <Typography variant="h3" align="center">
+        <Typography variant="h3" align="center" gutterBottom>
           Victor Zhang
         </Typography>
         <Typography variant="body2" align="center" sx={{ marginBottom: "2em" }}>
@@ -70,13 +70,13 @@ function HomePage() {
 
         <Typography variant="body1" align="center" sx={{ marginBottom: "2em" }}>
           Welcome to my website! Have a look around and you'll find a variety of
-          sentences, tools and pictures I've made. Head to{" "}
+          sentences, tools and pictures I've made. You'll find a handful of blog
+          posts in <InternalLink to="/posts">Posts</InternalLink>, and various
+          paraphernalia in <InternalLink to="/tools">Tools</InternalLink>. To
+          learn more about me, head to{" "}
           <InternalLink to="/about">About</InternalLink> and{" "}
-          <InternalLink to="/resume">Resume</InternalLink> to learn more about
-          me. You'll also find a handful of blog posts in{" "}
-          <InternalLink to="/posts">Posts</InternalLink>, and various
-          paraphernalia in <InternalLink to="/tools">Tools</InternalLink>. There
-          is much to see so enjoy your stay!
+          <InternalLink to="/resume">Resume</InternalLink>. There is much to
+          see, so enjoy your stay!
         </Typography>
 
         <Typography variant="h5" align="center" gutterBottom>

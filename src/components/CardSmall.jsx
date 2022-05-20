@@ -14,9 +14,13 @@ const styles = {
   root: {
     textAlign: "left",
     margin: "10px",
-    backgroundColor: "#fafafa",
+    backgroundColor: "#fdfdfd",
     width: "200px",
     height: "160px",
+    transition: "border-color 0.25s",
+    "&:hover": {
+      borderColor: "secondary.main",
+    },
   },
 };
 
