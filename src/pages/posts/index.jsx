@@ -48,7 +48,9 @@ function BlogListPage({ location, data }) {
         <meta name="description" content="List of blog posts" />
       </Helmet>
       <Container maxWidth="md">
-        <Typography variant="h4">Posts</Typography>
+        <Typography variant="h4" gutterBottom>
+          Posts
+        </Typography>
         <div>
           {posts.length > 0 ? (
             <>

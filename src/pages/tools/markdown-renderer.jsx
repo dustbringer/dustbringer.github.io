@@ -62,7 +62,7 @@ function MarkdownRendererPage() {
           Note for block math, put new lines between the delimiters and LaTeX.
         </Typography>
         <Typography variant="body1" gutterBottom>
-          Similar tool:{" "}
+          Similar tools:{" "}
           <Link href="https://arachnoid.com/latex/">arachnoid.com/latex</Link>{" "}
           and{" "}
           <Link href="https://editor.codecogs.com/">editor.codecogs.com</Link>.

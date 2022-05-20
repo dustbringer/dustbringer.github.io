@@ -18,11 +18,11 @@ function AboutPage() {
         <meta name="description" content="About Page" />
       </Helmet>
       <Container maxWidth="md">
-        <Typography variant="h4">About</Typography>
-        <Typography variant="body2">
-          Produced by{" "}
-          <Link href="https://github.com/dustbringer">dustbringer</Link>, {currYear}.
-          Powered by <Link href="https://reactjs.org/">ReactJS</Link>.
+        <Typography variant="h4" gutterBottom>
+          About
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          This page is under construction, it will be filled soon...
         </Typography>
       </Container>
     </>

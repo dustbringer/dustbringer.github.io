@@ -21,7 +21,10 @@ function ResumePage() {
         <meta name="description" content="Resume Page" />
       </Helmet>
       <Container maxWidth="md">
-        <Typography>Congrats. You found some stuff about me:</Typography>
+        <Typography>
+          This page is currently under construction, here is a old PDF version of my resume
+          in the meantime...
+        </Typography>
         {/* Copied from Canva embed */}
         <div
           style={{

@@ -71,7 +71,13 @@ function ToolListPage({ location }) {
         <meta name="description" content="List of tools" />
       </Helmet>
       <Container maxWidth="md">
-        <Typography variant="h4">Tools</Typography>
+        <Typography variant="h4" gutterBottom>
+          Tools
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          A bunch of online tools that I made and use myself, available for your
+          convenience...
+        </Typography>
         <div>
           {tools.length > 0 ? (
             <>
