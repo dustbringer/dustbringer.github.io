@@ -10,6 +10,8 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
+import { LinkBare as InternalLink } from "./InternalLink";
+
 const styles = {
   root: {
     textAlign: "left",
@@ -27,29 +29,33 @@ const styles = {
 function BlogListCard({ name, title, description, date, tags, path }) {
   return (
     <Card sx={styles.root} variant="outlined">
-      <CardActionArea onClick={() => navigate(path)} title={`${name}.md`}>
-        <CardContent>
-          <Box sx={{ marginBottom: 1 }}>
-            <Typography variant="h5" component="h5" display="inline">
-              {title ? title : "Unknown Title"}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="i">
-              {" "}
-              {date && moment(date).isValid()
-                ? moment(date).format("YYYY-MM-DD")
-                : "Unknown Date"}
-            </Typography>
+      <InternalLink to={path}>
+        <CardActionArea onClick={() => console.log(path)} title={`${name}.md`}>
+          <CardContent>
+            <Box sx={{ marginBottom: 1 }}>
+              <Typography variant="h5" component="h5" display="inline">
+                {title ? title : "Unknown Title"}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="i">
+                {" "}
+                {date && moment(date).isValid()
+                  ? moment(date).format("YYYY-MM-DD")
+                  : "Unknown Date"}
+              </Typography>
 
-            <Typography variant="body2" component="p">
-              {description}
-            </Typography>
-          </Box>
-          {tags &&
-            tags.map((tag, i) => {
-              return <Chip key={i} sx={styles.tag} size="small" label={tag} />;
-            })}
-        </CardContent>
-      </CardActionArea>
+              <Typography variant="body2" component="p">
+                {description}
+              </Typography>
+            </Box>
+            {tags &&
+              tags.map((tag, i) => {
+                return (
+                  <Chip key={i} sx={styles.tag} size="small" label={tag} />
+                );
+              })}
+          </CardContent>
+        </CardActionArea>
+      </InternalLink>
     </Card>
   );
 }

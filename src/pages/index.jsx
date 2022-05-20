@@ -41,7 +41,7 @@ function HomePage() {
           Mathematics enthusiast and Software developer
         </Typography>
 
-        <Typography variant="body1" align="center" gutterBottom>
+        <Typography variant="body1" align="center" sx={{ marginBottom: "2em" }}>
           Welcome to my website! Have a look around and you'll find a variety of
           sentences, tools and pictures I've made. Head to{" "}
           <InternalLink to="/about">About</InternalLink> and{" "}
@@ -49,10 +49,10 @@ function HomePage() {
           me. You'll also find a handful of blog posts in{" "}
           <InternalLink to="/posts">Posts</InternalLink>, and various
           paraphernalia in <InternalLink to="/posts">Tools</InternalLink>. There
-          is so much to see so enjoy your stay!
+          is much to see so enjoy your stay!
         </Typography>
 
-        <Typography variant="h5" align="center" sx={{ margin: "1em 0" }}>
+        <Typography variant="h5" align="center" gutterBottom>
           Quick Links
         </Typography>
 
