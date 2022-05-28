@@ -5,13 +5,15 @@ import TextField from "@mui/material/TextField";
 function TextFieldPaddingFixed(props) {
   return (
     <TextField
-      InputProps={{
-        style: {
-          position: "relative",
-          borderRadius: "4px",
-          padding: "8.5px 14px",
-        },
-      }}
+      InputProps={
+        props.multiline && {
+          style: {
+            position: "relative",
+            borderRadius: "4px",
+            padding: "8.5px 14px",
+          },
+        }
+      }
       {...props}
     />
   );

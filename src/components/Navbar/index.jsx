@@ -75,6 +75,19 @@ const StyledDivRowSpaceBetween = styled(DivRowSpaceBetween)`
   height: 100%;
 `;
 
+const ResponsiveFullList = styled(FullList)`
+  @media (max-width: ${RESPONSIVE_WIDTH}) {
+    display: none;
+  }
+`;
+
+const ResponsiveDropdownList = styled(DropdownList)`
+  display: none;
+  @media (max-width: ${RESPONSIVE_WIDTH}) {
+    display: block;
+  }
+`;
+
 function Navbar() {
   const isMobile = useMediaQuery({
     query: `(max-width: ${RESPONSIVE_WIDTH})`,
@@ -98,11 +111,15 @@ function Navbar() {
                 </TitleTypography>
               </StyledDivRowSpaceBetween>
             </MyLink>
-            {isMobile ? (
+
+            {/* {isMobile ? (
               <DropdownList links={navLinks} />
             ) : (
               <FullList links={navLinks} />
-            )}
+            )} */}
+
+            <ResponsiveFullList links={navLinks} />
+            <ResponsiveDropdownList links={navLinks} />
           </StyledContainer>
         </StyledToolbar>
       </AppBar>
