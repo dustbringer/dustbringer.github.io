@@ -10,7 +10,7 @@ const StyledLi = styled.li`
         content: none;
       }
       margin-left: -40px;
-    `};
+    `}
 `;
 
 function ListItem(props) {

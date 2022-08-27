@@ -5,7 +5,8 @@
 export default {
   "\\op": "\\operatorname{#1}",
   "\\vec": "\\mathbf{#1}",
-  "\\norm": "\\left\\lVert #1 \\right\\rVert",
-  "\\inner": "\\left\\langle #1 \\right\\rangle",
+  "\\norm": "{\\left\\lVert #1 \\right\\rVert}",
+  "\\angl": "{\\left\\langle #1 \\right\\rangle}",
+  "\\ol": "\\overline{#1}",
   "\\ep": "\\varepsilon",
 };
