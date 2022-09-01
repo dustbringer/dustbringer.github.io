@@ -65,7 +65,13 @@ function FullList({ links, className }) {
   const [underlineDist, setUnderlineDist] = React.useState(16);
 
   const listRef = React.useCallback((node) => {
-    if (node !== null) {
+    if (
+      node !== null &&
+      node.offsetParent !== null &&
+      node.offsetParent.offsetHeight !== null &&
+      node.offsetTop !== null &&
+      node.offsetHeight !== null
+    ) {
       setUnderlineDist(
         node.offsetParent.offsetHeight - node.offsetTop - node.offsetHeight
       );
