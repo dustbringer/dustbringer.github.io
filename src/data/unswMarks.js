@@ -2,6 +2,18 @@ const unswMarks = {
   wam: 92.875,
   courses: [
     {
+      name: "Functional Analysis",
+      code: "COMP5605",
+      mark: 99,
+      term: "2022T2",
+    },
+    {
+      name: "Algebraic Geometry (Special Topics (Pure Maths) C)",
+      code: "COMP5535",
+      mark: 86,
+      term: "2022T2",
+    },
+    {
       name: "Theory of Computation",
       code: "COMP4141",
       mark: 99,
