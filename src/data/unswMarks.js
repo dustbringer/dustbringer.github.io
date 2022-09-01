@@ -1,5 +1,5 @@
 const unswMarks = {
-  wam: 92.875,
+  wam: 92.857,
   courses: [
     {
       name: "Functional Analysis",
