@@ -43,6 +43,12 @@ const tools = [
       "View images from a JSON list of links. Written during Syncs Hack 2021 to help manually filter collected images.",
     path: "/tools/syncshack2021-image-viewer",
   },
+  {
+    title: "VTT Extractor",
+    description:
+      "Extracts the subtitle text from VTT files.",
+    path: "/tools/vtt-extractor",
+  },
 ];
 
 function ToolListPage({ location }) {
