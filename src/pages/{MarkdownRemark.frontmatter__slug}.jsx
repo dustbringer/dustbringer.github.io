@@ -92,6 +92,7 @@ function PostTemplate({ data, location }) {
       th: TableCellHeader,
       td: TableCellData,
       thead: TableHead,
+      // tbody unused
       tr: TableRow,
     },
   }).Compiler;

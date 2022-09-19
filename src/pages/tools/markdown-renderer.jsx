@@ -20,6 +20,7 @@ import Code from "../../components/Markdown/Code";
 import HorizontalRule from "../../components/Markdown/HorizontalRule";
 import Table from "../../components/Markdown/Table";
 import THead from "../../components/Markdown/TableHead";
+import TBody from "../../components/Markdown/TableBody";
 import TR from "../../components/Markdown/TableRow";
 import TH from "../../components/Markdown/TableHeaderCell";
 import TD from "../../components/Markdown/TableDataCell";
@@ -82,19 +83,23 @@ function MarkdownRendererPage() {
             <Typography variant="body2">Predefined macros:</Typography>
             <Table>
               <THead>
-                <TH>Macro</TH>
-                <TH>Expansion</TH>
-              </THead>
-              {Object.keys(katexMacros).map((k, i) => (
-                <TR key={i}>
-                  <TD>
-                    <Code inline>{k}</Code>
-                  </TD>
-                  <TD>
-                    <Code inline>{katexMacros[k]}</Code>
-                  </TD>
+                <TR>
+                  <TH>Macro</TH>
+                  <TH>Expansion</TH>
                 </TR>
-              ))}
+              </THead>
+              <TBody>
+                {Object.keys(katexMacros).map((k, i) => (
+                  <TR key={i}>
+                    <TD>
+                      <Code inline>{k}</Code>
+                    </TD>
+                    <TD>
+                      <Code inline>{katexMacros[k]}</Code>
+                    </TD>
+                  </TR>
+                ))}
+              </TBody>
             </Table>
             <Typography variant="body2">
               Note: <Code inline>#n</Code> corresponds to the nth argument

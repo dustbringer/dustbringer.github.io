@@ -35,6 +35,7 @@ import ImageRenderer from "./Image";
 import LinkRenderer from "./Link";
 import TableRenderer from "./Table";
 import TableHeadRenderer from "./TableHead";
+import TableBodyRenderer from "./TableBody";
 import TableRowRenderer from "./TableRow";
 import TableHeaderCellRenderer from "./TableHeaderCell";
 import TableDataCellRenderer from "./TableDataCell";
@@ -119,6 +120,7 @@ const _mapProps = (props) => ({
     a: LinkRenderer,
     table: TableRenderer,
     thead: TableHeadRenderer,
+    // tbody: TableBodyRenderer,
     tr: TableRowRenderer,
     td: TableDataCellRenderer,
     th: TableHeaderCellRenderer,

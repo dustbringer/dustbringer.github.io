@@ -49,6 +49,12 @@ const tools = [
       "Extracts the subtitle text from VTT files.",
     path: "/tools/vtt-extractor",
   },
+  {
+    title: "Lyric Slides",
+    description:
+      "Shows lyrics with slides.",
+    path: "/tools/lyric-slides",
+  },
 ];
 
 function ToolListPage({ location }) {

@@ -15,6 +15,7 @@ import Container from "../../components/Container";
 import ListItem from "../../components/gatsbyMdRenderers/ListItem";
 import Table from "../../components/Markdown/Table";
 import THead from "../../components/Markdown/TableHead";
+import TBody from "../../components/Markdown/TableBody";
 import TR from "../../components/Markdown/TableRow";
 import TH from "../../components/Markdown/TableHeaderCell";
 import TD from "../../components/Markdown/TableDataCell";
@@ -60,7 +61,7 @@ const rgx = [
   },
 ];
 
-function ImageViewerPage() {
+function VTTExtractorPage() {
   const context = React.useContext(GlobalContext);
   // const { showError, showSuccess } = context || {
   //   // Default values if context is null
@@ -90,7 +91,7 @@ function ImageViewerPage() {
 
         <DivMarginBottom>
           <Accordion title="Details">
-            <Typography variant="body2" gutterBottom>
+            <Typography variant="body2" component="span" gutterBottom>
               Input Assumptions:
               <ul>
                 <ListItem>Formatted in VTT</ListItem>
@@ -107,21 +108,25 @@ function ImageViewerPage() {
             </Typography>
             <Table>
               <THead>
-                <TH>Number</TH>
-                <TH>Regular Expression</TH>
-                <TH>Replace</TH>
-              </THead>
-              {rgx.map((e, i) => (
-                <TR key={i}>
-                  <TD>{i}</TD>
-                  <TD>
-                    <Code inline>{`/${e.p}/${e.f}`}</Code>
-                  </TD>
-                  <TD>
-                    <Code inline>{JSON.stringify(`${e.r}`)}</Code>
-                  </TD>
+                <TR>
+                  <TH>Number</TH>
+                  <TH>Regular Expression</TH>
+                  <TH>Replace</TH>
                 </TR>
-              ))}
+              </THead>
+              <TBody>
+                {rgx.map((e, i) => (
+                  <TR key={i}>
+                    <TD>{i}</TD>
+                    <TD>
+                      <Code inline>{`/${e.p}/${e.f}`}</Code>
+                    </TD>
+                    <TD>
+                      <Code inline>{JSON.stringify(`${e.r}`)}</Code>
+                    </TD>
+                  </TR>
+                ))}
+              </TBody>
             </Table>
             Explanation
             <ol start="0">
@@ -204,4 +209,4 @@ function ImageViewerPage() {
   );
 }
 
-export default ImageViewerPage;
+export default VTTExtractorPage;
