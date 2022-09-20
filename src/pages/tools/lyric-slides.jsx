@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { Helmet } from "react-helmet";
 // import { NewWindow } from "react-window-open";
 // import { ReactNewWindowStyles } from "react-new-window-styles";
@@ -55,6 +55,10 @@ function LyricSlidesPage() {
     showError: () => {},
     showSuccess: () => {},
   };
+
+  // Access new window through a ref
+  // https://github.com/rmariuzzo/react-new-window/issues/34#issuecomment-651939230
+  const popupRef = React.useRef(null);
   const [text, setText] = React.useState("");
   const [slideText, setSlideText] = React.useState([""]);
   const [showSlides, setShowSlides] = React.useState(false);
@@ -80,15 +84,16 @@ function LyricSlidesPage() {
   });
 
   React.useEffect(() => {
-    // attach the event listener
+    // Attach keyboard event listener
     document.addEventListener("keydown", handleKeyPress);
 
-    // remove the event listener
+    // Remove keyboard event listener
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
     };
   }, [handleKeyPress]);
 
+  // Update slides with choice of how to split input
   const updateSlides = () => {
     switch (splitType) {
       case "whitespace":
@@ -127,6 +132,31 @@ function LyricSlidesPage() {
       showSuccess("Slides opened in new window.");
       setPage(0);
     }
+  };
+
+  // New Window
+  React.useEffect(() => {
+    if (popupRef.current) {
+      // Attach keyboard event listener
+      popupRef.current.window.document.addEventListener(
+        "keydown",
+        handleKeyPress
+      );
+    }
+
+    // Remove keyboard event listener
+    return () => {
+      if (popupRef.current) {
+        popupRef.current.window.document.removeEventListener(
+          "keydown",
+          handleKeyPress
+        );
+      }
+    };
+  }, [showSlides, handleKeyPress]);
+
+  const onNewWindowUnload = () => {
+    setShowSlides(false);
   };
 
   return (
@@ -249,7 +279,7 @@ function LyricSlidesPage() {
         </Box>
         {/* Using window.open (react-new-window and react-popout do not work with gatsby) */}
         {showSlides && (
-          <NewWindow onUnload={() => setShowSlides(false)}>
+          <NewWindow ref={popupRef} onUnload={onNewWindowUnload}>
             <LyricsContainer
               renderScale={renderScale}
               dark={darkMode}
