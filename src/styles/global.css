@@ -50,6 +50,10 @@ body {
   margin: 0;
 }
 
+.katex {
+  font-size: 1.25em;
+}
+
 /* #root {
   position: relative;
   min-height: 100vh;

@@ -4,10 +4,12 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Alerts from "../components/Alerts";
 
+import "katex/dist/katex.min.css"; // styling math symbols to look like latex
+
 const DivRoot = styled.div`
   position: relative;
   min-height: 100vh;
-  font-size: 14px;
+  font-size: 16px;
 `;
 
 const DivContent = styled.div`

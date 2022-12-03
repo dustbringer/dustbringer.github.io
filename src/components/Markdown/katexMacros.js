@@ -2,7 +2,8 @@
 // Supported latex https://katex.org/docs/supported.html
 // Macros with inputs: https://github.com/KaTeX/KaTeX/issues/2070#issuecomment-519833558
 
-export default {
+// Using old style so that it can be imported into gatsby-config.js
+module.exports = {
   "\\op": "\\operatorname{#1}",
   "\\vec": "\\mathbf{#1}",
   "\\norm": "{\\left\\lVert #1 \\right\\rVert}",

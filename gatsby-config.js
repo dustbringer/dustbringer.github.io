@@ -1,3 +1,5 @@
+const katex_macros = require("./src/components/Markdown/katexMacros.js");
+
 module.exports = {
   siteMetadata: {
     siteUrl: "https://dustbringer.github.io",
@@ -82,6 +84,7 @@ module.exports = {
             resolve: `gatsby-remark-katex`,
             options: {
               // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
+              macros: katex_macros,
               strict: `ignore`,
             },
           },

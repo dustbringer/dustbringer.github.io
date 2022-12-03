@@ -9,6 +9,7 @@ const CenterDiv = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 10px 0;
 `;
 
 function Image(props) {
