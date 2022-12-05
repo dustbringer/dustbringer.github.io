@@ -1,6 +1,6 @@
 ---
 slug: "/posts/2022-12-03-polya-enumeration"
-title: How many ways can we place things in circle?
+title: Counting circular arrangements of objects
 description: Exploration of counting using Polya's Enumeration Theorem.
 author: dustbringer
 date: 2022-12-03
@@ -9,7 +9,7 @@ tags:
     - group theory
 ---
 
-# How many ways can we place things in circle?
+# Counting circular arrangements of objects
 
 In high-school mathematics you probably have come across the term *combinatorics*, and learnt about counting the number of ways you can arrange some objects in a particular fashion. To arrange $n$ (distinct) objects in a line, there are $n! = n(n-1) \dots 2 \times 1$ possible permutations of these objects. If there are repeated objects, we divide by the permutation of the identical objects. For example arranging the letters of $BALLOON$ in a line, the letters $L$ and $O$ both repeat twice, so there are $\frac{7!}{2!2!}$ permutations. When arranging $n$ (distinct) objects in a circle, we can rotate any arrangement and think of it as the same arrangement. So we arrange the items and divide by the number of different rotations to remove the overcounted arrangements, $n!/n = (n-1)!$.
 
