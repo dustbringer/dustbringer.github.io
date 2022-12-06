@@ -35,9 +35,9 @@ const quickLinks = [
   },
   {
     type: "Post",
-    title: "Lockpicking Foundations",
-    description: "Writeup of my UNSW SecSoc talk",
-    path: "/posts/2021-09-15-lockpicking-foundations",
+    title: "Circular arrangements",
+    description: "Counting using group theory",
+    path: "/posts/2022-12-03-polya-enumeration",
   },
 ];
 

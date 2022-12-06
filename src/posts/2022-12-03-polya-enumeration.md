@@ -1,7 +1,7 @@
 ---
 slug: "/posts/2022-12-03-polya-enumeration"
 title: Counting circular arrangements of objects
-description: Exploration of counting using group theory.
+description: An exploration of counting using group theory.
 author: dustbringer
 date: 2022-12-03
 tags:
