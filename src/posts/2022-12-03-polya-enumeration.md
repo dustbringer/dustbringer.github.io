@@ -1,7 +1,7 @@
 ---
 slug: "/posts/2022-12-03-polya-enumeration"
 title: Counting circular arrangements of objects
-description: Exploration of counting using Polya's Enumeration Theorem.
+description: Exploration of counting using group theory.
 author: dustbringer
 date: 2022-12-03
 tags:
@@ -11,27 +11,29 @@ tags:
 
 # Counting circular arrangements of objects
 
-In high-school mathematics you probably have come across the term *combinatorics*, and learnt about counting the number of ways you can arrange some objects in a particular fashion. To arrange $n$ (distinct) objects in a line, there are $n! = n(n-1) \dots 2 \times 1$ possible permutations of these objects. If there are repeated objects, we divide by the permutation of the identical objects. For example arranging the letters of $BALLOON$ in a line, the letters $L$ and $O$ both repeat twice, so there are $\frac{7!}{2!2!}$ permutations. When arranging $n$ (distinct) objects in a circle, we can rotate any arrangement and think of it as the same arrangement. So we arrange the items and divide by the number of different rotations to remove the overcounted arrangements, $n!/n = (n-1)!$.
+In high-school mathematics you've probably come across the term *combinatorics*. In its most basic form, combinatorics is about counting the number of ways you can arrange some objects in a particular fashion. For example, to arrange $n$ (distinct) objects in a line, there are $n! = n(n-1) \dots 2 \times 1$ possible permutations. If there are repeated objects, we divide by the permutations of the identical objects. For example arranging the letters of $BALLOON$ in a line, the letters $L$ and $O$ both repeat twice, so there are $\frac{7!}{2!2!}$ permutations. On the other hand, if we wanted to arrange $n$ (distinct) objects in a *circle*, each arrangement can be rotated and it is considered "identical". So we arrange the items in a line and divide by the number of different rotations of these objects (to remove the overcounted arrangements) $n!/n = (n-1)!$.
 
-What happens when we combine these ideas together, taking $n$ objects with some possibly identical and arranging them in a circle? For an easy example, say we want to arrange the letters $AABB$ in a circle. How many ways can this be done? It's easy to just write everything, and we find that there are only two possibilities (up to rotation):
+What happens when we combine these ideas together? Say we take take $n$ objects, where some are repeating, and arrange them in a circle. An easy example: arrange the letters $AABB$ in a circle. How many ways can this be done? It's easy to write down every possibility, and we find that there are only two (considering rotation as equivalent):
 
 <!-- Image generated using tikz, converted to SVG using pdf2svg, scaled up using inkscape -->
 <!-- Rescaling in inkscape: https://superuser.com/questions/475851/how-can-i-scale-an-svg-via-command-line -->
-
 ![](../post_resources/2022-12-03-polya-enumeration/example-AABB.svg)
 ![](../post_resources/2022-12-03-polya-enumeration/example-ABAB.svg)
 
-However if we try to combine the two calculations we did above the number of permutations is
+However if we try to combine the two equations we used above, the number of permutations comes out to be
 $$
-\frac{4!}{4 \times 2!2!} = \frac{3}{2} = 1.5,
+\frac{4!}{4 \times 2!2!} = \frac{3}{2} = 1.5.
 $$
-which not only isn't $2$ but isn't even a whole number! You can go through many different examples and try to find a nice formula for the number of permutations, but it's not exactly that simple! This where I got stuck while trying to untangle this problem in my first year of university.
+Not only is this not $2$, but isn't even a whole number! We could try many different examples and attempt formulate a nice equation, but it's not exactly that simple! It turns out there is a nice theorem that gives a general procedure to solve this, but it requires some background in group theory.
 
-It turns out there is a nice theorem that gives a general procedure to solve this, but it requires some background in group theory...
+> **tl;dr**
+> 
+> In mathematics, Group theory is the study of symmetries, how they interact with each other, and how they interact with other objects. There is a theorem of group that counts the number of "different" elements in a set, given that elements are "not different" when are related by a symmetry (more precisely, a group action). We can apply this to concrete counting problems, by looking at e.g. rotations acting on objects arranged in a circle. This theorem can be extended to extract more information about arrangements, where the calculations are reduced to looking at coefficients of a polynomial.
 
 
 ## Background
-The following is a quick and brief proof-less introduction to the concepts we will need. The intention isn't for you to deeply understand groups and group actions but to get some intuition to help understand how the counting theorem works.
+The following is a quick and brief proof-less introduction to the concepts we will need. The intention is to be a refresher for those who have seen groups before, however, if you are new to these concepts, there should be barely enough to understand (with time) how the counting theorem works.
+
 
 ### Groups
 **Definition.** A *group* is a set $G$ with a binary operation $*$, such that the following axioms hold.
@@ -39,9 +41,9 @@ The following is a quick and brief proof-less introduction to the concepts we wi
 - (Associativity) For any three elements $a,b,c \in G$, $(a * b) * c = a * (b * c)$.
 - (Inverse) For any element $a \in G$, there exists an element $b \in G$ for which $a * b = b * a = e$, we write $a^{-1}$ for this element.
 
-We sometimes drop the $*$ if the operation is clear from the context.
+We sometimes drop the $*$, and just write $gh = g * h$, if the operation is clear from the context.
 
-**Example 1.** An easy example of a group is $\Z/n\Z = \{0,1,...,n-1\}$ where the operation is addition modulo $n$. This is the *cyclic group* $C_n$, which we think of generated by $1$, for example $\Z/4\Z = \{1,1+1,1+1+1,1+1+1+1\}$, where $1+1+1+1=0 \ (\op{mod}\ 4)$.
+**Example 1.** An easy example of a group is $\Z/n\Z = \{0,1,...,n-1\}$ where the operation is addition modulo $n$. This is the *cyclic group* $C_n$. We can think of this as generated by $1$, for example $\Z/4\Z = \{1,1+1,1+1+1,1+1+1+1\}$, where $1+1+1+1=0 \ (\op{mod}\ 4)$.
 
 **Example 2.** The *symmetric group* on $n$ elements $S_n$ is a group where elements are the permutations of $1, 2, ..., n$. For two elements $a,b \in S_n$, $ab \in S_n$ is the permutation obtained by applying $b$ then applying $a$. For example the following table represents a permutation on the first $4$ integers, taking $1 \to 2 \to 3 \to 1$ and $4 \to 4$.
 
@@ -52,9 +54,7 @@ We sometimes drop the $*$ if the operation is clear from the context.
 
 A useful way to write this is with *cycle notation*. The above table corresponds to the element $(123)(4) \in S_4$, where $(123)$ and $(4)$ are *cycles*. In fact every permutation of $n$ elements can be written as a product of disjoint cycles (i.e. the numbers inside the cycles don't overlap). We often do not write cycles of length $1$ because they offer no new information. For convenience, we write the identity permutation $(1)(2)...(n)$ as $\op{id}$.
 
-The counting theorem uses subgroups of $S_n$, which you can think of as smaller groups living inside $S_n$.
-
-We have that $C_n$ from Example 1 appears as a subset of $S_n$, whose elements are powers of the cycle $(123...n)$. From now on, this is how we will think about $C_n$.
+The counting theorem uses subgroups of $S_n$, which you can think of as smaller groups living inside $S_n$. The group $C_n$, from Example 1, actually appears as a subset of $S_n$, for example whose elements are powers of $(123...n)$ (generated by this cycle). From now on, this is how we will think about $C_n$.
 
 
 
@@ -368,7 +368,7 @@ $$
 \frac{1}{6}(6 + 90) = 16.
 $$
 
-We can check this is correct via a [simple script](https://github.com/dustbringer/dustbringer.github.io/blob/main/src/post_resources/2022-12-03-polya-enumeration/permutatoins-lister.py).
+We can check this is correct via a [simple script](https://github.com/dustbringer/dustbringer.github.io/blob/main/src/post_resources/2022-12-03-polya-enumeration/permutations-lister.py).
 
 **Remarks.** You may have noticed that multinomial coefficients are exactly how we were taught to count the permutations of letters with possibly some repeating. So it makes sense that it comes up when counting arrangements of the same letters in a circle.
 
@@ -407,20 +407,33 @@ $$
 $$
 circular arrangements for $c_1^{k_1} ...c_n^{k_n}$, where $k_1 + ... + k_n = p$ and $0 \leq k_1, ..., k_n < p$.
 
-This shows that the naïve formula we started with works for non-trivial colourings of a prime number elements.
+This shows that the naïve formula we started with works for non-trivial colourings of a prime number of elements.
 
 
-<!-- ## Formula -->
+### Formula
+Is there a nice general formula we can extract from this theorem? Not really, but we can pull something together.
 
-<!-- A formula for the initial problem -->
+Briefly, what we need to know is the following. (The first three points find the pattern inventory, and the last point find the desired coefficient.)
+- How large is $C_m$? It has $m$ elements
+- How do elements of $C_m$ decompose into disjoint cycles? How large are these cycles and how many cycles are there?
+  - If $C_m$ is generated by $g=(12...m)$, then letting $d = \gcd(m,k)$ we get that $g^k$ is a product of $d$ disjoint $m/d$-cycles.
+- How many elements have same cycle size and cycle lengths?
+  - In the context of the previous point, there are $N_d = \#\{k : 1 \leq k \leq m \text{ s.t. } \gcd(m,k) = d\}$ cycles 'similar' to $g^k$. This tells us how many times $(c_1^{m/d} + c_2^{m/d} + ...)^d$ appears in the pattern inventory.
+  - There is no 'nice' equation for this number (it could be expressed in terms of the [Möbius function](https://en.wikipedia.org/wiki/M%C3%B6bius_function)).
+- Which of these multinomials has our pattern $x_1^{k_1} x_2^{k_2} ...$?
+  - This can be done by checking $\sum_i k_i = m$ and $m/d \mathrel{|} k_i$ for all $i$, for each multinomial $(c_1^{m/d} + c_2^{m/d} + ...)^d$.
 
+So given a valid list of 'colours' $x_1^{k_1} x_2^{k_2} ...$, the coefficient in the pattern inventory (i.e. the number of arrangements of these colours) looks something like
+$$
+\frac{1}{m} \sum_{\substack{d | m \\ (m/d) | k_i, \forall i}} N_d \binom{d}{\frac{k_1}{m/d}, \frac{k_2}{m/d}, ...}.
+$$
 
 ## Additional Comments and Material
 We only looked at cyclic groups $C_n$, but we could use any subgroup of $S_n$. For example if we think of reflections of our circular arrangements as "identical", then we can use the dihedral group $D_n$. The orbits under the dihedral group is exactly the distinct "circular arrangements" we want.
 
 The theorem can also be applied for various different counting problems, by changing the weights and subgroup of $S_n$. For example, Pólya applied this theorem to count the number of isomers of hydrocarbons, which popularised its usage.
 
-For other material on this topic, have a look at:
+This post was based on the following. These are good reading if you want to explore this topic more.
 - [Discrete Methods Lecture 1, Frédérique Oggier](https://feog.github.io/chap1dm.pdf)
 - [Pólya's Enumeration, Alec Zhang](http://math.uchicago.edu/~may/REU2017/REUPapers/Zhang,Alec.pdf)
 - [Necklace (Combinatorics), Wikipedia](https://en.wikipedia.org/wiki/Necklace_(combinatorics))
