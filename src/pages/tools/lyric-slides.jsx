@@ -26,18 +26,23 @@ import Accordion from "../../components/Accordion";
 import PageNavigation from "../../components/PageNavigation";
 import Code from "../../components/Markdown/Code";
 import Container from "../../components/Container";
-import HorizontalRule from "../../components/Markdown/HorizontalRule";
+import {
+  MarkdownNoContents,
+  MarkdownNoFormat,
+} from "../../components/Markdown";
 import { GlobalContext } from "../../context/GlobalContext";
 
 const LyricsContainer = styled.div`
   ${(props) => props.fullHeight && "height: 100vh;"}
-  white-space: pre-wrap;
   text-align: center;
   padding-top: 3em;
   font-weight: bold;
   font-size: ${(props) => props.renderScale || "3"}em;
   ${(props) => props.dark && "background-color: black;"}
   ${(props) => props.dark && "color: white;"}
+  & p {
+    white-space: pre-wrap;
+  }
 `;
 
 const PageNumber = styled.div`
@@ -47,6 +52,16 @@ const PageNumber = styled.div`
   font-size: 1rem;
   font-weight: normal;
   color: grey;
+`;
+
+const SettingsSection = styled.div`
+  margin: 3px 0;
+  padding-left: 0.5rem;
+  border-left: 2px solid lightgrey;
+  &:hover {
+    border-left: 2px solid grey;
+  }
+  transition: all 0.2s ease;
 `;
 
 function LyricSlidesPage() {
@@ -71,6 +86,10 @@ function LyricSlidesPage() {
   const [darkMode, setDarkMode] = React.useState(true);
   const [splitType, setSplitType] = React.useState("whitespace");
   const [customSplit, setCustomSplit] = React.useState("");
+  const [useMarkdown, setUseMarkdown] = React.useState(false);
+  const [usePlainPreview, setUsePlainPreview] = React.useState(false);
+  const [styleStanzaTitle, setStyleStanzaTitle] = React.useState(true);
+  const [styleIgnoreFirst, setStyleIgnoreFirst] = React.useState(true);
 
   const handleSplitTypeChange = (e, newType) =>
     newType !== null && setSplitType(newType);
@@ -83,25 +102,28 @@ function LyricSlidesPage() {
   const handleKeyDown = React.useCallback((event) => {
     if (event.key === "ArrowLeft") pagePrev();
     else if (event.key === "ArrowRight") pageNext();
-
-    console.log("Testing krypress")
   });
 
-  // Update slides with choice of how to split input
+  // Update slide text (applying the new settings)
   const updateSlides = () => {
+    // Split raw input
+    // Note: Non-capturing group is required because otherwise js
+    // will insert the group between the outputs
     switch (splitType) {
       case "whitespace":
-        // Split when there are multiple new lines, ignoring whitespace
-        setSlideText(text.split(/\n(?:[^\S\n]*\n)+/));
+        // Split when there are at least new lines, including any between and
+        // end-trailing whitespace (to not break markdown)
+        setSlideText(text.split(/\n[^\S\n]*\n\s*/));
         break;
 
       case "configHeading":
-        // Split between config headings (e.g. [some text here]) separated by new lines, ignoring whitespace
-        // Also ignores first occurence, so it doesn't come with an initial blank slide
+        // Split between config headings (e.g. [some text here]) with new line before and after,
+        // including any between and end-trailing whitespace
         setSlideText(
           text
+            // Ignores config heading at the start of input, so it doesn't come with an initial blank slide
             .replace(/^\s*\[.*?\]\s*/, "")
-            .split(/(?:[^\S\n]*\n)*\[.*?\](?:[^\S\n]*\n)+/)
+            .split(/\n\s*\[.*?\][^\S\n]*\n\s*/)
         );
         break;
 
@@ -115,6 +137,24 @@ function LyricSlidesPage() {
 
       default:
         break;
+    }
+
+    // Update styling
+    // Note: using a nexted if to leave room to extend to more styling options
+    if (useMarkdown) {
+      if (styleStanzaTitle) {
+        setSlideText((slides) =>
+          slides.map((t, i) =>
+            styleIgnoreFirst && i === 0
+              ? // Ignore first slide
+                t
+              : t.replace(
+                  /^([^\r\n]*?(?:verse|chorus|bridge)[^\r\n]*?)(\n|$)/i,
+                  "*$1*$2"
+                )
+          )
+        );
+      }
     }
   };
 
@@ -169,18 +209,17 @@ function LyricSlidesPage() {
             <strong>Warning!</strong> Changing these display settings while the
             slides are being presented will result in styling being removed.
             Please close and reopen the slides after changing these settings.
-            <HorizontalRule />
-            Rendered font size (in <Code inline>em</Code>)
-            <Slider
-              value={renderScale}
-              onChange={(e) => setRenderScale(e.target.value)}
-              step={0.1}
-              marks
-              min={0.5}
-              max={5.0}
-              valueLabelDisplay="auto"
-            />
-            <Box sx={{ marginLeft: "11px" }}>
+            <SettingsSection>
+              Rendered font size (in <Code inline>em</Code>)
+              <Slider
+                value={renderScale}
+                onChange={(e) => setRenderScale(e.target.value)}
+                step={0.1}
+                marks
+                min={0.5}
+                max={5.0}
+                valueLabelDisplay="auto"
+              />
               <FormControlLabel
                 control={
                   <Checkbox
@@ -190,58 +229,108 @@ function LyricSlidesPage() {
                 }
                 label="Dark Mode"
               />
-            </Box>
-            Split:
-            <Box
-              sx={{
-                display: "flex",
-                flexWrap: "nowrap",
-                alignItems: "center",
-                justifyContent: "left",
-              }}
-            >
-              <ToggleButtonGroup
-                color="primary"
-                size="small"
-                exclusive
-                sx={{ m: "6px" }}
-                value={splitType}
-                onChange={handleSplitTypeChange}
+            </SettingsSection>
+            <SettingsSection>
+              <Typography variant="body1">Split</Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexWrap: "nowrap",
+                  alignItems: "center",
+                  justifyContent: "left",
+                }}
               >
-                <ToggleButton value="whitespace" disableRipple>
-                  New Lines
-                </ToggleButton>
-                <ToggleButton
-                  value="configHeading"
-                  disableRipple
-                  title="A heading in square brackets"
+                <ToggleButtonGroup
+                  color="primary"
+                  size="small"
+                  exclusive
+                  sx={{ m: "6px" }}
+                  value={splitType}
+                  onChange={handleSplitTypeChange}
                 >
-                  [Config]
-                </ToggleButton>
-                <ToggleButton
-                  value="custom"
-                  disableRipple
-                  title="Custom slide splitter in regex"
-                >
-                  Custom
-                </ToggleButton>
-              </ToggleButtonGroup>
-              <TextField
-                placeholder="Custom Split"
-                value={customSplit}
-                onChange={(e) => setCustomSplit(e.target.value)}
-                disabled={splitType !== "custom"}
-                size="small"
+                  <ToggleButton
+                    value="whitespace"
+                    disableRipple
+                    title="New lines; collapsing duplicates"
+                  >
+                    New Lines
+                  </ToggleButton>
+                  <ToggleButton
+                    value="configHeading"
+                    disableRipple
+                    title="A heading in square brackets"
+                  >
+                    [Config]
+                  </ToggleButton>
+                  <ToggleButton
+                    value="custom"
+                    disableRipple
+                    title="Custom slide splitter in regex"
+                  >
+                    Custom
+                  </ToggleButton>
+                </ToggleButtonGroup>
+                <TextField
+                  placeholder="Custom Split"
+                  value={customSplit}
+                  onChange={(e) => setCustomSplit(e.target.value)}
+                  disabled={splitType !== "custom"}
+                  size="small"
+                />
+              </Box>
+            </SettingsSection>
+            <SettingsSection>
+              <Typography variant="body1">Styling</Typography>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={useMarkdown}
+                    onChange={(e) => setUseMarkdown(e.target.checked)}
+                  />
+                }
+                label="Use Markdown"
               />
-            </Box>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={usePlainPreview}
+                    onChange={(e) => setUsePlainPreview(e.target.checked)}
+                    disabled={!useMarkdown}
+                  />
+                }
+                label="Plain Preview"
+                title="Stop rendering markdown in preview"
+              />
+              <br />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={styleStanzaTitle}
+                    onChange={(e) => setStyleStanzaTitle(e.target.checked)}
+                    disabled={!useMarkdown}
+                  />
+                }
+                label="Style Stanza Title"
+                title="Style first line of stanza if they include: verse, chorus, bridge"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={styleIgnoreFirst}
+                    onChange={(e) => setStyleIgnoreFirst(e.target.checked)}
+                    disabled={!useMarkdown}
+                  />
+                }
+                label="Ignore First Slide"
+              />
+            </SettingsSection>
             <Button
               variant="contained"
               disableRipple
-              sx={{ margin: "8px", marginRight: 0 }}
               onClick={updateSlides}
               title="Update"
             >
-              Update Text
+              Update
             </Button>
           </Accordion>
         </DivMarginBottom>
@@ -288,7 +377,11 @@ function LyricSlidesPage() {
               dark={darkMode}
               fullHeight
             >
-              {slideText[page]}
+              {useMarkdown ? (
+                <MarkdownNoContents children={slideText[page]} />
+              ) : (
+                <p>{slideText[page]}</p>
+              )}
               <PageNumber>
                 {page + 1}/{slideText.length}
               </PageNumber>
@@ -301,11 +394,12 @@ function LyricSlidesPage() {
             padding: "5px",
             borderRadius: "5px",
             border: `2px solid white`,
-            "&:focus": { border: `2px solid ${theme.palette.secondary.main}` },
+            "&:hover": { border: `2px solid lightgrey` },
+            "&:focus": { border: `2px solid grey` },
           }}
           onKeyDown={handleKeyDown}
         >
-          Preview:
+          Preview
           <PageNavigation
             text={`${page + 1}/${slideText.length}`}
             onPrev={pagePrev}
@@ -314,7 +408,11 @@ function LyricSlidesPage() {
             nextDisabled={page + 1 >= slideText.length}
           />
           <LyricsContainer renderScale={renderScale}>
-            {slideText[page]}
+            {useMarkdown && !usePlainPreview ? (
+              <MarkdownNoContents children={slideText[page]} />
+            ) : (
+              <p>{slideText[page]}</p>
+            )}
           </LyricsContainer>
         </Box>
       </Container>
