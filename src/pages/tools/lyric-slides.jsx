@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 // import { ReactNewWindowStyles } from "react-new-window-styles";
 import NewWindow from "react-new-window";
 
+import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -55,6 +56,7 @@ function LyricSlidesPage() {
     showError: () => {},
     showSuccess: () => {},
   };
+  const theme = useTheme();
 
   // Access new window through a ref
   // https://github.com/rmariuzzo/react-new-window/issues/34#issuecomment-651939230
@@ -78,20 +80,12 @@ function LyricSlidesPage() {
     slideText.length !== 0 && setPage(Math.min(page + 1, slideText.length - 1));
   const pagePrev = () => setPage(Math.max(page - 1, 0));
 
-  const handleKeyPress = React.useCallback((event) => {
+  const handleKeyDown = React.useCallback((event) => {
     if (event.key === "ArrowLeft") pagePrev();
     else if (event.key === "ArrowRight") pageNext();
+
+    console.log("Testing krypress")
   });
-
-  React.useEffect(() => {
-    // Attach keyboard event listener
-    document.addEventListener("keydown", handleKeyPress);
-
-    // Remove keyboard event listener
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [handleKeyPress]);
 
   // Update slides with choice of how to split input
   const updateSlides = () => {
@@ -134,13 +128,13 @@ function LyricSlidesPage() {
     }
   };
 
-  // New Window
+  // New Window keypress handlers
   React.useEffect(() => {
     if (popupRef.current) {
       // Attach keyboard event listener
       popupRef.current.window.document.addEventListener(
         "keydown",
-        handleKeyPress
+        handleKeyDown
       );
     }
 
@@ -149,11 +143,11 @@ function LyricSlidesPage() {
       if (popupRef.current) {
         popupRef.current.window.document.removeEventListener(
           "keydown",
-          handleKeyPress
+          handleKeyDown
         );
       }
     };
-  }, [showSlides, handleKeyPress]);
+  }, [showSlides, handleKeyDown]);
 
   const onNewWindowUnload = () => {
     setShowSlides(false);
@@ -174,6 +168,7 @@ function LyricSlidesPage() {
           <Accordion title="Settings">
             <strong>Warning!</strong> Changing these display settings while the
             slides are being presented will result in styling being removed.
+            Please close and reopen the slides after changing these settings.
             <HorizontalRule />
             Rendered font size (in <Code inline>em</Code>)
             <Slider
@@ -216,10 +211,18 @@ function LyricSlidesPage() {
                 <ToggleButton value="whitespace" disableRipple>
                   New Lines
                 </ToggleButton>
-                <ToggleButton value="configHeading" disableRipple>
-                  Headings in square brackets
+                <ToggleButton
+                  value="configHeading"
+                  disableRipple
+                  title="A heading in square brackets"
+                >
+                  [Config]
                 </ToggleButton>
-                <ToggleButton value="custom" disableRipple>
+                <ToggleButton
+                  value="custom"
+                  disableRipple
+                  title="Custom slide splitter in regex"
+                >
                   Custom
                 </ToggleButton>
               </ToggleButtonGroup>
@@ -292,15 +295,28 @@ function LyricSlidesPage() {
             </LyricsContainer>
           </NewWindow>
         )}
-        Preview:
-        <PageNavigation
-          text={`${page + 1}/${slideText.length}`}
-          onPrev={pagePrev}
-          onNext={pageNext}
-        />
-        <LyricsContainer renderScale={renderScale}>
-          {slideText[page]}
-        </LyricsContainer>
+        <Box
+          tabIndex="0"
+          sx={{
+            padding: "5px",
+            borderRadius: "5px",
+            border: `2px solid white`,
+            "&:focus": { border: `2px solid ${theme.palette.secondary.main}` },
+          }}
+          onKeyDown={handleKeyDown}
+        >
+          Preview:
+          <PageNavigation
+            text={`${page + 1}/${slideText.length}`}
+            onPrev={pagePrev}
+            onNext={pageNext}
+            prevDisabled={page + 1 <= 1}
+            nextDisabled={page + 1 >= slideText.length}
+          />
+          <LyricsContainer renderScale={renderScale}>
+            {slideText[page]}
+          </LyricsContainer>
+        </Box>
       </Container>
     </>
   );

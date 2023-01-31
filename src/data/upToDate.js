@@ -1,1 +1,1 @@
-export const currYear = 2022;
+export const currYear = 2023;
