@@ -105,12 +105,12 @@ function JapaneseFileReaderPage() {
     const reader = new FileReader();
     reader.onload = (e) => {
       const contentBuffer = new Uint8Array(e.target.result);
-      const fileContents = Encoding.convert(contentBuffer, {
+      const text = Encoding.convert(contentBuffer, {
         to: "unicode",
         from: Encoding.detect(contentBuffer),
         type: "string",
       });
-      const parsedContents = fileContents
+      const parsedContents = text
         .replace(/<img.*?src=(["'])(.*?)\1.*?>/g, "［＃（$2）］\n") // replace img tags with text (only include src)
         .replace(/［＃改ページ］/g, "<hr></hr>") // render page breaks
         .replace(furiganaRegex, "<Furigana kanji='$1' furi='$2' />"); // render furigana
@@ -173,6 +173,7 @@ function JapaneseFileReaderPage() {
               const attr = parseFurigana(e);
               return (
                 <ReactFuri
+                  key={i}
                   word={attr.kanji}
                   reading={attr.furi}
                   render={({ pairs }) => (

@@ -45,15 +45,19 @@ const tools = [
   },
   {
     title: "VTT Extractor",
-    description:
-      "Extracts the subtitle text from VTT files.",
+    description: "Extracts the subtitle text from VTT files.",
     path: "/tools/vtt-extractor",
   },
   {
     title: "Lyric Slides",
-    description:
-      "Shows lyrics with slides.",
+    description: "Shows lyrics with slides.",
     path: "/tools/lyric-slides",
+  },
+  {
+    title: "Pandoc Footnote Relabeller",
+    description:
+      "Replace the labels of pandoc footnotes with ascending integers.",
+    path: "/tools/pandoc-footnote-relabel",
   },
 ];
 
@@ -109,6 +113,8 @@ function ToolListPage({ location }) {
               </ListContainer>
               <PageNavigation
                 text={page}
+                prevDisabled={page <= 1}
+                nextDisabled={page >= Math.ceil(tools.length / N_PER_PAGE)}
                 onPrev={() =>
                   page > 1 &&
                   navigate(`${location.pathname}?page=${Math.max(page - 1, 1)}`)

@@ -1,15 +1,27 @@
 const unswMarks = {
-  wam: 92.857,
+  wam: 92.967,
   courses: [
     {
+      name: "Combinatorics",
+      code: "MATH5505",
+      mark: 95,
+      term: "2022T3",
+    },
+    {
+      name: "Galois Theory",
+      code: "MATH5725",
+      mark: 94,
+      term: "2022T3",
+    },
+    {
       name: "Functional Analysis",
-      code: "COMP5605",
+      code: "MATH5605",
       mark: 99,
       term: "2022T2",
     },
     {
       name: "Algebraic Geometry (Special Topics (Pure Maths) C)",
-      code: "COMP5535",
+      code: "MATH5535",
       mark: 86,
       term: "2022T2",
     },

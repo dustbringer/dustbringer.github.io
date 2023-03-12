@@ -80,7 +80,7 @@
     "cleanbuild": "gatsby clean && gatsby build",
     "serve": "gatsby serve",
     "predeploy": "gatsby build",
-    "deploy": "gh-pages -t -d public"
+    "deploy": "gh-pages -d public"
   },
   "eslintConfig": {
     "extends": [

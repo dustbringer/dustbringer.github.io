@@ -58,7 +58,7 @@ function ResumePage() {
             <Typography variant="body1" gutterBottom>
               C, Javascript (Typescript, Node.js, ReactJS, GatsbyJS,
               Express.js), HTML5, CSS3, Python, Java, SQL (PostgreSQL, GraphQL,
-              MySQL), Bash, R, Maple, x86, <TeX math="\LaTeX" />, Markdown
+              MySQL), Bash, R, Maple, x86, <TeX math="\LaTeX" />, Markdown.
             </Typography>
           </li>
           <li>
@@ -68,7 +68,8 @@ function ResumePage() {
             <Typography variant="body1" gutterBottom>
               Git (also GitHub, GitLab), Linux, Text editing software (Visual
               Studio Code, Sublime Text, vim, etc.), Chrome DevTools (similarly
-              for other browsers)
+              for other browsers). Adobe Photoshop, Adobe Illustrator,
+              Procreate.
             </Typography>
           </li>
           <li>
@@ -81,8 +82,8 @@ function ResumePage() {
               Categories, etc.), Combinatorics, Differential Equations (ordinary
               and partial), Probability, Statistics, Logic, Computability and
               Complexity Theory, Coding Theory. The beginnings of Complex
-              Analysis, Functional Analysis, Commutative Algebra, Algebraic
-              Geometry, Differential Geometry, and Graph Theory.
+              Analysis, Functional Analysis, Galois Theory, Commutative Algebra,
+              Algebraic Geometry, Differential Geometry, and Graph Theory.
             </Typography>
           </li>
         </ul>
@@ -95,7 +96,7 @@ function ResumePage() {
                 UNSW Casual Academic (2021 - Present)
               </Typography>
               <Typography variant="body1" gutterBottom>
-                Tutor at School of Mathematics Drop-in-centre and Lab
+                Tutor at UNSW School of Mathematics Drop-in-centre and Lab
                 consultations.
               </Typography>
             </li>
@@ -341,6 +342,10 @@ function ResumePage() {
               </Typography>
               <Typography variant="body1">
                 B Computer Science / B Advanced Mathematics (Honours)
+              </Typography>
+              <Typography variant="body1">
+                Honours Thesis:{" "}
+                <em>Diagrammatic Categories in Representation Theory</em>
               </Typography>
               <Typography variant="body1" gutterBottom>
                 Weighted Average Mark: <strong>{unswMarks.wam}</strong>
