@@ -49,11 +49,15 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
  * Wrap all the grouped accordions in a parent element eg. div
  * so that the styling is consistent
  */
-function MyAccordion({ title, children }) {
+function MyAccordion({ title, children, sx = {} }) {
   const [expanded, setExpanded] = React.useState(false);
 
   return (
-    <Accordion expanded={expanded} onChange={() => setExpanded(!expanded)}>
+    <Accordion
+      expanded={expanded}
+      onChange={() => setExpanded(!expanded)}
+      sx={sx}
+    >
       <AccordionSummary>
         <Typography>{title}</Typography>
       </AccordionSummary>

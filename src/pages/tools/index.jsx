@@ -90,10 +90,6 @@ function ToolListPage({ location }) {
         <Typography variant="h4" gutterBottom>
           Tools
         </Typography>
-        <Typography variant="body1" gutterBottom>
-          A bunch of online tools that I made and use myself, available for your
-          convenience...
-        </Typography>
         <div>
           {tools.length > 0 ? (
             <>
@@ -104,6 +100,7 @@ function ToolListPage({ location }) {
                     <CardLarge
                       key={`${i}-${title}`}
                       type={type}
+                      name={title}
                       title={title}
                       description={description}
                       path={path}

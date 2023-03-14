@@ -25,9 +25,9 @@ const styles = {
 
 function CardLarge({ name, type = "", title, description, date = "", path }) {
   return (
-    <Card sx={styles.root} variant="outlined">
+    <Card sx={styles.root} variant="outlined" title={name}>
       <InternalLink to={path}>
-        <CardActionArea title={name}>
+        <CardActionArea>
           <CardContent>
             <Typography variant="h5" component="h5" display="inline">
               {title ? title : "Unknown Title"}
