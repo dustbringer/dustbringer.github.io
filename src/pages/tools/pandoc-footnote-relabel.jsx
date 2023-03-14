@@ -99,67 +99,6 @@ function PandocFootnoteRelabel() {
           Note, none of the files you upload is saved anywhere, all the text
           processing is done in your browser and thrown back at you.
         </Typography>
-
-        <Box>
-          <Accordion title="File Upload and Download">
-            <Box
-              sx={{
-                marginBottom: "10px",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <label>
-                <HiddenInput
-                  type="file"
-                  multiple={false}
-                  accept=".md,.txt,.text,text/plain"
-                  onChange={handleFileChange}
-                />
-                <Button variant="contained" component="span">
-                  Upload
-                </Button>
-              </label>
-              <Typography variant="body1" sx={{ margin: "0 10px" }}>
-                {fileName}
-              </Typography>
-            </Box>
-            <div>
-              <TextField
-                label="Index from"
-                type="number"
-                inputProps={{
-                  step: "1",
-                }}
-                value={fileIndexFrom}
-                onChange={(e) => setFileIndexFrom(Math.max(0, e.target.value))}
-                disabled={!fileSelected}
-                size="small"
-                sx={{ margin: "10px 0" }}
-              />
-            </div>
-            <div>
-              <Button
-                variant="contained"
-                component="span"
-                onClick={(ev) => handleDownload(ev)}
-                disabled={!fileSelected}
-              >
-                Replace All
-              </Button>
-              <Button
-                variant="contained"
-                component="span"
-                onClick={(ev) => handleDownload(ev, true)}
-                disabled={!fileSelected}
-                sx={{ marginLeft: "10px" }}
-              >
-                Replace Int
-              </Button>
-            </div>
-          </Accordion>
-        </Box>
-
         <TextField
           label="Input"
           rows={6}
@@ -240,6 +179,66 @@ function PandocFootnoteRelabel() {
             </Button>
           </DialogActions>
         </Dialog>
+
+        <Box>
+          <Accordion title="File Upload and Download">
+            <Box
+              sx={{
+                marginBottom: "10px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <label>
+                <HiddenInput
+                  type="file"
+                  multiple={false}
+                  accept=".md,.txt,.text,text/plain"
+                  onChange={handleFileChange}
+                />
+                <Button variant="contained" component="span">
+                  Upload
+                </Button>
+              </label>
+              <Typography variant="body1" sx={{ margin: "0 10px" }}>
+                {fileName}
+              </Typography>
+            </Box>
+            <div>
+              <TextField
+                label="Index from"
+                type="number"
+                inputProps={{
+                  step: "1",
+                }}
+                value={fileIndexFrom}
+                onChange={(e) => setFileIndexFrom(Math.max(0, e.target.value))}
+                disabled={!fileSelected}
+                size="small"
+                sx={{ margin: "10px 0" }}
+              />
+            </div>
+            <div>
+              <Button
+                variant="contained"
+                component="span"
+                onClick={(ev) => handleDownload(ev)}
+                disabled={!fileSelected}
+              >
+                Replace All
+              </Button>
+              <Button
+                variant="contained"
+                component="span"
+                onClick={(ev) => handleDownload(ev, true)}
+                disabled={!fileSelected}
+                sx={{ marginLeft: "10px" }}
+              >
+                Replace Int
+              </Button>
+            </div>
+          </Accordion>
+        </Box>
       </Container>
     </>
   );
