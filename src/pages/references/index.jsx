@@ -14,17 +14,12 @@ import PageNavigation from "../../components/PageNavigation";
 
 import { N_PER_PAGE, getPage } from "../../util/pagination";
 
-// HELPFUL https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
-// In gatsby: https://www.gatsbyjs.com/blog/2017-07-19-creating-a-blog-with-gatsby/
-
 const ListContainer = styled.div`
   min-height: 75vh;
 `;
 
-function BlogListPage({ location, data }) {
-  const { edges: posts } = data.allMarkdownRemark;
-  // const [posts, setPosts] = React.useState([]);
-  // const [loading, setLoading] = React.useState(true);
+function ReferenceListPage({ location, data }) {
+  const { edges: references } = data.allMarkdownRemark;
   const [page, setPage] = React.useState(1);
 
   React.useEffect(() => {
@@ -35,27 +30,27 @@ function BlogListPage({ location, data }) {
       queryPage &&
       !isNaN(parseInt(queryPage, 10)) &&
       queryPage > 0 &&
-      queryPage <= Math.ceil(posts.length / N_PER_PAGE)
+      queryPage <= Math.ceil(references.length / N_PER_PAGE)
     ) {
       setPage(parseInt(queryPage, 10));
     }
-  }, [location.search, posts.length]);
+  }, [location.search, references.length]);
 
   return (
     <>
       <Helmet>
-        <title>Posts - dustbringer.github.io</title>
-        <meta name="description" content="List of blog posts" />
+        <title>References - dustbringer.github.io</title>
+        <meta name="description" content="List of References" />
       </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4" gutterBottom>
-          Posts
+          References
         </Typography>
         <div>
-          {posts.length > 0 ? (
+          {references.length > 0 ? (
             <>
               <ListContainer>
-                {getPage(posts, page, N_PER_PAGE).map((e, i) => {
+                {getPage(references, page, N_PER_PAGE).map((e, i) => {
                   const { id, path, frontmatter: meta } = e.node;
                   return (
                     <BlogListCard
@@ -77,11 +72,11 @@ function BlogListPage({ location, data }) {
                   navigate(`${location.pathname}?page=${Math.max(page - 1, 1)}`)
                 }
                 onNext={() =>
-                  page < Math.ceil(posts.length / N_PER_PAGE) &&
+                  page < Math.ceil(references.length / N_PER_PAGE) &&
                   navigate(
                     `${location.pathname}?page=${Math.min(
                       page + 1,
-                      Math.ceil(posts.length / N_PER_PAGE)
+                      Math.ceil(references.length / N_PER_PAGE)
                     )}`
                   )
                 }
@@ -96,13 +91,13 @@ function BlogListPage({ location, data }) {
   );
 }
 
-export default BlogListPage;
+export default ReferenceListPage;
 
 export const pageQuery = graphql`
-  query GetPosts {
+  query GetReferences {
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { slug: { regex: "/^/?posts//" } } }
+      filter: { frontmatter: { slug: { regex: "/^/?references//" } } }
     ) {
       edges {
         node {

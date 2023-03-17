@@ -29,6 +29,11 @@ import TableHead from "../components/gatsbyMdRenderers/TableHead";
 import TableRow from "../components/gatsbyMdRenderers/TableRow";
 import Contents from "../components/gatsbyMdRenderers/Contents";
 
+// References
+// https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/
+// https://www.reddit.com/r/gatsbyjs/comments/xn8j1j/filesystem_routing_api_for_multiple_markdown/
+// https://github.com/PaulMorel1/eMPress/blob/master/gatsby-node.js
+
 const Frontmatter = styled(Typography)`
   font-size: 0.8em;
   color: #aaaaaa;
@@ -68,7 +73,7 @@ const ContentsPositionDiv = styled.div`
   flex-direction: row;
 `;
 
-function PostTemplate({ data, location }) {
+function MarkdownTemplate({ data, location }) {
   const { markdownRemark } = data;
   const { frontmatter: meta, htmlAst, headings } = markdownRemark;
 
@@ -111,7 +116,7 @@ function PostTemplate({ data, location }) {
     <>
       <Helmet>
         <title>{meta.title} - dustbringer.github.io</title>
-        <meta name="description" content={`Blog - ${meta.title}`} />
+        <meta name="description" content={`${meta.title}`} />
       </Helmet>
 
       <Container maxWidth="md">
@@ -131,14 +136,14 @@ function PostTemplate({ data, location }) {
   );
 }
 
-export default PostTemplate;
+export default MarkdownTemplate;
 
 export const pageQuery = graphql`
   query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
       htmlAst
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "DD MMMM, YYYY")
         slug
         title
         author

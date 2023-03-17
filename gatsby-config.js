@@ -49,6 +49,20 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-references`,
+        path: `${__dirname}/src/references`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-reference-resources`,
+        path: `${__dirname}/src/reference_resources`,
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         // Footnotes mode (default: true)

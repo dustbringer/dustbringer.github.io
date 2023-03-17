@@ -1,6 +1,6 @@
 ---
-slug: "/posts/2021-11-27-git-prompt"
-title: Something about git-prompt
+slug: "/references/2021-11-27-git-prompt"
+title: Putting git info onto shell prompt
 description: Notes for self about git-prompt
 author: dustbringer
 date: 2021-11-27

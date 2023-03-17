@@ -42,7 +42,7 @@ function BlogListCard({ name, title, description, date, tags, path }) {
               <Typography variant="body2" color="textSecondary" component="i">
                 {" "}
                 {date && moment(date).isValid()
-                  ? moment(date).format("YYYY-MM-DD")
+                  ? moment(date).format("DD MMMM YYYY")
                   : "Unknown Date"}
               </Typography>
 
