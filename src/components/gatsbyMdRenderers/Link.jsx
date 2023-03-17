@@ -14,7 +14,11 @@ const StyledMUILink = styled(MUILink)({
 function Link(props) {
   return (
     <>
-      {!props.className || !props.className.includes("header-link-class") ? (
+      {!(
+        props.className &&
+        (props.className.includes("header-link-class") ||
+          props.className.includes("footnote-backref"))
+      ) ? (
         <StyledMUILink
           href={props.href}
           target="_blank"
