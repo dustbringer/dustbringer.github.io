@@ -14,16 +14,13 @@ import Container from "../../components/Container";
 import Link from "../../components/Link";
 import Accordion from "../../components/Accordion";
 
-import {
-  relabelAll,
-  relabelInt,
-} from "../../util/tools/pandoc-footnote-relabel";
+import { relabelAll, relabelInt } from "../../util/tools/md-footnote-relabel";
 
 const HiddenInput = styled.input`
   display: none;
 `;
 
-function PandocFootnoteRelabel() {
+function MarkdownFootnoteRelabel() {
   const [inputText, setInputText] = React.useState("");
   const [indexFrom, setIndexFrom] = React.useState(1);
   const [outputText, setOutputText] = React.useState("");
@@ -80,15 +77,18 @@ function PandocFootnoteRelabel() {
   return (
     <>
       <Helmet>
-        <title>{`Pandoc Footnote Relabeller - dustbringer.github.io`}</title>
-        <meta name="description" content="Pandoc Footnote Relabeller" />
+        <title>{`Markdown/Pandoc Footnote Relabeller - dustbringer.github.io`}</title>
+        <meta
+          name="description"
+          content="Markdown/Pandoc Footnote Relabeller"
+        />
       </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4" gutterBottom>
-          Pandoc Footnote Relabeller
+          Markdown/Pandoc Footnote Relabeller
         </Typography>
         <Typography variant="body1" gutterBottom>
-          Replace the labels of pandoc footnotes with ascending integers. The
+          Replace the labels of markdown footnotes with ascending integers. The
           barebones Javascript code can be found at{" "}
           <Link href="https://gist.github.com/dustbringer/6675f9aad4ff47725933abeb7affb891">
             this GitHub gist
@@ -244,4 +244,4 @@ function PandocFootnoteRelabel() {
   );
 }
 
-export default PandocFootnoteRelabel;
+export default MarkdownFootnoteRelabel;

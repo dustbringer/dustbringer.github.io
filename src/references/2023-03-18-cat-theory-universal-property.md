@@ -10,6 +10,8 @@ tags:
 
 # Universal Property (Category Theory)
 
-Notes in my attempt to consolidate the two definitions [^1]
+Notes in my attempt to consolidate two definitions of 'universal property'.
 
-[^1]: bruh
+
+
+

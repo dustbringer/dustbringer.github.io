@@ -6,8 +6,6 @@ import styled, { css } from "styled-components";
 // Rehype (for rednering markdown)
 import { unified } from "unified";
 import rehypeReact from "rehype-react";
-import rehypeExternalLinks from "rehype-external-links";
-import rehypeStringify from "rehype-stringify";
 
 import Typography from "@mui/material/Typography";
 
@@ -83,34 +81,29 @@ function MarkdownTemplate({ data, location }) {
   const { frontmatter: meta, htmlAst, headings } = markdownRemark;
 
   // From https://github.com/rehypejs/rehype/discussions/52
-  const processor = unified()
-    // .use(rehypeExternalLinks, {
-    //   target: "_blank",
-    //   rel: ["nofollow", "noopener", "noreferrer"],
-    // })
-    .use(rehypeReact, {
-      createElement: React.createElement,
-      components: {
-        blockquote: BlockQuote,
-        h1: StyledH1,
-        h2: StyledH2,
-        h3: StyledH3,
-        h4: StyledH4,
-        h5: StyledH5,
-        h6: StyledH6,
-        hr: HorizontalRule,
-        img: Image,
-        a: Link,
-        li: ListItem,
-        input: Checkbox,
-        table: Table,
-        th: TableCellHeader,
-        td: TableCellData,
-        thead: TableHead,
-        // tbody unused
-        tr: TableRow,
-      },
-    });
+  const processor = unified().use(rehypeReact, {
+    createElement: React.createElement,
+    components: {
+      blockquote: BlockQuote,
+      h1: StyledH1,
+      h2: StyledH2,
+      h3: StyledH3,
+      h4: StyledH4,
+      h5: StyledH5,
+      h6: StyledH6,
+      hr: HorizontalRule,
+      img: Image,
+      a: Link,
+      li: ListItem,
+      input: Checkbox,
+      table: Table,
+      th: TableCellHeader,
+      td: TableCellData,
+      thead: TableHead,
+      // tbody unused
+      tr: TableRow,
+    },
+  });
 
   // React.useEffect(() => {
   //   const hash = location.hash;

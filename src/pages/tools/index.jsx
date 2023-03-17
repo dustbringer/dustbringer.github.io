@@ -54,10 +54,10 @@ const tools = [
     path: "/tools/lyric-slides",
   },
   {
-    title: "Pandoc Footnote Relabeller",
+    title: "Markdown/Pandoc Footnote Relabeller",
     description:
-      "Replace the labels of pandoc footnotes with ascending integers.",
-    path: "/tools/pandoc-footnote-relabel",
+      "Replace the labels of markdown footnotes with ascending integers.",
+    path: "/tools/md-footnote-relabel",
   },
 ];
 

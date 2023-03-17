@@ -113,7 +113,7 @@ module.exports = {
               //use "front" for Wikipedia style ^ links
               footnoteBackRefInnerTextStartPosition: "front",
               useFootnoteMarkerText: true, // Defaults to false
-              useCustomDivider: "<hr/><strong>References:</strong>", // Defaults to <hr/>
+              useCustomDivider: "<hr/><strong>Footnotes</strong>", // Defaults to <hr/>
             },
           },
           {

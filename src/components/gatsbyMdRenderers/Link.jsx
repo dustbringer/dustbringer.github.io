@@ -11,14 +11,13 @@ const StyledMUILink = styled(MUILink)({
   },
 });
 
+// Links to open in new tab
+const external = ["https", "http", "mailto"];
+
 function Link(props) {
   return (
     <>
-      {!(
-        props.className &&
-        (props.className.includes("header-link-class") ||
-          props.className.includes("footnote-backref"))
-      ) ? (
+      {external.some((e) => props.href && props.href.startsWith(e)) ? (
         <StyledMUILink
           href={props.href}
           target="_blank"
@@ -27,7 +26,7 @@ function Link(props) {
           {props.children}
         </StyledMUILink>
       ) : (
-        <a {...props} />
+        <StyledMUILink {...props} />
       )}
     </>
   );
