@@ -10,4 +10,6 @@ module.exports = {
   "\\angl": "{\\left\\langle #1 \\right\\rangle}",
   "\\ol": "\\overline{#1}",
   "\\ep": "\\varepsilon",
+  "\\cat": "\\mathbf{#1}",
+  "\\Hom": "\\operatorname{Hom}",
 };

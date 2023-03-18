@@ -42,14 +42,14 @@ Many people like lockpicking because its an exotic puzzle with many levels of di
 
 For all the different kinds of locking mechanisms, there are a spectrum of tools and techniques to get around them. If you have ever looked at a cheap lock picking set you probably would have seen a variety of tools and are overwhelmed by the choice... however many of these are close to useless for beginners.
 
-![lockpicks](../post_resources/2021-09-08-lockpicking-foundations/assorted-lockpicks.png "Assorted lockpicks")
+![lockpicks](./resources/2021-09-08-lockpicking-foundations/assorted-lockpicks.png "Assorted lockpicks")
 
 The picks labelled blue are enough to get past most locks we see today, we will be learning about them later on. The picks labelled yellow are assorted rakes and the ones labelled red  are more specialised tools (left is for a dimple lock, right is a different type of rake but can be used to pull out snapped keys).
 
 ### Locks
 When we look at a lock, it is made up of different parts.
 
-![Lock deconstructed](../post_resources/2021-09-08-lockpicking-foundations/lock-parts.png)
+![Lock deconstructed](./resources/2021-09-08-lockpicking-foundations/lock-parts.png)
 - **yellow**: the housing for the mechanism, in this case a padlock body
 - **blue**: the locking mechanism the key interacts with
 - **red**: individual pieces that make up the mechanism (varies between lock types)
@@ -71,7 +71,7 @@ We will be exploring the pin-and-tumbler mechanism.
 
 First, a diagram to go over some terminology and structure.
 
-![Pin and tumbler diagram](../post_resources/2021-09-08-lockpicking-foundations/pin-and-tumbler-diagram.png)
+![Pin and tumbler diagram](./resources/2021-09-08-lockpicking-foundations/pin-and-tumbler-diagram.png)
 
 - The **pins** (key and driver) tiny cylinders that are the main actors in the locking mechanism
   - **Key pins** directly interact with the key. They are sloped to allow the key to easily slide underneath them.
@@ -85,7 +85,7 @@ First, a diagram to go over some terminology and structure.
 
 This animation shows what happens when the correct key is inserted into a lock.
 
-![Unlocking animation](../post_resources/2021-09-08-lockpicking-foundations/pin-and-tumbler-action.gif)
+![Unlocking animation](./resources/2021-09-08-lockpicking-foundations/pin-and-tumbler-action.gif)
 
 The key is cut in such a way that when inserted fully, the line between the key and driver pins match perfectly with the sheer line. Varying lengths of key pins allow for unique key patterns (called **Bitting**) and locks.
 - When the correct key is inserted, the core can turn because there is nothing stuck on the sheer line
@@ -96,7 +96,7 @@ Now that we have some idea of how the lock works under normal conditions, lets l
 ### Tools
 The most basic (and sufficient) lock pick that we need for single pin picking is the **hook**. Here is an image of a standard Peterson's hook.
 
-![](../post_resources/2021-09-08-lockpicking-foundations/peterson-hook.jpg)
+![](./resources/2021-09-08-lockpicking-foundations/peterson-hook.jpg)
 
 The pick is very simple, only consisting of a handle with a thin straight piece of metal that is hooked on the end. We use this to reach into locks and simply push pins up. There are many variations if the hook lockpick with the ends being higher, thinner, rounder etc. for getting around tougher locks and bittings. However for most pin-and-tumbler locks we only need a standard hook.
 
@@ -104,11 +104,11 @@ The pick is very simple, only consisting of a handle with a thin straight piece 
 
 The next tool we need is something to emulate turning a key, called a **tension wrench**.
 
-![Tension wrenches](../post_resources/2021-09-08-lockpicking-foundations/tension-tools.png)
+![Tension wrenches](./resources/2021-09-08-lockpicking-foundations/tension-tools.png)
 
 The [bottom tool](https://www.youtube.com/watch?v=NDSWx8Fngi0) is placed in the bottom of the keyway (blue below), and the [top tool](https://www.art-of-lockpicking.com/wp-content/uploads/2019/07/Tension-Wrench-Grip-SPP-Course.png) is placed in the top of the keyway (red below).
 
-![Tensioner location in keyway](../post_resources/2021-09-08-lockpicking-foundations/tension-location-in-keyway.png)
+![Tensioner location in keyway](./resources/2021-09-08-lockpicking-foundations/tension-location-in-keyway.png)
 
 The top-of-keyway tensioner is the most popular of the two.
 
@@ -126,7 +126,7 @@ You might be wondering, **how can we push all the pins up at once using just a h
 
 First lets watch this animation of single pin picking before we do any explaining.
 
-![Single pin picking animation](../post_resources/2021-09-08-lockpicking-foundations/single-pin-picking-animation.gif)
+![Single pin picking animation](./resources/2021-09-08-lockpicking-foundations/single-pin-picking-animation.gif)
 
 **What do we see?**
 - A tension wrench is inserted in the bottom of the keyway
@@ -140,13 +140,13 @@ We are applying moderate tension to the tension wrench in the direction that a k
 
 Ideally we want all the pin-holes in the lock to be perfectly aligned, but in reality there are machining imperfections causing them to be misaligned from the axis of rotation. (The imperfections are much more subtle than the image.)
 
-![Misaligned pin holes](../post_resources/2021-09-08-lockpicking-foundations/plug-misaligned-holes.png)
+![Misaligned pin holes](./resources/2021-09-08-lockpicking-foundations/plug-misaligned-holes.png)
 
 - If we rotate the core in the direction indicated by the red arrow, the pins in holes that furthest from the centre in the upwards direction will bind up. In this case one of the pins in holes labelled 3 or 5 will bind.
 
 We can **feel for the binding pin** with our hook by gently pushing up each pin. The binding pin will feel much tougher to push up than any other pins (which will all feel springy). When we feel a binding pin, keep pushing up the pin until we feel the core turn slightly and hear a click! This means that the pin we were pushing has *just* gone over the sheer line, and the core has rotated a very miniscule amount, causing another pin to bind up (making a click sound). We say these pins are **set**.
 
-![Setting a pin](../post_resources/2021-09-08-lockpicking-foundations/setting-pin-animiation.gif)
+![Setting a pin](./resources/2021-09-08-lockpicking-foundations/setting-pin-animiation.gif)
 
 > Be careful not to push set pins any higher than the click, this causes the key pins to get stuck on the sheer line. We call these **overset**. In this case, we need to release the tension to make them drop down and try again.
 
@@ -162,13 +162,13 @@ Repeat this process of finding a binding pin and pushing it up to hear a click, 
 ### Raking
 Raking is another lock picking technique that is cool but arguably less fun. We will need a new class of tools, called **rakes**. Here is an image of a Peterson's wave rake (also called a Bogota).
 
-![Peterson's wave rake](../post_resources/2021-09-08-lockpicking-foundations/peterson-wave-rake.jpg)
+![Peterson's wave rake](./resources/2021-09-08-lockpicking-foundations/peterson-wave-rake.jpg)
 
 There are [many other rakes that come in all sorts of shapes](https://i.pinimg.com/originals/87/a4/b2/87a4b2d5344259d9c38f289cec335f9e.png). Out of these, the wave rake is one of the most effective for pin-and-tumbler locks.
 
 Rakes are used with an in-and-out up-and-down motion in the lock, which promotes randomness and allows the picker to set pins without having to find them. I generally use a **lighter tension** on the core compared to single pin picking because we want the "pins to move around easier" instead of "finding the binding pin".
 
-![Raking animation](../post_resources/2021-09-08-lockpicking-foundations/raking-animation.gif)
+![Raking animation](./resources/2021-09-08-lockpicking-foundations/raking-animation.gif)
 
 When all pins are set, you will feel the core turn.
 
@@ -186,11 +186,11 @@ Once you practice a bit, the steps to single pin picking feel rather simple and 
 ### Security pins
 Security pins are often variant driver pins that makes single pin picking difficult, and makes raking ineffective. These feel different from regular pins (such as imitating a set pin click before being set) and require special techniques to pick. Some common ones are serrated, spool, T and mushroom pins.
 
-![Security pins](../post_resources/2021-09-08-lockpicking-foundations/security-pins.png)
+![Security pins](./resources/2021-09-08-lockpicking-foundations/security-pins.png)
 
 As an example lets look at **spool pins**. They have a `I` (spool) shape, and cause the core to rotate before being set, called a **false set**. In order to set these pins, we must allow the core to rotate back (**counter-rotation**) while pushing up on the pin.
 
-![Setting a spool pin](../post_resources/2021-09-08-lockpicking-foundations/spool-pin-animation.gif)
+![Setting a spool pin](./resources/2021-09-08-lockpicking-foundations/spool-pin-animation.gif)
 
 The difficulty in these pins is that rotating the core backwards can cause previously set pins to fall down (or even reset the whole lock), so we have to set them again. Working with these security pins are a delicate task and we need to learn a new set of skills, such as easing tension just enough to set spool pins.
 

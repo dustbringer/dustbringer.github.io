@@ -37,29 +37,29 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown-blog-posts`,
-        path: `${__dirname}/src/posts`,
+        name: `markdown-posts`,
+        path: `${__dirname}/src/markdown/posts`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown-blog-post-resources`,
-        path: `${__dirname}/src/post_resources`,
+        name: `markdown-post-resources`,
+        path: `${__dirname}/src/markdown/posts/resources`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown-references`,
-        path: `${__dirname}/src/references`,
+        name: `markdown-notes`,
+        path: `${__dirname}/src/markdown/notes`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown-reference-resources`,
-        path: `${__dirname}/src/reference_resources`,
+        name: `markdown-note-resources`,
+        path: `${__dirname}/src/markdown/notes/resources`,
       },
     },
     {

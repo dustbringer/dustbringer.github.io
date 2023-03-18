@@ -17,8 +17,8 @@ What happens when we combine these ideas together? Say we take take $n$ objects,
 
 <!-- Image generated using tikz, converted to SVG using pdf2svg, scaled up using inkscape -->
 <!-- Rescaling in inkscape: https://superuser.com/questions/475851/how-can-i-scale-an-svg-via-command-line -->
-![](../post_resources/2022-12-03-polya-enumeration/example-AABB.svg)
-![](../post_resources/2022-12-03-polya-enumeration/example-ABAB.svg)
+![](./resources/2022-12-03-polya-enumeration/example-AABB.svg)
+![](./resources/2022-12-03-polya-enumeration/example-ABAB.svg)
 
 However if we try to combine the two equations we used above, the number of permutations comes out to be
 $$
@@ -368,7 +368,7 @@ $$
 \frac{1}{6}(6 + 90) = 16.
 $$
 
-We can check this is correct via a [simple script](https://github.com/dustbringer/dustbringer.github.io/blob/main/src/post_resources/2022-12-03-polya-enumeration/permutations-lister.py).
+We can check this is correct via a [simple script](https://github.com/dustbringer/dustbringer.github.io/blob/main/src/posts/resources/2022-12-03-polya-enumeration/permutations-lister.py).
 
 **Remarks.** You may have noticed that multinomial coefficients are exactly how we were taught to count the permutations of letters with possibly some repeating. So it makes sense that it comes up when counting arrangements of the same letters in a circle.
 

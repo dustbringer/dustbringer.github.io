@@ -1,5 +1,5 @@
 ---
-slug: "/references/2021-11-27-git-prompt"
+slug: "/notes/2021-11-27-git-prompt"
 title: Putting git info onto shell prompt
 description: Notes for self about git-prompt
 author: dustbringer

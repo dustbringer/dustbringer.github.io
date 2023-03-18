@@ -1,0 +1,23 @@
+\documentclass[
+    tikz,
+    border=5px,
+    convert={
+        density=600,
+        size=400x400,
+        outext=.svg,
+        convertexe={dvisvgm},
+        command=\unexpanded{{\convertexe\space --pdf  --zoom=1.5 \infile}}}]
+    {standalone}
+{}
+\usetikzlibrary{cd} % commutative diagrams
+\usepackage{amsmath, amssymb, amsfonts, amscd}
+
+\begin{document}
+\begin{tikzcd}[sep=large]
+    S \arrow[r, "{U\circ[\cdot]}", red] \arrow[dr, "\phi"']
+    & U\mathbb{Z}\{S\} \arrow[d,"U\tilde{\phi}", dashed]
+    & \mathbb{Z}\{S\} \arrow[d,"\tilde{\phi}", dashed] \\
+    & UA
+    & A
+\end{tikzcd}
+\end{document}

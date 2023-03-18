@@ -1,0 +1,29 @@
+\documentclass[
+    tikz,
+    border=5px,
+    convert={
+        density=600,
+        size=400x400,
+        outext=.svg,
+        convertexe={dvisvgm},
+        command=\unexpanded{{\convertexe\space --pdf  --zoom=1.5 \infile}}}]
+    {standalone}
+\usetikzlibrary{cd} % commutative diagrams
+
+\begin{document}
+% \begin{tikzpicture}[commutative diagrams/every diagram]
+%     \node[red] (topl) at (0,2) {$c$};
+%     \node[red] (topr) at (2,2) {$Sa$};
+%     \node (botr) at (2,0) {$Sd$};
+%     %
+%     \path[commutative diagrams/.cd, every arrow, every label]
+%     (topl) edge[red, commutative diagrams/dashed] (topr);
+% \end{tikzpicture}
+\begin{tikzcd}[sep=large]
+    c \arrow[r, "u", red] \arrow[dr, "f"']
+    & Sa \arrow[d,"Sf'", dashed]
+    & a \arrow[d,"f'", dashed] \\
+    & Sd
+    & d
+\end{tikzcd}
+\end{document}

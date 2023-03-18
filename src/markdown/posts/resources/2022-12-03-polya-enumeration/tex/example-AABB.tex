@@ -1,4 +1,14 @@
-\documentclass[tikz, border=5px]{standalone}
+\documentclass[
+    tikz,
+    border=5px,
+    convert={
+        density=600,
+        size=400x400,
+        outext=.svg,
+        convertexe={dvisvgm},
+        command=\unexpanded{{\convertexe\space --pdf  --zoom=1.5 \infile}}}]
+    {standalone}
+
 \definecolor{w}{RGB}{255,255,255}
 \begin{document}
 \begin{tikzpicture}[

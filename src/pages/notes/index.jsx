@@ -19,7 +19,7 @@ const ListContainer = styled.div`
 `;
 
 function ReferenceListPage({ location, data }) {
-  const { edges: references } = data.allMarkdownRemark;
+  const { edges: notes } = data.allMarkdownRemark;
   const [page, setPage] = React.useState(1);
 
   React.useEffect(() => {
@@ -30,27 +30,27 @@ function ReferenceListPage({ location, data }) {
       queryPage &&
       !isNaN(parseInt(queryPage, 10)) &&
       queryPage > 0 &&
-      queryPage <= Math.ceil(references.length / N_PER_PAGE)
+      queryPage <= Math.ceil(notes.length / N_PER_PAGE)
     ) {
       setPage(parseInt(queryPage, 10));
     }
-  }, [location.search, references.length]);
+  }, [location.search, notes.length]);
 
   return (
     <>
       <Helmet>
-        <title>References - dustbringer.github.io</title>
-        <meta name="description" content="List of References" />
+        <title>Notes - dustbringer.github.io</title>
+        <meta name="description" content="List of Notes" />
       </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4" gutterBottom>
-          References
+          Notes
         </Typography>
         <div>
-          {references.length > 0 ? (
+          {notes.length > 0 ? (
             <>
               <ListContainer>
-                {getPage(references, page, N_PER_PAGE).map((e, i) => {
+                {getPage(notes, page, N_PER_PAGE).map((e, i) => {
                   const { id, path, frontmatter: meta } = e.node;
                   return (
                     <BlogListCard
@@ -72,11 +72,11 @@ function ReferenceListPage({ location, data }) {
                   navigate(`${location.pathname}?page=${Math.max(page - 1, 1)}`)
                 }
                 onNext={() =>
-                  page < Math.ceil(references.length / N_PER_PAGE) &&
+                  page < Math.ceil(notes.length / N_PER_PAGE) &&
                   navigate(
                     `${location.pathname}?page=${Math.min(
                       page + 1,
-                      Math.ceil(references.length / N_PER_PAGE)
+                      Math.ceil(notes.length / N_PER_PAGE)
                     )}`
                   )
                 }
@@ -94,10 +94,10 @@ function ReferenceListPage({ location, data }) {
 export default ReferenceListPage;
 
 export const pageQuery = graphql`
-  query GetReferences {
+  query GetNotes {
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { slug: { regex: "/^/?references//" } } }
+      filter: { frontmatter: { slug: { regex: "/^/?notes//" } } }
     ) {
       edges {
         node {
