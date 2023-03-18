@@ -65,7 +65,7 @@ body {
 
 /* Hide header links when gatsby markdown contents are hidden */
 @media (max-width: 1375px) {
-  .header-link-class.after {
-    display: none;
+  .header-link-class {
+    display: none !important;
   }
 }
