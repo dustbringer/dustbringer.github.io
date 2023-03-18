@@ -62,3 +62,10 @@ body {
 #content {
   padding: 2vh 0 calc(2vh + 30px);
 } */
+
+/* Hide header links when gatsby markdown contents are hidden */
+@media (max-width: 1375px) {
+  .header-link-class.after {
+    display: none;
+  }
+}
