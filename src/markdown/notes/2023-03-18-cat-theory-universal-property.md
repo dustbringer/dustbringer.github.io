@@ -46,8 +46,13 @@ These two definitions are equivalent by a proposition [^4] in Mac Lane's book. R
 **Note.** The second half just says that the translation between the two definitions works in the other way. The reverse construction is not as intuitive (see the proof [^4]). We just look at the first part.
 
 The proposition says that saying $(a,u)$ is universal morphism is equivalent to saying that the functor $\mathcal{C}(c,S-): \mathcal{D} \to \cat{Set}$ is representable with representing object $a \in \mathcal{D}$. The natural isomorphism $\mathcal{D}(a,-) \cong \mathcal{C}(c,S-)$ is exactly the information:
+- an element $u \in \mathcal{C}(c,S\red{a})$, corresponding to the natural isomorphism (via Yoneda lemma), and
 - for any $d \in \mathcal{D}$ and morphism $f:c \to Sd$ in $\mathcal{C}(c,Sd)$
-- there is a unique morphism $f':a \to d$ in $\mathcal{D}(a,d)$ such that $f = f' \circ u$.
+- there is a *unique* morphism $f':a \to d$ in $\mathcal{D}(a,d)$ such that $f = Sf' \circ u$.
+
+![](./resources/2023-03-18-cat-theory-universal-property/tex/maclane-def-commdiag.svg)
+
+We can interpret any representable functor in a similar way, regardless of if they are of the form $\mathcal{C}(c,S-)$.
 
 
 ### Representation to Universal Morphism
