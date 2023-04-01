@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import { Helmet } from "react-helmet";
 import Encoding from "encoding-japanese";
 import ReactFuri from "react-furi";
@@ -26,17 +26,17 @@ const parseFurigana = (text) => {
   return result;
 };
 
-const Input = styled.input`
+const Input = styled("input")`
   display: none;
 `;
 
-const Text = styled.div`
+const Text = styled("div")`
   white-space: pre-line;
   font-family: "Noto Serif JP", sans-serif;
   font-size: 1.25rem;
 `;
 
-const Divider = styled.hr`
+const Divider = styled("hr")`
   height: 0.25em;
   padding: 0;
   margin: 12px 0;

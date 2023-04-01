@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
-const StyledHead = styled.thead`
+const StyledHead = styled("thead")`
   border-bottom: 2px solid #dddddd;
 `;
 

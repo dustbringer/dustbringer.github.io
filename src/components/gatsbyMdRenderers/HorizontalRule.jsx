@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
-const HorizontalRule = styled.hr`
+const HorizontalRule = styled("hr")`
   height: 0.25em;
   padding: 0;
   margin: 24px 0;

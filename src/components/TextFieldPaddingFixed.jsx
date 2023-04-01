@@ -8,9 +8,9 @@ function TextFieldPaddingFixed(props) {
       InputProps={
         props.multiline && {
           style: {
-            position: "relative",
-            borderRadius: "4px",
-            padding: "8.5px 14px",
+            // position: "relative",
+            // borderRadius: "4px",
+            // padding: "8.5px 14px",
           },
         }
       }

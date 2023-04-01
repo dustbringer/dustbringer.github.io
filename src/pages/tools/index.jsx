@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, navigate, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
-import styled from "styled-components";
+import { styled, css } from "@mui/material/styles";
 import moment from "moment";
 import qs from "query-string";
 
@@ -17,7 +17,7 @@ import { N_PER_PAGE, getPage } from "../../util/pagination";
 // HELPFUL https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
 // In gatsby: https://www.gatsbyjs.com/blog/2017-07-19-creating-a-blog-with-gatsby/
 
-const ListContainer = styled.div`
+const ListContainer = styled("div")`
   min-height: 75vh;
 `;
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, navigate, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import moment from "moment";
 import qs from "query-string";
 
@@ -14,7 +14,7 @@ import PageNavigation from "../../components/PageNavigation";
 
 import { N_PER_PAGE, getPage } from "../../util/pagination";
 
-const ListContainer = styled.div`
+const ListContainer = styled("div")`
   min-height: 75vh;
 `;
 

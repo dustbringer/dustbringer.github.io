@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import Chip from "@mui/material/Chip";
 import Card from "@mui/material/Card";

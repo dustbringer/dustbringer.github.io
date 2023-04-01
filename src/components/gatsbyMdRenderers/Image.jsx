@@ -1,11 +1,11 @@
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
-const StyledImg = styled.img`
+const StyledImg = styled("img")`
   max-width: 100%;
 `;
 
-const CenterDiv = styled.span`
+const CenterDiv = styled("span")`
   display: flex;
   flex-direction: column;
   align-items: center;

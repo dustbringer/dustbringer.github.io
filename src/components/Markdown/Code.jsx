@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import { styled, css } from "@mui/material/styles";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 const inline = css`
@@ -9,7 +9,7 @@ const inline = css`
   padding: 0.2em 0.3em;
 `;
 
-const StyledCode = styled.code`
+const StyledCode = styled("code")`
   // ${(props) => props.inline && inline}
   ${inline}
 `;

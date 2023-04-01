@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, navigate } from "gatsby";
 import { useLocation } from "@reach/router";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";

@@ -1,11 +1,11 @@
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
 /**
  * NOTES
  *     white-space is for single new lines to be registered
  */
-const FormatDiv = styled.div`
+const FormatDiv = styled("div")`
   font-family: "Open Sans", "Roboto", "Helvetica", "Arial", "sans-serif";
   font-size: 16px;
   user-select: none;
@@ -21,7 +21,7 @@ const FormatDiv = styled.div`
   }
 `;
 
-const StyledSpan = styled.span`
+const StyledSpan = styled("span")`
   display: block;
   margin: 0;
   padding: 0;

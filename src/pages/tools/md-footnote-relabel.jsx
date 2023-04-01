@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import { Helmet } from "react-helmet";
 
 import Box from "@mui/material/Box";
@@ -16,7 +16,7 @@ import Accordion from "../../components/Accordion";
 
 import { relabelAll, relabelInt } from "../../util/tools/md-footnote-relabel";
 
-const HiddenInput = styled.input`
+const HiddenInput = styled("input")`
   display: none;
 `;
 

@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
-const StyledTable = styled.table`
+const StyledTable = styled("table")`
   background-color: #ffffff;
   border: 1px solid #dddddd;
   border-spacing: 0;
@@ -9,7 +9,7 @@ const StyledTable = styled.table`
   margin: 1em 0;
 `;
 
-const CenterDiv = styled.span`
+const CenterDiv = styled("span")`
   display: flex;
   flex-direction: column;
   align-items: center;

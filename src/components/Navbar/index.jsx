@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 // import { styled } from "@mui/material/styles";
 import { useMediaQuery } from "react-responsive";
 

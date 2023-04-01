@@ -1,18 +1,18 @@
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Alerts from "../components/Alerts";
 
 import "katex/dist/katex.min.css"; // styling math symbols to look like latex
 
-const DivRoot = styled.div`
+const DivRoot = styled("div")`
   position: relative;
   min-height: 100vh;
   font-size: 16px;
 `;
 
-const DivContent = styled.div`
+const DivContent = styled("div")`
   padding: 2vh 0 calc(2vh + 30px);
 `;
 

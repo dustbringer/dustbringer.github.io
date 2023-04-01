@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { navigate } from "gatsby";
 import { GlobalContext } from "../context/GlobalContext";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -12,8 +12,9 @@ import InternalLink from "../components/InternalLink";
 import CardSmall from "../components/CardSmall";
 
 import ProfileBird from "../images/profile-bird-md.jpg";
+import { TextField } from "@mui/material";
 
-const CircleImage = styled.img`
+const CircleImage = styled("img")`
   border-radius: 50%;
   width: 25%;
   height: auto;
@@ -41,7 +42,7 @@ const quickLinks = [
   },
 ];
 
-const QuickLinkContainer = styled.div`
+const QuickLinkContainer = styled("div")`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

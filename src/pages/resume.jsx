@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import TeX from "@matejmazur/react-katex";
 
 import Box from "@mui/material/Box";

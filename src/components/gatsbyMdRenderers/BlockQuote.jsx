@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
-const BlockQuote = styled.blockquote`
+const BlockQuote = styled("blockquote")`
   color: #6a737d;
   border-left: 4px solid #dfe2e5;
   padding: 0.25em 1em;

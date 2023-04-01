@@ -1,12 +1,12 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import { styled, css } from "@mui/material/styles";
 
 // Styled components
 const removeMargin = css`
   margin: 0;
 `;
 
-const StyledH6 = styled.h6`
+const StyledH6 = styled("h6")`
   ${removeMargin};
   font-size: 1.25em;
   font-weight: 700;

@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
-const StyledRow = styled.tr`
+const StyledRow = styled("tr")`
   &:nth-child(2n + 1) {
     background-color: #f6f8fa;
   }

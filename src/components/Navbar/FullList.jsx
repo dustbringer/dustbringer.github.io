@@ -2,10 +2,10 @@ import React from "react";
 import { Link, navigate } from "gatsby";
 import { useLocation } from "@reach/router";
 // import { Link } from "gatsby-theme-material-ui";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import { isSamePrefix } from "../../util/links";
 
-const NavLinkList = styled.ul`
+const NavLinkList = styled("ul")`
   list-style-type: none;
   padding: 0;
   margin: auto 0;
@@ -49,7 +49,7 @@ const NavLink = styled(MyLink)`
   }
 `;
 
-const Underline = styled.div`
+const Underline = styled("div")`
   position: absolute;
   bottom: -${(props) => props.dist}px;
   height: 2px;

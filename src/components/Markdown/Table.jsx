@@ -1,7 +1,7 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import { styled } from "@mui/material/styles";
 
-const StyledTable = styled.table`
+const StyledTable = styled("table")`
   background-color: #ffffff;
   border: 1px solid #dddddd;
   border-spacing: 0;
@@ -9,11 +9,11 @@ const StyledTable = styled.table`
   margin: 1em 0;
   ${(props) => {
     if (props.align === "center")
-      return css`
+      return `
         margin: 1em auto;
       `;
     else if (props.align === "right")
-      return css`
+      return `
         margin: 1em 0 1em auto;
       `;
   }}}

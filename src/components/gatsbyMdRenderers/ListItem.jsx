@@ -1,10 +1,10 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import { styled } from "@mui/material/styles";
 
-const ListItem = styled.li`
+const ListItem = styled("li")`
   ${(props) =>
     props.className === "task-list-item" &&
-    css`
+    `
       &::marker {
         content: none;
       }

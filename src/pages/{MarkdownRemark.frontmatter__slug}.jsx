@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
-import styled, { css } from "styled-components";
+import { styled, css } from "@mui/material/styles";
 
 // Rehype (for rednering markdown)
 import { unified } from "unified";
@@ -64,13 +64,13 @@ const breakText = css`
   hyphens: auto;
 `;
 
-const MarkdownFormatDiv = styled.div`
+const MarkdownFormatDiv = styled("div")`
   width: 100%;
   // white-space: pre-line;
   ${breakText};
 `;
 
-const ContentsPositionDiv = styled.div`
+const ContentsPositionDiv = styled("div")`
   font-family: "Open Sans", "Roboto", "Helvetica", "Arial", "sans-serif";
   display: flex;
   flex-direction: row;

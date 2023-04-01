@@ -1,6 +1,6 @@
 // Original code from https://levelup.gitconnected.com/adding-katex-and-markdown-in-react-7b70694004ef
 import React from "react";
-import styled, { css } from "styled-components";
+import { styled, css } from "@mui/material/styles";
 import ReactMarkdown from "react-markdown";
 import remarkMathPlugin from "remark-math";
 import remarkGFMPlugin from "remark-gfm";
@@ -43,13 +43,13 @@ import ListItemRenderer from "./ListItem";
 import InputRenderer from "./Input";
 import HorizontalRuleRenderer from "./HorizontalRule";
 
-const FormatDiv = styled.div`
+const FormatDiv = styled("div")`
   font-family: "Open Sans", "Roboto", "Helvetica", "Arial", "sans-serif";
   display: flex;
   flex-direction: row;
 `;
 
-const NoFormatDiv = styled.div`
+const NoFormatDiv = styled("div")`
   display: flex;
   flex-direction: row;
 `;
@@ -80,7 +80,7 @@ const breakText = css`
  * NOTES
  *     white-space is for single new lines to be registered
  */
-const MarkdownFormatDiv = styled.div`
+const MarkdownFormatDiv = styled("div")`
   width: 100%;
   ${breakText};
 `;

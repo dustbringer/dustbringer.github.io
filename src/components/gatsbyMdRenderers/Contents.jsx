@@ -1,11 +1,11 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import { styled, css } from "@mui/material/styles";
 
 /**
  * NOTES
  *     white-space is for single new lines to be registered
  */
-const FormatDiv = styled.div`
+const FormatDiv = styled("div")`
   font-family: "Open Sans", "Roboto", "Helvetica", "Arial", "sans-serif";
   font-size: 16px;
   user-select: none;
@@ -42,13 +42,13 @@ const contentsEntry = css`
   text-overflow: ellipsis;
 `;
 
-const StyledA = styled.a`
+const StyledA = styled("a")`
   color: black;
   text-decoration: none;
   ${contentsEntry}
 `;
 
-const Top = styled.span`
+const Top = styled("span")`
   ${contentsEntry};
   background-color: #dddddd;
   opacity: 60%;

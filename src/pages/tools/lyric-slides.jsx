@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import { Helmet } from "react-helmet";
 // import { NewWindow } from "react-window-open";
 // import { ReactNewWindowStyles } from "react-new-window-styles";
@@ -32,7 +32,7 @@ import {
 } from "../../components/Markdown";
 import { GlobalContext } from "../../context/GlobalContext";
 
-const LyricsContainer = styled.div`
+const LyricsContainer = styled("div")`
   ${(props) => props.fullHeight && "height: 100vh;"}
   text-align: center;
   padding-top: 3em;
@@ -45,7 +45,7 @@ const LyricsContainer = styled.div`
   }
 `;
 
-const PageNumber = styled.div`
+const PageNumber = styled("div")`
   position: fixed;
   bottom: 5px;
   right: 5px;
@@ -54,7 +54,7 @@ const PageNumber = styled.div`
   color: grey;
 `;
 
-const SettingsSection = styled.div`
+const SettingsSection = styled("div")`
   margin: 3px 0;
   padding-left: 0.5rem;
   border-left: 2px solid lightgrey;

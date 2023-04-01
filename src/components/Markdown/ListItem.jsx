@@ -1,7 +1,7 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import { styled, css } from "@mui/material/styles";
 
-const StyledLi = styled.li`
+const StyledLi = styled("li")`
   ${(props) =>
     !props.ordered &&
     props.checked !== null &&

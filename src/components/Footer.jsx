@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
 import Container from "@mui/material/Container";
 import AppBar from "@mui/material/AppBar";
@@ -53,7 +53,7 @@ const IconButton = ({ Icon, href }) => {
   );
 };
 
-const SocialIcons = styled.div`
+const SocialIcons = styled("div")`
   line-height: normal;
   @media (max-width: 310px) {
     display: none;
