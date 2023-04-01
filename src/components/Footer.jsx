@@ -64,7 +64,7 @@ function Footer() {
   return (
     <div>
       <StyledAppBar position="static" color="transparent" elevation={0}>
-        <StyledToolbar>
+        <StyledToolbar variant="dense">
           <StyledContainer maxWidth="md">
             <DivRowSpaceBetween>
               <Typography

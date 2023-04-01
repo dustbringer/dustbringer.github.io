@@ -96,7 +96,7 @@ function Navbar() {
   return (
     <div>
       <AppBar position="static" color="transparent" elevation={0}>
-        <StyledToolbar>
+        <StyledToolbar variant="dense">
           <StyledContainer maxWidth="md">
             <MyLink to="/">
               <StyledDivRowSpaceBetween>

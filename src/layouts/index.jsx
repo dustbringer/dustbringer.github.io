@@ -8,7 +8,7 @@ import "katex/dist/katex.min.css"; // styling math symbols to look like latex
 
 const DivRoot = styled("div")`
   position: relative;
-  min-height: 100vh;
+  min-height: 99vh;
   font-size: 16px;
 `;
 
