@@ -21,11 +21,11 @@ const FormatDiv = styled("div")`
   }
 `;
 
-const contentsEntry = css`
+const contentsEntry = (props) => css`
   display: block;
   margin: 0;
   padding: 0;
-  padding-left: ${(props) => props.depth * 10}px;
+  padding-left: ${props.depth * 10}px;
   font-size: 0.8em;
   font-weight: 700;
   cursor: pointer;

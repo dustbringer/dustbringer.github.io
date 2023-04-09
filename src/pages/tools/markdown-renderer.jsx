@@ -5,8 +5,7 @@ import { Helmet } from "react-helmet";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-// import TextField from "@mui/material/TextField";
-import TextField from "../../components/TextFieldPaddingFixed";
+import TextField from "@mui/material/TextField";
 
 import Container from "../../components/Container";
 import { DivMarginBottom } from "../../components/styled/Divs";
