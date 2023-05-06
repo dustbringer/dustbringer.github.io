@@ -11,7 +11,7 @@ function NotFoundPage() {
   return (
     <>
       <Helmet>
-        <title>404 Not Found - dustbringer.github.io</title>
+        <title>404 Not Found | dustbringer.github.io</title>
         <meta name="description" content="404 Not Found" />
       </Helmet>
       <Container maxWidth="md">

@@ -77,10 +77,10 @@ function MarkdownFootnoteRelabel() {
   return (
     <>
       <Helmet>
-        <title>{`Markdown/Pandoc Footnote Relabeller - dustbringer.github.io`}</title>
+        <title>{`Markdown Footnote Relabeller | dustbringer.github.io`}</title>
         <meta
           name="description"
-          content="Markdown/Pandoc Footnote Relabeller"
+          content="Markdown Footnote Relabeller"
         />
       </Helmet>
       <Container maxWidth="md">

@@ -44,7 +44,7 @@ function BlogListPage({ location, data }) {
   return (
     <>
       <Helmet>
-        <title>Posts - dustbringer.github.io</title>
+        <title>Posts | dustbringer.github.io</title>
         <meta name="description" content="List of blog posts" />
       </Helmet>
       <Container maxWidth="md">

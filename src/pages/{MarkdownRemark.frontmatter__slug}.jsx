@@ -118,7 +118,7 @@ function MarkdownTemplate({ data, location }) {
   return (
     <>
       <Helmet>
-        <title>{meta.title} - dustbringer.github.io</title>
+        <title>{meta.title} | dustbringer.github.io</title>
         <meta name="description" content={`${meta.title}`} />
       </Helmet>
 

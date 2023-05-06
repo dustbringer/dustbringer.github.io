@@ -34,6 +34,7 @@ const Text = styled("div")`
   white-space: pre-line;
   font-family: "Noto Serif JP", sans-serif;
   font-size: 1.25rem;
+  line-height: 2;
 `;
 
 const Divider = styled("hr")`
@@ -132,7 +133,7 @@ function JapaneseFileReaderPage() {
     <>
       <Helmet>
         <title>
-          {`[${fileName}] at ${yPos} - Japanese File Reader - dustbringer.github.io`}
+          {`"${fileName}" at ${yPos} - Japanese File Reader | dustbringer.github.io`}
         </title>
         <meta name="description" content="Japanese File Reader" />
       </Helmet>

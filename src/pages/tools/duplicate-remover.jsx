@@ -142,7 +142,7 @@ function DuplicateRemoverPage() {
   return (
     <>
       <Helmet>
-        <title>Duplicate Remover - dustbringer.github.io</title>
+        <title>Duplicate Remover | dustbringer.github.io</title>
         <meta name="description" content="Duplicate Remover" />
       </Helmet>
       <Container maxWidth="md">

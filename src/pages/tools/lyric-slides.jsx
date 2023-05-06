@@ -195,7 +195,7 @@ function LyricSlidesPage() {
   return (
     <>
       <Helmet>
-        <title>Lyric Slides - dustbringer.github.io</title>
+        <title>Lyric Slides | dustbringer.github.io</title>
         <meta name="description" content="Lyric Slides" />
       </Helmet>
       <Container maxWidth="md">

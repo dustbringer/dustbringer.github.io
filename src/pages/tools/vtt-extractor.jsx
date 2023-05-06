@@ -79,7 +79,7 @@ function VTTExtractorPage() {
   return (
     <>
       <Helmet>
-        <title>VTT Extractor - dustbringer.github.io</title>
+        <title>VTT Extractor | dustbringer.github.io</title>
         <meta name="description" content="VTT Extractor" />
       </Helmet>
       <Container maxWidth="md">

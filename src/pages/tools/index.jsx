@@ -83,7 +83,7 @@ function ToolListPage({ location }) {
   return (
     <>
       <Helmet>
-        <title>Tools - dustbringer.github.io</title>
+        <title>Tools | dustbringer.github.io</title>
         <meta name="description" content="List of tools" />
       </Helmet>
       <Container maxWidth="md">

@@ -52,8 +52,8 @@ function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Home - dustbringer.github.io</title>
-        <meta name="description" content="Home Page" />
+        <title>dustbringer.github.io</title>
+        <meta name="description" content="Home" />
       </Helmet>
       <Container maxWidth="md" sx={{ paddingTop: "6vh" }}>
         <CircleImage

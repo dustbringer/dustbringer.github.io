@@ -41,7 +41,7 @@ function ResumePage() {
   return (
     <>
       <Helmet>
-        <title>Resume - dustbringer.github.io</title>
+        <title>Resume | dustbringer.github.io</title>
         <meta name="description" content="Resume Page" />
       </Helmet>
       <Container maxWidth="md">
@@ -341,18 +341,18 @@ function ResumePage() {
                 University of New South Wales (2019 - Present)
               </Typography>
               <Typography variant="body1">
-                B Computer Science / B Advanced Mathematics (Honours)
-              </Typography>
-              <Typography variant="body1">
-                Honours Thesis:{" "}
-                <em>Diagrammatic Categories in Representation Theory</em>
+                B Advanced Mathematics (Honours) / B Computer Science
               </Typography>
               <Typography variant="body1" gutterBottom>
-                Weighted Average Mark: <strong>{unswMarks.wam}</strong>
+                Honours Thesis:{" "}
+                <em>Diagrammatic Categories in Representation Theory</em>
               </Typography>
 
               <Box sx={{ marginBottom: "1em" }}>
                 <Accordion title="Details">
+                  <Typography variant="body1">
+                    <strong>Weighted Average Mark:</strong> {unswMarks.wam}
+                  </Typography>
                   <Typography variant="body1" sx={styleBold}>
                     Awards
                   </Typography>
@@ -396,16 +396,20 @@ function ResumePage() {
               </Box>
             </li>
             <li>
-              <Typography variant="body1" sx={{ ...styleBold, ...styleItalic }}>
+              <Typography
+                variant="body1"
+                sx={{ ...styleBold, ...styleItalic }}
+                gutterBottom
+              >
                 Northern Beaches Secondary College Manly Selective Campus
                 (2012-2018)
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                ATAR: 97.55
               </Typography>
 
               <Box sx={{ marginBottom: "1em" }}>
                 <Accordion title="Details">
+                  <Typography variant="body1">
+                    <strong>ATAR:</strong> 97.55
+                  </Typography>
                   <Box sx={{ "& table": { width: "100%" } }}>
                     <Table>
                       <THead>

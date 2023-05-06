@@ -39,7 +39,7 @@ function ReferenceListPage({ location, data }) {
   return (
     <>
       <Helmet>
-        <title>Notes - dustbringer.github.io</title>
+        <title>Notes | dustbringer.github.io</title>
         <meta name="description" content="List of Notes" />
       </Helmet>
       <Container maxWidth="md">

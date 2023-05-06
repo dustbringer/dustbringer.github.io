@@ -51,7 +51,7 @@ function ImageViewerPage() {
   return (
     <>
       <Helmet>
-        <title>Image Viewer - dustbringer.github.io</title>
+        <title>Image Viewer | dustbringer.github.io</title>
         <meta name="description" content="Markdown Renderer" />
       </Helmet>
       <Container maxWidth="md">

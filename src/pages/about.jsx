@@ -15,7 +15,7 @@ function AboutPage() {
   return (
     <>
       <Helmet>
-        <title>About - dustbringer.github.io</title>
+        <title>About | dustbringer.github.io</title>
         <meta name="description" content="About Page" />
       </Helmet>
       <Container maxWidth="md">

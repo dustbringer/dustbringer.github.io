@@ -49,7 +49,7 @@ function MarkdownRendererPage() {
   return (
     <>
       <Helmet>
-        <title>Markdown Renderer - dustbringer.github.io</title>
+        <title>Markdown Renderer | dustbringer.github.io</title>
         <meta name="description" content="Markdown Renderer" />
       </Helmet>
       <Container maxWidth="md">

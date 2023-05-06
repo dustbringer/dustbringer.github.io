@@ -26,16 +26,16 @@ const contentsEntry = (props) => css`
   margin: 0;
   padding: 0;
   padding-left: ${props.depth * 10}px;
-  font-size: 0.8em;
-  font-weight: 700;
+  font-size: .8em;
+  font-weight: 600;
   cursor: pointer;
-  opacity: 50%;
+  opacity: 60%;
   &:hover {
     opacity: 75%;
     background-color: #efefef;
   }
   &:active {
-    opacity: 100%;
+    opacity: 90%;
   }
   white-space: nowrap;
   overflow: hidden;
@@ -51,7 +51,7 @@ const StyledA = styled("a")`
 const Top = styled("span")`
   ${contentsEntry};
   background-color: #dddddd;
-  opacity: 60%;
+  opacity: 70%;
   &:hover {
     background-color: #dddddd;
   }
