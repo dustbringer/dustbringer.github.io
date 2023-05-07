@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
 import { styled } from "@mui/material/styles";
-// import { styled } from "@mui/material/styles";
-import { useMediaQuery } from "react-responsive";
+// import { useMediaQuery } from "react-responsive";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
@@ -97,9 +97,7 @@ const ResponsiveDropdownList = styled(DropdownList)`
 `;
 
 function Navbar() {
-  const isMobile = useMediaQuery({
-    query: `(max-width: ${RESPONSIVE_WIDTH})`,
-  });
+  const isMobile = useMediaQuery(`(max-width: ${RESPONSIVE_WIDTH})`);
 
   const colorMode = React.useContext(ColorModeContext);
   const theme = useTheme();
