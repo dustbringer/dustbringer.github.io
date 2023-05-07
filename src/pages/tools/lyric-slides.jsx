@@ -105,6 +105,7 @@ function LyricSlidesPage() {
 
   // Update slide text (applying the new settings)
   const updateSlides = () => {
+    let newSlideText = [];
     // Split raw input
     // Note: Non-capturing group is required because otherwise js
     // will insert the group between the outputs
@@ -112,23 +113,21 @@ function LyricSlidesPage() {
       case "whitespace":
         // Split when there are at least new lines, including any between and
         // end-trailing whitespace (to not break markdown)
-        setSlideText(text.split(/\n[^\S\n]*\n\s*/));
+        newSlideText = text.split(/\n[^\S\n]*\n\s*/);
         break;
 
       case "configHeading":
         // Split between config headings (e.g. [some text here]) with new line before and after,
         // including any between and end-trailing whitespace
-        setSlideText(
-          text
-            // Ignores config heading at the start of input, so it doesn't come with an initial blank slide
-            .replace(/^\s*\[.*?\]\s*/, "")
-            .split(/\n\s*\[.*?\][^\S\n]*\n\s*/)
-        );
+        newSlideText = text
+          // Ignores config heading at the start of input, so it doesn't come with an initial blank slide
+          .replace(/^\s*\[.*?\]\s*/, "")
+          .split(/\n\s*\[.*?\][^\S\n]*\n\s*/);
         break;
 
       case "custom":
         try {
-          setSlideText(text.split(new RegExp(String.raw`${customSplit}`)));
+          newSlideText = text.split(new RegExp(String.raw`${customSplit}`));
         } catch (error) {
           showError(error.message);
         }
@@ -142,19 +141,20 @@ function LyricSlidesPage() {
     // Note: using a nexted if to leave room to extend to more styling options
     if (useMarkdown) {
       if (styleStanzaTitle) {
-        setSlideText((slides) =>
-          slides.map((t, i) =>
-            styleIgnoreFirst && i === 0
-              ? // Ignore first slide
-                t
-              : t.replace(
-                  /^([^\r\n]*?(?:verse|chorus|bridge)[^\r\n]*?)(\n|$)/i,
-                  "*$1*$2"
-                )
-          )
+        newSlideText = newSlideText.map((t, i) =>
+          styleIgnoreFirst && i === 0
+            ? // Ignore first slide
+              t
+            : t.replace(
+                /^([^\r\n]*?(?:verse|chorus|bridge)[^\r\n]*?)(\n|$)/i,
+                "*$1*$2"
+              )
         );
       }
     }
+
+    setSlideText(newSlideText);
+    setPage((p) => Math.min(p, newSlideText.length - 1));
   };
 
   const parseInput = () => {
