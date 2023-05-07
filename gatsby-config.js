@@ -85,15 +85,6 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: "language-",
-              inlineCodeMarker: null,
-              showLineNumbers: false,
-              noInlineHighlight: false,
-            },
-          },
-          {
             // could also try gatsby-remark-mathjax
             resolve: `gatsby-remark-katex`,
             options: {

@@ -11,6 +11,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
 import { DivRowSpaceBetween } from "./styled/Divs";
+import ColorModeContext from "../context/ColorModeContext";
 
 import { currYear } from "../data/upToDate";
 
@@ -29,10 +30,10 @@ const StyledToolbar = styled(Toolbar)`
 const StyledContainer = styled(Container)`
   padding-top: 10px;
   padding-bottom: 10px;
-  border-top: 2px solid #eee;
+  border-top: 2px solid
+    ${(props) => (props.colormode === "dark" ? "#222" : "#EEE")};
+  transition: all 0.25s ease-in-out;
 `;
-
-const StyledTextLink = styled(Link)``;
 
 const IconButton = ({ Icon, href }) => {
   return (
@@ -44,7 +45,7 @@ const IconButton = ({ Icon, href }) => {
     >
       <Icon
         sx={{
-          color: "#424242",
+          color: "#717171",
           fontSize: "1rem",
           margin: "auto 3px",
         }}
@@ -61,16 +62,18 @@ const SocialIcons = styled("div")`
 `;
 
 function Footer() {
+  const colorMode = React.useContext(ColorModeContext);
+
   return (
     <div>
       <StyledAppBar position="static" color="transparent" elevation={0}>
         <StyledToolbar variant="dense">
-          <StyledContainer maxWidth="md">
+          <StyledContainer colormode={colorMode.mode} maxWidth="md">
             <DivRowSpaceBetween>
               <Typography
                 variant="body2"
                 sx={{
-                  color: "#424242",
+                  color: "#717171",
                   fontSize: "0.75rem",
                 }}
               >
@@ -80,7 +83,7 @@ function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   underline="hover"
-                  sx={{ fontWeight: "bold" }}
+                  sx={{ fontWeight: "bold", color: "#717171" }}
                 >
                   dustbringer
                 </Link>

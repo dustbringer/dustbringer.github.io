@@ -1,8 +1,13 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
 
+import { useTheme } from "@mui/material/styles";
+
 const StyledImg = styled("img")`
   max-width: 100%;
+  ${(props) =>
+    props.theme.palette.mode === "dark" && "background-color: #ffffffdd"};
+  transition: all 0.25s ease-in-out;
 `;
 
 const CenterDiv = styled("span")`
@@ -13,9 +18,10 @@ const CenterDiv = styled("span")`
 `;
 
 function Image(props) {
+  const theme = useTheme();
   return (
     <CenterDiv>
-      <StyledImg {...props} />
+      <StyledImg theme={theme} {...props} />
     </CenterDiv>
   );
 }

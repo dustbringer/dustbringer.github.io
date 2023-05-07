@@ -13,7 +13,7 @@ const styles = {
   root: {
     textAlign: "left",
     margin: "10px",
-    backgroundColor: "#fdfdfd",
+    // backgroundColor: "#fdfdfd",
     width: "200px",
     height: "160px",
     transition: "border-color 0.25s",

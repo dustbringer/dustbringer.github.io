@@ -19,6 +19,7 @@ const Accordion = styled((props) => (
   "&:before": {
     display: "none",
   },
+  transition: "background-color 0.25s ease-in-out",
 }));
 
 const AccordionSummary = styled((props) => (

@@ -4,6 +4,7 @@ import { styled } from "@mui/material/styles";
 // import { styled } from "@mui/material/styles";
 import { useMediaQuery } from "react-responsive";
 
+import { useTheme } from '@mui/material/styles';
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
@@ -14,6 +15,7 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 import ColorModeContext from "../../context/ColorModeContext";
+import { themePicker } from "../../gatsby-theme-material-ui-top-layout/theme";
 import { DivRowSpaceBetween } from "../styled/Divs";
 import FullList from "./FullList";
 import DropdownList from "./DropdownList";
@@ -42,15 +44,17 @@ const StyledContainer = styled(Container)`
   justify-content: space-between;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #eee;
+  border-bottom: 2px solid
+    ${(props) => (props.colormode === "dark" ? "#222" : "#EEE")};
+  transition: all 0.25s ease-in-out;
 `;
 
 const TitleTypography = styled(Typography)`
   margin: auto 0;
-  color: #424242;
+  color: ${(props) => (props.colormode === "dark" ? "#848484" : "#424242")};
   font-weight: bold;
   &:hover {
-    color: #616161;
+    opacity: 0.85;
   }
   @media (max-width: 600px) {
     font-size: 1.2em;
@@ -98,12 +102,13 @@ function Navbar() {
   });
 
   const colorMode = React.useContext(ColorModeContext);
+  const theme = useTheme();
 
   return (
     <div>
       <AppBar position="static" color="transparent" elevation={0}>
         <StyledToolbar variant="dense">
-          <StyledContainer maxWidth="md">
+          <StyledContainer maxWidth="md" colormode={colorMode.mode}>
             <MyLink to="/">
               <StyledDivRowSpaceBetween>
                 {/* Icon */}
@@ -112,7 +117,7 @@ function Navbar() {
                   alt="Wombat icon"
                   sx={styles.icon}
                 />*/}
-                <TitleTypography variant="h5">
+                <TitleTypography variant="h5" colormode={colorMode.mode}>
                   <code>dustbringer.github.io</code>
                 </TitleTypography>
               </StyledDivRowSpaceBetween>
@@ -130,7 +135,7 @@ function Navbar() {
                   mr: "10px",
                   color: colorMode.mode === "dark" ? "#707070" : "#808080",
                   "&:hover": {
-                    color: colorMode.mode === "dark" ? "#808080" : "#707070",
+                    opacity: "0.8",
                   },
                 }}
                 onClick={colorMode.toggleColorMode}

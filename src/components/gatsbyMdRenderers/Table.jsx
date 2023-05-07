@@ -1,12 +1,19 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 
 const StyledTable = styled("table")`
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
   border-spacing: 0;
   border-collapse: collapse;
   margin: 1em 0;
+  & tr {
+    background-color: ${(props) =>
+      props.theme.palette.mode === "dark" ? "#333" : "#ffffff"};
+    &:nth-child(2n) {
+      background-color: ${(props) =>
+        props.theme.palette.mode === "dark" ? "#222" : "#f6f8fa"};
+    }
+  }
 `;
 
 const CenterDiv = styled("span")`
@@ -17,9 +24,10 @@ const CenterDiv = styled("span")`
 `;
 
 function Table(props) {
+  const theme = useTheme();
   return (
     <CenterDiv>
-      <StyledTable {...props} />
+      <StyledTable theme={theme} {...props} />
     </CenterDiv>
   );
 }

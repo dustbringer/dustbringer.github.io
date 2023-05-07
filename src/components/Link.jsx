@@ -4,7 +4,6 @@ import MUILink from "@mui/material/Link";
 
 const StyledMUILink = styled(MUILink)({
   fontWeight: "600",
-  color: "#2f3241",
   textDecoration: "none",
   "&:hover": {
     textDecoration: "underline",

@@ -5,6 +5,7 @@ import { styled, css } from "@mui/material/styles";
 
 // Rehype (for rednering markdown)
 import { unified } from "unified";
+import rehypeRewrite from "rehype-rewrite";
 import rehypeReact from "rehype-react";
 
 import Typography from "@mui/material/Typography";
@@ -30,6 +31,8 @@ import TableCellHeader from "../components/gatsbyMdRenderers/TableCellHeader";
 import TableCellData from "../components/gatsbyMdRenderers/TableCellData";
 import TableHead from "../components/gatsbyMdRenderers/TableHead";
 import TableRow from "../components/gatsbyMdRenderers/TableRow";
+import Code from "../components/gatsbyMdRenderers/Code";
+import CodePre from "../components/gatsbyMdRenderers/CodePre";
 import Contents from "../components/gatsbyMdRenderers/Contents";
 
 // References
@@ -80,30 +83,62 @@ function MarkdownTemplate({ data, location }) {
   const { markdownRemark } = data;
   const { frontmatter: meta, htmlAst, headings } = markdownRemark;
 
+  // console.log(htmlAst);
+
   // From https://github.com/rehypejs/rehype/discussions/52
-  const processor = unified().use(rehypeReact, {
-    createElement: React.createElement,
-    components: {
-      blockquote: BlockQuote,
-      h1: StyledH1,
-      h2: StyledH2,
-      h3: StyledH3,
-      h4: StyledH4,
-      h5: StyledH5,
-      h6: StyledH6,
-      hr: HorizontalRule,
-      img: Image,
-      a: Link,
-      li: ListItem,
-      input: Checkbox,
-      table: Table,
-      th: TableCellHeader,
-      td: TableCellData,
-      thead: TableHead,
-      // tbody unused
-      tr: TableRow,
-    },
-  });
+  const processor = unified()
+    .use(rehypeRewrite, {
+      selector: "code",
+      rewrite: (node, index, parent) => {
+        if (node.type !== "element") return;
+
+        // Indicate if code is inline or not
+        if (parent.tagName === "pre") {
+          // node.properties.className = "block";
+        } else {
+          node.properties.inline = "";
+        }
+
+        // Put language as an attribute
+        if (
+          node.properties.className &&
+          node.properties.className.length > 0 &&
+          node.properties.className[0].startsWith("language-")
+        ) {
+          node.properties.language = node.properties.className[0].replace(
+            "language-",
+            ""
+          );
+        } else {
+          node.properties.language = "plaintext";
+        }
+      },
+    })
+    .use(rehypeReact, {
+      createElement: React.createElement,
+      components: {
+        blockquote: BlockQuote,
+        h1: StyledH1,
+        h2: StyledH2,
+        h3: StyledH3,
+        h4: StyledH4,
+        h5: StyledH5,
+        h6: StyledH6,
+        hr: HorizontalRule,
+        img: Image,
+        a: Link,
+        li: ListItem,
+        input: Checkbox,
+        table: Table,
+        th: TableCellHeader,
+        td: TableCellData,
+        thead: TableHead,
+        // tbody unused
+        tr: TableRow,
+        code: Code,
+        pre: CodePre,
+      },
+    });
 
   // React.useEffect(() => {
   //   const hash = location.hash;
@@ -132,7 +167,9 @@ function MarkdownTemplate({ data, location }) {
             {/* The wrapping div is required to not mess up the styles */}
             <Contents headings={headings} />
           </div>
-          <MarkdownFormatDiv>{processor.stringify(htmlAst)}</MarkdownFormatDiv>
+          <MarkdownFormatDiv>
+            {processor.stringify(processor.runSync(htmlAst))}
+          </MarkdownFormatDiv>
         </ContentsPositionDiv>
       </Container>
     </>

@@ -2,9 +2,11 @@ import * as React from "react";
 import TopLayout from "gatsby-theme-material-ui-top-layout/src/components/top-layout";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { createTheme } from "@mui/material/styles";
-import { themeRaw } from "../theme";
+
+import { themePicker } from "../theme";
 import ColorModeContext from "../../context/ColorModeContext";
 
+// Custom TopLayout to handle dark theme
 export default function MyTopLayout({ children, theme }) {
   let preferDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const saved = localStorage.getItem("useDarkMode");
@@ -29,7 +31,7 @@ export default function MyTopLayout({ children, theme }) {
 
   // Theme depending on current mode
   const lightdarktheme = React.useMemo(
-    () => createTheme(themeRaw(mode)),
+    () => createTheme(themePicker(mode)),
     [mode]
   );
 
