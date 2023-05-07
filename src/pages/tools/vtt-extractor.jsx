@@ -11,7 +11,7 @@ import { DivMarginBottom } from "../../components/styled/Divs";
 import Accordion from "../../components/Accordion";
 import Code from "../../components/Markdown/Code";
 import Container from "../../components/Container";
-import ListItem from "../../components/gatsbyMdRenderers/ListItem";
+import ListItem from "../../components/Markdown/ListItem";
 import Table from "../../components/Markdown/Table";
 import THead from "../../components/Markdown/TableHead";
 import TBody from "../../components/Markdown/TableBody";

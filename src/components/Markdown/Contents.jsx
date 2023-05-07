@@ -62,7 +62,7 @@ const StyledSpan = styled("span")`
   ${contentsEntry}
 `;
 
-const stripHTMLTags = (str) => str.replace(/(<([^>]+)>)/gi, "");
+const stripHTMLTags = (str) => str && str.replace(/(<([^>]+)>)/gi, "");
 
 /**
  * NOTE
@@ -94,7 +94,7 @@ function Contents({ headings }) {
   );
 }
 
-function ContentsWithTop({ headings }) {
+export function ContentsWithTop({ headings }) {
   const theme = useTheme();
 
   return (
@@ -123,6 +123,41 @@ function ContentsWithTop({ headings }) {
           >
             {stripHTMLTags(h.text)}
           </StyledSpan>
+        );
+      })}
+    </FormatDiv>
+  );
+}
+
+// Navigation using hash links
+// For use with gatsby markdown
+export function ContentsWithLinksTop({ headings }) {
+  const theme = useTheme();
+
+  return (
+    <FormatDiv colormode={theme.palette.mode}>
+      <Top
+        depth={1}
+        title="Top"
+        role="button"
+        onClick={() => window.scrollTo(0, 0)}
+        colormode={theme.palette.mode}
+      >
+        Top
+      </Top>
+
+      {headings.map((h, i) => {
+        return (
+          <StyledA
+            depth={h.depth}
+            title={stripHTMLTags(h.value)}
+            role="button"
+            colormode={theme.palette.mode}
+            key={i}
+            href={`#${h.id}`}
+          >
+            {stripHTMLTags(h.value)}
+          </StyledA>
         );
       })}
     </FormatDiv>

@@ -3,16 +3,17 @@ import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
 import { styled, css } from "@mui/material/styles";
 
-// Rehype (for rednering markdown)
+// Rehype
 import { unified } from "unified";
 import rehypeRewrite from "rehype-rewrite";
 import rehypeReact from "rehype-react";
 
+// MUI
 import Typography from "@mui/material/Typography";
 
-// Components
+// Components for rendering
 import Container from "../components/Container";
-import BlockQuote from "../components/gatsbyMdRenderers/BlockQuote";
+import BlockQuote from "../components/Markdown/BlockQuote";
 import {
   StyledH1,
   StyledH2,
@@ -20,20 +21,20 @@ import {
   StyledH4,
   StyledH5,
   StyledH6,
-} from "../components/gatsbyMdRenderers/Heading";
-import HorizontalRule from "../components/gatsbyMdRenderers/HorizontalRule";
-import Image from "../components/gatsbyMdRenderers/Image";
-import Link from "../components/gatsbyMdRenderers/Link";
-import ListItem from "../components/gatsbyMdRenderers/ListItem";
-import Checkbox from "../components/gatsbyMdRenderers/Checkbox";
-import Table from "../components/gatsbyMdRenderers/Table";
-import TableCellHeader from "../components/gatsbyMdRenderers/TableCellHeader";
-import TableCellData from "../components/gatsbyMdRenderers/TableCellData";
-import TableHead from "../components/gatsbyMdRenderers/TableHead";
-import TableRow from "../components/gatsbyMdRenderers/TableRow";
-import Code from "../components/gatsbyMdRenderers/Code";
-import CodePre from "../components/gatsbyMdRenderers/CodePre";
-import Contents from "../components/gatsbyMdRenderers/Contents";
+} from "../components/Markdown/Heading";
+import HorizontalRule from "../components/Markdown/HorizontalRule";
+import Image from "../components/Markdown/Image";
+import Link from "../components/Markdown/Link";
+import ListItem from "../components/Markdown/ListItem";
+import Checkbox from "../components/Markdown/Checkbox";
+import Table from "../components/Markdown/Table";
+import TableCellHeader from "../components/Markdown/TableCellHeader";
+import TableCellData from "../components/Markdown/TableCellData";
+import TableHead from "../components/Markdown/TableHead";
+import TableRow from "../components/Markdown/TableRow";
+import Code from "../components/Markdown/Code";
+import CodePre from "../components/Markdown/CodePre";
+import { ContentsWithLinksTop } from "../components/Markdown/Contents";
 
 // References
 // https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/
@@ -119,6 +120,9 @@ function MarkdownTemplate({ data, location }) {
       createElement: React.createElement,
       components: {
         blockquote: BlockQuote,
+        input: Checkbox,
+        code: Code,
+        pre: CodePre,
         h1: StyledH1,
         h2: StyledH2,
         h3: StyledH3,
@@ -129,15 +133,12 @@ function MarkdownTemplate({ data, location }) {
         img: Image,
         a: Link,
         li: ListItem,
-        input: Checkbox,
         table: Table,
-        th: TableCellHeader,
         td: TableCellData,
+        th: TableCellHeader,
         thead: TableHead,
         // tbody unused
         tr: TableRow,
-        code: Code,
-        pre: CodePre,
       },
     });
 
@@ -166,7 +167,7 @@ function MarkdownTemplate({ data, location }) {
         <ContentsPositionDiv>
           <div>
             {/* The wrapping div is required to not mess up the styles */}
-            <Contents headings={headings} />
+            <ContentsWithLinksTop headings={headings} />
           </div>
           <MarkdownFormatDiv>
             {processor.stringify(processor.runSync(htmlAst))}

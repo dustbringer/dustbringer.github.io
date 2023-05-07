@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 
 const StyledTypography = styled(Typography)`
   font-size: 0.75em;
-  color: #aaaaaa;
 `;
 
 // TODO style this up

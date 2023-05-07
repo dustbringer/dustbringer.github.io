@@ -1,6 +1,8 @@
 // Original code from https://levelup.gitconnected.com/adding-katex-and-markdown-in-react-7b70694004ef
 import React from "react";
 import { styled, css } from "@mui/material/styles";
+
+// Markdown, remark, rehype
 import ReactMarkdown from "react-markdown";
 import remarkMathPlugin from "remark-math";
 import remarkGFMPlugin from "remark-gfm";
@@ -10,7 +12,6 @@ import rehypeSanitize from "rehype-sanitize";
 import rehypeRewrite from "rehype-rewrite";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css"; // styling math symbols to look like latex
-
 import katexMacros from "./katexMacros";
 
 // This doesnt work for now, try again later
@@ -101,6 +102,7 @@ const _mapProps = (props) => ({
         // Supported latex https://katex.org/docs/supported.html
         // Macros with inputs: https://github.com/KaTeX/KaTeX/issues/2070#issuecomment-519833558
         macros: katexMacros,
+        strict: `ignore`,
       },
     ],
     [
@@ -130,26 +132,26 @@ const _mapProps = (props) => ({
   components: {
     ...props.components,
 
-    hr: HorizontalRuleRenderer,
+    blockquote: BlockQuoteRenderer,
+    input: Checkbox,
+    code: CodeRenderer,
+    pre: CodePreRenderer,
     h1: StyledH1,
     h2: StyledH2,
     h3: StyledH3,
     h4: StyledH4,
     h5: StyledH5,
     h6: StyledH6,
-    code: CodeRenderer,
-    pre: CodePreRenderer,
+    hr: HorizontalRuleRenderer,
     img: ImageRenderer,
-    blockquote: BlockQuoteRenderer,
     a: LinkRenderer,
+    li: ListItemRenderer,
     table: TableRenderer,
-    thead: TableHeadRenderer,
-    tr: TableRowRenderer,
     td: TableCellDataRenderer,
     th: TableCellHeaderRenderer,
-    li: ListItemRenderer,
-    input: Checkbox,
-    yaml: YamlRenderer,
+    thead: TableHeadRenderer,
+    tr: TableRowRenderer,
+    // yaml: YamlRenderer, // this is not a html tag
   },
 });
 

@@ -31,4 +31,8 @@ function Code(props) {
   );
 }
 
+// function Code(props) {
+//   return <code>{props.children}</code>;
+// }
+
 export default Code;

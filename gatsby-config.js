@@ -1,4 +1,4 @@
-const katex_macros = require("./src/components/Markdown/katexMacros.js");
+const katexMacros = require("./src/components/Markdown/katexMacros.js");
 
 module.exports = {
   siteMetadata: {
@@ -89,7 +89,7 @@ module.exports = {
             resolve: `gatsby-remark-katex`,
             options: {
               // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
-              macros: katex_macros,
+              macros: katexMacros,
               strict: `ignore`,
             },
           },
