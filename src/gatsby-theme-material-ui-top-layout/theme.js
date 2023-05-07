@@ -2,9 +2,9 @@ import { createTheme } from "@mui/material";
 
 // https://material-ui.com/customization/default-theme/
 // https://mui.com/customization/default-theme/#main-content
-const theme = createTheme({
+export const themeRaw = (mode) => ({
   palette: {
-    mode: 'light',
+    mode: (mode === "dark") | (mode === "light") ? mode : "light",
     primary: {
       main: "#2f3241",
     },
@@ -26,4 +26,5 @@ const theme = createTheme({
   },
 });
 
+const theme = createTheme(themeRaw("light"));
 export default theme;

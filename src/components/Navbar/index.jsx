@@ -9,7 +9,11 @@ import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 
+import ColorModeContext from "../../context/ColorModeContext";
 import { DivRowSpaceBetween } from "../styled/Divs";
 import FullList from "./FullList";
 import DropdownList from "./DropdownList";
@@ -93,6 +97,8 @@ function Navbar() {
     query: `(max-width: ${RESPONSIVE_WIDTH})`,
   });
 
+  const colorMode = React.useContext(ColorModeContext);
+
   return (
     <div>
       <AppBar position="static" color="transparent" elevation={0}>
@@ -117,9 +123,31 @@ function Navbar() {
             ) : (
               <FullList links={navLinks} />
             )} */}
+            <DivRowSpaceBetween>
+              {/* Dark Mode switcher */}
+              <IconButton
+                sx={{
+                  mr: "10px",
+                  color: colorMode.mode === "dark" ? "#707070" : "#808080",
+                  "&:hover": {
+                    color: colorMode.mode === "dark" ? "#808080" : "#707070",
+                  },
+                }}
+                onClick={colorMode.toggleColorMode}
+                disableRipple
+                size="small"
+              >
+                {colorMode.mode === "dark" ? (
+                  <Brightness7Icon />
+                ) : (
+                  <Brightness4Icon />
+                )}
+              </IconButton>
 
-            <ResponsiveFullList links={navLinks} />
-            <ResponsiveDropdownList links={navLinks} />
+              {/* Nav links */}
+              <ResponsiveFullList links={navLinks} />
+              <ResponsiveDropdownList links={navLinks} />
+            </DivRowSpaceBetween>
           </StyledContainer>
         </StyledToolbar>
       </AppBar>

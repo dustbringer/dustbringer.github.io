@@ -70,14 +70,13 @@ function HomePage() {
         </Typography>
 
         <Typography variant="body1" align="center" sx={{ marginBottom: "2em" }}>
-          Welcome to my website! Have a look around and you'll find a variety of
-          sentences, tools and pictures I've made. There is a handful of blog
-          posts in <InternalLink to="/posts">Posts</InternalLink> and various
+          Welcome to my website! Here you'll find a variety of
+          sentences, tools and pictures. There is a handful of blog posts in{" "}
+          <InternalLink to="/posts">Posts</InternalLink> and various
           paraphernalia in <InternalLink to="/tools">Tools</InternalLink>. You
-          can learn more about me, in{" "}
+          can learn more about me in{" "}
           <InternalLink to="/about">About</InternalLink> and{" "}
-          <InternalLink to="/resume">Resume</InternalLink>. There is much to
-          see, so enjoy your stay!
+          <InternalLink to="/resume">Resume</InternalLink>.
         </Typography>
 
         <Typography variant="h5" align="center" gutterBottom>

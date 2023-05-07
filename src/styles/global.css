@@ -48,6 +48,8 @@ html {
 body {
   padding: 0;
   margin: 0;
+  /* Transition the darkmode toggle */
+  transition: all 0.25s ease-in-out;
 }
 
 .katex {

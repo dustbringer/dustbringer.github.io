@@ -75,6 +75,7 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "clean": "gatsby clean",
+    "cleanstart": "gatsby clean && gatsby develop",
     "cleanbuild": "gatsby clean && gatsby build",
     "serve": "gatsby serve",
     "predeploy": "gatsby build",
