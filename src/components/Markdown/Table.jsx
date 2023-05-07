@@ -1,26 +1,35 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 
 const StyledTable = styled("table")`
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
   border-spacing: 0;
   border-collapse: collapse;
   margin: 1em 0;
-  ${(props) => {
-    if (props.align === "center")
-      return `
-        margin: 1em auto;
-      `;
-    else if (props.align === "right")
-      return `
-        margin: 1em 0 1em auto;
-      `;
-  }}}
+  & tr {
+    background-color: ${(props) =>
+      props.theme.palette.mode === "dark" ? "#333333" : "#ffffff"};
+    &:nth-of-type(even) {
+      background-color: ${(props) =>
+        props.theme.palette.mode === "dark" ? "#2A2A2A" : "#f6f8fa"};
+    }
+  }
+`;
+
+const CenterDiv = styled("span")`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
 `;
 
 function Table(props) {
-  return <StyledTable {...props}>{props.children}</StyledTable>;
+  const theme = useTheme();
+  return (
+    <CenterDiv>
+      <StyledTable theme={theme} {...props} />
+    </CenterDiv>
+  );
 }
 
 export default Table;

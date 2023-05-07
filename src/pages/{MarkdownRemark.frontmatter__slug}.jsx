@@ -105,6 +105,7 @@ function MarkdownTemplate({ data, location }) {
           node.properties.className.length > 0 &&
           node.properties.className[0].startsWith("language-")
         ) {
+          // Jank, because the language is only included in the class
           node.properties.language = node.properties.className[0].replace(
             "language-",
             ""

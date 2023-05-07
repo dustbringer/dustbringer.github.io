@@ -21,8 +21,8 @@ import Table from "../../components/Markdown/Table";
 import THead from "../../components/Markdown/TableHead";
 import TBody from "../../components/Markdown/TableBody";
 import TR from "../../components/Markdown/TableRow";
-import TH from "../../components/Markdown/TableHeaderCell";
-import TD from "../../components/Markdown/TableDataCell";
+import TH from "../../components/Markdown/TableCellHeader";
+import TD from "../../components/Markdown/TableCellData";
 
 import katexMacros from "../../components/Markdown/katexMacros";
 

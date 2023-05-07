@@ -1,6 +1,6 @@
 import React from "react";
 import { styled, css } from "@mui/material/styles";
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 
 /**
  * NOTES
@@ -47,20 +47,54 @@ const contentsEntry = (props) => css`
   text-overflow: ellipsis;
 `;
 
-const StyledA = styled("a")`
-  text-decoration: none;
-  ${contentsEntry}
-`;
-
 const Top = styled("span")`
   ${contentsEntry};
   background-color: ${(props) =>
     props.colormode === "dark" ? "#222" : "#efefef"};
 `;
 
+const StyledA = styled("a")`
+  text-decoration: none;
+  ${contentsEntry}
+`;
+
+const StyledSpan = styled("span")`
+  ${contentsEntry}
+`;
+
 const stripHTMLTags = (str) => str.replace(/(<([^>]+)>)/gi, "");
 
+/**
+ * NOTE
+ * This current system has a global "contents" state. Contents will only
+ * display correctly if only one Markdown document is displayed per page
+ */
 function Contents({ headings }) {
+  const theme = useTheme();
+
+  return (
+    <FormatDiv colormode={theme.palette.mode}>
+      {headings.map((h, i) => {
+        return (
+          <StyledSpan
+            depth={h.depth}
+            title={stripHTMLTags(h.text)}
+            role="button"
+            colormode={theme.palette.mode}
+            key={i}
+            onClick={() =>
+              h && h.ref && h.ref.current && h.ref.current.scrollIntoView()
+            }
+          >
+            {stripHTMLTags(h.text)}
+          </StyledSpan>
+        );
+      })}
+    </FormatDiv>
+  );
+}
+
+function ContentsWithTop({ headings }) {
   const theme = useTheme();
 
   return (
@@ -77,16 +111,18 @@ function Contents({ headings }) {
 
       {headings.map((h, i) => {
         return (
-          <StyledA
+          <StyledSpan
             depth={h.depth}
-            title={stripHTMLTags(h.value)}
+            title={stripHTMLTags(h.text)}
             role="button"
             colormode={theme.palette.mode}
             key={i}
-            href={`#${h.id}`}
+            onClick={() =>
+              h && h.ref && h.ref.current && h.ref.current.scrollIntoView()
+            }
           >
-            {stripHTMLTags(h.value)}
-          </StyledA>
+            {stripHTMLTags(h.text)}
+          </StyledSpan>
         );
       })}
     </FormatDiv>

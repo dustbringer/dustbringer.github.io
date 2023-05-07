@@ -9,7 +9,7 @@ const StyledTable = styled("table")`
   & tr {
     background-color: ${(props) =>
       props.theme.palette.mode === "dark" ? "#333" : "#ffffff"};
-    &:nth-child(2n) {
+    &:nth-of-type(even) {
       background-color: ${(props) =>
         props.theme.palette.mode === "dark" ? "#222" : "#f6f8fa"};
     }

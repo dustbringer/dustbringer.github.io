@@ -25,7 +25,6 @@ function Code(props) {
       {props.children}
     </StyledCodeInline>
   ) : (
-    // Jank, because the language is only included in the class
     <SyntaxHighlighter language={props.language} style={style}>
       {props.children}
     </SyntaxHighlighter>

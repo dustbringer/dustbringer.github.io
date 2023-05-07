@@ -1,24 +1,15 @@
 import React from "react";
-import { styled, css } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 
-const StyledLi = styled("li")`
+const ListItem = styled("li")`
   ${(props) =>
-    !props.ordered &&
-    props.checked !== null &&
-    css`
+    props.className === "task-list-item" &&
+    `
       &::marker {
         content: none;
       }
       margin-left: -40px;
-    `}
+    `};
 `;
-
-function ListItem(props) {
-  return (
-    <StyledLi ordered={props.ordered} checked={props.checked}>
-      {props.children}
-    </StyledLi>
-  );
-}
 
 export default ListItem;

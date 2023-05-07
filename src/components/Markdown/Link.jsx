@@ -11,11 +11,24 @@ const StyledMUILink = styled(MUILink)({
   },
 });
 
+// Links to open in new tab
+const external = ["https", "http", "mailto"];
+
 function Link(props) {
   return (
-    <StyledMUILink href={props.href} target="_blank" rel="noopener noreferrer">
-      {props.children}
-    </StyledMUILink>
+    <>
+      {external.some((e) => props.href && props.href.startsWith(e)) ? (
+        <StyledMUILink
+          href={props.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {props.children}
+        </StyledMUILink>
+      ) : (
+        <StyledMUILink {...props} />
+      )}
+    </>
   );
 }
 

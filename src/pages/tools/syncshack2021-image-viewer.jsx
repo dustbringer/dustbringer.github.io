@@ -7,8 +7,7 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-
+import Code from "../../components/Markdown/Code";
 import Container from "../../components/Container";
 import PageNavigation from "../../components/PageNavigation";
 import { GlobalContext } from "../../context/GlobalContext";
@@ -61,7 +60,7 @@ function ImageViewerPage() {
           below.
         </Typography>
 
-        <SyntaxHighlighter language="json">
+        <Code language="json">
           {`[
   {
     "link": IMG_URL
@@ -69,7 +68,7 @@ function ImageViewerPage() {
   },
   // ...
 ]`}
-        </SyntaxHighlighter>
+        </Code>
 
         <Box
           sx={{

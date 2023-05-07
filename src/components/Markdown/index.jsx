@@ -7,6 +7,7 @@ import remarkGFMPlugin from "remark-gfm";
 import remarkFrontmatterPlugin from "remark-frontmatter";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
+import rehypeRewrite from "rehype-rewrite";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css"; // styling math symbols to look like latex
 
@@ -20,13 +21,15 @@ import katexMacros from "./katexMacros";
 // import TeX from "@matejmazur/react-katex";
 
 import { GlobalContext } from "../../context/GlobalContext";
-import MarkdownContents from "./MarkdownContents";
-import Heading1Renderer from "./Heading1";
-import Heading2Renderer from "./Heading2";
-import Heading3Renderer from "./Heading3";
-import Heading4Renderer from "./Heading4";
-import Heading5Renderer from "./Heading5";
-import Heading6Renderer from "./Heading6";
+import MarkdownContents from "./Contents";
+import {
+  StyledH1,
+  StyledH2,
+  StyledH3,
+  StyledH4,
+  StyledH5,
+  StyledH6,
+} from "./Heading";
 import YamlRenderer from "./Yaml";
 import CodeRenderer from "./Code";
 import CodePreRenderer from "./CodePre";
@@ -35,12 +38,11 @@ import ImageRenderer from "./Image";
 import LinkRenderer from "./Link";
 import TableRenderer from "./Table";
 import TableHeadRenderer from "./TableHead";
-import TableBodyRenderer from "./TableBody";
 import TableRowRenderer from "./TableRow";
-import TableHeaderCellRenderer from "./TableHeaderCell";
-import TableDataCellRenderer from "./TableDataCell";
+import TableCellHeaderRenderer from "./TableCellHeader";
+import TableCellDataRenderer from "./TableCellData";
 import ListItemRenderer from "./ListItem";
-import InputRenderer from "./Input";
+import Checkbox from "./Checkbox";
 import HorizontalRuleRenderer from "./HorizontalRule";
 
 const FormatDiv = styled("div")`
@@ -101,31 +103,52 @@ const _mapProps = (props) => ({
         macros: katexMacros,
       },
     ],
+    [
+      rehypeRewrite,
+      {
+        selector: "code",
+        rewrite: (node, index, parent) => {
+          // Put language as an attribute
+          if (
+            node.properties.className &&
+            node.properties.className.length > 0 &&
+            node.properties.className[0].startsWith("language-")
+          ) {
+            // Jank, because the language is only included in the class
+            node.properties.language = node.properties.className[0].replace(
+              "language-",
+              ""
+            );
+          } else {
+            node.properties.language = "plaintext";
+          }
+        },
+      },
+    ],
     // ...(!props.mathJax ? [rehypeKatex] : [rehypeMathjax]),
   ],
   components: {
     ...props.components,
 
     hr: HorizontalRuleRenderer,
-    h1: Heading1Renderer,
-    h2: Heading2Renderer,
-    h3: Heading3Renderer,
-    h4: Heading4Renderer,
-    h5: Heading5Renderer,
-    h6: Heading6Renderer,
+    h1: StyledH1,
+    h2: StyledH2,
+    h3: StyledH3,
+    h4: StyledH4,
+    h5: StyledH5,
+    h6: StyledH6,
     code: CodeRenderer,
     pre: CodePreRenderer,
-    image: ImageRenderer,
+    img: ImageRenderer,
     blockquote: BlockQuoteRenderer,
     a: LinkRenderer,
     table: TableRenderer,
     thead: TableHeadRenderer,
-    // tbody: TableBodyRenderer,
     tr: TableRowRenderer,
-    td: TableDataCellRenderer,
-    th: TableHeaderCellRenderer,
+    td: TableCellDataRenderer,
+    th: TableCellHeaderRenderer,
     li: ListItemRenderer,
-    input: InputRenderer, // for checkboxes
+    input: Checkbox,
     yaml: YamlRenderer,
   },
 });

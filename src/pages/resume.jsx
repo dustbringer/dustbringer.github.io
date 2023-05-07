@@ -14,8 +14,8 @@ import HorizontalRule from "../components/Markdown/HorizontalRule";
 import Table from "../components/Markdown/Table";
 import THead from "../components/Markdown/TableHead";
 import TR from "../components/Markdown/TableRow";
-import TH from "../components/Markdown/TableHeaderCell";
-import TD from "../components/Markdown/TableDataCell";
+import TH from "../components/Markdown/TableCellHeader";
+import TD from "../components/Markdown/TableCellData";
 
 import unswMarks from "../data/unswMarks";
 
@@ -374,9 +374,11 @@ function ResumePage() {
                   <Box sx={{ "& table": { width: "100%" } }}>
                     <Table>
                       <THead>
-                        <TH>Course</TH>
-                        <TH>Term</TH>
-                        <TH>Mark</TH>
+                        <TR>
+                          <TH>Course</TH>
+                          <TH>Term</TH>
+                          <TH>Mark</TH>
+                        </TR>
                       </THead>
                       {unswMarks.courses.map((c, i) => (
                         <TR key={c.term + c.code}>
@@ -413,8 +415,10 @@ function ResumePage() {
                   <Box sx={{ "& table": { width: "100%" } }}>
                     <Table>
                       <THead>
-                        <TH>Subject</TH>
-                        <TH>Mark</TH>
+                        <TR>
+                          <TH>Subject</TH>
+                          <TH>Mark</TH>
+                        </TR>
                       </THead>
                       <TR>
                         <TD>Mathematics Advanced (Accelerated)</TD>

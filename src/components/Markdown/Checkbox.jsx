@@ -1,9 +1,9 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
 
-import Checkbox from "@mui/material/Checkbox";
+import MUICheckbox from "@mui/material/Checkbox";
 
-const StyledCheckbox = styled(Checkbox)`
+const StyledCheckbox = styled(MUICheckbox)`
   // color: #1976d2;
   // &:checked {
   //   color: #1976d2;
@@ -14,9 +14,10 @@ const StyledCheckbox = styled(Checkbox)`
   }
 `;
 
-function Input(props) {
+function Checkbox(props) {
   return props.checked !== null && props.type === "checkbox" ? (
     <StyledCheckbox
+      className={props.className}
       color="default"
       checked={props.checked}
       size="small"
@@ -28,4 +29,4 @@ function Input(props) {
   );
 }
 
-export default Input;
+export default Checkbox;
