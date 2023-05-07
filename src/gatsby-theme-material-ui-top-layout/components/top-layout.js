@@ -8,7 +8,7 @@ import ColorModeContext from "../../context/ColorModeContext";
 
 // Custom TopLayout to handle dark theme
 export default function MyTopLayout({ children, theme }) {
-  const [mode, setMode] = React.useState("light");
+  const [mode, setMode] = React.useState("dark");
 
   let preferDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   React.useEffect(() => {
