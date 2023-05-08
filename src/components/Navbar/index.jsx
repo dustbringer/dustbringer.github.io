@@ -51,8 +51,11 @@ const StyledContainer = styled(Container)`
 
 const TitleTypography = styled(Typography)`
   margin: auto 0;
-  color: ${(props) => (props.colormode === "dark" ? "#848484" : "#424242")};
   font-weight: bold;
+  color: ${(props) =>
+    props.colormode === "dark" ? props.theme.palette.primary.main : "#424242"};
+  color: ${(props) => props.theme.palette.primary.main};
+  transition: all 0.25s ease-in-out;
   &:hover {
     opacity: 0.85;
   }
@@ -115,7 +118,11 @@ function Navbar() {
                   alt="Wombat icon"
                   sx={styles.icon}
                 />*/}
-                <TitleTypography variant="h5" colormode={colorMode.mode}>
+                <TitleTypography
+                  variant="h5"
+                  colormode={colorMode.mode}
+                  theme={theme}
+                >
                   <code>dustbringer.github.io</code>
                 </TitleTypography>
               </StyledDivRowSpaceBetween>

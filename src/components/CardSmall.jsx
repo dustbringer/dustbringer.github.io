@@ -16,7 +16,7 @@ const styles = {
     // backgroundColor: "#fdfdfd",
     width: "200px",
     height: "160px",
-    transition: "border-color 0.25s",
+    transition: "all 0.25s ease-in-out",
     "&:hover": {
       borderColor: "secondary.main",
     },

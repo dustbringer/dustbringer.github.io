@@ -2,7 +2,7 @@ import React from "react";
 import { Link, navigate } from "gatsby";
 import { useLocation } from "@reach/router";
 // import { Link } from "gatsby-theme-material-ui";
-import { styled } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import ColorModeContext from "../../context/ColorModeContext";
 import { isSamePrefix } from "../../util/links";
 
@@ -36,6 +36,11 @@ const NavLink = styled(MyLink)`
   // display: inline-block;
   margin: 0 8px;
   color: ${(props) => (props.colormode === "dark" ? "#848484" : "#202020")};
+  ${(props) =>
+    props.colormode === "dark" &&
+    props.iscurrent &&
+    `color: ${props.theme.palette.primary.main};`}
+  ${(props) => props.iscurrent && `color: ${props.theme.palette.primary.main};`}
   font-size: 1rem;
   &:hover {
     opacity: 0.85;
@@ -56,12 +61,13 @@ const Underline = styled("div")`
   height: 2px;
   width: 100%;
   display: ${(props) => (props.show ? "block" : "none")};
-  background-color: #424242;
+  background-color: ${(props) => props.theme.palette.primary.main};
 `;
 
 function FullList({ links, className }) {
   const location = useLocation();
   const colorMode = React.useContext(ColorModeContext);
+  const theme = useTheme();
 
   // Distance to align underline
   const [underlineDist, setUnderlineDist] = React.useState(16);
@@ -84,11 +90,17 @@ function FullList({ links, className }) {
     <NavLinkList className={className} ref={listRef}>
       {links.map((link) => (
         <li key={link.name + link.path}>
-          <NavLink to={link.path} colormode={colorMode.mode}>
+          <NavLink
+            to={link.path}
+            iscurrent={isSamePrefix(location.pathname, link.path)}
+            theme={theme}
+            colormode={colorMode.mode}
+          >
             {link.name}
           </NavLink>
           <Underline
             show={isSamePrefix(location.pathname, link.path)}
+            colormode={colorMode.mode}
             dist={underlineDist}
           />
         </li>

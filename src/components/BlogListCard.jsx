@@ -17,7 +17,7 @@ const styles = {
     "&:hover": {
       borderColor: "secondary.main",
     },
-    transition: "border-color 0.25s, all 0.25s ease-in-out",
+    transition: "all 0.25s ease-in-out",
   },
   media: {
     height: 140,
@@ -37,7 +37,7 @@ function BlogListCard({ name, title, description, date, tags, path }) {
               <Typography variant="h5" component="h5" display="inline">
                 {title ? title : "Unknown Title"}
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="i">
+              <Typography variant="body2" color="text.secondary" component="i">
                 {" "}
                 {date && moment(date).isValid()
                   ? moment(date).format("DD MMMM YYYY")

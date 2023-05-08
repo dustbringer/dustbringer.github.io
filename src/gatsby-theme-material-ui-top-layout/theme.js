@@ -6,10 +6,13 @@ export const themeLight = {
   palette: {
     mode: "light",
     primary: {
-      main: "#2f3241",
+      main: "#297FDD",
     },
     secondary: {
-      main: "#7a7f95",
+      main: "#565147",
+    },
+    text: {
+      primary: "#2f3241",
     },
   },
   typography: {
@@ -30,10 +33,10 @@ export const themeDark = {
   palette: {
     mode: "dark",
     primary: {
-      main: "#C8B6A4",
+      main: "#DC9959",
     },
     secondary: {
-      main: "#565147",
+      main: "#C6B3A2",
     },
     text: {
       primary: "#DDD",

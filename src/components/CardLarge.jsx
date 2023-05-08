@@ -15,7 +15,7 @@ const styles = {
     textAlign: "left",
     margin: "10px",
     // backgroundColor: "#fdfdfd",
-    transition: "border-color 0.25s",
+    transition: "all 0.25s ease-in-out",
     "&:hover": {
       borderColor: "secondary.main",
     },

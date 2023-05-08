@@ -345,7 +345,9 @@ function ResumePage() {
               </Typography>
               <Typography variant="body1" gutterBottom>
                 Honours Thesis:{" "}
-                <em>Diagrammatic Categories in Representation Theory</em>
+                <LinkNewTab href="https://github.com/dustbringer/UNSW-Honours/blob/main/main.pdf">
+                  Diagrammatic Categories in Representation Theory
+                </LinkNewTab>
               </Typography>
 
               <Box sx={{ marginBottom: "1em" }}>
@@ -361,7 +363,8 @@ function ResumePage() {
                       Faculty of Science Deans List 2020, 2021, 2022 (top 100)
                     </li>
                     <li>
-                      Faculty of Engineering Deans Award 2020, 2021 (top 100)
+                      Faculty of Engineering Deans Award 2020, 2021,2022 (top
+                      100)
                     </li>
                     <li>
                       School of Mathematics and Statistics Advanced Mathematics
