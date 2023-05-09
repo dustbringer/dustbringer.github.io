@@ -46,9 +46,7 @@ const Divider = styled("hr")`
 `;
 
 // Removing preloaded styles from ReactFuri components
-const ReactFuriWrapper = styled(ReactFuri.Wrapper)`
-  font-family: inherit;
-`;
+const ReactFuriWrapper = styled(ReactFuri.Wrapper)``;
 const ReactFuriPair = styled(ReactFuri.Pair)`
   font-size: inherit;
   position: relative;
@@ -62,8 +60,12 @@ const ReactFuriFuri = styled(ReactFuri.Furi)`
   white-space: nowrap;
   font-size: 0.5em;
   user-select: none;
+  font-family: "Noto Serif JP", sans-serif;
 `;
-const ReactFuriText = styled(ReactFuri.Text)``;
+const ReactFuriText = styled(ReactFuri.Text)`
+  font-size: 1.25rem;
+  font-family: "Noto Serif JP", sans-serif;
+`;
 
 function JapaneseFileReaderPage() {
   const [fileName, setFileName] = React.useState("No File Selected");
