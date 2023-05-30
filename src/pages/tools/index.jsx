@@ -59,6 +59,12 @@ const tools = [
       "Replace the labels of markdown footnotes with ascending integers.",
     path: "/tools/md-footnote-relabel",
   },
+  {
+    title: "Runsheet timer",
+    description:
+      "Keep track of a schedule.",
+    path: "/tools/timer",
+  },
 ];
 
 function ToolListPage({ location }) {

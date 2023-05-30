@@ -14,9 +14,6 @@ import CardSmall from "../components/CardSmall";
 import ProfileBird from "../images/profile-bird-md.jpg";
 
 
-import LoadingBar from "../components/LoadingBar";
-
-
 const CircleImage = styled("img")`
   border-radius: 50%;
   width: 25%;

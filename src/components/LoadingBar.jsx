@@ -12,6 +12,7 @@ const Border = styled("div")`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 `;
 
 const Bar = styled("div")`
@@ -22,7 +23,8 @@ const Bar = styled("div")`
     props.fill >= 100 ? "10px" : "10px 4px 4px 10px"};
   display: flex;
   align-items: center;
-  transition: all 0.75s ease-in-out;
+  transition: all 1s linear;
+  overflow: hidden; // hides number inside when short
 `;
 
 const Number = styled(Typography)`
@@ -31,15 +33,32 @@ const Number = styled(Typography)`
   padding: 0 4px;
 `;
 
-function LoadingBar({ cur, max }) {
+const NumberRight = styled(Typography)`
+  font-weight: bold;
+  position: absolute;
+  right: 4px;
+  z-index: -1;
+`;
+const NumberLeft = styled(Typography)`
+  font-weight: bold;
+  position: absolute;
+  left: 4px;
+  z-index: -1;
+`;
+
+function LoadingBar({ cur, max, dispCur, dispMax }) {
   const theme = useTheme();
+  cur = Math.max(cur, 0); // ignore negative cur
 
   return (
     <Border>
-      <Bar color={theme.palette.primary.light} fill={(cur / max) * 100}>
-        <Number variant="body2">{Math.min(cur, max)}</Number>
+      <Bar color={theme.palette.primary.main} fill={(cur / max) * 100}>
+        <Number variant="body2" color="black">
+          {dispCur ? dispCur : Math.min(cur, max)}
+        </Number>
       </Bar>
-      {cur < max && <Number variant="body2">{max}</Number>}
+
+      <NumberRight variant="body2">{dispMax ? dispMax : max}</NumberRight>
     </Border>
   );
 }
