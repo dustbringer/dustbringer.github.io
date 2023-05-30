@@ -1,6 +1,12 @@
 const unswMarks = {
-  wam: 92.967,
+  wam: 92.906,
   courses: [
+    {
+      name: "Category Theory (External A)",
+      code: "MATH5055",
+      mark: 94,
+      term: "2023T1",
+    },
     {
       name: "Combinatorics",
       code: "MATH5505",

@@ -27,12 +27,13 @@ function LinkNewTab(props) {
   return <Link target="_blank" rel="noopener noreferrer" {...props} />;
 }
 
-const styleBold = {
-  fontWeight: "bold",
-};
-
-const styleItalic = {
-  fontStyle: "italic",
+const style = {
+  bold: {
+    fontWeight: "bold",
+  },
+  italic: {
+    fontStyle: "italic",
+  },
 };
 
 function ResumePage() {
@@ -52,7 +53,7 @@ function ResumePage() {
         <Typography variant="h5">Proficiencies</Typography>
         <ul>
           <li>
-            <Typography variant="body1" sx={{ ...styleBold, ...styleItalic }}>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
               Programming Languages and Libraries
             </Typography>
             <Typography variant="body1" gutterBottom>
@@ -62,7 +63,7 @@ function ResumePage() {
             </Typography>
           </li>
           <li>
-            <Typography variant="body1" sx={{ ...styleBold, ...styleItalic }}>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
               Programs and Applications
             </Typography>
             <Typography variant="body1" gutterBottom>
@@ -73,17 +74,18 @@ function ResumePage() {
             </Typography>
           </li>
           <li>
-            <Typography variant="body1" sx={{ ...styleBold, ...styleItalic }}>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
               Mathematics
             </Typography>
             <Typography variant="body1" gutterBottom>
               Linear Algebra, Multivariate Calculus, Point Set Topology,
-              Abstract Algebra (Groups, Rings, Fields, Modules, Representations,
-              Categories, etc.), Combinatorics, Differential Equations (ordinary
-              and partial), Probability, Statistics, Logic, Computability and
-              Complexity Theory, Coding Theory. The beginnings of Complex
-              Analysis, Functional Analysis, Galois Theory, Commutative Algebra,
-              Algebraic Geometry, Differential Geometry, and Graph Theory.
+              Abstract Algebra (Groups, Rings, Fields, Modules, etc.), Category
+              Theory, Representation Theory, Combinatorics, Differential
+              Equations (ordinary and partial), Graph Theory, Probability,
+              Statistics, Logic, Computability and Complexity Theory, Coding
+              Theory. The beginnings of Complex Analysis, Functional Analysis,
+              Galois Theory, Commutative Algebra, Algebraic Geometry and
+              Differential Geometry.
             </Typography>
           </li>
         </ul>
@@ -92,7 +94,10 @@ function ResumePage() {
         <Typography variant="body1" gutterBottom>
           <ul>
             <li>
-              <Typography variant="body1" sx={{ ...styleBold, ...styleItalic }}>
+              <Typography
+                variant="body1"
+                sx={{ ...style.bold, ...style.italic }}
+              >
                 UNSW Casual Academic (2021 - Present)
               </Typography>
               <Typography variant="body1" gutterBottom>
@@ -101,7 +106,10 @@ function ResumePage() {
               </Typography>
             </li>
             <li>
-              <Typography variant="body1" sx={{ ...styleBold, ...styleItalic }}>
+              <Typography
+                variant="body1"
+                sx={{ ...style.bold, ...style.italic }}
+              >
                 Private Mathematics Tutor (2016 - Present)
               </Typography>
               <Typography variant="body1" gutterBottom>
@@ -113,7 +121,10 @@ function ResumePage() {
               </Typography>
             </li>
             <li>
-              <Typography variant="body1" sx={{ ...styleBold, ...styleItalic }}>
+              <Typography
+                variant="body1"
+                sx={{ ...style.bold, ...style.italic }}
+              >
                 Mathematics Tutor for Alchemy Tuition (2019 - 2020)
               </Typography>
               <Typography variant="body1" gutterBottom>
@@ -128,7 +139,10 @@ function ResumePage() {
         <Typography variant="body1" gutterBottom>
           <ul>
             <li>
-              <Typography variant="body1" sx={{ ...styleBold, ...styleItalic }}>
+              <Typography
+                variant="body1"
+                sx={{ ...style.bold, ...style.italic }}
+              >
                 <LinkNewTab href="https://dustbringer.github.io/">
                   Personal Website
                 </LinkNewTab>{" "}
@@ -144,7 +158,10 @@ function ResumePage() {
               </Typography>
             </li>
             <li>
-              <Typography variant="body1" sx={{ ...styleBold, ...styleItalic }}>
+              <Typography
+                variant="body1"
+                sx={{ ...style.bold, ...style.italic }}
+              >
                 <LinkNewTab href="https://dustbringer.github.io/posts/2021-09-15-lockpicking-foundations/">
                   Lockpicking Talk for UNSW SecSoc
                 </LinkNewTab>
@@ -157,7 +174,10 @@ function ResumePage() {
               </Typography>
             </li>
             <li>
-              <Typography variant="body1" sx={{ ...styleBold, ...styleItalic }}>
+              <Typography
+                variant="body1"
+                sx={{ ...style.bold, ...style.italic }}
+              >
                 Custom D&D Calendar (
                 <LinkNewTab href="https://github.com/dustbringer/wombats-dnd">
                   GitHub
@@ -172,7 +192,10 @@ function ResumePage() {
               </Typography>
             </li>
             <li>
-              <Typography variant="body1" sx={{ ...styleBold, ...styleItalic }}>
+              <Typography
+                variant="body1"
+                sx={{ ...style.bold, ...style.italic }}
+              >
                 SYNCSHACK 2021 - Phobia Exposure Therapy Web App (
                 <LinkNewTab href="https://github.com/4m1v/phobos">
                   GitHub
@@ -188,7 +211,10 @@ function ResumePage() {
               </Typography>
             </li>
             <li>
-              <Typography variant="body1" sx={{ ...styleBold, ...styleItalic }}>
+              <Typography
+                variant="body1"
+                sx={{ ...style.bold, ...style.italic }}
+              >
                 Tab Suspender Browser Extension (
                 <LinkNewTab href="https://github.com/dustbringer/tab-suspender">
                   GitHub
@@ -201,7 +227,10 @@ function ResumePage() {
               </Typography>
             </li>
             <li>
-              <Typography variant="body1" sx={{ ...styleBold, ...styleItalic }}>
+              <Typography
+                variant="body1"
+                sx={{ ...style.bold, ...style.italic }}
+              >
                 Puzzle Simulator for "The Witness" (
                 <LinkNewTab href="https://github.com/dustbringer/thewitness-puzzle">
                   GitHub
@@ -231,7 +260,7 @@ function ResumePage() {
                 <li>
                   <Typography
                     variant="body1"
-                    sx={{ ...styleBold, ...styleItalic }}
+                    sx={{ ...style.bold, ...style.italic }}
                   >
                     Messaging App Backend (COMP1531)
                   </Typography>
@@ -243,7 +272,7 @@ function ResumePage() {
                 <li>
                   <Typography
                     variant="body1"
-                    sx={{ ...styleBold, ...styleItalic }}
+                    sx={{ ...style.bold, ...style.italic }}
                   >
                     Simple Shell Application (COMP1521)
                   </Typography>
@@ -257,7 +286,7 @@ function ResumePage() {
                 <li>
                   <Typography
                     variant="body1"
-                    sx={{ ...styleBold, ...styleItalic }}
+                    sx={{ ...style.bold, ...style.italic }}
                   >
                     Game of Life in an Assembly Language (COMP1521)
                   </Typography>
@@ -269,7 +298,7 @@ function ResumePage() {
                 <li>
                   <Typography
                     variant="body1"
-                    sx={{ ...styleBold, ...styleItalic }}
+                    sx={{ ...style.bold, ...style.italic }}
                   >
                     Text Buffer (COMP2521)
                   </Typography>
@@ -283,7 +312,7 @@ function ResumePage() {
                 <li>
                   <Typography
                     variant="body1"
-                    sx={{ ...styleBold, ...styleItalic }}
+                    sx={{ ...style.bold, ...style.italic }}
                   >
                     2D Dungeon Crawling Game (COMP2511)
                   </Typography>
@@ -300,7 +329,7 @@ function ResumePage() {
                 <li>
                   <Typography
                     variant="body1"
-                    sx={{ ...styleBold, ...styleItalic }}
+                    sx={{ ...style.bold, ...style.italic }}
                   >
                     BigBrain (COMP6080)
                   </Typography>
@@ -315,7 +344,7 @@ function ResumePage() {
                 <li>
                   <Typography
                     variant="body1"
-                    sx={{ ...styleBold, ...styleItalic }}
+                    sx={{ ...style.bold, ...style.italic }}
                   >
                     IndieBin (COMP3900)
                   </Typography>
@@ -337,7 +366,10 @@ function ResumePage() {
         <Typography variant="body1" gutterBottom>
           <ul>
             <li>
-              <Typography variant="body1" sx={{ ...styleBold, ...styleItalic }}>
+              <Typography
+                variant="body1"
+                sx={{ ...style.bold, ...style.italic }}
+              >
                 University of New South Wales (2019 - Present)
               </Typography>
               <Typography variant="body1">
@@ -355,25 +387,26 @@ function ResumePage() {
                   <Typography variant="body1">
                     <strong>Weighted Average Mark:</strong> {unswMarks.wam}
                   </Typography>
-                  <Typography variant="body1" sx={styleBold}>
-                    Awards
+                  <Typography variant="body1">
+                    <strong>Honours:</strong> Thesis 90; Presentation 9
                   </Typography>
-                  <ul>
-                    <li>
-                      Faculty of Science Deans List 2020, 2021, 2022 (top 100)
-                    </li>
-                    <li>
-                      Faculty of Engineering Deans Award 2020, 2021,2022 (top
-                      100)
-                    </li>
-                    <li>
-                      School of Mathematics and Statistics Advanced Mathematics
-                      Honours Scholarship (for 2022)
-                    </li>
-                  </ul>
-
+                  <Typography variant="body1">
+                    <strong>Awards</strong>
+                    <ul>
+                      <li>
+                        Faculty of Science Deans List 2020, 2021, 2022 (top 100)
+                      </li>
+                      <li>
+                        Faculty of Engineering Deans Award 2020, 2021, 2022 (top
+                        100)
+                      </li>
+                      <li>
+                        School of Mathematics and Statistics Advanced
+                        Mathematics Honours Scholarship (for 2022)
+                      </li>
+                    </ul>
+                  </Typography>
                   <HorizontalRule />
-
                   <Box sx={{ "& table": { width: "100%" } }}>
                     <Table>
                       <THead>
@@ -397,13 +430,20 @@ function ResumePage() {
                       ))}
                     </Table>
                   </Box>
+
+                  <Typography variant="body1">
+                    <strong>Audited courses</strong>
+                    <ul>
+                      <li>MATH5425 (Graph Theory), 2023T1</li>
+                    </ul>
+                  </Typography>
                 </Accordion>
               </Box>
             </li>
             <li>
               <Typography
                 variant="body1"
-                sx={{ ...styleBold, ...styleItalic }}
+                sx={{ ...style.bold, ...style.italic }}
                 gutterBottom
               >
                 Northern Beaches Secondary College Manly Selective Campus

@@ -56,6 +56,10 @@ body {
   font-size: 1.2em;
 }
 
+.katex .base {
+  position: static; /* Stop katex from being blurry */
+}
+
 /* #root {
   position: relative;
   min-height: 100vh;

@@ -31,7 +31,7 @@ function PageNavigation({
       >
         <NavigateBeforeIcon fontSize="small" />
       </IconButton>
-      <Typography color="primary">{text}</Typography>
+      <Typography variant="body1">{text}</Typography>
       <IconButton
         color="primary"
         onClick={onNext}
