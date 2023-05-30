@@ -12,7 +12,10 @@ import InternalLink from "../components/InternalLink";
 import CardSmall from "../components/CardSmall";
 
 import ProfileBird from "../images/profile-bird-md.jpg";
-import { TextField } from "@mui/material";
+
+
+import LoadingBar from "../components/LoadingBar";
+
 
 const CircleImage = styled("img")`
   border-radius: 50%;
