@@ -13,7 +13,6 @@ import CardSmall from "../components/CardSmall";
 
 import ProfileBird from "../images/profile-bird-md.jpg";
 
-
 const CircleImage = styled("img")`
   border-radius: 50%;
   width: 25%;
@@ -30,9 +29,9 @@ const quickLinks = [
   },
   {
     type: "Tool",
-    title: "Duplicate Remover",
-    description: "Remove duplicate items from a list",
-    path: "/tools/duplicate-remover",
+    title: "Runsheet Timer",
+    description: "Keep track of a schedule.",
+    path: "/tools/runsheet-timer",
   },
   {
     type: "Post",
@@ -70,8 +69,8 @@ function HomePage() {
         </Typography>
 
         <Typography variant="body1" align="center" sx={{ marginBottom: "2em" }}>
-          Welcome to my website! Here you'll find a variety of
-          sentences, tools and pictures. There is a handful of blog posts in{" "}
+          Welcome to my website! Here you'll find a variety of sentences, tools
+          and pictures. There is a handful of blog posts in{" "}
           <InternalLink to="/posts">Posts</InternalLink> and various
           paraphernalia in <InternalLink to="/tools">Tools</InternalLink>. You
           can learn more about me in{" "}
