@@ -12,14 +12,11 @@ import MenuItem from "@mui/material/MenuItem";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 
 import Accordion from "../../components/Accordion";
-import Code from "../../components/Markdown/Code";
 import Container from "../../components/Container";
-import ListItem from "../../components/Markdown/ListItem";
 import { GlobalContext } from "../../context/GlobalContext";
 import LoadingBar from "../../components/LoadingBar";
 
 const sumTasks = (a) => a.reduce((acc, e) => acc + e.time, 0);
-const createTask = (title, time) => ({ title, time });
 
 const trimDecimal = (d, places) => {
   if (places <= 0) return Math.floor(d);
@@ -37,7 +34,7 @@ const TaskContainer = styled("div")`
 `;
 
 const SettingsContainer = styled("div")`
-  margin: 10px 0;
+  margin: 0 0 10px;
 `;
 
 const ButtonSpaced = styled(Button)`
@@ -120,21 +117,25 @@ function TimerPage() {
         {startTime && (
           <>
             <TimerContainer>
-              <Typography variant="body1">
-                Start: {startTime.format()}
-              </Typography>
-              <br />
-              <Typography variant="body1">
-                Current time: {curTime.format()}
-              </Typography>
-              <br />
-              <Typography variant="body1">
-                Time elapsed since start: {curTime.diff(startTime, "seconds")}
-              </Typography>
-              <br />
-              <Typography variant="body1">
-                {curTime.diff(startTime, "minutes")} of {sumTasks(tasks)}
-              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Typography variant="body1">
+                  <strong>Start: </strong>
+                  {startTime.format("HH:mm:ss, dddd, DD MMMM YYYY")}
+                </Typography>
+                <Typography variant="body1">
+                  <strong>End: </strong>
+                  {moment(startTime)
+                    .add(sumTasks(tasks), "m")
+                    .format("HH:mm:ss, dddd, DD MMMM YYYY")}
+                </Typography>
+              </Box>
+
               <div>
                 {tasks.map((e, i) => (
                   <TaskContainer key={e.title + i}>
@@ -156,123 +157,160 @@ function TimerPage() {
               </div>
             </TimerContainer>
 
-            <div>
-              <SettingsContainer>
-                <Typography variant="body1">Start Time</Typography>
-                <Select
-                  label="Hour"
-                  size="small"
-                  value={startTime.hour()}
-                  onChange={(e) =>
-                    setStartTime((st) =>
-                      st
-                        ? st.hour(e.target.value)
-                        : moment().hour(e.target.value)
-                    )
-                  }
-                  MenuProps={{ sx: { height: "500px" } }}
-                >
-                  {[...Array(24)].map((_, i) => (
-                    <MenuItem value={i} key={i}>
-                      {i < 10 ? `0${i}` : i}
-                    </MenuItem>
-                  ))}
-                </Select>{" "}
-                :{" "}
-                <Select
-                  label="Minute"
-                  size="small"
-                  value={startTime.minute()}
-                  onChange={(e) =>
-                    setStartTime((st) =>
-                      st
-                        ? moment(st).minute(e.target.value)
-                        : moment().minute(e.target.value)
-                    )
-                  }
-                  MenuProps={{ sx: { height: "500px" } }}
-                >
-                  {[...Array(60)].map((_, i) => (
-                    <MenuItem value={i} key={i}>
-                      {i < 10 ? `0${i}` : i}
-                    </MenuItem>
-                  ))}
-                </Select>{" "}
-                :{" "}
-                <Select
-                  label="Second"
-                  size="small"
-                  value={startTime.second()}
-                  onChange={(e) =>
-                    setStartTime((st) =>
-                      st
-                        ? moment(st).second(e.target.value)
-                        : moment().second(e.target.value)
-                    )
-                  }
-                  MenuProps={{ sx: { height: "500px" } }}
-                >
-                  {[...Array(60)].map((_, i) => (
-                    <MenuItem value={i} key={i}>
-                      {i < 10 ? `0${i}` : i}
-                    </MenuItem>
-                  ))}
-                </Select>
-                <ButtonSpaced
-                  variant="contained"
-                  disableRipple
-                  title="Now"
-                  onClick={() => setStartTime((st) => moment())}
-                >
-                  Now
-                </ButtonSpaced>
-                <ButtonSpaced
-                  variant="contained"
-                  disableRipple
-                  title="Now"
-                  onClick={() =>
-                    setStartTime((st) => moment(st).subtract(1, "d"))
-                  }
-                >
-                  Day -
-                </ButtonSpaced>
-                <ButtonSpaced
-                  variant="contained"
-                  disableRipple
-                  title="Now"
-                  onClick={() => setStartTime((st) => moment(st).add(1, "d"))}
-                >
-                  Day +
-                </ButtonSpaced>
-              </SettingsContainer>
-              <SettingsContainer>
-                <Typography variant="body1">Timers</Typography>
-                <TextField
-                  label="Tasks"
-                  rows={6}
-                  multiline
-                  margin="dense"
-                  size="small"
-                  fullWidth
-                  variant="outlined"
-                  inputProps={{
-                    style: {
-                      fontFamily: "Roboto Mono",
-                    },
-                  }}
-                  value={settings}
-                  onChange={(e) => setSettings(e.target.value)}
-                />
-                <Button
-                  variant="contained"
-                  disableRipple
-                  title="Set"
-                  onClick={onSetTasks}
-                >
-                  <DirectionsRunIcon />
-                </Button>
-              </SettingsContainer>
-            </div>
+            <Box sx={{ margin: "10px 0" }}>
+              <Accordion title="Settings" expand>
+                <SettingsContainer>
+                  {" "}
+                  <Typography variant="body1" gutterBottom>
+                    <strong>Time Elapsed: </strong>
+                    {(() => {
+                      // total time for the tasks listed
+                      const endTime = moment(startTime).add(
+                        sumTasks(tasks),
+                        "m"
+                      );
+                      const totalDuration = moment.duration(
+                        endTime.diff(startTime)
+                      );
+                      const totalHours = parseInt(totalDuration.asHours());
+                      const totalMinutes =
+                        parseInt(totalDuration.asMinutes()) % 60;
+                      const totalSeconds =
+                        parseInt(totalDuration.asSeconds()) % 60;
+
+                      // current should be at most the total time
+                      const curDuration = moment.duration(
+                        moment.min(curTime, endTime).diff(startTime)
+                      );
+                      const curHours = parseInt(curDuration.asHours());
+                      const curMinutes = parseInt(curDuration.asMinutes()) % 60;
+                      const curSeconds = parseInt(curDuration.asSeconds()) % 60;
+                      return `${curHours}h ${curMinutes}m ${curSeconds}s of ${totalHours}h ${totalMinutes}m ${totalSeconds}s`;
+                    })()}
+                  </Typography>
+                  <Typography variant="body1">Start Time</Typography>
+                  <div>
+                    <Select
+                      title="Hours"
+                      size="small"
+                      value={startTime.hour()}
+                      onChange={(e) =>
+                        setStartTime((st) =>
+                          st
+                            ? moment(st).hour(e.target.value)
+                            : moment().hour(e.target.value)
+                        )
+                      }
+                      MenuProps={{ sx: { height: "400px" } }}
+                    >
+                      {[...Array(24)].map((_, i) => (
+                        <MenuItem value={i} key={i}>
+                          {i < 10 ? `0${i}` : i}
+                        </MenuItem>
+                      ))}
+                    </Select>{" "}
+                    :{" "}
+                    <Select
+                      title="Minutes"
+                      size="small"
+                      value={startTime.minute()}
+                      onChange={(e) =>
+                        setStartTime((st) =>
+                          st
+                            ? moment(st).minute(e.target.value)
+                            : moment().minute(e.target.value)
+                        )
+                      }
+                      MenuProps={{ sx: { height: "400px" } }}
+                    >
+                      {[...Array(60)].map((_, i) => (
+                        <MenuItem value={i} key={i}>
+                          {i < 10 ? `0${i}` : i}
+                        </MenuItem>
+                      ))}
+                    </Select>{" "}
+                    :{" "}
+                    <Select
+                      title="Seconds"
+                      size="small"
+                      value={startTime.second()}
+                      onChange={(e) =>
+                        setStartTime((st) =>
+                          st
+                            ? moment(st).second(e.target.value)
+                            : moment().second(e.target.value)
+                        )
+                      }
+                      MenuProps={{ sx: { height: "400px" } }}
+                      sx={{ marginRight: "3px" }}
+                    >
+                      {[...Array(60)].map((_, i) => (
+                        <MenuItem value={i} key={i}>
+                          {i < 10 ? `0${i}` : i}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                    <ButtonSpaced
+                      variant="contained"
+                      disableRipple
+                      title="Set start to now"
+                      onClick={() => setStartTime((st) => moment())}
+                    >
+                      Now
+                    </ButtonSpaced>
+                    <ButtonSpaced
+                      variant="contained"
+                      disableRipple
+                      title="Set start backward one day"
+                      onClick={() =>
+                        setStartTime((st) => moment(st).subtract(1, "d"))
+                      }
+                    >
+                      Day -
+                    </ButtonSpaced>
+                    <ButtonSpaced
+                      variant="contained"
+                      disableRipple
+                      title="Set start forward one day"
+                      onClick={() =>
+                        setStartTime((st) => moment(st).add(1, "d"))
+                      }
+                    >
+                      Day +
+                    </ButtonSpaced>
+                  </div>
+                </SettingsContainer>
+                <SettingsContainer>
+                  <Typography variant="body1">Tasks</Typography>
+                  <TextField
+                    helperText="Format: [minutes],[title] separated by new lines."
+                    // placeholder="In the format [minutes],[title] and separated by new lines."
+                    title="Format: [minutes],[title] separated by new lines."
+                    rows={10}
+                    multiline
+                    margin="dense"
+                    size="small"
+                    fullWidth
+                    variant="outlined"
+                    inputProps={{
+                      style: {
+                        fontFamily: "Roboto Mono",
+                      },
+                    }}
+                    value={settings}
+                    onChange={(e) => setSettings(e.target.value)}
+                  />
+                  <Button
+                    variant="contained"
+                    disableRipple
+                    title="Set"
+                    onClick={onSetTasks}
+                  >
+                    <DirectionsRunIcon />
+                  </Button>
+                </SettingsContainer>
+              </Accordion>
+            </Box>
           </>
         )}
       </Container>
