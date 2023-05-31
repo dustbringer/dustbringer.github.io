@@ -49,16 +49,26 @@ const NumberLeft = styled(Typography)`
 function LoadingBar({ cur, max, dispCur, dispMax }) {
   const theme = useTheme();
   cur = Math.max(cur, 0); // ignore negative cur
+  dispCur = Math.max(dispCur, 0);
+
+  const shownCur =
+    dispCur !== undefined && dispMax !== undefined
+      ? cur < max // show dispCur/dispMax depending on finer details in cur and max (seconds)
+        ? dispCur
+        : dispMax
+      : Math.min(cur, max);
+
+  const shownMax = dispMax ? dispMax : max;
 
   return (
-    <Border>
+    <Border title={`${shownCur}/${shownMax} min`}>
       <Bar color={theme.palette.primary.main} fill={(cur / max) * 100}>
         <Number variant="body2" color="black">
-          {dispCur ? dispCur : Math.min(cur, max)}
+          {shownCur}
         </Number>
       </Bar>
 
-      <NumberRight variant="body2">{dispMax ? dispMax : max}</NumberRight>
+      <NumberRight variant="body2">{shownMax}</NumberRight>
     </Border>
   );
 }
