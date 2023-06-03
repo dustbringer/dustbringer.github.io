@@ -21,7 +21,14 @@ const StyledIconButton = styled(IconButton)`
 
 const StyledMenuItem = styled(MenuItem)`
   ${(props) =>
-    isSamePrefix(props.cur, props.to) ? "border-left: 2px solid #555555" : ""};
+    props.iscurrent &&
+    `border-left: 2px solid ${props.theme.palette.primary.main}`};
+`;
+
+const StyledMenu = styled(Menu)`
+  ${(props) =>
+    props.iscurrent &&
+    `border-left: 2px solid ${props.theme.palette.primary.main}`};
 `;
 
 function DropdownList({ links, className }) {
@@ -57,8 +64,7 @@ function DropdownList({ links, className }) {
         {links.map((link, i) => (
           <InternalLink key={link.name + link.path} to={link.path}>
             <StyledMenuItem
-              cur={location.pathname}
-              to={link.path}
+              iscurrent={isSamePrefix(location.pathname, link.path)}
               onClick={() => closeMenu()}
             >
               {link.name}

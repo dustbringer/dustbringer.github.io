@@ -15,11 +15,12 @@ const StyledCheckbox = styled(MUICheckbox)`
 `;
 
 function Checkbox(props) {
-  return props.checked !== null && props.type === "checkbox" ? (
+  const { checked, type, className } = props;
+  return checked !== null && type === "checkbox" ? (
     <StyledCheckbox
-      className={props.className}
+      className={className}
       color="default"
-      checked={props.checked}
+      checked={checked}
       size="small"
       disableRipple
       disabled

@@ -1,6 +1,5 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { useTheme } from "@mui/material/styles";
 
 const StyledTable = styled("table")`
   border-spacing: 0;
@@ -24,10 +23,9 @@ const CenterDiv = styled("span")`
 `;
 
 function Table(props) {
-  const theme = useTheme();
   return (
     <CenterDiv>
-      <StyledTable theme={theme} {...props} />
+      <StyledTable {...props} />
     </CenterDiv>
   );
 }

@@ -45,7 +45,7 @@ const StyledContainer = styled(Container)`
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 2px solid
-    ${(props) => (props.colormode === "dark" ? "#222" : "#EEE")};
+    ${(props) => (props.theme.palette.mode === "dark" ? "#222" : "#EEE")};
   transition: all 0.25s ease-in-out;
 `;
 
@@ -53,7 +53,9 @@ const TitleTypography = styled(Typography)`
   margin: auto 0;
   font-weight: bold;
   color: ${(props) =>
-    props.colormode === "dark" ? props.theme.palette.primary.main : "#424242"};
+    props.theme.palette.mode === "dark"
+      ? props.theme.palette.primary.main
+      : "#424242"};
   color: ${(props) => props.theme.palette.primary.main};
   transition: all 0.25s ease-in-out;
   &:hover {
@@ -109,7 +111,7 @@ function Navbar() {
     <div>
       <AppBar position="static" color="transparent" elevation={0}>
         <StyledToolbar variant="dense">
-          <StyledContainer maxWidth="md" colormode={colorMode.mode}>
+          <StyledContainer maxWidth="md">
             <MyLink to="/">
               <StyledDivRowSpaceBetween>
                 {/* Icon */}
@@ -118,11 +120,7 @@ function Navbar() {
                   alt="Wombat icon"
                   sx={styles.icon}
                 />*/}
-                <TitleTypography
-                  variant="h5"
-                  colormode={colorMode.mode}
-                  theme={theme}
-                >
+                <TitleTypography variant="h5" theme={theme}>
                   <code>dustbringer.github.io</code>
                 </TitleTypography>
               </StyledDivRowSpaceBetween>

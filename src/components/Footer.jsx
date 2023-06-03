@@ -11,7 +11,6 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
 import { DivRowSpaceBetween } from "./styled/Divs";
-import ColorModeContext from "../context/ColorModeContext";
 
 import { currYear } from "../data/upToDate";
 
@@ -31,7 +30,7 @@ const StyledContainer = styled(Container)`
   padding-top: 10px;
   padding-bottom: 10px;
   border-top: 2px solid
-    ${(props) => (props.colormode === "dark" ? "#222" : "#EEE")};
+    ${(props) => (props.theme.palette.mode === "dark" ? "#222" : "#EEE")};
   transition: all 0.25s ease-in-out;
 `;
 
@@ -62,13 +61,11 @@ const SocialIcons = styled("div")`
 `;
 
 function Footer() {
-  const colorMode = React.useContext(ColorModeContext);
-
   return (
     <div>
       <StyledAppBar position="static" color="transparent" elevation={0}>
         <StyledToolbar variant="dense">
-          <StyledContainer colormode={colorMode.mode} maxWidth="md">
+          <StyledContainer maxWidth="md">
             <DivRowSpaceBetween>
               <Typography
                 variant="body2"

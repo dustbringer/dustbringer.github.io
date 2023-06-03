@@ -2,8 +2,6 @@ import React from "react";
 import { styled } from "@mui/material/styles";
 import { Link as GatsbyLink } from "gatsby";
 
-import { useTheme } from "@mui/material/styles";
-
 const StyledLink = styled(GatsbyLink)`
   font-weight: 600;
   color: ${(props) => props.theme.palette.primary.main};
@@ -15,10 +13,8 @@ const StyledLink = styled(GatsbyLink)`
 `;
 
 function Link(props) {
-  const theme = useTheme();
   return (
     <StyledLink
-      theme={theme}
       target="_blank"
       rel="noopener noreferrer"
       {...props}
@@ -45,10 +41,8 @@ const NoStyleLink = styled(GatsbyLink)`
 `;
 
 export function LinkBare(props) {
-  const theme = useTheme();
   return (
     <NoStyleLink
-      theme={theme}
       target="_blank"
       rel="noopener noreferrer"
       {...props}

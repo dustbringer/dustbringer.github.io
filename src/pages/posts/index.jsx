@@ -18,7 +18,7 @@ import { N_PER_PAGE, getPage } from "../../util/pagination";
 // In gatsby: https://www.gatsbyjs.com/blog/2017-07-19-creating-a-blog-with-gatsby/
 
 const ListContainer = styled("div")`
-  min-height: 75vh;
+  min-height: 74vh;
 `;
 
 function BlogListPage({ location, data }) {

@@ -17,7 +17,7 @@ const FormatDiv = styled("div")`
   margin-left: -210px;
   margin-top: 50px;
   border-left: 2px solid
-    ${(props) => (props.colormode === "dark" ? "#333" : "#BBB")};
+    ${(props) => (props.theme.palette.mode === "dark" ? "#333" : "#BBB")};
   transition: all 0.25s ease-in-out;
   @media (max-width: 1375px) {
     display: none;
@@ -33,10 +33,12 @@ const contentsEntry = (props) => css`
   font-weight: 600;
   cursor: pointer;
   opacity: 60%;
-  color: ${props.colormode === "dark" ? "#DDD" : "black"};
+  color: ${props.theme.palette.mode === "dark" ? "#DDD" : "black"};
   &:hover {
     opacity: 75%;
-    background-color: ${props.colormode === "dark" ? "#222" : "#efefef"};
+    background-color: ${props.theme.palette.mode === "dark"
+      ? "#222"
+      : "#efefef"};
   }
   &:active {
     opacity: 90%;
@@ -50,7 +52,7 @@ const contentsEntry = (props) => css`
 const Top = styled("span")`
   ${contentsEntry};
   background-color: ${(props) =>
-    props.colormode === "dark" ? "#222" : "#efefef"};
+    props.theme.palette.mode === "dark" ? "#333" : "#efefef"};
 `;
 
 const StyledA = styled("a")`
@@ -70,17 +72,14 @@ const stripHTMLTags = (str) => str && str.replace(/(<([^>]+)>)/gi, "");
  * display correctly if only one Markdown document is displayed per page
  */
 function Contents({ headings }) {
-  const theme = useTheme();
-
   return (
-    <FormatDiv colormode={theme.palette.mode}>
+    <FormatDiv>
       {headings.map((h, i) => {
         return (
           <StyledSpan
             depth={h.depth}
             title={stripHTMLTags(h.text)}
             role="button"
-            colormode={theme.palette.mode}
             key={i}
             onClick={() =>
               h && h.ref && h.ref.current && h.ref.current.scrollIntoView()
@@ -95,16 +94,13 @@ function Contents({ headings }) {
 }
 
 export function ContentsWithTop({ headings }) {
-  const theme = useTheme();
-
   return (
-    <FormatDiv colormode={theme.palette.mode}>
+    <FormatDiv>
       <Top
         depth={1}
         title="Top"
         role="button"
         onClick={() => window.scrollTo(0, 0)}
-        colormode={theme.palette.mode}
       >
         Top
       </Top>
@@ -115,7 +111,6 @@ export function ContentsWithTop({ headings }) {
             depth={h.depth}
             title={stripHTMLTags(h.text)}
             role="button"
-            colormode={theme.palette.mode}
             key={i}
             onClick={() =>
               h && h.ref && h.ref.current && h.ref.current.scrollIntoView()
@@ -132,16 +127,13 @@ export function ContentsWithTop({ headings }) {
 // Navigation using hash links
 // For use with gatsby markdown
 export function ContentsWithLinksTop({ headings }) {
-  const theme = useTheme();
-
   return (
-    <FormatDiv colormode={theme.palette.mode}>
+    <FormatDiv>
       <Top
         depth={1}
         title="Top"
         role="button"
         onClick={() => window.scrollTo(0, 0)}
-        colormode={theme.palette.mode}
       >
         Top
       </Top>
@@ -152,7 +144,6 @@ export function ContentsWithLinksTop({ headings }) {
             depth={h.depth}
             title={stripHTMLTags(h.value)}
             role="button"
-            colormode={theme.palette.mode}
             key={i}
             href={`#${h.id}`}
           >
