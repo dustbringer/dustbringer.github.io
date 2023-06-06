@@ -21,7 +21,10 @@ import katexMacros from "./katexMacros";
 /* @matejmazur/react-katex */
 // import TeX from "@matejmazur/react-katex";
 
+import Typography from "@mui/material/Typography";
+
 import { GlobalContext } from "../../context/GlobalContext";
+import ErrorBoundary from "../ErrorBoundary";
 import MarkdownContents from "./Contents";
 import {
   StyledH1,
@@ -160,7 +163,9 @@ const _mapProps = (props) => ({
 function _Markdown(props) {
   return (
     <MarkdownFormatDiv>
-      <ReactMarkdown {..._mapProps(props)} />
+      <ErrorBoundary fallback={<Typography>Error!</Typography>} showrerender>
+        <ReactMarkdown {..._mapProps(props)} />
+      </ErrorBoundary>
     </MarkdownFormatDiv>
   );
 }
