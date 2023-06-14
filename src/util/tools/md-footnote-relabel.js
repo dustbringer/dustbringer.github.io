@@ -40,7 +40,7 @@ export const relabelAll = (text, indexFrom = 1) => {
     (We have no clashes between old and new because all previous numbers are smaller)
    */
   let matches = getLabels(text);
-  console.log(matches);
+  // console.log(matches);
   matches.forEach((m, i) => {
     // Start indexing from largest unused number that is larger than any final indexes
     const start = Math.max(getMaxInt(matches) + 1, matches.length + indexFrom);
@@ -53,7 +53,7 @@ export const relabelAll = (text, indexFrom = 1) => {
     we can replace with number they appear without any problems.)
    */
   matches = getLabels(output);
-  console.log(matches);
+  // console.log(matches);
   matches.forEach((m, i) => {
     output = output.replaceAll(`[^${m}]`, `[^${i + indexFrom}]`);
   });

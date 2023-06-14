@@ -4,6 +4,7 @@ title: "Category theory: Universal property"
 description: Details about universal properties.
 author: dustbringer
 date: 2023-03-18
+edited: 2023-06-14
 tags:
     - category theory
 ---
@@ -14,7 +15,7 @@ Notes in my attempt to consolidate two definitions of 'universal property'.
 
 ## Mac Lane Definition
 
-**Definition.** \[Maclane[^1], page 57\]
+**Definition.** [Maclane[^1], page 57]
 Let $\mathcal{C}$ and $\mathcal{D}$ be categories. For a functor $S: \mathcal{D} \to \mathcal{C}$ and an object $c \in \mathcal{C}$, a *universal morphism* from $c$ to $S$ is a pair $(a,u)$, where $a \in \mathcal{D}$ and $u: c \to Sa$ in $\mathcal{C}$, such that for any pair $(d \in \mathcal{D}, f:c \to Sd)$ there exists a **unique** morphism $\tilde{f}: a \to d$ in $\mathcal{D}$ such that $Sf' \circ u = f$. In other words, every morphism $f: c \to Sd$ factors uniquely through the universal morphism $u$. In, again, other words, the following diagram commutes.
 
 ![](./resources/2023-03-18-cat-theory-universal-property/tex/maclane-def-commdiag.svg)
@@ -23,7 +24,7 @@ The dual is the same with the arrows and composition reversed.
 
 ## Alternate (Riehl) Definition
 
-**Definition.** \[Reihl[^2], Definition 2.3.3 (page 62)\]
+**Definition.** [Reihl[^2], Definition 2.3.3 (page 62)]
 Let $\mathcal{C}$ be a category. A *universal property* of an object $c \in \mathcal{C}$ is expressed by a representable functor $F: \mathcal{C} \to \cat{Set}$ and an element $x \in Fc$ that defines a natural isomorphism $\mathcal{C}(c,-) \cong F$ by the Yoneda Lemma. The dual has the natural isomorphism $\mathcal{C}(-,c) \cong F$.
 
 
@@ -32,7 +33,7 @@ We call $c$ the *universal object*, $x$ the *universal element* and say that $(x
 
 ## Thoughts
 ### Universal Morphism to Representation
-These two definitions are equivalent by \[Maclane[^1], page 59 (Proposition 1)\]. Roughly it says
+These two definitions are equivalent by [Maclane[^1], page 59 (Proposition 1)]. Roughly it says
 - for a functor $S: \mathcal{D} \to \mathcal{C}$ and object $c \in C$, $(a \in \mathcal{D}, u: c \to Sa)$ is a universal morphism from $c$ to $S$ **if and only if** the collection of functions
     $$
     \tau_d: (f': a \to d) \mapsto (Sf' \circ u: c \to Sd)
@@ -43,7 +44,7 @@ These two definitions are equivalent by \[Maclane[^1], page 59 (Proposition 1)\]
     $$
 - (Conversely) for $a \in \mathcal{D}$ and $c \in \mathcal{C}$, any natural isomorphism $\mathcal{D}(a,-) \cong \mathcal{C}(c,S-)$ uniquely determines $u: c \to Sa$ such that $(a,u)$ is universal from $c$ to $S$.
 
-**Note.** The second half just says that the translation between the two definitions works in the other way. The reverse construction is not as intuitive (see the proof of \[Maclane[^1], page 59 (Proposition 1)\]). We just look at the first part.
+**Note.** The second half just says that the translation between the two definitions works in the other way. The reverse construction is not as intuitive (see the proof of [Maclane[^1], page 59 (Proposition 1)]). We just look at the first part.
 
 The proposition says that saying $(a,u)$ is universal morphism is equivalent to saying that the functor $\mathcal{C}(c,S-): \mathcal{D} \to \cat{Set}$ is representable with representing object $a \in \mathcal{D}$. The natural isomorphism $\mathcal{D}(a,-) \cong \mathcal{C}(c,S-)$ is exactly the information:
 - an element $u \in \mathcal{C}(c,S\red{a})$, corresponding to the natural isomorphism (via Yoneda lemma), and
@@ -57,9 +58,9 @@ We can interpret any representable functor in a similar way, regardless of if th
 
 ### Representation to Universal Morphism
 
-Mac Lane also provides a way to translate from a universal property on a functor $F: \mathcal{D} \to \cat{Set}$ (given by a representing object $a$ and what he calls a universal element $u$ in $F(a)$) to a universal morphism to $F$ (see \[Maclane[^1], page 57-58\]). This can be used to construct a universal morphism from a universal property from Riehl's definition & Yoneda's Lemma.
+Mac Lane also provides a way to translate from a universal property on a functor $F: \mathcal{D} \to \cat{Set}$ (given by a representing object $a$ and what he calls a universal element $u$ in $F(a)$) to a universal morphism to $F$ (see [Maclane[^1], page 57-58]). This can be used to construct a universal morphism from a universal property from Riehl's definition & Yoneda's Lemma.
 
-It works as follows. Let $*$ be the set with one point, and let $\cat{Ens}$ be an appropriate [full small subcategory of the metacategory of sets](https://math.stackexchange.com/a/495763). Given a representing object $a$ and universal element $u \in F(a)$, consider $u$ as a morphism $* \to F(a)$ in $\cat{Ens}$. Then $(a,u)$ is exactly the universal morphism from $*$ to $F$.
+It works as follows. Let $*$ be the set with one point, and let $\cat{Ens}$ be an appropriate [full small subcategory of the metacategory of sets](https://math.stackexchange.com/a/495763). Given a representing object $a$ and universal element $u \in F(a)$, consider $u$ as a morphism $* \to F(a)$ in $\cat{Ens}$. Then $(a,u)$ is exactly the universal morphism from $*$ to $F$. Note that doing this *changes* the universal morphism/object/element, because the functor is different so is represented differently.
 
 
 ## Terminology and notation
@@ -79,7 +80,7 @@ Riehl's definition, let $F: \mathcal{D} \to \cat{Set}$ be represented by $a \in 
 - **universal element** is the element from the Yoneda Lemma $u$ (corresponding to the natural isomorphism $\mathcal{D}(a,-) \cong F$)
 
 
-Similarly named things here are *the same*, by \[Maclane[^1], page 59 (Proposition 1)\].
+Similarly named things here are *the same*, by [Maclane[^1], page 59 (Proposition 1)].
 
 
 ## Example: Free abelian group
@@ -105,7 +106,7 @@ The *universal object* (representing) is $\Z\{S\} \in \cat{Ab}$ and the *univers
 
 ## Example: Tensor Product (Vector spaces)
 
-The tensor products for vector space construction (from StackExchange[^3], \[Maclane[^1], page 58\], \[Reihl[^2], Example 2.3.7 (page 63)\]).
+The tensor products for vector space construction (from StackExchange[^3], [Maclane[^1], page 58], [Reihl[^2], Example 2.3.7 (page 63)]).
 
 This universal property is clearer in terms of Riehl's definition, and we deduce something similar to the original from the isomorphism. Let $k$ be a field, $V,W$ vectors spaces, and consider the functor $\op{Bilin}_k(V,W;-): \cat{Vect}_k \to \cat{Set}$ which takes vector spaces $U$ to the set of all bilinear maps $V \times W \to U$. This is represented by the tensor product $V \otimes_k W$ such that
 $$
@@ -129,8 +130,24 @@ Recall (from [Thoughts](#Universal-Morphism-to-Representation)) that this biject
 ![](./resources/2023-03-18-cat-theory-universal-property/tex/tensor-product-example-univ-mor.svg)
 
 
+## Example: Quotients
+
+Quotients in algebra arise from considering equivalence classes of an equivalence relation. Let $\mathcal{C}$ be a category, $X \in \mathcal{C}$ an object, and $\sim$ an equivalence relation on elements in $X$. Then the universal property of the quotient $X/\sim$ (the set of equivalence classes of $\sim$) is that for any $Y \in \mathcal{C}$ and morphism $f: X \to Y$ that respects the equivalence relation $\sim$, there is a unique morphism $\tilde{f}$ such that $f = \tilde{f} \circ q$. Where $q: X \to X/\sim$ is the canonical quotient map.
+
+![](./resources/2023-03-18-cat-theory-universal-property/tex/quotient-example.svg)
+
+**In terms of Maclane's definition**: Fix $\mathcal{C}$,$X$ and $\sim$ as above. Define a functor $F: \mathcal{C} \to \cat{Set}$ that maps objects to the set of morphisms from $X$ that preserve the equivalence $Y \mapsto \{f \in \mathcal{C}(X,Y) : a \sim b \implies f(a) = f(b)\}$. On morphisms we map $(Y \xto{g} Z) \mapsto (FY \xto{g_*} FZ)$ where $g_*$ is the postcomposition map with $g$, i.e. $g_*(f) = g \circ f$. This clearly preserves identity morphism, as postcomposition with identity is the identity map on morphisms. This also preserves composition because $(h \circ g)_*(f) = (h \circ g) \circ f = h \circ (g \circ f) = h_* \circ g_* (f)$ by associativity of composition. Thus $F$ is a functor. The construction [from Mac Lane](#Representation-to-Universal-Morphism) implies that the universal property is can be equivalently stated in terms of the following commutative diagram, where $*$ (the one element set) is the universal object and $q: X \to X/\sim$ is the universal element.
+
+![](./resources/2023-03-18-cat-theory-universal-property/tex/quotient-example-univ-mor.svg)
+
+**In terms of Reihl's definition**: Taking the same functor as above, we have a natural isomorphism
+$$
+\mathcal{C}(X/\sim, -) \cong F.
+$$
+Here the universal object is $X/\sim$ and the universal element is the canonical projection $q: X \to X/\sim$ in $F(X/\sim)$ (Yoneda). This has the same information as the first diagram above: given any object $Y$ and morphism $f: X \to Y$ in $F(Y)$ that respects the equivalence relation, there exists a unique morphism $\tilde{f} \in \mathcal{C}(X/\sim, Y)$ such that $f = \tilde{f} \circ q$. That is, all such morphisms $f$ *factor through* the quotient $X/\sim$.
+
 ## Uniqueness
-It can be shown that if a functor $F$ can be represented by two different universal objects $a, a'$, then $a$ and $a'$ are isomorphic (see \[Reihl[^2], Proposition 2.3.1 (page 62)\] or StackExchange[^3])
+It can be shown that if a functor $F$ can be represented by two different universal objects $a, a'$, then $a$ and $a'$ are isomorphic (see [Reihl[^2], Proposition 2.3.1 (page 62)] or StackExchange[^3])
 
 
 

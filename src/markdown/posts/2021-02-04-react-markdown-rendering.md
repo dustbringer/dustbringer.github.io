@@ -4,6 +4,7 @@ title: Rendering Markdown in ReactJS
 description: My process in developing the markdown renderers and more for this website.
 author: dustbringer
 date: 2021-02-04
+edited: 2021-02-04
 tags:
     - reactjs
     - markdown

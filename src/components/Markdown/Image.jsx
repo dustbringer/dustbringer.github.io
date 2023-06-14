@@ -6,7 +6,7 @@ const StyledImg = styled("img")`
   ${(props) =>
     props.theme.palette.mode === "dark" &&
     `
-    background-color: #ffffffdd;
+    background-color: #ffffffee;
     border-radius: 5px;
   `};
   transition: all 0.25s ease-in-out;

@@ -4,6 +4,7 @@ title: Lockpicking Foundations
 description: UNSW SecSoc talk about lockpicking
 author: dustbringer
 date: 2021-09-15
+edited: 2021-09-15
 tags:
     - lockpicking
     - security

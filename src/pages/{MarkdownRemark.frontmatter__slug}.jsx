@@ -151,6 +151,7 @@ function MarkdownTemplate({ data, location }) {
 
   //   element.scrollIntoView();
   // }, []);
+  console.log(meta);
 
   return (
     <>
@@ -161,7 +162,8 @@ function MarkdownTemplate({ data, location }) {
 
       <Container maxWidth="md">
         <Frontmatter variant="body1">
-          {meta.title}, written by {meta.author} on {meta.date}
+          {meta.title}, written by {meta.author} on {meta.date}{" "}
+          {meta.edited !== meta.date && `(Edited ${meta.edited})`}
         </Frontmatter>
 
         <ContentsPositionDiv>
@@ -185,7 +187,8 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       htmlAst
       frontmatter {
-        date(formatString: "DD MMMM, YYYY")
+        date(formatString: "DD MMMM YYYY")
+        edited(formatString: "DD MMMM YYYY")
         slug
         title
         author

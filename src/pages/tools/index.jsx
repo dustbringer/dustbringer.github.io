@@ -129,7 +129,7 @@ function ToolListPage({ location }) {
                         Math.ceil(tools.length / N_PER_PAGE)
                       )}`
                     );
-                  console.log(page + 1, Math.ceil(tools.length / N_PER_PAGE));
+                  // console.log(page + 1, Math.ceil(tools.length / N_PER_PAGE));
                 }}
               />
             </>

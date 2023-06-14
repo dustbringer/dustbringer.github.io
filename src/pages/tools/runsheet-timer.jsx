@@ -43,11 +43,11 @@ const ButtonSpaced = styled(Button)`
 
 function TimerPage() {
   const context = React.useContext(GlobalContext);
-  // const { showError, showSuccess } = context || {
-  //   // Default values if context is null
-  //   showError: () => {},
-  //   showSuccess: () => {},
-  // };
+  const { showError, showSuccess } = context || {
+    // Default values if context is null
+    showError: () => {},
+    showSuccess: () => {},
+  };
   const [startTime, setStartTime] = React.useState(null);
   const [curTime, setCurTime] = React.useState(moment());
   const [tasks, setTasks] = React.useState([]);
@@ -55,13 +55,28 @@ function TimerPage() {
 
   const onSetTasks = (e) => {
     e.preventDefault();
-    const newTasks = settings
+    const matches = settings
       .trim()
-      .split(/\r?\n/)
-      .map((e) => e.match(/^(\d*\.\d+|\d+\.?),(.*)$/)) // get number,title
+      .split(/\s*\n\s*/)
+      .map((e) => e.match(/^\s*(\d*\.\d+|\d+\.?)\s*,(.*)$/)); // get number,title
+    // note: can say \s because these are individual lines (no worry about new lines)
+
+    const newTasks = matches
       .filter((e) => e) // remove non-matches
       .map((e) => ({ title: e[2].trim(), time: parseFloat(e[1]) })); // get number,title;
     setTasks(newTasks);
+
+    // Failed lines
+    const failedParse = matches
+      .map((_, i) => i)
+      .filter((i) => matches[i] === null);
+    if (failedParse.length > 0) {
+      showError(
+        `Error: Invalid time in lines ${failedParse
+          .map((i) => i + 1)
+          .join(",")}`
+      );
+    }
 
     localStorage.setItem(
       "dustbringer-runsheet-timer-tasks",

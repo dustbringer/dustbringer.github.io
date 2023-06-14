@@ -4,6 +4,7 @@ title: Putting git info onto shell prompt
 description: Notes for self about git-prompt
 author: dustbringer
 date: 2021-11-27
+edited: 2021-11-27
 tags:
     - git
     - bash

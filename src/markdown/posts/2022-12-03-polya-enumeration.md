@@ -4,6 +4,7 @@ title: Counting circular arrangements of objects
 description: An exploration of counting using group theory.
 author: dustbringer
 date: 2022-12-03
+edited: 2022-12-03
 tags:
     - combinatorics
     - group theory
