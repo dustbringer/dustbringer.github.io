@@ -19,13 +19,17 @@ const StyledIconButton = styled(IconButton)`
   }
 `;
 
-const StyledMenuItem = styled(MenuItem)`
+const StyledMenuItem = styled(MenuItem, {
+  shouldForwardProp: (prop) => prop !== "iscurrent",
+})`
   ${(props) =>
     props.iscurrent &&
     `border-left: 2px solid ${props.theme.palette.primary.main}`};
 `;
 
-const StyledMenu = styled(Menu)`
+const StyledMenu = styled(Menu, {
+  shouldForwardProp: (prop) => prop !== "iscurrent",
+})`
   ${(props) =>
     props.iscurrent &&
     `border-left: 2px solid ${props.theme.palette.primary.main}`};

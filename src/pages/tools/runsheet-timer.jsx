@@ -38,7 +38,7 @@ const SettingsContainer = styled("div")`
 `;
 
 const ButtonSpaced = styled(Button)`
-  margin: 0 3px;
+  margin: 3px 3px;
 `;
 
 function TimerPage() {

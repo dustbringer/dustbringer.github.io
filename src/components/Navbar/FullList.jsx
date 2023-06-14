@@ -31,7 +31,9 @@ const MyLink = styled(Link)`
   }
 `;
 
-const NavLink = styled(MyLink)`
+const NavLink = styled(MyLink, {
+  shouldForwardProp: (prop) => prop !== "iscurrent",
+})`
   // display: inline-block;
   margin: 0 8px;
   color: ${(props) =>
@@ -54,7 +56,9 @@ const NavLink = styled(MyLink)`
   }
 `;
 
-const Underline = styled("div")`
+const Underline = styled("div", {
+  shouldForwardProp: (prop) => prop !== "dist" && prop !== "show",
+})`
   position: absolute;
   bottom: -${(props) => props.dist}px;
   height: 2px;
