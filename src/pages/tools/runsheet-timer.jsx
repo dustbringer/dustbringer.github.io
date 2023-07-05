@@ -15,6 +15,7 @@ import Accordion from "../../components/Accordion";
 import Container from "../../components/Container";
 import { GlobalContext } from "../../context/GlobalContext";
 import LoadingBar from "../../components/LoadingBar";
+import LoadingBarThin from "../../components/LoadingBarThin";
 
 const sumTasks = (a) => a.reduce((acc, e) => acc + e.time, 0);
 
@@ -150,6 +151,10 @@ function TimerPage() {
                   .format("HH:mm:ss, dddd, DD MMMM YYYY")}
               </Typography>
             </Box>
+            <LoadingBarThin
+              cur={curTime.diff(moment(startTime), "seconds")}
+              max={sumTasks(tasks) * 60}
+            />
 
             <div>
               {tasks.map((e, i) => (

@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 
 const Border = styled("div")`
-  outline: 2.5px solid darkgrey;
+  outline: 2px solid ${(props) => props.color || "darkgrey"};
   border-radius: 100px;
   height: 1rem;
   display: flex;
@@ -63,7 +63,10 @@ function LoadingBar({ cur, max, dispCur, dispMax }) {
   return (
     <Border title={`${shownCur}/${shownMax} min`}>
       <Bar color={theme.palette.primary.main} fill={(cur / max) * 100}>
-        <Number variant="body2" color="black">
+        <Number
+          variant="body2"
+          color={theme.palette.mode === "light" ? "#F4F4F4" : "black"}
+        >
           {shownCur}
         </Number>
       </Bar>
