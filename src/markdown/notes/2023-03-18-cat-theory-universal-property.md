@@ -103,6 +103,7 @@ $$
 
 The *universal object* (representing) is $\Z\{S\} \in \cat{Ab}$ and the *universal element* (Yoneda) is $U \circ [\cdot] \in \cat{Set}(S,U\Z\{S\})$.
 
+Note that this universal property arises from the forgetful-free adjunction, for general case see [Wikipedia](https://en.wikipedia.org/wiki/Universal_property#Relation_to_adjoint_functors).
 
 ## Example: Tensor Product (Vector spaces)
 
