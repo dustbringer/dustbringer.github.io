@@ -4,7 +4,7 @@ title: "Category theory: Universal property"
 description: Details about universal properties.
 author: dustbringer
 date: 2023-03-18
-edited: 2023-06-14
+edited: 2023-08-03
 tags:
     - category theory
 ---
@@ -88,7 +88,7 @@ The free abelian group construction (from StackExchange[^3]).
 
 Let $S$ be a set and $U: \cat{Ab} \to \cat{Set}$ be the forgetful functor from the category of abelian groups. Write $\Z\{S\}$ for the free abelian group on the set $S$, that is formal $\Z$-linear combinations of elements in $S$, and write $[s] \in \Z\{S\}$ for the basis element corresponding to $s \in S$.
 
-The universal property of $\Z\{S\}$ (more technically of $(\Z\{S\}, U\circ[\cdot]: S \to U\Z\{S\})$) is that for any abelian group $A \in \cat{Ab}$ and map $\phi: S \to UA$, there is a unique morphism $\tilde{\phi}: \Z\{S\} \to S$ such that the following diagram commutes.
+The universal property of $\Z\{S\}$ (more technically of $(\Z\{S\}, \eta: S \to U\Z\{S\})$) is that for any abelian group $A \in \cat{Ab}$ and map $\phi: S \to UA$, there is a unique morphism $\tilde{\phi}: \Z\{S\} \to S$ such that the following diagram commutes.
 
 ![](./resources/2023-03-18-cat-theory-universal-property/tex/free-abelian-example.svg)
 
@@ -96,14 +96,14 @@ In Riehl's definition, we have the functor $\cat{Set}(S, U-)$ represented by $\Z
 $$
 \cat{Ab}(\Z\{S\}, -) \cong \cat{Set}(S, U-).
 $$
-This natural isomorphism is given by the morphism (via Yoneda Lemma) $U\circ[\cdot]: S \to U\Z\{S\}$ in $\cat{Set}(S, U\Z\{S\})$, such that
+This natural isomorphism is given by the morphism (via Yoneda Lemma) $\eta: S \to U\Z\{S\}$ in $\cat{Set}(S, U\Z\{S\})$, such that
 $$
-\tau_A: (\tilde\phi: \Z\{S\} \to A) \mapsto (U\tilde{\phi} \circ (U\circ[\cdot]): S \to UA, s \mapsto U\tilde{\phi}([s])).
+\tau_A: (\tilde\phi: \Z\{S\} \to A) \mapsto (U\tilde{\phi} \circ \eta): S \to UA, s \mapsto U\tilde{\phi}([s])).
 $$
 
-The *universal object* (representing) is $\Z\{S\} \in \cat{Ab}$ and the *universal element* (Yoneda) is $U \circ [\cdot] \in \cat{Set}(S,U\Z\{S\})$.
+The *universal object* (representing) is $\Z\{S\} \in \cat{Ab}$ and the *universal element* (Yoneda) is $\eta \in \cat{Set}(S,U\Z\{S\})$.
 
-Note that this universal property arises from the forgetful-free adjunction, for general case see [Wikipedia](https://en.wikipedia.org/wiki/Universal_property#Relation_to_adjoint_functors).
+Note that this universal property arises from the forgetful-free adjunction where the universal element $\eta$ is the unit of adjunction. For the general case see [Wikipedia](https://en.wikipedia.org/wiki/Universal_property#Relation_to_adjoint_functors).
 
 ## Example: Tensor Product (Vector spaces)
 
