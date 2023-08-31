@@ -1,6 +1,18 @@
 const unswMarks = {
-  wam: 92.906,
+  wam: 92.611,
   courses: [
+    {
+      name: "Algorithmic Verification",
+      code: "COMP3153",
+      mark: 94,
+      term: "2023T2",
+    },
+    {
+      name: "Algebraic Topology",
+      code: "MATH5665",
+      mark: 87,
+      term: "2023T2",
+    },
     {
       name: "Category Theory (External A)",
       code: "MATH5055",
