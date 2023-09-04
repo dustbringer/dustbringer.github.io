@@ -151,7 +151,7 @@ function MarkdownTemplate({ data, location }) {
 
   //   element.scrollIntoView();
   // }, []);
-  console.log(meta);
+  // console.log(meta);
 
   return (
     <>
@@ -162,8 +162,9 @@ function MarkdownTemplate({ data, location }) {
 
       <Container maxWidth="md">
         <Frontmatter variant="body1">
-          {meta.title}, written by {meta.author} on {meta.date}{" "}
-          {meta.edited !== meta.date && `(Edited ${meta.edited})`}
+          {meta.title}, written by {meta.author} {meta.date && `on ${meta.date} `}
+          {meta.edited && meta.edited !== meta.date && `(Edited ${meta.edited})`}
+          {/* Date and/or edited is optional, can have any combination of them*/}
         </Frontmatter>
 
         <ContentsPositionDiv>

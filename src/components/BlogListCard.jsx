@@ -31,7 +31,7 @@ function BlogListCard({ name, title, description, date, tags, path }) {
   return (
     <Card sx={styles.root} variant="outlined">
       <InternalLink to={path}>
-        <CardActionArea title={`${name}.md`}>
+        <CardActionArea title={`${name}`}>
           <CardContent>
             <Box sx={{ marginBottom: 1 }}>
               <Typography variant="h5" component="h5" display="inline">
@@ -41,7 +41,7 @@ function BlogListCard({ name, title, description, date, tags, path }) {
                 {" "}
                 {date && moment(date).isValid()
                   ? moment(date).format("DD MMMM YYYY")
-                  : "Unknown Date"}
+                  : ""}
               </Typography>
 
               <Typography variant="body2" component="p">
