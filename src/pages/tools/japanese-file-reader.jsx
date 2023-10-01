@@ -52,7 +52,8 @@ const ReactFuriPair = styled(ReactFuri.Pair)`
   position: relative;
 `;
 const ReactFuriFuri = styled(ReactFuri.Furi)`
-  color: #666666;
+  color: ${(props) =>
+    props.theme.palette.mode === "dark" ? "#cccccc" : "#666666"};
   display: inline-block;
   position: absolute;
   top: -1.25em;
@@ -80,7 +81,23 @@ function JapaneseFileReaderPage() {
   };
 
   React.useEffect(() => {
-    // Load any saved file contents
+    if (!fileContents) return; // ignore if file is empty
+
+    // Load saved scroll position
+    const scrollPos = localStorage.getItem("japanese_text_reader_yPos");
+    if (scrollPos) {
+      setYPos(scrollPos);
+      window.scrollTo({ top: scrollPos });
+    }
+
+    // Set scroll listener
+    window.addEventListener("scroll", setScrollPos);
+
+    return () => window.removeEventListener("scroll", setScrollPos);
+  }, [fileContents]);
+
+  const loadSaved = () => {
+    // Load saved file contents
     if (
       localStorage.getItem("japanese_text_reader_fileName") &&
       localStorage.getItem("japanese_text_reader_fileContents")
@@ -90,20 +107,15 @@ function JapaneseFileReaderPage() {
         localStorage.getItem("japanese_text_reader_fileContents")
       );
     }
-    const scrollPos = localStorage.getItem("japanese_text_reader_yPos");
-    if (scrollPos) setYPos(scrollPos);
+  };
 
-    // Set scroll listener
-    window.addEventListener("scroll", setScrollPos);
-    return () => window.removeEventListener("scroll", setScrollPos);
-  }, []);
+  const saveFileContents = () => {
+    // Remember the file contents
+    localStorage.setItem("japanese_text_reader_fileName", fileName);
+    localStorage.setItem("japanese_text_reader_fileContents", fileContents);
+  };
 
-  React.useEffect(() => {
-    // Load saved scroll position
-    window.scrollTo({ top: yPos });
-  }, [fileContents]);
-
-  const handleFileChange = (ev) => {
+  const handleUpload = (ev) => {
     const file = ev.target.files[0];
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -123,10 +135,6 @@ function JapaneseFileReaderPage() {
       setYPos("0");
       setFileName(file.name);
       setFileContents(parsedContents);
-
-      // Remember the opened file
-      localStorage.setItem("japanese_text_reader_fileName", file.name);
-      localStorage.setItem("japanese_text_reader_fileContents", parsedContents);
     };
     file && reader.readAsArrayBuffer(file);
   };
@@ -135,7 +143,7 @@ function JapaneseFileReaderPage() {
     <>
       <Helmet>
         <title>
-          {`"${fileName}" at ${yPos} - Japanese File Reader | dustbringer.github.io`}
+          {`Japanese File Reader (${fileName}) | dustbringer.github.io`}
         </title>
         <meta name="description" content="Japanese File Reader" />
       </Helmet>
@@ -153,12 +161,33 @@ function JapaneseFileReaderPage() {
         </Typography>
         <Box sx={{ alignSelf: "center", margin: "10px 0" }}>
           <label>
-            <Input onChange={handleFileChange} type="file" />
+            <Input onChange={handleUpload} type="file" />
             <Button variant="contained" component="span">
               Upload
             </Button>
           </label>
         </Box>
+        <Box sx={{ alignSelf: "center", margin: "10px 0" }}>
+          <Button
+            sx={{ margin: "0 2px" }}
+            variant="outlined"
+            component="span"
+            size="small"
+            onClick={saveFileContents}
+          >
+            Save Text
+          </Button>
+          <Button
+            sx={{ margin: "0 2px" }}
+            variant="outlined"
+            component="span"
+            size="small"
+            onClick={loadSaved}
+          >
+            Load Saved
+          </Button>
+        </Box>
+
         <Typography
           align="center"
           variant="h6"
@@ -167,7 +196,9 @@ function JapaneseFileReaderPage() {
         >
           {fileName}
         </Typography>
+
         <Divider />
+
         <Text>
           {fileContents.split(/(<hr><\/hr>|<Furigana.*?>)/).map((e, i) => {
             if (/<hr><\/hr>/.test(e)) {
