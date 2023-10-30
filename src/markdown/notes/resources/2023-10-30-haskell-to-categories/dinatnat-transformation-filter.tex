@@ -3,7 +3,7 @@
     border=5px,
     convert={
         density=600,
-        % size=1000x400,
+        size=400x400,
         outext=.svg,
         convertexe={dvisvgm},
         command=\unexpanded{{\convertexe\space --pdf  --zoom=1.5 \infile}}}]
@@ -24,7 +24,7 @@
     && X \arrow[d, "f"]
     \\
     {\Hom(Y,\op{Bool}) \times L(X)}
-        \arrow[ur,"{\Hom(f,\op{Bool}) \times \op{id}_L(X)}"]
+        \arrow[ur,"{\Hom(f,\op{Bool}) \times \op{id}_{L(X)}}"]
         \arrow[dr,"{\op{id}_{\Hom(Y,\op{Bool})} \times L(f)}"']
     &&& {L(Y)}
     & Y

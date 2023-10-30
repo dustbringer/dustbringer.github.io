@@ -98,7 +98,7 @@ Here are some standard examples (see [Wadler[^1], Figure 1]).
     - (I don't know how to write contravariant functors in haskell; for some solace, the covariant version of this functor $\Hom(A,-)$ is `(->) A` in Haskell)
 - Given a function $f: X \to Y$, the parametricity property follows by dinaturality:
   $$
-  L(f) \circ \op{filter}_X \circ (\Hom(-,\op{Bool}) \times L)(f^{op}, \op{id}) = \op{Id} \circ \op{filter}_Y \circ (\Hom(-,\op{Bool}) \times L)(\op{id}^{op}, f)
+  L(f) \circ \op{filter}_X \circ (\Hom(-,\op{Bool}) \times L)(f^{op}, \op{id}_X) = \op{id}_{L(Y)} \circ \op{filter}_Y \circ (\Hom(-,\op{Bool}) \times L)(\op{id}_Y^{op}, f)
   $$
   - simplified: $L(f) \circ \op{filter}_X \circ (\Hom(f,\op{Bool}) \times \op{id}_{L(X)}) = \op{filter}_Y \circ (\op{id}_{\Hom(Y,\op{Bool})} \times L(f))$
   - Dinaturality is summed up by the commuting of the following diagram:
