@@ -1,0 +1,23 @@
+\documentclass[
+    tikz,
+    border=5px,
+    convert={
+        density=600,
+        size=400x400,
+        outext=.svg,
+        convertexe={dvisvgm},
+        command=\unexpanded{{\convertexe\space --pdf  --zoom=1.5 \infile}}}]
+    {standalone}
+\usetikzlibrary{cd} % commutative diagrams
+\usepackage{amsmath, amssymb, amsfonts, amscd}
+
+\begin{document}
+\begin{tikzcd}[sep=large]
+    X \arrow[d, "f"']
+        & F(X) \arrow[r, "\eta_X", red] \arrow[d, "F(f)"']
+            & G(X) \arrow[d, "G(f)"] \\
+    Y
+        & F(Y) \arrow[r, "\eta_Y", red]
+            & G(Y)
+\end{tikzcd}
+\end{document}

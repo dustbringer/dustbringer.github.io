@@ -3,6 +3,7 @@ slug: "/notes/monoid-results"
 title: "Monoid Results"
 description: Some interesting results in monoids.
 author: dustbringer
+date: 2023-09-04
 edited: 2023-09-04
 tags:
     - algebra

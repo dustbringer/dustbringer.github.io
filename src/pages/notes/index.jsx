@@ -57,7 +57,7 @@ function ReferenceListPage({ location, data }) {
                       key={`${i}-${id}`}
                       title={meta.title}
                       description={meta.description}
-                      date={meta.date}
+                      date={meta.edited} // or meta.date
                       tags={meta.tags}
                       name={meta.slug.match(/^.*\/(.+?)$/)[1]}
                       path={path}
@@ -107,6 +107,7 @@ export const pageQuery = graphql`
             title
             description
             date(formatString: "DD MMMM, YYYY")
+            edited(formatString: "DD MMMM, YYYY")
             tags
           }
           path: gatsbyPath(filePath: "/{MarkdownRemark.frontmatter__slug}")
