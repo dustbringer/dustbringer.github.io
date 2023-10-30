@@ -47,16 +47,18 @@ In Haskell, a (parametrised) polymorphic function is a function parametrised ove
 id :: forall a. a -> a
 append :: forall a. [a] -> [a] -> a
 ```
-Parametricity is a property of polymorphic functions: for any polymorphic function `f` parametrised on type `a`, and for any function `g :: a -> b`, we have `f . (fmap g) = (fmap g) . f`. (As always, the omitted types due to Haskell's type inference is making things hard to understand, more clarity can be found in the mathematics below.) In the famous paper *Theorems for Free* [^1] (based by a paper by Reynolds), Wadler explains that all (parametrised) polymorphic functions have this parametricity property and gives a strategy to find the "theorem" for any polymorphic function.
-- The parametric polymorphism condition on functions restricts them to being natural transformations, though it is not the case that all indexed families of morphisms are natural transformations.
+Parametricity is a property of polymorphic functions: for (some) polymorphic functions `f` parametrised on type `a`, and for any function `g :: a -> b`, we have `f . (fmap g) = (fmap g) . f`. (As always, the omitted types due to Haskell's type inference is making things hard to understand, more clarity can be found in the mathematics below.) In his well-known paper *Theorems for Free* [^1] (based by a paper by Reynolds), Wadler explains that all (parametrised) polymorphic functions have this parametricity property and gives a strategy to find the "theorem" for any polymorphic function.
+- The parametric polymorphism condition on functions restricts them to being (some sort of) natural transformation, even though it is not the case that all indexed families of morphisms are natural transformations.
 - An outline of "every parametrised polymorphic function is a natural transformation" can be found at [this stackexchange post](https://cs.stackexchange.com/questions/136359/rigorous-proof-that-parametric-polymorphism-implies-naturality-using-parametrici), citing Reynold's paper.
+- Note, we are not being fully assertive about the correspondence because some functors have contravariance, leads to a more general idea of dinaturality.
 
 In mathematics, a natural transformation is a mapping between functors. For functors $F,G : \mathcal{C} \to \mathcal{D}$, a natural transformation $\eta: F \to G$ is a collection of morphisms $\{\eta_X : F(X) \to G(X) \}_{X \in \mathcal{C}}$ in $\mathcal{D}$ such that the following diagram commutes for every morphism $f: X \to Y \in \mathcal{C}$.
 ![](./resources/2023-10-30-haskell-to-categories/nat-transformation-general.svg)
 The commutativity of the diagram is the same as saying $\eta_Y \circ F(f) = G(f) \circ \eta_X$.
+- More genersally, a dinatural transformation adds one edge to each of the two branches to account for contravariance in the domain and the codomain, leading to a hexagonal shape rather than a square. The contravariant parts reverse the direction of the function $f$. For a concrete example, see `filter` below.
 
 ### Correspondence
-It is pretty clear that parametrised polymorphic functions correspond to natural transformations, and parametricity corresponds to the commutativity of the diagram. To give more clarity to the Haskell version, we describe it more explicitly. Let `F,G :: * -> *` be functors and `η :: forall t. F t -> G t` be a polymorphic function. Then parametricity says that for any function `f :: a -> b`,
+It is pretty clear that parametrised polymorphic functions have some correspondence to natural transformations, and parametricity corresponds to the commutativity of the diagram. To give more clarity to the Haskell version, we describe it more explicitly. Let `F,G :: * -> *` be (covariant) functors and `η :: forall t. F t -> G t` be a polymorphic function. Then parametricity we stated above says that for any function `f :: a -> b`,
 ```hs
 η . fmap f = fmap f . η
 ```
@@ -67,21 +69,21 @@ Here are some standard examples (see [Wadler[^1], Figure 1]).
 
 **Notation.** For a polymorphic function $\eta : \forall A. F(A) \to G(A)$ we write $\eta_X : F(X) \to G(X)$ (as above) for the polymorphic function applied to a specific type $X$.
 
-`head: forall a. [a] -> a`
+`head :: forall a. [a] -> a`
 - This is a natural transformation from the list functor $L$ to the identity functor $\op{Id}$.
 - Given a function $f: X \to Y$, the parametricity property follows: $\op{head}_Y \circ L(f) = \op{Id}(f) \circ \op{head}_X$
   - simplified: $\op{head}_Y \circ L(f) = f \circ \op{head}_X$
   - in haskell: `head . fmap f = f . head`
 
-`(++) : forall a. [a] -> [a] -> [a]`
-- This is a natural transformation from the product of list functors $L \times L: * \times * \to * \times *$ (defined as you would expect on products) to the list functor $L$.
+`(++) :: forall a. [a] -> [a] -> [a]`
+- This is a natural transformation from the product of list functors $L \times L: * \times * \to *$ (defined as you would expect on products) to the list functor $L$.
   - Note that we "uncurry" this (ie. apply tensor-hom adjuction) so that this fits into the above definitions of natural transformation. Hence why we use the product $L \times L$.
 - Given a function $f: X \to Y$, the parametricity property follows: $(++)_Y \circ (L \times L)(f) = L(f) \circ (++)_X$
   - simplified: $(++)_Y \circ (L(f) \times L(f)) = L(f) \circ (++)_X$
   - in haskell: `(++) (fmap f xs) (fmap f ys) = fmap f ((++) xs ys)`
     - or with infix: `(fmap f xs) ++ (fmap f ys) = fmap f (xs ++ ys)`
 
-`filter : forall a. (a -> Bool) -> [a] -> [a]` (hard)
+`filter :: forall a. (a -> Bool) -> [a] -> [a]` (hard)
 - This example is in fact not natural, not even extranatural, but a *dinatural* transformation (a generalisation of natural transformation)
   - We include this anyway, to show how to obtain Wadler's "theorem" for `filter`
 - This is a dinatural transformation from $\Hom(-,\op{Bool}) \times L: *^{op} \times * \to *$ to the list functor $L: *^{op} \times * \to *$ (deformed in such a way to ignore it's contravariant argument).
