@@ -251,16 +251,6 @@
   Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/posts/2021-02-04-react-markdown-rendering/page-data.json>; rel=preload; as=fetch; crossorigin
-/posts/2022-12-03-polya-enumeration/
-  Link: </webpack-runtime-c7b668c398ad1c18fa39.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-a517acc7471888e8aab4.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js>; rel=preload; as=script
-  Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/posts/2022-12-03-polya-enumeration/page-data.json>; rel=preload; as=fetch; crossorigin
 /posts/2021-09-15-lockpicking-foundations/
   Link: </webpack-runtime-c7b668c398ad1c18fa39.js>; rel=preload; as=script
   Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
@@ -271,6 +261,16 @@
   Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/posts/2021-09-15-lockpicking-foundations/page-data.json>; rel=preload; as=fetch; crossorigin
+/posts/2022-12-03-polya-enumeration/
+  Link: </webpack-runtime-c7b668c398ad1c18fa39.js>; rel=preload; as=script
+  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
+  Link: </app-a517acc7471888e8aab4.js>; rel=preload; as=script
+  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
+  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
+  Link: </4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js>; rel=preload; as=script
+  Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
+  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
+  Link: </page-data/posts/2022-12-03-polya-enumeration/page-data.json>; rel=preload; as=fetch; crossorigin
 /notes/2021-01-19-test/
   Link: </webpack-runtime-c7b668c398ad1c18fa39.js>; rel=preload; as=script
   Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
@@ -291,6 +291,16 @@
   Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/notes/2021-11-27-git-prompt/page-data.json>; rel=preload; as=fetch; crossorigin
+/notes/2023-03-18-cat-theory-universal-property/
+  Link: </webpack-runtime-c7b668c398ad1c18fa39.js>; rel=preload; as=script
+  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
+  Link: </app-a517acc7471888e8aab4.js>; rel=preload; as=script
+  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
+  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
+  Link: </4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js>; rel=preload; as=script
+  Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
+  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
+  Link: </page-data/notes/2023-03-18-cat-theory-universal-property/page-data.json>; rel=preload; as=fetch; crossorigin
 /notes/monoid-results/
   Link: </webpack-runtime-c7b668c398ad1c18fa39.js>; rel=preload; as=script
   Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
@@ -311,13 +321,3 @@
   Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/notes/2023-10-30-haskell-to-categories/page-data.json>; rel=preload; as=fetch; crossorigin
-/notes/2023-03-18-cat-theory-universal-property/
-  Link: </webpack-runtime-c7b668c398ad1c18fa39.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-a517acc7471888e8aab4.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js>; rel=preload; as=script
-  Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/notes/2023-03-18-cat-theory-universal-property/page-data.json>; rel=preload; as=fetch; crossorigin
