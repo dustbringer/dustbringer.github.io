@@ -1,0 +1,37 @@
+\documentclass[
+    tikz,
+    border=5px,
+    convert={
+        density=600,
+        % size=1000x400,
+        outext=.svg,
+        convertexe={dvisvgm},
+        command=\unexpanded{{\convertexe\space --pdf  --zoom=1.5 \infile}}}]
+    {standalone}
+\usetikzlibrary{cd} % commutative diagrams
+\usepackage{amsmath, amssymb, amsfonts, amscd}
+
+
+\newcommand{\op}[1]{\operatorname{#1}}
+\DeclareMathOperator{\Hom}{Hom}
+
+\begin{document}
+\begin{tikzcd}[sep=large]
+    & {\Hom(X,\op{Bool}) \times L(X)}
+        \arrow[r,"{\op{filter}_X}", red]
+    & {L(X)}
+        \arrow[dr,"{L(f)}"]
+    && X \arrow[d, "f"]
+    \\
+    {\Hom(Y,\op{Bool}) \times L(X)}
+        \arrow[ur,"{\Hom(f,\op{Bool}) \times \op{id}_L(X)}"]
+        \arrow[dr,"{\op{id}_{\Hom(Y,\op{Bool})} \times L(f)}"']
+    &&& {L(Y)}
+    & Y
+    \\
+    & {\Hom(Y,\op{Bool}) \times L(Y)}
+        \arrow[r,"{\op{filter}_Y}", red]
+    & {L(Y)}
+        \arrow[ur,"{\op{id}_{L(Y)}}"']
+\end{tikzcd}
+\end{document}

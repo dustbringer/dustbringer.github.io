@@ -51,7 +51,7 @@ Parametricity is a property of polymorphic functions: for any polymorphic functi
 - The parametric polymorphism condition on functions restricts them to being natural transformations, though it is not the case that all indexed families of morphisms are natural transformations.
 - An outline of "every parametrised polymorphic function is a natural transformation" can be found at [this stackexchange post](https://cs.stackexchange.com/questions/136359/rigorous-proof-that-parametric-polymorphism-implies-naturality-using-parametrici), citing Reynold's paper.
 
-In mathematics, a natural transformation is a mapping between functors. For functors $F,G : \mathcal{C} \to \mathcal{D}$, a natural transformation $\eta: F \to G$ is a collection of morphisms $\{\eta_a \}_{a \in \mathcal{C}}$ such that the following diagram commutes for every morphism $f: X \to Y \in \mathcal{C}$.
+In mathematics, a natural transformation is a mapping between functors. For functors $F,G : \mathcal{C} \to \mathcal{D}$, a natural transformation $\eta: F \to G$ is a collection of morphisms $\{\eta_X : F(X) \to G(X) \}_{X \in \mathcal{C}}$ in $\mathcal{D}$ such that the following diagram commutes for every morphism $f: X \to Y \in \mathcal{C}$.
 ![](./resources/2023-10-30-haskell-to-categories/nat-transformation-general.svg)
 The commutativity of the diagram is the same as saying $\eta_Y \circ F(f) = G(f) \circ \eta_X$.
 
@@ -61,6 +61,54 @@ It is pretty clear that parametrised polymorphic functions correspond to natural
 η . fmap f = fmap f . η
 ```
 To break down the types, the left has `η :: F b -> G b` (where `b` is the codomain of `f`) and `fmap f :: F a -> F b`. The right has `η :: F a -> G a` (where `a` is the domain of `f`) and `fmap f :: G a -> G b`. These are deduced in Haskell with type inference.
+
+### Examples
+Here are some standard examples (see [Wadler[^1], Figure 1]).
+
+**Notation.** For a polymorphic function $\eta : \forall A. F(A) \to G(A)$ we write $\eta_X : F(X) \to G(X)$ (as above) for the polymorphic function applied to a specific type $X$.
+
+`head: forall a. [a] -> a`
+- This is a natural transformation from the list functor $L$ to the identity functor $\op{Id}$.
+- Given a function $f: X \to Y$, the parametricity property follows: $\op{head}_Y \circ L(f) = \op{Id}(f) \circ \op{head}_X$
+  - simplified: $\op{head}_Y \circ L(f) = f \circ \op{head}_X$
+  - in haskell: `head . fmap f = f . head`
+
+`(++) : forall a. [a] -> [a] -> [a]`
+- This is a natural transformation from the product of list functors $L \times L: * \times * \to * \times *$ (defined as you would expect on products) to the list functor $L$.
+  - Note that we "uncurry" this (ie. apply tensor-hom adjuction) so that this fits into the above definitions of natural transformation. Hence why we use the product $L \times L$.
+- Given a function $f: X \to Y$, the parametricity property follows: $(++)_Y \circ (L \times L)(f) = L(f) \circ (++)_X$
+  - simplified: $(++)_Y \circ (L(f) \times L(f)) = L(f) \circ (++)_X$
+  - in haskell: `(++) (fmap f xs) (fmap f ys) = fmap f ((++) xs ys)`
+    - or with infix: `(fmap f xs) ++ (fmap f ys) = fmap f (xs ++ ys)`
+
+`filter : forall a. (a -> Bool) -> [a] -> [a]` (hard)
+- This example is in fact not natural, not even extranatural, but a *dinatural* transformation (a generalisation of natural transformation)
+  - We include this anyway, to show how to obtain Wadler's "theorem" for `filter`
+- This is a dinatural transformation from $\Hom(-,\op{Bool}) \times L: *^{op} \times * \to *$ to the list functor $L: *^{op} \times * \to *$ (deformed in such a way to ignore it's contravariant argument).
+  - Here, we uncurried so we can have two functors.
+  - Recall the (contravariant) $\Hom(-,\op{Bool})$ functor is defined such that on types $X$,
+    $$
+    \Hom(-,\op{Bool})^{\op{ob}} : X \mapsto \Hom(X,\op{Bool}),
+    $$
+    and on morphisms $f: X \to Y$ by
+    $$
+    \Hom(-,\op{Bool})^{\op{mor}} : f \mapsto (\Hom(f,\op{Bool}): \Hom(Y,\op{Bool}) \to \Hom(X,\op{Bool}))
+    $$
+    where $\Hom(f,\op{Bool}): (g : Y \to \op{Bool}) \mapsto (g \circ f : X \to \op{Bool})$
+    - (I don't know how to write contravariant functors in haskell; for some solace, the covariant version of this functor $\Hom(A,-)$ is `(->) A` in Haskell)
+- Given a function $f: X \to Y$, the parametricity property follows by dinaturality:
+  $$
+  L(f) \circ \op{filter}_X \circ (\Hom(-,\op{Bool}) \times L)(f^{op}, \op{id}) = \op{Id} \circ \op{filter}_Y \circ (\Hom(-,\op{Bool}) \times L)(\op{id}^{op}, f)
+  $$
+  - simplified: $L(f) \circ \op{filter}_X \circ (\Hom(f,\op{Bool}) \times \op{id}_{L(X)}) = \op{filter}_Y \circ (\op{id}_{\Hom(Y,\op{Bool})} \times L(f))$
+  - Dinaturality is summed up by the commuting of the following diagram:
+    ![](./resources/2023-10-30-haskell-to-categories/dinatnat-transformation-filter.svg)
+  - in haskell, applied to one argument $g:Y \to \op{Bool}$: `fmap f . filter (g . f) = filter g . fmap f`
+    - with the second argument `xs :: [Y]` we get `fmap f (filter (g . f) xs) = filter g (fmap f xs)`
+
+
+
+Some more general examples can be found at [Bartosz Milewski's Programming Cafe](https://bartoszmilewski.com/2014/09/22/parametricity-money-for-nothing-and-theorems-for-free/).
 
 
 ## Applicative Functors and Lax Closed Functors
@@ -74,7 +122,7 @@ Coming soon.
 
 
 
-[^1]: Wadler, Philip, *Theorems for free!*. 4th Int'l Conf. on Functional Programming and Computer Architecture. London.
+[^1]: Wadler, Philip, [*Theorems for free!*](https://people.mpi-sws.org/~dreyer/tor/papers/wadler.pdf). 4th Int'l Conf. on Functional Programming and Computer Architecture. London.
 
 
 
