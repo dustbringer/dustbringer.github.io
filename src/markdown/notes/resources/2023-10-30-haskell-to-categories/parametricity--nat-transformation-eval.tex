@@ -1,0 +1,27 @@
+\documentclass[
+    tikz,
+    border=5px,
+    convert={
+        density=600,
+        size=400x400,
+        outext=.svg,
+        convertexe={dvisvgm},
+        command=\unexpanded{{\convertexe\space --pdf  --zoom=1.5 \infile}}}]
+    {standalone}
+\usetikzlibrary{cd} % commutative diagrams
+\usepackage{amsmath, amssymb, amsfonts, amscd}
+
+\newcommand{\tensor}{\otimes}
+\newcommand{\op}[1]{\operatorname{#1}}
+\DeclareMathOperator{\Hom}{Hom}
+
+\begin{document}
+\begin{tikzcd}[sep=large]
+    X \arrow[d, "f"']
+        & {\Hom(Y,X) \tensor Y} \arrow[r, "{\op{eval}_{X,Y}}", red] \arrow[d, "{\Hom(Y,f) \tensor \op{id}_Y}"']
+            & X \arrow[d, "f"] \\
+    X'
+        & {\Hom(Y,X') \tensor Y} \arrow[r, "{\op{eval}_{X',Y}}", red]
+            & X'
+\end{tikzcd}
+\end{document}

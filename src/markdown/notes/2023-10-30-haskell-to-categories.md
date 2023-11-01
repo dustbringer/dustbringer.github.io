@@ -53,7 +53,7 @@ Parametricity is a property of polymorphic functions: for (some) polymorphic fun
 - Note, we are not being fully assertive about the correspondence because some functors have contravariance, leads to a more general idea of dinaturality.
 
 In mathematics, a natural transformation is a mapping between functors. For functors $F,G : \mathcal{C} \to \mathcal{D}$, a natural transformation $\eta: F \to G$ is a collection of morphisms $\{\eta_X : F(X) \to G(X) \}_{X \in \mathcal{C}}$ in $\mathcal{D}$ such that the following diagram commutes for every morphism $f: X \to Y \in \mathcal{C}$.
-![](./resources/2023-10-30-haskell-to-categories/nat-transformation-general.svg)
+![](./resources/2023-10-30-haskell-to-categories/parametricity--nat-transformation-general.svg)
 The commutativity of the diagram is the same as saying $\eta_Y \circ F(f) = G(f) \circ \eta_X$.
 - More genersally, a dinatural transformation adds one edge to each of the two branches to account for contravariance in the domain and the codomain, leading to a hexagonal shape rather than a square. The contravariant parts reverse the direction of the function $f$. For a concrete example, see `filter` below.
 
@@ -104,13 +104,20 @@ Here are some standard examples (see [Wadler[^1], Figure 1]).
   $$
   - simplified: $L(f) \circ \op{filter}_X \circ (\Hom(f,\op{Bool}) \times \op{id}_{L(X)}) = \op{filter}_Y \circ (\op{id}_{\Hom(Y,\op{Bool})} \times L(f))$
   - Dinaturality is summed up by the commuting of the following diagram:
-    ![](./resources/2023-10-30-haskell-to-categories/dinatnat-transformation-filter.svg)
+    ![](./resources/2023-10-30-haskell-to-categories/parametricity--dinatnat-transformation-filter.svg)
   - in haskell, applied to one argument $g:Y \to \op{Bool}$: `fmap f . filter (g . f) = filter g . fmap f`
     - with the second argument `xs :: [Y]` we get `fmap f (filter (g . f) xs) = filter g (fmap f xs)`
 
-
-
 Some more general examples can be found at [Bartosz Milewski's Programming Cafe](https://bartoszmilewski.com/2014/09/22/parametricity-money-for-nothing-and-theorems-for-free/).
+
+A comment on parametric functions on multiple variables. The analogous concept is collections of morphisms with multiple indexing variables, where we can be eg. natural in one variable and extranatural in another. This leads to multiple properties that they satisfy. An easy example is the evaluation map $\op{eval}_{X,Y} : \Hom(Y,X) \times Y \to X$ (the counit of the tensor-hom adjunction), which is natural in $X$ with commutative diagram
+![](resources/2023-10-30-haskell-to-categories/parametricity--nat-transformation-eval.svg)
+and extranatural in $Y$ (because fixing $X$ in $\Hom(Y,X)$ makes that component contravariant) with:
+![](resources/2023-10-30-haskell-to-categories/parametricity--nat-transformation-eval-extra.svg)
+In Haskell we can write `eval :: forall a. forall b. (a -> b) -> a -> b` for the evaluation function. Then naturality, or "parametricity", will give two properties:
+- ("for $X$") for all `f :: a -> a'`, we have `f . (eval g) = eval (f . g)`,
+- ("for $Y$") for all `f :: b -> b'`, we have `eval (g . f) x = eval g (f x)`,
+which are both pretty obvious properties you would expect from an evaluation function. This idea can probably be extended to functions parametrised over multiple types.
 
 
 ## Applicative Functors and Lax Closed Functors
