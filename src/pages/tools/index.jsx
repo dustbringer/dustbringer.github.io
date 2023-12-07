@@ -13,7 +13,7 @@ import CardWideSmall from "../../components/CardWideSmall";
 import PageNavigation from "../../components/PageNavigation";
 
 import { N_PER_PAGE, getPage } from "../../util/pagination";
-import tools from "./toolsList";
+import tools from "../../data/toolsList";
 
 // HELPFUL https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
 // In gatsby: https://www.gatsbyjs.com/blog/2017-07-19-creating-a-blog-with-gatsby/
