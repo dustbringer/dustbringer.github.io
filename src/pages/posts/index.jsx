@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import Container from "../../components/Container";
-import BlogListCard from "../../components/BlogListCard";
+import BlogListCardSmall from "../../components/BlogListCardSmall";
 import PageNavigation from "../../components/PageNavigation";
 
 import { N_PER_PAGE, getPage } from "../../util/pagination";
@@ -18,7 +18,7 @@ import { N_PER_PAGE, getPage } from "../../util/pagination";
 // In gatsby: https://www.gatsbyjs.com/blog/2017-07-19-creating-a-blog-with-gatsby/
 
 const ListContainer = styled("div")`
-  min-height: 74vh;
+  min-height: 75vh;
 `;
 
 function BlogListPage({ location, data }) {
@@ -58,7 +58,7 @@ function BlogListPage({ location, data }) {
                 {getPage(posts, page, N_PER_PAGE).map((e, i) => {
                   const { id, path, frontmatter: meta } = e.node;
                   return (
-                    <BlogListCard
+                    <BlogListCardSmall
                       key={`${i}-${id}`}
                       title={meta.title}
                       description={meta.description}

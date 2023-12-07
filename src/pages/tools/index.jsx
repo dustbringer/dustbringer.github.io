@@ -9,10 +9,11 @@ import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import Container from "../../components/Container";
-import CardLarge from "../../components/CardLarge";
+import CardWideSmall from "../../components/CardWideSmall";
 import PageNavigation from "../../components/PageNavigation";
 
 import { N_PER_PAGE, getPage } from "../../util/pagination";
+import tools from "./toolsList";
 
 // HELPFUL https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
 // In gatsby: https://www.gatsbyjs.com/blog/2017-07-19-creating-a-blog-with-gatsby/
@@ -21,69 +22,9 @@ const ListContainer = styled("div")`
   min-height: 74vh;
 `;
 
-const tools = [
-  {
-    title: "Markdown Renderer",
-    description: "Online renderer for Markdown and LaTeX.",
-    path: "/tools/markdown-renderer",
-  },
-  {
-    title: "Duplicate Remover",
-    description: "Remove duplicate items from a list.",
-    path: "/tools/duplicate-remover",
-  },
-  {
-    title: "Japanese File Reader",
-    description: "Render Japanese text file, with included furigana.",
-    path: "/tools/japanese-file-reader",
-  },
-  {
-    title: "Image Viewer",
-    description:
-      "View images from a JSON list of links. Written during Syncs Hack 2021 to help manually filter collected images.",
-    path: "/tools/syncshack2021-image-viewer",
-  },
-  {
-    title: "VTT Extractor",
-    description: "Extracts the subtitle text from VTT files.",
-    path: "/tools/vtt-extractor",
-  },
-  {
-    title: "Lyric Slides",
-    description: "Shows lyrics with slides.",
-    path: "/tools/lyric-slides",
-  },
-  {
-    title: "Markdown/Pandoc Footnote Relabeller",
-    description:
-      "Replace the labels of markdown footnotes with ascending integers.",
-    path: "/tools/md-footnote-relabel",
-  },
-  {
-    title: "Runsheet timer",
-    description: "Keep track of a schedule.",
-    path: "/tools/runsheet-timer",
-  },
-];
-
 function ToolListPage({ location }) {
   // const [tools, setTools] = React.useState([]);
   // const [loading, setLoading] = React.useState(true);
-  const [page, setPage] = React.useState(1);
-
-  React.useEffect(() => {
-    const queryPage = qs.parse(location.search, {
-      ignoreQueryPrefix: true,
-    }).page;
-    if (
-      queryPage &&
-      !isNaN(parseInt(queryPage, 10)) &&
-      queryPage > 0 &&
-      queryPage <= Math.ceil(tools.length / N_PER_PAGE)
-    ) {
-      setPage(parseInt(queryPage, 10));
-    }
-  }, [location.search, tools.length]);
 
   return (
     <>
@@ -99,12 +40,13 @@ function ToolListPage({ location }) {
           {tools.length > 0 ? (
             <>
               <ListContainer>
-                {getPage(tools, page, N_PER_PAGE).map((t, i) => {
+                {tools.map((t, i) => {
                   const { type, title, description, path } = t;
                   return (
-                    <CardLarge
+                    <CardWideSmall
                       key={`${i}-${title}`}
                       type={type}
+                      // date={date}
                       name={title}
                       title={title}
                       description={description}
@@ -113,25 +55,6 @@ function ToolListPage({ location }) {
                   );
                 })}
               </ListContainer>
-              <PageNavigation
-                text={page}
-                prevDisabled={page <= 1}
-                nextDisabled={page >= Math.ceil(tools.length / N_PER_PAGE)}
-                onPrev={() =>
-                  page > 1 &&
-                  navigate(`${location.pathname}?page=${Math.max(page - 1, 1)}`)
-                }
-                onNext={() => {
-                  page < Math.ceil(tools.length / N_PER_PAGE) &&
-                    navigate(
-                      `${location.pathname}?page=${Math.min(
-                        page + 1,
-                        Math.ceil(tools.length / N_PER_PAGE)
-                      )}`
-                    );
-                  // console.log(page + 1, Math.ceil(tools.length / N_PER_PAGE));
-                }}
-              />
             </>
           ) : (
             <Typography>There seems to be nothing here...</Typography>

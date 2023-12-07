@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import Container from "../../components/Container";
-import BlogListCard from "../../components/BlogListCard";
+import BlogListCardSmall from "../../components/BlogListCardSmall";
 import PageNavigation from "../../components/PageNavigation";
 
 import { N_PER_PAGE, getPage } from "../../util/pagination";
@@ -53,7 +53,7 @@ function ReferenceListPage({ location, data }) {
                 {getPage(notes, page, N_PER_PAGE).map((e, i) => {
                   const { id, path, frontmatter: meta } = e.node;
                   return (
-                    <BlogListCard
+                    <BlogListCardSmall
                       key={`${i}-${id}`}
                       title={meta.title}
                       description={meta.description}

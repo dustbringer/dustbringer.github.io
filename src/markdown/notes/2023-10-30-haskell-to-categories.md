@@ -4,7 +4,7 @@ title: Haskell and Types to Category theory
 description: Rewriting category theoretical structures in Haskell in category theory.
 author: dustbringer
 date: 2023-10-30
-edited: 2023-10-30
+edited: 2023-11-02
 tags:
     - category theory
     - haskell
@@ -110,7 +110,8 @@ Here are some standard examples (see [Wadler[^1], Figure 1]).
 
 Some more general examples can be found at [Bartosz Milewski's Programming Cafe](https://bartoszmilewski.com/2014/09/22/parametricity-money-for-nothing-and-theorems-for-free/).
 
-A comment on parametric functions on multiple variables. The analogous concept is collections of morphisms with multiple indexing variables, where we can be eg. natural in one variable and extranatural in another. This leads to multiple properties that they satisfy. An easy example is the evaluation map $\op{eval}_{X,Y} : \Hom(Y,X) \times Y \to X$ (the counit of the tensor-hom adjunction), which is natural in $X$ with commutative diagram
+### A comment on parametric functions on multiple variables
+The analogous concept is collections of morphisms with multiple indexing variables, where we can be eg. natural in one variable and extranatural in another. This leads to multiple properties that they satisfy. An easy example is the evaluation map $\op{eval}_{X,Y} : \Hom(Y,X) \times Y \to X$ (the counit of the tensor-hom adjunction), which is natural in $X$ with commutative diagram
 ![](resources/2023-10-30-haskell-to-categories/parametricity--nat-transformation-eval.svg)
 and extranatural in $Y$ (because fixing $X$ in $\Hom(Y,X)$ makes that component contravariant) with:
 ![](resources/2023-10-30-haskell-to-categories/parametricity--nat-transformation-eval-extra.svg)

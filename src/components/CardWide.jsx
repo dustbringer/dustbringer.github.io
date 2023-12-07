@@ -22,7 +22,7 @@ const styles = {
   },
 };
 
-function CardLarge({ name, type = "", title, description, date = "", path }) {
+function CardWide({ name, type = "", title, description, date = "", path }) {
   return (
     <Card sx={styles.root} variant="outlined" title={name}>
       <InternalLink to={path}>
@@ -58,4 +58,4 @@ function CardLarge({ name, type = "", title, description, date = "", path }) {
   );
 }
 
-export default CardLarge;
+export default CardWide;

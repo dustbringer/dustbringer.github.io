@@ -21,15 +21,28 @@ const styles = {
       borderColor: "secondary.main",
     },
   },
+  cardContent: {
+    position: "relative",
+    padding: "16px",
+  },
+  type: {
+    position: "absolute",
+    fontStyle: "italic",
+  },
 };
 
-function CardSmall({ name, type = "", title, description, path }) {
+function CardSquare({ name, type = "", title, description, path }) {
   return (
     <Card sx={styles.root} variant="outlined">
       <InternalLink to={path}>
         <CardActionArea title={name ? name : title}>
-          <CardContent>
-            <Typography variant="h5" component="h5">
+          <CardContent
+            sx={{
+              height: styles.root.height,
+              ...styles.cardContent,
+            }}
+          >
+            <Typography variant="h6" component="h6" sx={{ lineHeight: "1.2" }}>
               {title ? title : "Unknown Title"}
             </Typography>
             <Typography variant="body2" component="p" gutterBottom>
@@ -39,7 +52,10 @@ function CardSmall({ name, type = "", title, description, path }) {
               <Typography
                 variant="body2"
                 color="text.secondary"
-                sx={{ fontStyle: "italic" }}
+                sx={{
+                  bottom: styles.cardContent.padding,
+                  ...styles.type,
+                }}
               >
                 {type}
               </Typography>
@@ -51,4 +67,4 @@ function CardSmall({ name, type = "", title, description, path }) {
   );
 }
 
-export default CardSmall;
+export default CardSquare;

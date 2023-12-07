@@ -40,6 +40,7 @@ export const themeDark = {
     },
     text: {
       primary: "#DDD",
+      secondary: "#c3b4a7",
     },
     background: {
       default: "#1A1A1A",

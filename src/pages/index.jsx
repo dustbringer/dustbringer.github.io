@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 
 import Container from "../components/Container";
 import InternalLink from "../components/InternalLink";
-import CardSmall from "../components/CardSmall";
+import CardSquare from "../components/CardSquare";
 
 import ProfileBird from "../images/profile-bird-md.jpg";
 
@@ -65,7 +65,7 @@ function HomePage() {
           Victor Zhang
         </Typography>
         <Typography variant="body2" align="center" sx={{ marginBottom: "2em" }}>
-          Mathematics enthusiast and Software developer
+          Mathematician and Software Developer
         </Typography>
 
         <Typography variant="body1" align="center" sx={{ marginBottom: "2em" }}>
@@ -78,13 +78,13 @@ function HomePage() {
           <InternalLink to="/resume">Resume</InternalLink>.
         </Typography>
 
-        <Typography variant="h5" align="center" gutterBottom>
+        <Typography variant="h5" align="center">
           Quick Links
         </Typography>
 
         <QuickLinkContainer>
           {quickLinks.map((l, i) => (
-            <CardSmall
+            <CardSquare
               key={`${i}-${l.title}`}
               type={l.type}
               title={l.title}
