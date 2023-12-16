@@ -1,14 +1,20 @@
-import React from "react";
+import * as React from "react";
 import { styled, css } from "@mui/material/styles";
 import { useTheme } from "@mui/material/styles";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { Prism } from "react-syntax-highlighter";
 import {
   prism,
   tomorrow,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 
+type StyledCodeInlineProps = {
+  prismstyle: {
+    [key: string]: React.CSSProperties;
+  };
+};
+
 const StyledCodeInline = styled("code")`
-  color: ${(props) =>
+  color: ${(props: StyledCodeInlineProps) =>
     props.prismstyle && props.prismstyle[`pre[class*="language-"]`].color};
   background-color: ${(props) =>
     props.prismstyle && props.prismstyle['pre[class*="language-"]'].background};
@@ -16,7 +22,11 @@ const StyledCodeInline = styled("code")`
   padding: 0.2em 0.3em;
 `;
 
-function Code(props) {
+function Code(props: {
+  inline: boolean;
+  language: string;
+  children: string | string[];
+}) {
   const theme = useTheme();
   const style = theme.palette.mode === "dark" ? tomorrow : prism;
 
@@ -25,9 +35,8 @@ function Code(props) {
       {props.children}
     </StyledCodeInline>
   ) : (
-    <SyntaxHighlighter language={props.language} style={style}>
-      {props.children}
-    </SyntaxHighlighter>
+    // @ts-ignore Something in module or type declarations that stops this from being used as a component
+    <Prism language={props.language} style={style} children={props.children} />
   );
 }
 

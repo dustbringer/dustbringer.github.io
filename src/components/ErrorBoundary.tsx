@@ -2,11 +2,16 @@ import * as React from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import Button from "@mui/material/Button";
 
-class ErrorBoundary extends React.Component {
+type Props = {
+  fallback: React.ReactNode;
+  showrerender: boolean;
+};
+
+class ErrorBoundary extends React.Component<React.PropsWithChildren<Props>> {
   // Set the context (class component)
   static contextType = GlobalContext;
 
-  constructor(props) {
+  constructor(props: React.PropsWithChildren<Props>) {
     super(props);
     this.state = { hasError: false };
   }

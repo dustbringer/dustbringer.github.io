@@ -4,12 +4,14 @@ import { styled, css } from "@mui/material/styles";
 
 // Markdown, remark, rehype
 import ReactMarkdown from "react-markdown";
+import type { Components, Options } from "react-markdown";
 import remarkMathPlugin from "remark-math";
 import remarkGFMPlugin from "remark-gfm";
 import remarkFrontmatterPlugin from "remark-frontmatter";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeRewrite from "rehype-rewrite";
+import type { RehypeRewriteOptions } from "rehype-rewrite";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css"; // styling math symbols to look like latex
 import katexMacros from "./katexMacros";
@@ -23,7 +25,7 @@ import katexMacros from "./katexMacros";
 
 import Typography from "@mui/material/Typography";
 
-import { GlobalContext } from "../../context/GlobalContext";
+import { GlobalContext, emptyStore } from "../../context/GlobalContext";
 import ErrorBoundary from "../ErrorBoundary";
 import MarkdownContents from "./Contents";
 import {
@@ -91,13 +93,24 @@ const MarkdownFormatDiv = styled("div")`
   ${breakText};
 `;
 
-const _mapProps = (props) => ({
+type Props = {
+  allowHTML: boolean;
+  components: Components;
+  children: string;
+};
+
+const _mapProps = (props: { allowHTML: boolean } & Options) => ({
   ...props,
   remarkPlugins: [remarkMathPlugin, remarkGFMPlugin, remarkFrontmatterPlugin],
 
   // More rehype plugins https://github.com/rehypejs/rehype/blob/main/doc/plugins.md
   rehypePlugins: [
-    ...(props.allowHTML ? [rehypeRaw, rehypeSanitize] : []),
+    ...(props.allowHTML
+      ? [
+          [rehypeRaw, {}],
+          [rehypeSanitize, {}],
+        ]
+      : []),
     [
       rehypeKatex,
       {
@@ -112,6 +125,7 @@ const _mapProps = (props) => ({
       rehypeRewrite,
       {
         selector: "code",
+        // @ts-ignore The types for these, in the module, are broken as of writing
         rewrite: (node, index, parent) => {
           // Put language as an attribute
           if (
@@ -133,8 +147,6 @@ const _mapProps = (props) => ({
     // ...(!props.mathJax ? [rehypeKatex] : [rehypeMathjax]),
   ],
   components: {
-    ...props.components,
-
     blockquote: BlockQuoteRenderer,
     input: Checkbox,
     code: CodeRenderer,
@@ -155,29 +167,40 @@ const _mapProps = (props) => ({
     thead: TableHeadRenderer,
     tr: TableRowRenderer,
     // yaml: YamlRenderer, // this is not a html tag
+    ...props.components,
   },
 });
 
 // Repeated code
 // Add support for html https://github.com/remarkjs/react-markdown#appendix-a-html-in-markdown
-function _Markdown(props) {
+function _Markdown(props: Props) {
   return (
     <MarkdownFormatDiv>
       <ErrorBoundary fallback={<Typography>Error!</Typography>} showrerender>
+        {/* @ts-ignore The module typing isn't clear, so the custom components cause errors */}
         <ReactMarkdown {..._mapProps(props)} />
       </ErrorBoundary>
     </MarkdownFormatDiv>
   );
 }
 
-function Markdown(props) {
+function Markdown(props: Props) {
   let context = React.useContext(GlobalContext);
 
   // In case context not setup yet
   if (!context) {
     context = {
+      ...emptyStore(),
       MdHeadings: [
-        [{ text: "Error, no context", depth: 1, ref: null }],
+        [
+          {
+            text: "Error, no context",
+            depth: 1,
+            ref: null,
+            id: "mdheading-error",
+            value: "",
+          },
+        ],
         () => {},
       ],
     };
@@ -200,12 +223,12 @@ function Markdown(props) {
       </div>
 
       {/* ReactMarkdown renders multiple ungrouped components */}
-      <_Markdown allowHTML {...props} />
+      <_Markdown {...props} />
     </FormatDiv>
   );
 }
 
-export function MarkdownNoContents(props) {
+export function MarkdownNoContents(props: Props) {
   return (
     <FormatDiv>
       {/* ReactMarkdown renders multiple ungrouped components */}
@@ -214,7 +237,7 @@ export function MarkdownNoContents(props) {
   );
 }
 
-export function MarkdownNoFormat(props) {
+export function MarkdownNoFormat(props: Props) {
   return (
     <NoFormatDiv>
       {/* ReactMarkdown renders multiple ungrouped components */}

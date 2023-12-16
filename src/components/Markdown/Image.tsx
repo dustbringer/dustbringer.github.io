@@ -19,7 +19,7 @@ const CenterDiv = styled("span")`
   margin: 10px 0;
 `;
 
-function Image(props) {
+function Image(props: object) {
   return (
     <CenterDiv>
       <StyledImg {...props} />

@@ -1,6 +1,8 @@
-const katexMacros = require("./src/components/Markdown/katexMacros.js");
+import type { GatsbyConfig } from "gatsby"
 
-module.exports = {
+import katexMacros from "./src/components/Markdown/katexMacros";
+
+const config: GatsbyConfig = {
   siteMetadata: {
     siteUrl: "https://dustbringer.github.io",
     title: "Victa's personal website",
@@ -132,3 +134,5 @@ module.exports = {
     },
   ],
 };
+
+export default config;

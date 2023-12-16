@@ -10,7 +10,7 @@ const StyledTypography = styled(Typography)`
 `;
 
 // TODO style this up
-function Yaml(props) {
+function Yaml(props: { value: string }) {
   const { date, author } = yaml.load(props.value);
   const display = `Written by ${author} on ${
     date && moment(date, "YYYY-MM-DD", true).isValid()

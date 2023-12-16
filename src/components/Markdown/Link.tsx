@@ -14,7 +14,11 @@ const StyledMUILink = styled(MUILink)({
 // Links to open in new tab
 const external = ["https", "http", "mailto"];
 
-function Link(props) {
+function Link(
+  props: React.PropsWithChildren<{
+    href?: string;
+  }>
+) {
   return (
     <>
       {external.some((e) => props.href && props.href.startsWith(e)) ? (

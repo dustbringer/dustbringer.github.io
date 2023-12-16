@@ -1,6 +1,7 @@
 import React from "react";
-import { styled, css } from "@mui/material/styles";
-import { useTheme } from "@mui/material/styles";
+import { styled, css, useTheme } from "@mui/material/styles";
+import type { Theme } from "@mui/material/styles";
+import type { Heading } from "../../context/GlobalContext";
 
 /**
  * NOTES
@@ -24,54 +25,62 @@ const FormatDiv = styled("div")`
   }
 `;
 
-const contentsEntry = (props) => css`
-  display: block;
-  margin: 0;
-  padding: 0;
-  padding-left: ${props.depth * 10}px;
-  font-size: 0.8em;
-  font-weight: 600;
-  cursor: pointer;
-  opacity: 60%;
-  color: ${props.theme.palette.mode === "dark" ? "#DDD" : "black"};
-  &:hover {
-    opacity: 75%;
-    background-color: ${props.theme.palette.mode === "dark"
-      ? "#222"
-      : "#efefef"};
-  }
-  &:active {
-    opacity: 90%;
-  }
-  transition: all 0.25s ease-in-out;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
+// Type of prop in components using this css module know the implicitly passed 'theme'
+// but type of prop here does not. To avoid the component requiring a theme component,
+// we ask for 'theme' in styled component using this, by
+//   ${(props) => contentsEntry(props.theme)};
+const contentsEntry = (theme: Theme) => (props: { depth: number }) =>
+  css`
+    display: block;
+    margin: 0;
+    padding: 0;
+    padding-left: ${props.depth * 10}px;
+    font-size: 0.8em;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 60%;
+    color: ${theme.palette.mode === "dark" ? "#DDD" : "black"};
+    &:hover {
+      opacity: 75%;
+      background-color: ${theme.palette.mode === "dark" ? "#222" : "#efefef"};
+    }
+    &:active {
+      opacity: 90%;
+    }
+    transition: all 0.25s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  `;
 
 const Top = styled("span")`
-  ${contentsEntry};
+  ${(props) => contentsEntry(props.theme)};
   background-color: ${(props) =>
     props.theme.palette.mode === "dark" ? "#333" : "#efefef"};
 `;
 
 const StyledA = styled("a")`
   text-decoration: none;
-  ${contentsEntry}
+  ${(props) => contentsEntry(props.theme)};
 `;
 
 const StyledSpan = styled("span")`
-  ${contentsEntry}
+  ${(props) => contentsEntry(props.theme)};
 `;
 
-const stripHTMLTags = (str) => str && str.replace(/(<([^>]+)>)/gi, "");
+const stripHTMLTags = (str: string) => str && str.replace(/(<([^>]+)>)/gi, "");
 
 /**
  * NOTE
  * This current system has a global "contents" state. Contents will only
  * display correctly if only one Markdown document is displayed per page
  */
-function Contents({ headings }) {
+
+type Props = {
+  headings: Heading[];
+};
+
+function Contents({ headings }: Props) {
   return (
     <FormatDiv>
       {headings.map((h, i) => {
@@ -93,7 +102,7 @@ function Contents({ headings }) {
   );
 }
 
-export function ContentsWithTop({ headings }) {
+export function ContentsWithTop({ headings }: Props) {
   return (
     <FormatDiv>
       <Top
@@ -126,7 +135,7 @@ export function ContentsWithTop({ headings }) {
 
 // Navigation using hash links
 // For use with gatsby markdown
-export function ContentsWithLinksTop({ headings }) {
+export function ContentsWithLinksTop({ headings }: Props) {
   return (
     <FormatDiv>
       <Top

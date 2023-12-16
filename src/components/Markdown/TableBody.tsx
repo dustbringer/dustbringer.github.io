@@ -1,6 +1,6 @@
 import React from "react";
 
-function TableBody(props) {
+function TableBody(props: object) {
   return <tbody {...props} />;
 }
 

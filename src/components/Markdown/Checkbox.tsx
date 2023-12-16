@@ -14,7 +14,11 @@ const StyledCheckbox = styled(MUICheckbox)`
   }
 `;
 
-function Checkbox(props) {
+function Checkbox(props: {
+  checked: boolean;
+  type: string;
+  className: string;
+}) {
   const { checked, type, className } = props;
   return checked !== null && type === "checkbox" ? (
     <StyledCheckbox

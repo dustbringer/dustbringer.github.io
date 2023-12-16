@@ -22,7 +22,7 @@ const CenterDiv = styled("span")`
   margin: 10px 0;
 `;
 
-function Table(props) {
+function Table(props: object) {
   return (
     <CenterDiv>
       <StyledTable {...props} />

@@ -2,7 +2,7 @@
 import React from "react";
 
 // Just let prism handle the block code, in Code.jsx
-function BlockCode(props) {
+function BlockCode(props: React.PropsWithChildren) {
   return <>{props.children}</>;
 }
 
