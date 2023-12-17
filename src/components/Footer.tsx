@@ -34,7 +34,13 @@ const StyledContainer = styled(Container)`
   transition: all 0.25s ease-in-out;
 `;
 
-const IconButton = ({ Icon, href }) => {
+const IconButton = ({
+  Icon,
+  href,
+}: {
+  Icon: React.ComponentType<{ sx: object }>;
+  href: string;
+}) => {
   return (
     <Link
       href={href}
@@ -89,17 +95,17 @@ function Footer() {
                 <IconButton
                   Icon={GitHubIcon}
                   href="https://github.com/dustbringer"
-                  size="large"
+                  // size="large"
                 />
                 <IconButton
                   Icon={LinkedInIcon}
                   href="https://www.linkedin.com/in/victor-zhang-576848192/"
-                  size="large"
+                  // size="large"
                 />
                 <IconButton
                   Icon={InstagramIcon}
                   href="https://www.instagram.com/dustbringr/"
-                  size="large"
+                  // size="large"
                 />
               </SocialIcons>
             </DivRowSpaceBetween>

@@ -1,7 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-export type Alert = { type: "error" | "success"; msg: string };
+import type { Alert } from "../components/Alerts";
+
 export type Heading = {
   text: string;
   depth: number;
@@ -79,10 +79,6 @@ function GlobalProvider({ children }: React.PropsWithChildren) {
     <GlobalContext.Provider value={store}>{children}</GlobalContext.Provider>
   );
 }
-
-GlobalProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export const emptyStore = () => {
   return {

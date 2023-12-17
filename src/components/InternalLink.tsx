@@ -12,7 +12,7 @@ const StyledLink = styled(GatsbyLink)`
   }
 `;
 
-function Link(props) {
+function Link(props: { to: string }) {
   return (
     <StyledLink
       target="_blank"
@@ -40,7 +40,7 @@ const NoStyleLink = styled(GatsbyLink)`
   }
 `;
 
-export function LinkBare(props) {
+export function LinkBare(props: { to: string }) {
   return (
     <NoStyleLink
       target="_blank"

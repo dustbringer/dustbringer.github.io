@@ -4,6 +4,8 @@ import MuiAlert from "@mui/material/Alert";
 
 import { GlobalContext } from "../context/GlobalContext";
 
+export type Alert = { type: "error" | "success"; msg: string };
+
 function Alerts() {
   const context = React.useContext(GlobalContext);
   if (!context) {
@@ -14,9 +16,11 @@ function Alerts() {
   const [alertQueue, setAlertQueue] = AlertQueue;
   const [alertOpen, setAlertOpen] = React.useState(false);
   const [alertMsg, setAlertMsg] = React.useState("No message!");
-  const [alertType, setAlertType] = React.useState("error");
+  const [alertType, setAlertType] = React.useState<
+    "error" | "info" | "success" | "warning"
+  >("error");
 
-  const setAlert = (alert) => {
+  const setAlert = (alert: Alert) => {
     setAlertType(alert.type);
     setAlertMsg(alert.msg);
   };
@@ -28,8 +32,7 @@ function Alerts() {
     }
   }, [alertQueue]);
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") return;
+  const handleClose = (event: Event | React.SyntheticEvent<Element, Event>) => {
     setAlertOpen(() => false);
     setAlertQueue((q) => q.slice(1));
   };

@@ -1,11 +1,14 @@
 import React from "react";
+
 import MUITextField from "@mui/material/TextField";
 
-function Link(props) {
+import { removeKey } from "../util/objects";
+
+function Link(props: { onSave: () => void }) {
   React.useEffect(() => {
     if (!props.onSave) return;
 
-    const handleSave = (e) => {
+    const handleSave = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.key === "s") {
         e.preventDefault();
         props.onSave();
@@ -15,7 +18,7 @@ function Link(props) {
 
     return () => window.removeEventListener("keyup", handleSave);
   }, []);
-  return <MUITextField {...props}></MUITextField>;
+  return <MUITextField {...removeKey(props, "onSave")}></MUITextField>;
 }
 
 export default Link;

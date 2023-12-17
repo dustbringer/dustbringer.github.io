@@ -8,9 +8,13 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 
-const Accordion = styled((props) => (
-  <MuiAccordion disableGutters elevation={0} square {...props} />
-))(({ theme }) => ({
+const Accordion = styled(
+  (props: {
+    children: NonNullable<React.ReactNode>;
+    expanded: boolean;
+    onChange: () => void;
+  }) => <MuiAccordion disableGutters elevation={0} square {...props} />
+)(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
   borderRadius: "4px",
   "&:not(:last-child)": {
@@ -22,7 +26,7 @@ const Accordion = styled((props) => (
   transition: "background-color 0.25s ease-in-out",
 }));
 
-const AccordionSummary = styled((props) => (
+const AccordionSummary = styled((props: React.PropsWithChildren) => (
   <MuiAccordionSummary
     expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: "0.9rem" }} />}
     {...props}
@@ -50,7 +54,17 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
  * Wrap all the grouped accordions in a parent element eg. div
  * so that the styling is consistent
  */
-function MyAccordion({ title, children, expand = false, sx = {} }) {
+function MyAccordion({
+  title,
+  children,
+  expand = false,
+  sx = {},
+}: {
+  title: string;
+  children: NonNullable<React.ReactNode>;
+  expand?: boolean;
+  sx?: object;
+}) {
   const [expanded, setExpanded] = React.useState(expand);
 
   return (

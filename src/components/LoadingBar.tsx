@@ -15,11 +15,12 @@ const Border = styled("div")`
   position: relative;
 `;
 
+type BarProps = { fill: number };
 const Bar = styled("div")`
   background-color: ${(props) => props.color || "skyblue"};
-  width: ${(props) => props.fill || 0}%;
+  width: ${(props: BarProps) => props.fill || 0}%;
   height: 1rem;
-  border-radius: ${(props) =>
+  border-radius: ${(props: BarProps) =>
     props.fill >= 100 ? "10px" : "10px 4px 4px 10px"};
   display: flex;
   align-items: center;
@@ -46,7 +47,17 @@ const NumberLeft = styled(Typography)`
   z-index: -1;
 `;
 
-function LoadingBar({ cur, max, dispCur, dispMax }) {
+function LoadingBar({
+  cur,
+  max,
+  dispCur,
+  dispMax,
+}: {
+  cur: number;
+  max: number;
+  dispCur: number;
+  dispMax: number;
+}) {
   const theme = useTheme();
   cur = Math.max(cur, 0); // ignore negative cur
   dispCur = Math.max(dispCur, 0);

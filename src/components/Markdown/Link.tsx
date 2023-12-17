@@ -21,7 +21,7 @@ function Link(
 ) {
   return (
     <>
-      {external.some((e) => props.href && props.href.startsWith(e)) ? (
+      {external.some((e) => props.href?.startsWith(e)) ? (
         <StyledMUILink
           href={props.href}
           target="_blank"

@@ -125,11 +125,11 @@ const _mapProps = (props: { allowHTML: boolean } & Options) => ({
       rehypeRewrite,
       {
         selector: "code",
-        // @ts-ignore The types for these, in the module, are broken as of writing
+        // Type Error: The types for these defined in the module, are broken as of writing
         rewrite: (node, index, parent) => {
           // Put language as an attribute
           if (
-            node.properties.className &&
+            node.properties?.className &&
             node.properties.className.length > 0 &&
             node.properties.className[0].startsWith("language-")
           ) {
@@ -177,7 +177,7 @@ function _Markdown(props: Props) {
   return (
     <MarkdownFormatDiv>
       <ErrorBoundary fallback={<Typography>Error!</Typography>} showrerender>
-        {/* @ts-ignore The module typing isn't clear, so the custom components cause errors */}
+        {/* The module typing isn't clear, so the custom components cause errors */}
         <ReactMarkdown {..._mapProps(props)} />
       </ErrorBoundary>
     </MarkdownFormatDiv>

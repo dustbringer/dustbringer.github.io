@@ -60,5 +60,6 @@ export const themeDark = {
   },
 };
 
-export const themePicker = (mode) => (mode === "dark" ? themeDark : themeLight);
+export const themePicker = (mode: "dark" | "light") =>
+  mode === "dark" ? themeDark : themeLight;
 export default themeLight;

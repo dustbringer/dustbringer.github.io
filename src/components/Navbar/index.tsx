@@ -19,7 +19,6 @@ import { themePicker } from "../../gatsby-theme-material-ui-top-layout/theme";
 import { DivRowSpaceBetween } from "../styled/Divs";
 import FullList from "./FullList";
 import DropdownList from "./DropdownList";
-// import wombatIcon from "../img/flaticon-polar-bear.svg";
 
 import navLinks from "../../data/navLinks";
 

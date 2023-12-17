@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -13,6 +12,12 @@ function PageNavigation({
   onNext,
   prevDisabled = true,
   nextDisabled = true,
+}: {
+  text: string;
+  onPrev: () => void;
+  onNext: () => void;
+  prevDisabled?: boolean;
+  nextDisabled?: boolean;
 }) {
   return (
     <Box
@@ -43,13 +48,5 @@ function PageNavigation({
     </Box>
   );
 }
-
-PageNavigation.propTypes = {
-  text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  onPrev: PropTypes.func.isRequired,
-  onNext: PropTypes.func.isRequired,
-  prevDisabled: PropTypes.bool,
-  nextDisabled: PropTypes.bool,
-};
 
 export default PageNavigation;

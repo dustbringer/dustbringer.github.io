@@ -15,9 +15,9 @@ type StyledCodeInlineProps = {
 
 const StyledCodeInline = styled("code")`
   color: ${(props: StyledCodeInlineProps) =>
-    props.prismstyle && props.prismstyle[`pre[class*="language-"]`].color};
+    props.prismstyle?.[`pre[class*="language-"]`]?.color};
   background-color: ${(props) =>
-    props.prismstyle && props.prismstyle['pre[class*="language-"]'].background};
+    props.prismstyle?.['pre[class*="language-"]']?.background};
   border-radius: 2px;
   padding: 0.2em 0.3em;
 `;
@@ -35,7 +35,6 @@ function Code(props: {
       {props.children}
     </StyledCodeInline>
   ) : (
-    // @ts-ignore Something in module or type declarations that stops this from being used as a component
     <Prism language={props.language} style={style} children={props.children} />
   );
 }

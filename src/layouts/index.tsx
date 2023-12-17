@@ -16,11 +16,11 @@ const DivContent = styled("div")`
   padding: 2vh 0 calc(2vh + 30px);
 `;
 
-function Layout({ children }) {
+function Layout(props: React.PropsWithChildren) {
   return (
     <DivRoot>
       <Navbar />
-      <DivContent>{children}</DivContent>
+      <DivContent>{props.children}</DivContent>
       <Footer />
       <Alerts />
     </DivRoot>

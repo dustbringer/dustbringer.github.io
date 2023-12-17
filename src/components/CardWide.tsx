@@ -22,11 +22,25 @@ const styles = {
   },
 };
 
-function CardWide({ name, type = "", title, description, date = "", path }) {
+function CardWide({
+  name,
+  type,
+  title,
+  description,
+  date = "",
+  path,
+}: {
+  name?: string;
+  type?: string;
+  title?: string;
+  description: string;
+  date?: string;
+  path: string;
+}) {
   return (
-    <Card sx={styles.root} variant="outlined" title={name}>
+    <Card sx={styles.root} variant="outlined">
       <InternalLink to={path}>
-        <CardActionArea>
+        <CardActionArea title={name}>
           <CardContent>
             <Typography variant="h5" component="h5" display="inline">
               {title ? title : "Unknown Title"}

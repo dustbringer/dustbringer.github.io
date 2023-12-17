@@ -71,7 +71,7 @@ function BlogListPage({ location, data }) {
                 })}
               </ListContainer>
               <PageNavigation
-                text={page}
+                text={page.toString(10)}
                 onPrev={() =>
                   page > 1 &&
                   navigate(`${location.pathname}?page=${Math.max(page - 1, 1)}`)

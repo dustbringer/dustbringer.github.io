@@ -90,9 +90,7 @@ function Contents({ headings }: Props) {
             title={stripHTMLTags(h.text)}
             role="button"
             key={i}
-            onClick={() =>
-              h && h.ref && h.ref.current && h.ref.current.scrollIntoView()
-            }
+            onClick={() => h?.ref?.current?.scrollIntoView()}
           >
             {stripHTMLTags(h.text)}
           </StyledSpan>
@@ -121,9 +119,7 @@ export function ContentsWithTop({ headings }: Props) {
             title={stripHTMLTags(h.text)}
             role="button"
             key={i}
-            onClick={() =>
-              h && h.ref && h.ref.current && h.ref.current.scrollIntoView()
-            }
+            onClick={() => h?.ref?.current?.scrollIntoView()}
           >
             {stripHTMLTags(h.text)}
           </StyledSpan>

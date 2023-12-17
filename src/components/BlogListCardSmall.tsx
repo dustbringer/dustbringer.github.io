@@ -27,11 +27,25 @@ const styles = {
   },
 };
 
-function BlogListCardSmall({ name, title, description, date, tags, path }) {
+function BlogListCardSmall({
+  name,
+  title,
+  description,
+  date,
+  tags,
+  path,
+}: {
+  name?: string;
+  title?: string;
+  description: string;
+  date?: string;
+  tags?: string[];
+  path: string;
+}) {
   return (
     <Card sx={styles.root} variant="outlined">
       <InternalLink to={path}>
-        <CardActionArea title={`${name}`}>
+        <CardActionArea title={name}>
           <CardContent sx={{ padding: "6px 10px" }}>
             <Typography
               variant="body1"

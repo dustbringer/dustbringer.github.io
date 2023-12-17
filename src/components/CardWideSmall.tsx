@@ -24,11 +24,18 @@ const styles = {
 
 function CardWideSmall({
   name,
-  type = "",
+  type,
   title,
   description,
   date = "",
   path,
+}: {
+  name?: string;
+  type?: string;
+  title?: string;
+  description: string;
+  date?: string;
+  path: string;
 }) {
   return (
     <Card sx={styles.root} variant="outlined" title={name}>

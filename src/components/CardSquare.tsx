@@ -31,11 +31,23 @@ const styles = {
   },
 };
 
-function CardSquare({ name, type = "", title, description, path }) {
+function CardSquare({
+  name,
+  type,
+  title,
+  description,
+  path,
+}: {
+  name?: string;
+  type?: string;
+  title?: string;
+  description: string;
+  path: string;
+}) {
   return (
     <Card sx={styles.root} variant="outlined">
       <InternalLink to={path}>
-        <CardActionArea title={name ? name : title}>
+        <CardActionArea title={name}>
           <CardContent
             sx={{
               height: styles.root.height,

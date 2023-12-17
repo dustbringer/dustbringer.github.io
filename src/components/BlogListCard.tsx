@@ -27,11 +27,25 @@ const styles = {
   },
 };
 
-function BlogListCard({ name, title, description, date, tags, path }) {
+function BlogListCard({
+  name,
+  title,
+  description,
+  date,
+  tags,
+  path,
+}: {
+  name?: string;
+  title?: string;
+  description: string;
+  date?: string;
+  tags?: string[];
+  path: string;
+}) {
   return (
     <Card sx={styles.root} variant="outlined">
       <InternalLink to={path}>
-        <CardActionArea title={`${name}`}>
+        <CardActionArea title={name}>
           <CardContent>
             <Box sx={{ marginBottom: 1 }}>
               <Typography variant="h5" component="h5" display="inline">

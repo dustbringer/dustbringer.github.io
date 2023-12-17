@@ -1,22 +1,42 @@
-import React, { useState, useRef, useEffect } from "react";
+// This version is from https://github.com/Aminadav/react-useStateRef/blob/dd8196d15ac2c80f0aa0272a0c95d1d013dc0c55/index.ts
 
-function useStateRef(initialValue) {
-  const [value, _setValue] = useState(initialValue);
+import { useCallback, useRef, useState, SetStateAction, Dispatch } from "react";
 
-  const ref = useRef(value);
+const isFunction = <S>(
+  setStateAction: SetStateAction<S>
+): setStateAction is (prevState: S) => S =>
+  typeof setStateAction === "function";
 
-  const setValue = (e) => {
-    _setValue(e);
+type ReadOnlyRefObject<T> = {
+  readonly current: T;
+};
 
-    if (typeof e === "function") ref.current = e(ref.current);
-    else ref.current = e;
-  };
-  
-  // useEffect(() => {
-  //   ref.current = value;
-  // }, [value]);
+type UseStateRef = {
+  <S>(initialState: S | (() => S)): [
+    S,
+    Dispatch<SetStateAction<S>>,
+    ReadOnlyRefObject<S>
+  ];
+  <S = undefined>(): [
+    S | undefined,
+    Dispatch<SetStateAction<S | undefined>>,
+    ReadOnlyRefObject<S | undefined>
+  ];
+};
 
-  return [value, setValue, ref];
-}
+const useStateRef: UseStateRef = <S>(initialState?: S | (() => S)) => {
+  const [state, setState] = useState(initialState);
+  const ref = useRef(state);
+
+  const dispatch: typeof setState = useCallback((setStateAction: any) => {
+    ref.current = isFunction(setStateAction)
+      ? setStateAction(ref.current)
+      : setStateAction;
+
+    setState(ref.current);
+  }, []);
+
+  return [state, dispatch, ref];
+};
 
 export default useStateRef;

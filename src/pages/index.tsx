@@ -88,6 +88,7 @@ function HomePage() {
               key={`${i}-${l.title}`}
               type={l.type}
               title={l.title}
+              name={l.title}
               description={l.description}
               path={l.path}
             />

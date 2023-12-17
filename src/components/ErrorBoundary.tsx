@@ -7,28 +7,39 @@ type Props = {
   showrerender: boolean;
 };
 
-class ErrorBoundary extends React.Component<React.PropsWithChildren<Props>> {
+type State = {
+  hasError: boolean;
+};
+
+class ErrorBoundary extends React.Component<
+  React.PropsWithChildren<Props>,
+  State
+> {
   // Set the context (class component)
   static contextType = GlobalContext;
+  // context!: React.ContextType<typeof GlobalContext>;
 
-  constructor(props: React.PropsWithChildren<Props>) {
-    super(props);
-    this.state = { hasError: false };
-  }
+  public state: State = { hasError: false };
 
-  static getDerivedStateFromError(error) {
+  // constructor(props: React.PropsWithChildren<Props>) {
+  //   super(props);
+  // }
+
+  static getDerivedStateFromError(error: Error) {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch(error: Error, info: React.ErrorInfo) {
     // Example "componentStack":
     //   in ComponentThatThrows (created by App)
     //   in ErrorBoundary (created by App)
     //   in div (created by App)
     //   in App
     // logErrorToMyService(error, info.componentStack);
-    const { showError } = this.context;
+    const { showError } = this.context as React.ContextType<
+      typeof GlobalContext
+    >;
     showError(error.message);
     // showError(error);
   }

@@ -13,9 +13,10 @@ const Background = styled("div")`
   overflow: hidden;
 `;
 
+type ForegroundProps = { fill: number };
 const Foreground = styled("div")`
   background-color: ${(props) => props.color || "skyblue"};
-  width: ${(props) => Math.min(props.fill || 0, 100)}%;
+  width: ${(props: ForegroundProps) => Math.min(props.fill || 0, 100)}%;
   height: 3px;
   border-radius: 2px 0px 0px 2px;
   transition: all 1s linear;
@@ -30,7 +31,7 @@ const Dot = styled("div")`
 /*
   A thin horizontal loading bar. No text.
  */
-function LoadingBarThin({ cur, max }) {
+function LoadingBarThin({ cur, max }: { cur: number; max: number }) {
   const theme = useTheme();
   cur = Math.max(cur, 0); // ignore negative cur
 
