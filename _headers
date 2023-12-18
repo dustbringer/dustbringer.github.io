@@ -5,319 +5,241 @@
   X-XSS-Protection: 1; mode=block
   X-Content-Type-Options: nosniff
   Referrer-Policy: same-origin
-/commons-ee452db8f90e4e8b1f84.js
+/static/KaTeX_AMS-Regular-73ea273a72f4aca30ca528cf9117470a.woff2
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-404-jsx-a39354f3c8e446f67b18.js
+/static/KaTeX_AMS-Regular-d562e886c52f12660a41eea8d05af757.woff
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-about-jsx-58cf6c4f303aa3e7b90e.js
+/static/KaTeX_AMS-Regular-853be92419a6c3766b9afe7a7c3e32fa.ttf
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-index-jsx-f7b699d8baf291827087.js
+/static/KaTeX_Caligraphic-Bold-7489a2fbfb9bfe70442031a27fb57a21.ttf
   Cache-Control: public, max-age=31536000, immutable
-/175675d1-9469ad5c1f92b8e76678.js
+/static/KaTeX_Caligraphic-Regular-7e873d3833eb108a0758be45cd29e907.ttf
   Cache-Control: public, max-age=31536000, immutable
-/1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js
+/static/KaTeX_Fraktur-Bold-931d67ea207ab37ee693ff155ff4d7a6.woff2
   Cache-Control: public, max-age=31536000, immutable
-/99db5edd4831376a9c614d443c1f7b9d5dcf0073-b5f32b31f236f2ea161e.js
+/static/KaTeX_Fraktur-Bold-354501bac435c3264834b80301089bad.woff
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-resume-jsx-fffd8cb9a407b44b6f2d.js
+/static/KaTeX_Fraktur-Bold-4c761b3711973ab04edf7ea6f1fbacdc.ttf
   Cache-Control: public, max-age=31536000, immutable
-/db7b0b2c39b2bcc0e4bde784b4df9965d0720b97-fdb492b4a244d523f684.js
+/static/KaTeX_Fraktur-Regular-172d3529b26f8cedef6b5ddef7546e02.woff2
   Cache-Control: public, max-age=31536000, immutable
-/fa2f3380f554032991da85765065e880d84bc8d5-e4d25bdafcc13e8c9bae.js
+/static/KaTeX_Fraktur-Regular-6fdf0ac577be0ba82a4c9a89b8eef91b.woff
   Cache-Control: public, max-age=31536000, immutable
-/485d3f3e92bf8f81abf81abca89714110c4ba7df-743a2ea9fda45c99f518.js
+/static/KaTeX_Fraktur-Regular-ed305b5434865e06ffde7da0d28101af.ttf
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-notes-index-jsx-002d0712f196613b4c10.js
+/static/KaTeX_Main-Bold-39890742bc957b368704509bb2f4163c.woff2
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-posts-index-jsx-9f86c66bdfc2d92b912a.js
+/static/KaTeX_Main-Bold-0c3b8929d377c0e9b2f3a9c872e3337b.woff
   Cache-Control: public, max-age=31536000, immutable
-/de44a089b73343f3269c3654905bd700dd64ac01-8e6b3bb1f244b0daa988.js
+/static/KaTeX_Main-Bold-8169508bf58f8bd92ad8a768ede68a18.ttf
   Cache-Control: public, max-age=31536000, immutable
-/a0ba30a292f872ef7aeac7302d37983fea658bc0-514495bc8854e847f2e8.js
+/static/KaTeX_Main-BoldItalic-20f389c4120be058d80a3cd6a2f5a9b9.woff2
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-tools-duplicate-remover-jsx-e0c5d7ec3327de729607.js
+/static/KaTeX_Main-BoldItalic-428978dc7837d46de0916f266f5a43df.woff
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-tools-index-jsx-2e56c3cbe4514b7a20b4.js
+/static/KaTeX_Main-BoldItalic-828abcb200061cffbaae1f0498f821a8.ttf
   Cache-Control: public, max-age=31536000, immutable
-/8e92d794a89f566245d9a0e7e0fdb87e80ab0b12-674cc57243608eb9a355.js
+/static/KaTeX_Main-Italic-fe2176f79edaa716e6212cca53949439.woff2
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-tools-japanese-file-reader-jsx-25516a765f1972895fe3.js
+/static/KaTeX_Main-Italic-fd947498bc16392e76c23adf58513fb3.woff
   Cache-Control: public, max-age=31536000, immutable
-/4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js
+/static/KaTeX_Main-Italic-fa675e5e4bec9eb250b6a8cac09b189b.ttf
   Cache-Control: public, max-age=31536000, immutable
-/04d131029b5499a7463a1a9cd309e227347a66d1-c502be0f52d291a17911.js
+/static/KaTeX_Main-Regular-f650f111a3b890d116f1ba740b7e3de3.woff2
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-tools-lyric-slides-jsx-ed13fdeac196772fae0b.js
+/static/KaTeX_Main-Regular-4f35fbcc9ee8614c2bcc8c28314db234.woff
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-tools-markdown-renderer-jsx-308368e4aef3249218f8.js
+/static/KaTeX_Main-Regular-9eba1d77abcf2aa6e94e823d52be546b.ttf
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-tools-md-footnote-relabel-jsx-5aefb6647a27a1b99b0a.js
+/static/KaTeX_Math-BoldItalic-dcbcbd93bac0470b462db6f9708a658c.woff2
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-tools-runsheet-timer-jsx-fa124bce0aaa3f4d1cda.js
+/static/KaTeX_Math-BoldItalic-3f07ed67f06c720120cedd0bad5f60e2.woff
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-tools-syncshack-2021-image-viewer-jsx-41f40bb78a8c016f51e7.js
+/static/KaTeX_Math-BoldItalic-bf2d440b3a42ea78a998ccd32eb09d88.ttf
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-tools-vtt-extractor-jsx-7d96a517b456d8b0c5bd.js
+/static/KaTeX_Math-Italic-6d3d25f4820d0da8f01fa3d2c7cbb8c2.woff2
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js
+/static/KaTeX_Math-Italic-96759856b4e70f3a83385d07e0d33b03.woff
   Cache-Control: public, max-age=31536000, immutable
-/webpack-runtime-f4787d68ec05667e0fa2.js
+/static/KaTeX_Math-Italic-8a5f936332e8028c7278a3a25db00925.ttf
   Cache-Control: public, max-age=31536000, immutable
-/framework-a8a43fa316436ffe4b44.js
+/static/KaTeX_SansSerif-Bold-95591a929f0d32aa282a90ba5acf81f0.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Bold-b9cd458ac6d5889ff9c388cf91b8ad51.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Bold-5b49f4993ae22d7975b413caed1a4c01.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Italic-7d393d382f3e7fb1c637280a90a3434b.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Italic-8d593cfaa96238d5e2f8af9e11cc5a68.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Italic-b257a18c016f37ee45430f59757a0db9.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Regular-cd5e231e0cc53b2cb2c029b09b917782.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Regular-02271ec5cb9f5b4588ac53d7efbe6de8.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Regular-2f7bc363fc5424ebda5903f74c404a99.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Script-Regular-073b3402d036714b43709614d1da717a.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Script-Regular-fc9ba5249878cd8f8d885c1f42b0f43d.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Size1-Regular-6de7d4b539221a49e9e241b734653ecf.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Size2-Regular-57f5c1837853986ea1dbadbb8f4f6074.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Size4-Regular-4ad7c7e8bb8d10a34bb7c4bb567cef92.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Typewriter-Regular-c295e7f71970f03c0549228b1c18120a.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Typewriter-Regular-4c6b94fd1d07f8beff7cf3364d4d4555.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Typewriter-Regular-c5c02d763c89380dcb4ed359e15d0897.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/profile-bird-md-25fa8406418ff0cf80fff9473420b5e9.jpg
   Cache-Control: public, max-age=31536000, immutable
 /styles.89516a099dd9dfbefd82.css
   Cache-Control: public, max-age=31536000, immutable
-/app-b72eef50b296ea4551ea.js
+/187d58fe-4bfe8d9040010eda842e.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/1e988c188acd1277bcf9f052139033705f8b34fb-3d736996637b8fdb7b99.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/app-02a9b7c607285748aa48.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/b4f05d3ba0e63c18c00059e09c6738188b27c77f-978d64b8e05aa76e55b4.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-japanese-file-reader-tsx-b508eb82aeb34060ed35.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-lyric-slides-tsx-cd8e4e3afff8b7d6a21d.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/framework-25c231ba39d25b04d0fa.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/app-02a9b7c607285748aa48.js
+  Cache-Control: public, max-age=31536000, immutable
+/webpack-runtime-0467b532de1e45c971c0.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-404-tsx-f78498c4c9ea595fc4c3.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-about-tsx-d304d36434e76bc8b238.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-index-tsx-d6b259c91330f2efda89.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-markdown-remark-frontmatter-slug-tsx-c97ad091e3616ecabf46.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-notes-index-tsx-316ed211f03f9c6e17aa.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-posts-index-tsx-134a79035786692d9e07.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-resume-tsx-b4d4954788ba7ffa284c.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-duplicate-remover-tsx-3daeb0f62be2e0978ca8.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-index-tsx-6797c2930e67c1aca23b.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-japanese-file-reader-tsx-b508eb82aeb34060ed35.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-lyric-slides-tsx-cd8e4e3afff8b7d6a21d.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-markdown-renderer-tsx-363882af191d88642b9e.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-md-footnote-relabel-tsx-d39116697a16eb6a3807.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-runsheet-timer-tsx-475c7d80df196a6eb92b.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-syncshack-2021-image-viewer-tsx-6f5b776105eea03e72b7.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-vtt-extractor-tsx-f8678a45711c4224dcd2.js
+  Cache-Control: public, max-age=31536000, immutable
+/framework-25c231ba39d25b04d0fa.js
+  Cache-Control: public, max-age=31536000, immutable
+/187d58fe-4bfe8d9040010eda842e.js
+  Cache-Control: public, max-age=31536000, immutable
+/32edaaba-b5e1b9de8c6578cdc701.js
+  Cache-Control: public, max-age=31536000, immutable
+/67e200dc-b48650354a4bdb83c06d.js
+  Cache-Control: public, max-age=31536000, immutable
+/79312e5b7190810a2b5c7e9c06d56a8c5ae9c219-6ae495f9dee97ec41987.js
+  Cache-Control: public, max-age=31536000, immutable
+/445ebc9c23fc0461e6b3edfd1911e2f41160336e-ace8e59b084558610c70.js
+  Cache-Control: public, max-age=31536000, immutable
+/b4f05d3ba0e63c18c00059e09c6738188b27c77f-978d64b8e05aa76e55b4.js
+  Cache-Control: public, max-age=31536000, immutable
+/1e988c188acd1277bcf9f052139033705f8b34fb-3d736996637b8fdb7b99.js
+  Cache-Control: public, max-age=31536000, immutable
+/9eb15412ba5a53c200107720e11afc998700762d-33db3b57c922e48501eb.js
+  Cache-Control: public, max-age=31536000, immutable
+/0ffc7a173c6d06772aa71f0161ede4299f11ae82-0ee503fe169ff013c46b.js
+  Cache-Control: public, max-age=31536000, immutable
+/2f6186043ed15df665094dd5e77093ff1b3ce395-5a574fff0f9783039085.js
+  Cache-Control: public, max-age=31536000, immutable
+/de4f764a6d3b93dc31b16479ec57344bf5b06c55-4a18b3f5a3a81948a700.js
+  Cache-Control: public, max-age=31536000, immutable
+/6c9eeb62f149309efd8211ce764738c39d741926-45c4c2cd69bfd67e0586.js
+  Cache-Control: public, max-age=31536000, immutable
+/app-02a9b7c607285748aa48.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/webpack-runtime-0467b532de1e45c971c0.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-404-tsx-f78498c4c9ea595fc4c3.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-about-tsx-d304d36434e76bc8b238.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-index-tsx-d6b259c91330f2efda89.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-markdown-remark-frontmatter-slug-tsx-c97ad091e3616ecabf46.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-notes-index-tsx-316ed211f03f9c6e17aa.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-posts-index-tsx-134a79035786692d9e07.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-resume-tsx-b4d4954788ba7ffa284c.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-duplicate-remover-tsx-3daeb0f62be2e0978ca8.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-index-tsx-6797c2930e67c1aca23b.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-japanese-file-reader-tsx-b508eb82aeb34060ed35.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-lyric-slides-tsx-cd8e4e3afff8b7d6a21d.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-markdown-renderer-tsx-363882af191d88642b9e.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-md-footnote-relabel-tsx-d39116697a16eb6a3807.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-runsheet-timer-tsx-475c7d80df196a6eb92b.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-syncshack-2021-image-viewer-tsx-6f5b776105eea03e72b7.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-tools-vtt-extractor-tsx-f8678a45711c4224dcd2.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/framework-25c231ba39d25b04d0fa.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/187d58fe-4bfe8d9040010eda842e.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/32edaaba-b5e1b9de8c6578cdc701.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/67e200dc-b48650354a4bdb83c06d.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/79312e5b7190810a2b5c7e9c06d56a8c5ae9c219-6ae495f9dee97ec41987.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/445ebc9c23fc0461e6b3edfd1911e2f41160336e-ace8e59b084558610c70.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/b4f05d3ba0e63c18c00059e09c6738188b27c77f-978d64b8e05aa76e55b4.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/1e988c188acd1277bcf9f052139033705f8b34fb-3d736996637b8fdb7b99.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/9eb15412ba5a53c200107720e11afc998700762d-33db3b57c922e48501eb.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/0ffc7a173c6d06772aa71f0161ede4299f11ae82-0ee503fe169ff013c46b.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/2f6186043ed15df665094dd5e77093ff1b3ce395-5a574fff0f9783039085.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/de4f764a6d3b93dc31b16479ec57344bf5b06c55-4a18b3f5a3a81948a700.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/6c9eeb62f149309efd8211ce764738c39d741926-45c4c2cd69bfd67e0586.js.map
   Cache-Control: public, max-age=31536000, immutable
 /static/*
   Cache-Control: public, max-age=31536000, immutable
 /sw.js
   Cache-Control: no-cache
-/404/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </component---src-pages-404-jsx-a39354f3c8e446f67b18.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/404/page-data.json>; rel=preload; as=fetch; crossorigin
-/404.html
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </component---src-pages-404-jsx-a39354f3c8e446f67b18.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/404.html/page-data.json>; rel=preload; as=fetch; crossorigin
-/about/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </component---src-pages-about-jsx-58cf6c4f303aa3e7b90e.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/about/page-data.json>; rel=preload; as=fetch; crossorigin
-/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </component---src-pages-index-jsx-f7b699d8baf291827087.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/index/page-data.json>; rel=preload; as=fetch; crossorigin
-/resume/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </175675d1-9469ad5c1f92b8e76678.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </99db5edd4831376a9c614d443c1f7b9d5dcf0073-b5f32b31f236f2ea161e.js>; rel=preload; as=script
-  Link: </component---src-pages-resume-jsx-fffd8cb9a407b44b6f2d.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/resume/page-data.json>; rel=preload; as=fetch; crossorigin
-/notes/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </db7b0b2c39b2bcc0e4bde784b4df9965d0720b97-fdb492b4a244d523f684.js>; rel=preload; as=script
-  Link: </fa2f3380f554032991da85765065e880d84bc8d5-e4d25bdafcc13e8c9bae.js>; rel=preload; as=script
-  Link: </485d3f3e92bf8f81abf81abca89714110c4ba7df-743a2ea9fda45c99f518.js>; rel=preload; as=script
-  Link: </component---src-pages-notes-index-jsx-002d0712f196613b4c10.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/notes/page-data.json>; rel=preload; as=fetch; crossorigin
-/posts/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </db7b0b2c39b2bcc0e4bde784b4df9965d0720b97-fdb492b4a244d523f684.js>; rel=preload; as=script
-  Link: </fa2f3380f554032991da85765065e880d84bc8d5-e4d25bdafcc13e8c9bae.js>; rel=preload; as=script
-  Link: </485d3f3e92bf8f81abf81abca89714110c4ba7df-743a2ea9fda45c99f518.js>; rel=preload; as=script
-  Link: </component---src-pages-posts-index-jsx-9f86c66bdfc2d92b912a.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/posts/page-data.json>; rel=preload; as=fetch; crossorigin
-/tools/duplicate-remover/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </de44a089b73343f3269c3654905bd700dd64ac01-8e6b3bb1f244b0daa988.js>; rel=preload; as=script
-  Link: </a0ba30a292f872ef7aeac7302d37983fea658bc0-514495bc8854e847f2e8.js>; rel=preload; as=script
-  Link: </component---src-pages-tools-duplicate-remover-jsx-e0c5d7ec3327de729607.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/tools/duplicate-remover/page-data.json>; rel=preload; as=fetch; crossorigin
-/tools/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </db7b0b2c39b2bcc0e4bde784b4df9965d0720b97-fdb492b4a244d523f684.js>; rel=preload; as=script
-  Link: </fa2f3380f554032991da85765065e880d84bc8d5-e4d25bdafcc13e8c9bae.js>; rel=preload; as=script
-  Link: </component---src-pages-tools-index-jsx-2e56c3cbe4514b7a20b4.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/tools/page-data.json>; rel=preload; as=fetch; crossorigin
-/tools/japanese-file-reader/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </8e92d794a89f566245d9a0e7e0fdb87e80ab0b12-674cc57243608eb9a355.js>; rel=preload; as=script
-  Link: </component---src-pages-tools-japanese-file-reader-jsx-25516a765f1972895fe3.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/tools/japanese-file-reader/page-data.json>; rel=preload; as=fetch; crossorigin
-/tools/lyric-slides/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </175675d1-9469ad5c1f92b8e76678.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </de44a089b73343f3269c3654905bd700dd64ac01-8e6b3bb1f244b0daa988.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </db7b0b2c39b2bcc0e4bde784b4df9965d0720b97-fdb492b4a244d523f684.js>; rel=preload; as=script
-  Link: </99db5edd4831376a9c614d443c1f7b9d5dcf0073-b5f32b31f236f2ea161e.js>; rel=preload; as=script
-  Link: </4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js>; rel=preload; as=script
-  Link: </04d131029b5499a7463a1a9cd309e227347a66d1-c502be0f52d291a17911.js>; rel=preload; as=script
-  Link: </a0ba30a292f872ef7aeac7302d37983fea658bc0-514495bc8854e847f2e8.js>; rel=preload; as=script
-  Link: </component---src-pages-tools-lyric-slides-jsx-ed13fdeac196772fae0b.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/tools/lyric-slides/page-data.json>; rel=preload; as=fetch; crossorigin
-/tools/markdown-renderer/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </175675d1-9469ad5c1f92b8e76678.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </de44a089b73343f3269c3654905bd700dd64ac01-8e6b3bb1f244b0daa988.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </db7b0b2c39b2bcc0e4bde784b4df9965d0720b97-fdb492b4a244d523f684.js>; rel=preload; as=script
-  Link: </99db5edd4831376a9c614d443c1f7b9d5dcf0073-b5f32b31f236f2ea161e.js>; rel=preload; as=script
-  Link: </4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js>; rel=preload; as=script
-  Link: </04d131029b5499a7463a1a9cd309e227347a66d1-c502be0f52d291a17911.js>; rel=preload; as=script
-  Link: </component---src-pages-tools-markdown-renderer-jsx-308368e4aef3249218f8.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/tools/markdown-renderer/page-data.json>; rel=preload; as=fetch; crossorigin
-/tools/md-footnote-relabel/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </de44a089b73343f3269c3654905bd700dd64ac01-8e6b3bb1f244b0daa988.js>; rel=preload; as=script
-  Link: </99db5edd4831376a9c614d443c1f7b9d5dcf0073-b5f32b31f236f2ea161e.js>; rel=preload; as=script
-  Link: </8e92d794a89f566245d9a0e7e0fdb87e80ab0b12-674cc57243608eb9a355.js>; rel=preload; as=script
-  Link: </component---src-pages-tools-md-footnote-relabel-jsx-5aefb6647a27a1b99b0a.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/tools/md-footnote-relabel/page-data.json>; rel=preload; as=fetch; crossorigin
-/tools/runsheet-timer/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </de44a089b73343f3269c3654905bd700dd64ac01-8e6b3bb1f244b0daa988.js>; rel=preload; as=script
-  Link: </db7b0b2c39b2bcc0e4bde784b4df9965d0720b97-fdb492b4a244d523f684.js>; rel=preload; as=script
-  Link: </99db5edd4831376a9c614d443c1f7b9d5dcf0073-b5f32b31f236f2ea161e.js>; rel=preload; as=script
-  Link: </component---src-pages-tools-runsheet-timer-jsx-fa124bce0aaa3f4d1cda.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/tools/runsheet-timer/page-data.json>; rel=preload; as=fetch; crossorigin
-/tools/syncshack2021-image-viewer/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </de44a089b73343f3269c3654905bd700dd64ac01-8e6b3bb1f244b0daa988.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </component---src-pages-tools-syncshack-2021-image-viewer-jsx-41f40bb78a8c016f51e7.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/tools/syncshack2021-image-viewer/page-data.json>; rel=preload; as=fetch; crossorigin
-/tools/vtt-extractor/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </de44a089b73343f3269c3654905bd700dd64ac01-8e6b3bb1f244b0daa988.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </99db5edd4831376a9c614d443c1f7b9d5dcf0073-b5f32b31f236f2ea161e.js>; rel=preload; as=script
-  Link: </component---src-pages-tools-vtt-extractor-jsx-7d96a517b456d8b0c5bd.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/tools/vtt-extractor/page-data.json>; rel=preload; as=fetch; crossorigin
-/posts/2021-02-04-react-markdown-rendering/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js>; rel=preload; as=script
-  Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/posts/2021-02-04-react-markdown-rendering/page-data.json>; rel=preload; as=fetch; crossorigin
-/posts/2021-09-15-lockpicking-foundations/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js>; rel=preload; as=script
-  Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/posts/2021-09-15-lockpicking-foundations/page-data.json>; rel=preload; as=fetch; crossorigin
-/posts/2022-12-03-polya-enumeration/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js>; rel=preload; as=script
-  Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/posts/2022-12-03-polya-enumeration/page-data.json>; rel=preload; as=fetch; crossorigin
-/notes/2021-01-19-test/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js>; rel=preload; as=script
-  Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/notes/2021-01-19-test/page-data.json>; rel=preload; as=fetch; crossorigin
-/notes/2021-11-27-git-prompt/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js>; rel=preload; as=script
-  Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/notes/2021-11-27-git-prompt/page-data.json>; rel=preload; as=fetch; crossorigin
-/notes/2023-03-18-cat-theory-universal-property/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js>; rel=preload; as=script
-  Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/notes/2023-03-18-cat-theory-universal-property/page-data.json>; rel=preload; as=fetch; crossorigin
-/notes/monoid-results/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js>; rel=preload; as=script
-  Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/notes/monoid-results/page-data.json>; rel=preload; as=fetch; crossorigin
-/notes/2023-10-30-haskell-to-categories/
-  Link: </webpack-runtime-f4787d68ec05667e0fa2.js>; rel=preload; as=script
-  Link: </framework-a8a43fa316436ffe4b44.js>; rel=preload; as=script
-  Link: </app-b72eef50b296ea4551ea.js>; rel=preload; as=script
-  Link: </commons-ee452db8f90e4e8b1f84.js>; rel=preload; as=script
-  Link: </1fe67113aef0b08cd7e3eda53de2b92ffdff76fc-cf58d58f9aa2ca635de3.js>; rel=preload; as=script
-  Link: </4f2091363428693703563bfff9ccbc5c20a17f5f-c1b41f232a395fe55fa3.js>; rel=preload; as=script
-  Link: </component---src-pages-markdown-remark-frontmatter-slug-jsx-07c96cff28545fa76ae6.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/notes/2023-10-30-haskell-to-categories/page-data.json>; rel=preload; as=fetch; crossorigin
