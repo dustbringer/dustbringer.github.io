@@ -49,10 +49,6 @@ function MarkdownRendererPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Markdown Renderer | dustbringer.github.io</title>
-        <meta name="description" content="Markdown Renderer" />
-      </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4" gutterBottom>
           Markdown Renderer
@@ -154,3 +150,12 @@ function MarkdownRendererPage() {
 }
 
 export default MarkdownRendererPage;
+
+export function Head() {
+  return (
+    <>
+      <title>Markdown Renderer | dustbringer.github.io</title>
+      <meta name="description" content="Markdown Renderer" />
+    </>
+  );
+}

@@ -50,10 +50,6 @@ const QuickLinkContainer = styled("div")`
 function HomePage() {
   return (
     <>
-      <Helmet>
-        <title>dustbringer.github.io</title>
-        <meta name="description" content="Home" />
-      </Helmet>
       <Container maxWidth="md" sx={{ paddingTop: "6vh" }}>
         <CircleImage
           src={ProfileBird}
@@ -112,3 +108,12 @@ function HomePage() {
 }
 
 export default HomePage;
+
+export function Head() {
+  return (
+    <>
+      <title>dustbringer.github.io</title>
+      <meta name="description" content="Home" />
+    </>
+  );
+}

@@ -30,10 +30,6 @@ function ToolListPage({ location }: PageProps) {
 
   return (
     <>
-      <Helmet>
-        <title>Tools | dustbringer.github.io</title>
-        <meta name="description" content="List of tools" />
-      </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4" gutterBottom>
           Tools
@@ -68,3 +64,12 @@ function ToolListPage({ location }: PageProps) {
 }
 
 export default ToolListPage;
+
+export function Head() {
+  return (
+    <>
+      <title>Tools | dustbringer.github.io</title>
+      <meta name="description" content="List of tools" />
+    </>
+  );
+}

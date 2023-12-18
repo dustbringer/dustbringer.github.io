@@ -78,10 +78,6 @@ function VTTExtractorPage() {
 
   return (
     <>
-      <Helmet>
-        <title>VTT Extractor | dustbringer.github.io</title>
-        <meta name="description" content="VTT Extractor" />
-      </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4">VTT Extractor</Typography>
         <Typography variant="body1" gutterBottom>
@@ -209,3 +205,12 @@ function VTTExtractorPage() {
 }
 
 export default VTTExtractorPage;
+
+export function Head() {
+  return (
+    <>
+      <title>VTT Extractor | dustbringer.github.io</title>
+      <meta name="description" content="VTT Extractor" />
+    </>
+  );
+}

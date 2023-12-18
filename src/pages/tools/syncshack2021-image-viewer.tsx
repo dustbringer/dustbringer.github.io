@@ -51,10 +51,6 @@ function ImageViewerPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Image Viewer | dustbringer.github.io</title>
-        <meta name="description" content="Markdown Renderer" />
-      </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4">Image Viewer</Typography>
         <Typography variant="body1" gutterBottom>
@@ -124,3 +120,12 @@ function ImageViewerPage() {
 }
 
 export default ImageViewerPage;
+
+export function Head() {
+  return (
+    <>
+      <title>Image Viewer | dustbringer.github.io</title>
+      <meta name="description" content="Markdown Renderer" />
+    </>
+  );
+}

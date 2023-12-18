@@ -144,12 +144,6 @@ function JapaneseFileReaderPage() {
 
   return (
     <>
-      <Helmet>
-        <title>
-          {`Japanese File Reader (${fileName}) | dustbringer.github.io`}
-        </title>
-        <meta name="description" content="Japanese File Reader" />
-      </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4" gutterBottom>
           Japanese File Reader
@@ -240,3 +234,12 @@ function JapaneseFileReaderPage() {
 }
 
 export default JapaneseFileReaderPage;
+
+export function Head() {
+  return (
+    <>
+      <title>{`Japanese File Reader | dustbringer.github.io`}</title>
+      <meta name="description" content="Japanese File Reader" />
+    </>
+  );
+}

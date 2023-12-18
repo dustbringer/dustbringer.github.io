@@ -45,10 +45,6 @@ function BlogListPage({
 
   return (
     <>
-      <Helmet>
-        <title>Posts | dustbringer.github.io</title>
-        <meta name="description" content="List of blog posts" />
-      </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4" gutterBottom>
           Posts
@@ -103,7 +99,7 @@ export default BlogListPage;
 export const pageQuery = graphql`
   query GetPosts {
     allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
+      sort: { frontmatter: { date: DESC } }
       filter: { frontmatter: { slug: { regex: "/^/?posts//" } } }
     ) {
       nodes {
@@ -121,3 +117,12 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export function Head() {
+  return (
+    <>
+      <title>Posts | dustbringer.github.io</title>
+      <meta name="description" content="List of blog posts" />
+    </>
+  );
+}

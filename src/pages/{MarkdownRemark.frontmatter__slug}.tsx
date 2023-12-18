@@ -136,11 +136,6 @@ function MarkdownTemplate({
 
   return (
     <>
-      <Helmet>
-        <title>{meta.title} | dustbringer.github.io</title>
-        <meta name="description" content={`${meta.title}`} />
-      </Helmet>
-
       <Container maxWidth="md">
         <Frontmatter variant="body1">
           {meta.title}, written by {meta.author}{" "}
@@ -186,3 +181,15 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export function Head({ data }: PageProps<DataTypeMarkdown<MdPageType>>) {
+  const { markdownRemark } = data;
+  const { frontmatter: meta } = markdownRemark;
+
+  return (
+    <>
+      <title>{meta.title} | dustbringer.github.io</title>
+      <meta name="description" content={`${meta.title}`} />
+    </>
+  );
+}

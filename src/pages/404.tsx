@@ -10,10 +10,6 @@ function NotFoundPage() {
 
   return (
     <>
-      <Helmet>
-        <title>404 Not Found | dustbringer.github.io</title>
-        <meta name="description" content="404 Not Found" />
-      </Helmet>
       <Container maxWidth="md">
         <Typography align="center" variant="h4">
           404, Page Not Found.
@@ -24,3 +20,12 @@ function NotFoundPage() {
 }
 
 export default NotFoundPage;
+
+export function Head() {
+  return (
+    <>
+      <title>404 Not Found | dustbringer.github.io</title>
+      <meta name="description" content="404 Not Found" />
+    </>
+  );
+}

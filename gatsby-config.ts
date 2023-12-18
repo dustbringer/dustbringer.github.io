@@ -1,8 +1,11 @@
-import type { GatsbyConfig } from "gatsby"
+import type { GatsbyConfig } from "gatsby";
 
 import katexMacros from "./src/components/Markdown/katexMacros";
 
 const config: GatsbyConfig = {
+  flags: {
+    DEV_SSR: true,
+  },
   siteMetadata: {
     siteUrl: "https://dustbringer.github.io",
     title: "Victa's personal website",
@@ -10,7 +13,7 @@ const config: GatsbyConfig = {
   },
   plugins: [
     "gatsby-plugin-layout",
-    "gatsby-plugin-react-helmet",
+    // "gatsby-plugin-react-helmet",
     {
       resolve: `gatsby-theme-material-ui`,
       options: {

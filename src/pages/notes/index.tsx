@@ -40,10 +40,6 @@ function ReferenceListPage({
 
   return (
     <>
-      <Helmet>
-        <title>Notes | dustbringer.github.io</title>
-        <meta name="description" content="List of Notes" />
-      </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4" gutterBottom>
           Notes
@@ -98,7 +94,7 @@ export default ReferenceListPage;
 export const pageQuery = graphql`
   query GetNotes {
     allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
+      sort: { frontmatter: { date: DESC } }
       filter: { frontmatter: { slug: { regex: "/^/?notes//" } } }
     ) {
       nodes {
@@ -116,3 +112,12 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export function Head() {
+  return (
+    <>
+      <title>Notes | dustbringer.github.io</title>
+      <meta name="description" content="List of Notes" />
+    </>
+  );
+}

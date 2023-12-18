@@ -150,10 +150,6 @@ function DuplicateRemoverPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Duplicate Remover | dustbringer.github.io</title>
-        <meta name="description" content="Duplicate Remover" />
-      </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4">Duplicate Remover</Typography>
         <Typography variant="body1" gutterBottom>
@@ -363,3 +359,12 @@ function DuplicateRemoverPage() {
 }
 
 export default DuplicateRemoverPage;
+
+export function Head() {
+  return (
+    <>
+      <title>Duplicate Remover | dustbringer.github.io</title>
+      <meta name="description" content="Duplicate Remover" />
+    </>
+  );
+}

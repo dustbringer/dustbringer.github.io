@@ -133,10 +133,6 @@ function TimerPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Runsheet Timer | dustbringer.github.io</title>
-        <meta name="description" content="Runsheet Timer" />
-      </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4">Runsheet Timer</Typography>
         <Typography variant="body1" gutterBottom>
@@ -354,3 +350,12 @@ function TimerPage() {
 }
 
 export default TimerPage;
+
+export function Head() {
+  return (
+    <>
+      <title>Runsheet Timer | dustbringer.github.io</title>
+      <meta name="description" content="Runsheet Timer" />
+    </>
+  );
+}

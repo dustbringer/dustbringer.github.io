@@ -8,11 +8,10 @@ export type Alert = { type: "error" | "success"; msg: string };
 
 function Alerts() {
   const context = React.useContext(GlobalContext);
-  if (!context) {
-    return null;
-  }
-
+  if (!context) return null;
   const { AlertQueue } = context;
+  if (!AlertQueue) return null;
+
   const [alertQueue, setAlertQueue] = AlertQueue;
   const [alertOpen, setAlertOpen] = React.useState(false);
   const [alertMsg, setAlertMsg] = React.useState("No message!");

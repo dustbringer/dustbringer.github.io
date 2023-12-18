@@ -41,10 +41,6 @@ function ResumePage() {
 
   return (
     <>
-      <Helmet>
-        <title>Resume | dustbringer.github.io</title>
-        <meta name="description" content="Resume Page" />
-      </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4" gutterBottom>
           Resume
@@ -548,3 +544,12 @@ function ResumePage() {
 }
 
 export default ResumePage;
+
+export function Head() {
+  return (
+    <>
+      <title>Resume | dustbringer.github.io</title>
+      <meta name="description" content="Resume Page" />
+    </>
+  );
+}

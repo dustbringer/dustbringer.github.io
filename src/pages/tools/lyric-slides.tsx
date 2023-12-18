@@ -204,10 +204,6 @@ function LyricSlidesPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Lyric Slides | dustbringer.github.io</title>
-        <meta name="description" content="Lyric Slides" />
-      </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4">Lyric Slides</Typography>
         <Typography variant="body1" gutterBottom>
@@ -437,3 +433,12 @@ function LyricSlidesPage() {
 }
 
 export default LyricSlidesPage;
+
+export function Head() {
+  return (
+    <>
+      <title>Lyric Slides | dustbringer.github.io</title>
+      <meta name="description" content="Lyric Slides" />
+    </>
+  );
+}

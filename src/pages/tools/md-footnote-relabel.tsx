@@ -85,10 +85,6 @@ function MarkdownFootnoteRelabel() {
 
   return (
     <>
-      <Helmet>
-        <title>{`Markdown Footnote Relabeller | dustbringer.github.io`}</title>
-        <meta name="description" content="Markdown Footnote Relabeller" />
-      </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4" gutterBottom>
           Markdown/Pandoc Footnote Relabeller
@@ -255,3 +251,12 @@ function MarkdownFootnoteRelabel() {
 }
 
 export default MarkdownFootnoteRelabel;
+
+export function Head() {
+  return (
+    <>
+      <title>{`Markdown Footnote Relabeller | dustbringer.github.io`}</title>
+      <meta name="description" content="Markdown Footnote Relabeller" />
+    </>
+  );
+}
