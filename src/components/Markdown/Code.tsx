@@ -22,15 +22,23 @@ const StyledCodeInline = styled("code")`
   padding: 0.2em 0.3em;
 `;
 
-function Code(props: {
-  inline: boolean;
-  language: string;
-  children: string | string[];
-}) {
+function Code(
+  props: (
+    | {
+        inline: true;
+      }
+    | {
+        inline?: false;
+        language: string;
+      }
+  ) & {
+    children: string | string[];
+  }
+) {
   const theme = useTheme();
   const style = theme.palette.mode === "dark" ? tomorrow : prism;
 
-  return props.inline !== undefined ? (
+  return props.inline ? (
     <StyledCodeInline {...props} prismstyle={style}>
       {props.children}
     </StyledCodeInline>

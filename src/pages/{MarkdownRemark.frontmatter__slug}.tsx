@@ -1,16 +1,19 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
+import type { PageProps } from "gatsby";
 import { styled, css } from "@mui/material/styles";
 
 // Rehype
 import { unified } from "unified";
 import rehypeRewrite from "rehype-rewrite";
 import rehypeReact from "rehype-react";
+import { rehypeRewriteOptions } from "../components/Markdown";
 
 // MUI
 import Typography from "@mui/material/Typography";
 
+import type { Heading, MdPageType, DataTypeMarkdown } from "./markdown";
 // Components for rendering
 import Container from "../components/Container";
 import BlockQuote from "../components/Markdown/BlockQuote";
@@ -80,7 +83,10 @@ const ContentsPositionDiv = styled("div")`
   flex-direction: row;
 `;
 
-function MarkdownTemplate({ data, location }) {
+function MarkdownTemplate({
+  data,
+  location,
+}: PageProps<DataTypeMarkdown<MdPageType>>) {
   const { markdownRemark } = data;
   const { frontmatter: meta, htmlAst, headings } = markdownRemark;
 
@@ -88,34 +94,9 @@ function MarkdownTemplate({ data, location }) {
 
   // From https://github.com/rehypejs/rehype/discussions/52
   const processor = unified()
-    .use(rehypeRewrite, {
-      selector: "code",
-      rewrite: (node, index, parent) => {
-        if (node.type !== "element") return;
+    .use(rehypeRewrite, rehypeRewriteOptions)
 
-        // Indicate if code is inline or not
-        if (parent.tagName === "pre") {
-          // node.properties.className = "block";
-        } else {
-          node.properties.inline = "";
-        }
-
-        // Put language as an attribute
-        if (
-          node.properties.className &&
-          node.properties.className.length > 0 &&
-          node.properties.className[0].startsWith("language-")
-        ) {
-          // Jank, because the language is only included in the class
-          node.properties.language = node.properties.className[0].replace(
-            "language-",
-            ""
-          );
-        } else {
-          node.properties.language = "plaintext";
-        }
-      },
-    })
+    // Type error presumably from the module, as of time of writing
     .use(rehypeReact, {
       createElement: React.createElement,
       components: {
@@ -162,8 +143,11 @@ function MarkdownTemplate({ data, location }) {
 
       <Container maxWidth="md">
         <Frontmatter variant="body1">
-          {meta.title}, written by {meta.author} {meta.date && `on ${meta.date} `}
-          {meta.edited && meta.edited !== meta.date && `(Edited ${meta.edited})`}
+          {meta.title}, written by {meta.author}{" "}
+          {meta.date && `on ${meta.date} `}
+          {meta.edited &&
+            meta.edited !== meta.date &&
+            `(Edited ${meta.edited})`}
           {/* Date and/or edited is optional, can have any combination of them*/}
         </Frontmatter>
 

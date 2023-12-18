@@ -35,7 +35,7 @@ function MarkdownRendererPage() {
   const [text, _setText] = React.useState("");
   const [renderScale, setRenderScale] = React.useState(1.4);
 
-  const setText = (newText) => {
+  const setText = (newText: string) => {
     sessionStorage.setItem("markdownRendererText", newText);
     _setText(newText);
   };
@@ -109,7 +109,9 @@ function MarkdownRendererPage() {
             Rendered font size (in <Code inline>rem</Code>)
             <Slider
               value={renderScale}
-              onChange={(e) => setRenderScale(e.target.value)}
+              onChange={(e, v) =>
+                setRenderScale(Array.isArray(v) ? v[0] || 0 : v)
+              }
               step={0.1}
               marks
               min={0.5}

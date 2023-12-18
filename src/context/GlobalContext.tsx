@@ -1,26 +1,22 @@
 import React from "react";
 
 import type { Alert } from "../components/Alerts";
+import type { Heading } from "../pages/markdown.d.ts";
 
-export type Heading = {
-  text: string;
-  depth: number;
+export type HeadingRef = {
   ref: React.RefObject<any> | null;
-  id: string;
-  value: string;
-};
+} & Heading;
 
 export type Store = {
   AlertQueue: [Alert[], React.Dispatch<React.SetStateAction<Alert[]>>];
   showError: (msg: Alert["msg"]) => void;
   showSuccess: (msg: Alert["msg"]) => void;
-  MdHeadings: [Heading[], React.Dispatch<React.SetStateAction<Heading[]>>];
+  MdHeadings: [HeadingRef[], React.Dispatch<React.SetStateAction<HeadingRef[]>>];
   addMdHeading: (
-    text: Heading["text"],
-    depth: Heading["depth"],
-    ref: Heading["ref"],
-    id: Heading["id"],
-    value: Heading["value"]
+    depth: HeadingRef["depth"],
+    ref: HeadingRef["ref"],
+    id: HeadingRef["id"],
+    value: HeadingRef["value"]
   ) => void;
 };
 
@@ -30,20 +26,18 @@ export const GlobalContext = React.createContext<Store>({} as Store);
 function GlobalProvider({ children }: React.PropsWithChildren) {
   const aq = React.useState<Alert[]>([]);
   const [alertQueue, setAlertQueue] = aq;
-  const mdh = React.useState<Heading[]>([]);
+  const mdh = React.useState<HeadingRef[]>([]);
   const [mdHeadings, setMdHeadings] = mdh;
 
   const addMdHeading = (
-    text: Heading["text"],
-    depth: Heading["depth"],
-    ref: Heading["ref"],
-    id: Heading["id"],
-    value: Heading["value"]
+    depth: HeadingRef["depth"],
+    ref: HeadingRef["ref"],
+    id: HeadingRef["id"],
+    value: HeadingRef["value"]
   ) =>
     setMdHeadings((h) => [
       ...h,
       {
-        text,
         depth,
         ref,
         id,
@@ -86,11 +80,7 @@ export const emptyStore = () => {
     showError: (msg: Alert["msg"]) => {},
     showSuccess: (msg: Alert["msg"]) => {},
     MdHeadings: [[], (h) => {}] as Store["MdHeadings"],
-    addMdHeading: (
-      text: Heading["text"],
-      depth: Heading["depth"],
-      ref: Heading["ref"]
-    ) => {},
+    addMdHeading: (depth: HeadingRef["depth"], ref: HeadingRef["ref"]) => {},
   };
 };
 

@@ -12,14 +12,8 @@ const StyledLink = styled(GatsbyLink)`
   }
 `;
 
-function Link(props: { to: string }) {
-  return (
-    <StyledLink
-      target="_blank"
-      rel="noopener noreferrer"
-      {...props}
-    ></StyledLink>
-  );
+function Link(props: React.PropsWithChildren<{ to: string }>) {
+  return <StyledLink target="_blank" rel="noopener noreferrer" {...props} />;
 }
 
 const NoStyleLink = styled(GatsbyLink)`

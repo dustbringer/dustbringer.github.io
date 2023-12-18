@@ -10,7 +10,7 @@ const StyledMUILink = styled(MUILink)({
   },
 });
 
-function Link(props: { to: string }) {
+function Link(props: React.PropsWithChildren<{ href: string }>) {
   return (
     <StyledMUILink
       target="_blank"

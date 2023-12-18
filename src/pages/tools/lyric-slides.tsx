@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 import NewWindow from "react-new-window";
 
 import { useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
+import Box from "@mui/system/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
@@ -31,14 +31,19 @@ import {
 } from "../../components/Markdown";
 import { GlobalContext } from "../../context/GlobalContext";
 
+type LyricsContainerProps = {
+  fullHeight?: boolean;
+  renderScale?: number;
+  dark?: boolean;
+};
 const LyricsContainer = styled("div")`
-  ${(props) => props.fullHeight && "height: 100vh;"}
+  ${(props: LyricsContainerProps) => props.fullHeight && "height: 100vh;"}
   text-align: center;
   padding-top: 3em;
   font-weight: bold;
-  font-size: ${(props) => props.renderScale || "3"}em;
-  ${(props) => props.dark && "background-color: black;"}
-  ${(props) => props.dark && "color: white;"}
+  font-size: ${(props: LyricsContainerProps) => props.renderScale || "3"}em;
+  ${(props: LyricsContainerProps) => props.dark && "background-color: black;"}
+  ${(props: LyricsContainerProps) => props.dark && "color: white;"}
   & p {
     white-space: pre-wrap;
   }
@@ -74,7 +79,7 @@ function LyricSlidesPage() {
 
   // Access new window through a ref
   // https://github.com/rmariuzzo/react-new-window/issues/34#issuecomment-651939230
-  const popupRef = React.useRef(null);
+  const popupRef = React.useRef<Window>(null);
   const [text, setText] = React.useState("");
   const [slideText, setSlideText] = React.useState([""]);
   const [showSlides, setShowSlides] = React.useState(false);
@@ -83,29 +88,36 @@ function LyricSlidesPage() {
   // Settings
   const [renderScale, setRenderScale] = React.useState(3);
   const [darkMode, setDarkMode] = React.useState(true);
-  const [splitType, setSplitType] = React.useState("whitespace");
+  const [splitType, setSplitType] = React.useState<
+    "whitespace" | "configHeading" | "custom"
+  >("whitespace");
   const [customSplit, setCustomSplit] = React.useState("");
   const [useMarkdown, setUseMarkdown] = React.useState(false);
   const [usePlainPreview, setUsePlainPreview] = React.useState(false);
   const [styleStanzaTitle, setStyleStanzaTitle] = React.useState(true);
   const [styleIgnoreFirst, setStyleIgnoreFirst] = React.useState(true);
 
-  const handleSplitTypeChange = (e, newType) =>
-    newType !== null && setSplitType(newType);
+  const handleSplitTypeChange = (
+    event: React.MouseEvent<HTMLElement, MouseEvent>,
+    newType: "whitespace" | "configHeading" | "custom"
+  ) => newType !== null && setSplitType(newType);
 
   // Add one more slide at the end, which will be the 'finished' slide
   const pageNext = () =>
     slideText.length !== 0 && setPage(Math.min(page + 1, slideText.length - 1));
   const pagePrev = () => setPage(Math.max(page - 1, 0));
 
-  const handleKeyDown = React.useCallback((event) => {
-    if (event.key === "ArrowLeft") pagePrev();
-    else if (event.key === "ArrowRight") pageNext();
-  });
+  // Not the full event handler, because we need to use for
+  // React element (with type React.KeyboardEvent<HTMLDivElement>)
+  // and div eventlistener (with type KeyboardEvent)
+  const _handleKeyDown = React.useCallback((key: string) => {
+    if (key === "ArrowLeft") pagePrev();
+    else if (key === "ArrowRight") pageNext();
+  }, []);
 
   // Update slide text (applying the new settings)
   const updateSlides = () => {
-    let newSlideText = [];
+    let newSlideText: string[] = [];
     // Split raw input
     // Note: Non-capturing group is required because otherwise js
     // will insert the group between the outputs
@@ -129,7 +141,7 @@ function LyricSlidesPage() {
         try {
           newSlideText = text.split(new RegExp(String.raw`${customSplit}`));
         } catch (error) {
-          showError(error.message);
+          if (error instanceof Error) showError(error.message);
         }
         break;
 
@@ -171,22 +183,20 @@ function LyricSlidesPage() {
   React.useEffect(() => {
     if (popupRef.current) {
       // Attach keyboard event listener
-      popupRef.current.window.document.addEventListener(
-        "keydown",
-        handleKeyDown
+      popupRef.current.window.document.addEventListener("keydown", (e) =>
+        _handleKeyDown(e.key)
       );
     }
 
     // Remove keyboard event listener
     return () => {
       if (popupRef.current) {
-        popupRef.current.window.document.removeEventListener(
-          "keydown",
-          handleKeyDown
+        popupRef.current.window.document.removeEventListener("keydown", (e) =>
+          _handleKeyDown(e.key)
         );
       }
     };
-  }, [showSlides, handleKeyDown]);
+  }, [showSlides, _handleKeyDown]);
 
   const onNewWindowUnload = () => {
     setShowSlides(false);
@@ -212,7 +222,9 @@ function LyricSlidesPage() {
               Rendered font size (in <Code inline>em</Code>)
               <Slider
                 value={renderScale}
-                onChange={(e) => setRenderScale(e.target.value)}
+                onChange={(e, v) =>
+                  setRenderScale(Array.isArray(v) ? v[0] || 0 : v)
+                }
                 step={0.1}
                 marks
                 min={0.5}
@@ -370,7 +382,11 @@ function LyricSlidesPage() {
         </Box>
         {/* Using window.open (react-new-window and react-popout do not work with gatsby) */}
         {showSlides && (
-          <NewWindow ref={popupRef} onUnload={onNewWindowUnload}>
+          <NewWindow
+            // HACK because module doesn't give access to it's element type
+            ref={popupRef as unknown as React.RefObject<NewWindow>}
+            onUnload={onNewWindowUnload}
+          >
             <LyricsContainer
               renderScale={renderScale}
               dark={darkMode}
@@ -388,7 +404,7 @@ function LyricSlidesPage() {
           </NewWindow>
         )}
         <Box
-          tabIndex="0"
+          tabIndex={0}
           sx={{
             padding: "5px",
             borderRadius: "5px",
@@ -396,7 +412,8 @@ function LyricSlidesPage() {
             "&:hover": { border: `2px solid lightgrey` },
             "&:focus": { border: `2px solid grey` },
           }}
-          onKeyDown={handleKeyDown}
+          component="div"
+          onKeyDown={(e) => _handleKeyDown(e.key)}
         >
           Preview
           <PageNavigation

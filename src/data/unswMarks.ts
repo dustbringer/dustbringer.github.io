@@ -1,6 +1,12 @@
 const unswMarks = {
-  wam: 92.611,
+  wam: 92.784,
   courses: [
+    {
+      name: "Concepts of Programming Languages",
+      code: "COMP3161",
+      mark: 99,
+      term: "2023T3",
+    },
     {
       name: "Algorithmic Verification",
       code: "COMP3153",

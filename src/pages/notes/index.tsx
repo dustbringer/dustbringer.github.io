@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, navigate, graphql } from "gatsby";
+import type { PageProps } from "gatsby";
 import { Helmet } from "react-helmet";
 import { styled } from "@mui/material/styles";
 import moment from "moment";
@@ -12,27 +13,28 @@ import Container from "../../components/Container";
 import BlogListCardSmall from "../../components/BlogListCardSmall";
 import PageNavigation from "../../components/PageNavigation";
 
+import type { PostType, DataTypeAllMarkdown } from "../posts.d.ts";
 import { N_PER_PAGE, getPage } from "../../util/pagination";
 
 const ListContainer = styled("div")`
   min-height: 75vh;
 `;
 
-function ReferenceListPage({ location, data }) {
-  const { edges: notes } = data.allMarkdownRemark;
+function ReferenceListPage({
+  location,
+  data,
+}: PageProps<DataTypeAllMarkdown<PostType>>) {
+  const { nodes: notes } = data.allMarkdownRemark;
   const [page, setPage] = React.useState(1);
 
   React.useEffect(() => {
-    const queryPage = qs.parse(location.search, {
-      ignoreQueryPrefix: true,
-    }).page;
+    const queryPage = parseInt(qs.parse(location.search).page as string, 10);
     if (
-      queryPage &&
-      !isNaN(parseInt(queryPage, 10)) &&
+      !isNaN(queryPage) &&
       queryPage > 0 &&
       queryPage <= Math.ceil(notes.length / N_PER_PAGE)
     ) {
-      setPage(parseInt(queryPage, 10));
+      setPage(queryPage);
     }
   }, [location.search, notes.length]);
 
@@ -50,8 +52,8 @@ function ReferenceListPage({ location, data }) {
           {notes.length > 0 ? (
             <>
               <ListContainer>
-                {getPage(notes, page, N_PER_PAGE).map((e, i) => {
-                  const { id, path, frontmatter: meta } = e.node;
+                {getPage(notes, page, N_PER_PAGE).map((note, i) => {
+                  const { id, path, frontmatter: meta } = note;
                   return (
                     <BlogListCardSmall
                       key={`${i}-${id}`}
@@ -59,14 +61,14 @@ function ReferenceListPage({ location, data }) {
                       description={meta.description}
                       date={meta.edited} // or meta.date
                       tags={meta.tags}
-                      name={meta.slug.match(/^.*\/(.+?)$/)[1]}
+                      name={meta.slug.match(/^.*\/(.+?)$/)?.[1]}
                       path={path}
                     />
                   );
                 })}
               </ListContainer>
               <PageNavigation
-                text={page}
+                text={String(page)}
                 onPrev={() =>
                   page > 1 &&
                   navigate(`${location.pathname}?page=${Math.max(page - 1, 1)}`)
@@ -99,19 +101,17 @@ export const pageQuery = graphql`
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: { frontmatter: { slug: { regex: "/^/?notes//" } } }
     ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            slug
-            title
-            description
-            date(formatString: "DD MMMM, YYYY")
-            edited(formatString: "DD MMMM, YYYY")
-            tags
-          }
-          path: gatsbyPath(filePath: "/{MarkdownRemark.frontmatter__slug}")
+      nodes {
+        id
+        frontmatter {
+          slug
+          title
+          description
+          date(formatString: "DD MMMM, YYYY")
+          edited(formatString: "DD MMMM, YYYY")
+          tags
         }
+        path: gatsbyPath(filePath: "/{MarkdownRemark.frontmatter__slug}")
       }
     }
   }

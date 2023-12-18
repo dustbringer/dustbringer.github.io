@@ -2,6 +2,7 @@ import React from "react";
 import { styled } from "@mui/material/styles";
 import { Helmet } from "react-helmet";
 import moment from "moment";
+import type { Moment } from "moment";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -17,9 +18,16 @@ import { GlobalContext } from "../../context/GlobalContext";
 import LoadingBar from "../../components/LoadingBar";
 import LoadingBarThin from "../../components/LoadingBarThin";
 
-const sumTasks = (a) => a.reduce((acc, e) => acc + e.time, 0);
+type TaskType = {
+  title: string;
+  time: number;
+};
 
-const trimDecimal = (d, places) => {
+const sumTasks = <T extends { time: number }>(a: T[]) =>
+  a.reduce((acc, e) => acc + e.time, 0);
+
+const trimDecimal = (d: number, places: number) => {
+  places = Math.floor(places);
   if (places <= 0) return Math.floor(d);
   else return Math.floor(d * Math.pow(10, places)) / Math.pow(10, places);
 };
@@ -49,12 +57,12 @@ function TimerPage() {
     showError: () => {},
     showSuccess: () => {},
   };
-  const [startTime, setStartTime] = React.useState(null);
-  const [curTime, setCurTime] = React.useState(moment());
-  const [tasks, setTasks] = React.useState([]);
+  const [startTime, setStartTime] = React.useState<Moment>();
+  const [curTime, setCurTime] = React.useState<Moment>(moment());
+  const [tasks, setTasks] = React.useState<TaskType[]>([]);
   const [settings, setSettings] = React.useState("");
 
-  const onSetTasks = (e) => {
+  const onSetTasks: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     const matches = settings
       .trim()
@@ -64,7 +72,10 @@ function TimerPage() {
 
     const newTasks = matches
       .filter((e) => e) // remove non-matches
-      .map((e) => ({ title: e[2].trim(), time: parseFloat(e[1]) })); // get number,title;
+      .map((e) => ({
+        title: e ? e[2].trim() : "",
+        time: parseFloat(e ? e[1] : "0"),
+      })); // get number,title;
     setTasks(newTasks);
 
     // Failed lines
@@ -191,19 +202,19 @@ function TimerPage() {
                     const totalDuration = moment.duration(
                       endTime.diff(startTime)
                     );
-                    const totalHours = parseInt(totalDuration.asHours());
+                    const totalHours = Math.floor(totalDuration.asHours());
                     const totalMinutes =
-                      parseInt(totalDuration.asMinutes()) % 60;
+                      Math.floor(totalDuration.asMinutes()) % 60;
                     const totalSeconds =
-                      parseInt(totalDuration.asSeconds()) % 60;
+                      Math.floor(totalDuration.asSeconds()) % 60;
 
                     // current should be at most the total time
                     const curDuration = moment.duration(
                       moment.min(curTime, endTime).diff(startTime)
                     );
-                    const curHours = parseInt(curDuration.asHours());
-                    const curMinutes = parseInt(curDuration.asMinutes()) % 60;
-                    const curSeconds = parseInt(curDuration.asSeconds()) % 60;
+                    const curHours = Math.floor(curDuration.asHours());
+                    const curMinutes = Math.floor(curDuration.asMinutes()) % 60;
+                    const curSeconds = Math.floor(curDuration.asSeconds()) % 60;
                     return `${curHours}h ${curMinutes}m ${curSeconds}s of ${totalHours}h ${totalMinutes}m ${totalSeconds}s`;
                   })()}
                 </Typography>
@@ -217,8 +228,8 @@ function TimerPage() {
                   onChange={(e) =>
                     setStartTime((st) =>
                       st
-                        ? moment(st).hour(e.target.value)
-                        : moment().hour(e.target.value)
+                        ? moment(st).hour(Number(e.target.value))
+                        : moment().hour(Number(e.target.value))
                     )
                   }
                   MenuProps={{ sx: { height: "400px" } }}
@@ -237,8 +248,8 @@ function TimerPage() {
                   onChange={(e) =>
                     setStartTime((st) =>
                       st
-                        ? moment(st).minute(e.target.value)
-                        : moment().minute(e.target.value)
+                        ? moment(st).minute(Number(e.target.value))
+                        : moment().minute(Number(e.target.value))
                     )
                   }
                   MenuProps={{ sx: { height: "400px" } }}
@@ -257,8 +268,8 @@ function TimerPage() {
                   onChange={(e) =>
                     setStartTime((st) =>
                       st
-                        ? moment(st).second(e.target.value)
-                        : moment().second(e.target.value)
+                        ? moment(st).second(Number(e.target.value))
+                        : moment().second(Number(e.target.value))
                     )
                   }
                   MenuProps={{ sx: { height: "400px" } }}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, navigate, graphql } from "gatsby";
+import type { PageProps } from "gatsby";
 import { Helmet } from "react-helmet";
 import { styled } from "@mui/material/styles";
 import moment from "moment";
@@ -12,6 +13,7 @@ import Container from "../../components/Container";
 import BlogListCardSmall from "../../components/BlogListCardSmall";
 import PageNavigation from "../../components/PageNavigation";
 
+import type { PostType, DataTypeAllMarkdown } from "../posts.d.ts";
 import { N_PER_PAGE, getPage } from "../../util/pagination";
 
 // HELPFUL https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
@@ -21,23 +23,23 @@ const ListContainer = styled("div")`
   min-height: 75vh;
 `;
 
-function BlogListPage({ location, data }) {
-  const { edges: posts } = data.allMarkdownRemark;
+function BlogListPage({
+  location,
+  data,
+}: PageProps<DataTypeAllMarkdown<PostType>>) {
+  const { nodes: posts } = data.allMarkdownRemark;
   // const [posts, setPosts] = React.useState([]);
   // const [loading, setLoading] = React.useState(true);
   const [page, setPage] = React.useState(1);
 
   React.useEffect(() => {
-    const queryPage = qs.parse(location.search, {
-      ignoreQueryPrefix: true,
-    }).page;
+    const queryPage = parseInt(qs.parse(location.search).page as string, 10);
     if (
-      queryPage &&
-      !isNaN(parseInt(queryPage, 10)) &&
+      !isNaN(queryPage) &&
       queryPage > 0 &&
       queryPage <= Math.ceil(posts.length / N_PER_PAGE)
     ) {
-      setPage(parseInt(queryPage, 10));
+      setPage(queryPage);
     }
   }, [location.search, posts.length]);
 
@@ -55,8 +57,8 @@ function BlogListPage({ location, data }) {
           {posts.length > 0 ? (
             <>
               <ListContainer>
-                {getPage(posts, page, N_PER_PAGE).map((e, i) => {
-                  const { id, path, frontmatter: meta } = e.node;
+                {getPage(posts, page, N_PER_PAGE).map((post, i) => {
+                  const { id, path, frontmatter: meta } = post;
                   return (
                     <BlogListCardSmall
                       key={`${i}-${id}`}
@@ -64,14 +66,14 @@ function BlogListPage({ location, data }) {
                       description={meta.description}
                       date={meta.edited} // or meta.date
                       tags={meta.tags}
-                      name={meta.slug.match(/^.*\/(.+?)$/)[1]}
+                      name={meta.slug.match(/^.*\/(.+?)$/)?.[1]}
                       path={path}
                     />
                   );
                 })}
               </ListContainer>
               <PageNavigation
-                text={page.toString(10)}
+                text={String(page)}
                 onPrev={() =>
                   page > 1 &&
                   navigate(`${location.pathname}?page=${Math.max(page - 1, 1)}`)
@@ -104,19 +106,17 @@ export const pageQuery = graphql`
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: { frontmatter: { slug: { regex: "/^/?posts//" } } }
     ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            slug
-            title
-            description
-            date(formatString: "DD MMMM, YYYY")
-            edited(formatString: "DD MMMM, YYYY")
-            tags
-          }
-          path: gatsbyPath(filePath: "/{MarkdownRemark.frontmatter__slug}")
+      nodes {
+        id
+        frontmatter {
+          slug
+          title
+          description
+          date(formatString: "DD MMMM, YYYY")
+          edited(formatString: "DD MMMM, YYYY")
+          tags
         }
+        path: gatsbyPath(filePath: "/{MarkdownRemark.frontmatter__slug}")
       }
     }
   }

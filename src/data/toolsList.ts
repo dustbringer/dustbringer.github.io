@@ -1,4 +1,12 @@
-const toolsList = [
+export type ToolType = {
+  title: string;
+  description: string;
+  type?: string;
+  date?: string;
+  path: string;
+};
+
+const toolsList: ToolType[] = [
   {
     title: "Markdown Renderer",
     description: "Online renderer for Markdown and LaTeX.",

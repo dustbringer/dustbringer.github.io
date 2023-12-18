@@ -8,7 +8,8 @@
  */
 
 /******************** Helper ********************/
-const isNum = (s) => Number.isInteger(s) || /^\d+$/.test(s);
+
+const isNum = (s: string) => Number.isInteger(s) || /^\d+$/.test(s);
 
 // Looks for footnote target in the form [^...]:
 // Assuming:
@@ -16,14 +17,14 @@ const isNum = (s) => Number.isInteger(s) || /^\d+$/.test(s);
 //   - ending with a colon
 //   - no whitespace in label
 //   - only symbols in label are "_", ".", and "-"
-const getLabels = (s) =>
+const getLabels = (s: string) =>
   [...s.matchAll(/^[^\S\r\n]*\[\^([a-zA-Z0-9_.-]+)\]:/gm)].map((m) => m[1]);
 
-const getIntLabels = (s) =>
+const getIntLabels = (s: string) =>
   [...s.matchAll(/^[^\S\r\n]*\[\^(\d+)\]:/gm)].map((m) => m[1]);
 
 // Gets largest integer in the array
-const getMaxInt = (matches) =>
+const getMaxInt = (matches: string[]) =>
   Math.max(...matches.filter((m) => isNum(m)).map((m) => parseInt(m, 10)));
 
 /******************** Functions ********************/
@@ -31,7 +32,7 @@ const getMaxInt = (matches) =>
 /*
   Relabels everything with ascending integers
  */
-export const relabelAll = (text, indexFrom = 1) => {
+export const relabelAll = (text: string, indexFrom = 1) => {
   if (indexFrom < 0) console.error("indexFrom must be non-negative");
   let output = text;
 
@@ -64,7 +65,7 @@ export const relabelAll = (text, indexFrom = 1) => {
 /*
   Relabels only the integer labels with ascending integers
  */
-export const relabelInt = (text, indexFrom = 1) => {
+export const relabelInt = (text: string, indexFrom = 1) => {
   if (indexFrom < 0) throw new Error("indexFrom must be non-negative");
   let output = text;
 

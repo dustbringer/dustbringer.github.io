@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, navigate, graphql } from "gatsby";
+import type { PageProps } from "gatsby";
 import { Helmet } from "react-helmet";
 import { styled, css } from "@mui/material/styles";
 import moment from "moment";
@@ -14,6 +15,7 @@ import PageNavigation from "../../components/PageNavigation";
 
 import { N_PER_PAGE, getPage } from "../../util/pagination";
 import tools from "../../data/toolsList";
+import type { ToolType } from "../../data/toolsList";
 
 // HELPFUL https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
 // In gatsby: https://www.gatsbyjs.com/blog/2017-07-19-creating-a-blog-with-gatsby/
@@ -22,7 +24,7 @@ const ListContainer = styled("div")`
   min-height: 74vh;
 `;
 
-function ToolListPage({ location }) {
+function ToolListPage({ location }: PageProps) {
   // const [tools, setTools] = React.useState([]);
   // const [loading, setLoading] = React.useState(true);
 

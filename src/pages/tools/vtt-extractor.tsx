@@ -128,7 +128,7 @@ function VTTExtractorPage() {
               </TBody>
             </Table>
             Explanation
-            <ol start="0">
+            <ol start={0}>
               <ListItem>
                 Add new lines before all new paragraphs, indicated by{" "}
                 <Code inline>-0</Code> in the sequence line (ignoring trailing

@@ -17,8 +17,8 @@ import Link from "../../components/Link";
  * https://gist.github.com/terrancesnyder/1345094
  */
 const furiganaRegex = /\｜?([\u4e00-\u9faf\u3400-\u4dbf]*?)《(.*?)》/g;
-const parseFurigana = (text) => {
-  const result = {};
+const parseFurigana = (text: string) => {
+  const result: { [key in string]: string } = {};
   const match = [...text.trim().matchAll(/(kanji|furi)=(["'])(.*?)\2/g)];
   match.forEach((e) => {
     result[e[1]] = e[3];
@@ -76,8 +76,8 @@ function JapaneseFileReaderPage() {
   const setScrollPos = () => {
     const scrollPos =
       document.body.scrollTop || document.documentElement.scrollTop;
-    setYPos(scrollPos);
-    localStorage.setItem("japanese_text_reader_yPos", scrollPos);
+    setYPos(String(scrollPos));
+    localStorage.setItem("japanese_text_reader_yPos", String(scrollPos));
   };
 
   React.useEffect(() => {
@@ -87,7 +87,7 @@ function JapaneseFileReaderPage() {
     const scrollPos = localStorage.getItem("japanese_text_reader_yPos");
     if (scrollPos) {
       setYPos(scrollPos);
-      window.scrollTo({ top: scrollPos });
+      window.scrollTo({ top: parseInt(scrollPos, 10) });
     }
 
     // Set scroll listener
@@ -98,14 +98,13 @@ function JapaneseFileReaderPage() {
 
   const loadSaved = () => {
     // Load saved file contents
-    if (
-      localStorage.getItem("japanese_text_reader_fileName") &&
-      localStorage.getItem("japanese_text_reader_fileContents")
-    ) {
-      setFileName(localStorage.getItem("japanese_text_reader_fileName"));
-      setFileContents(
-        localStorage.getItem("japanese_text_reader_fileContents")
-      );
+    const fileName = localStorage.getItem("japanese_text_reader_fileName");
+    const fileContents = localStorage.getItem(
+      "japanese_text_reader_fileContents"
+    );
+    if (fileName && fileContents) {
+      setFileName(fileName);
+      setFileContents(fileContents);
     }
   };
 
@@ -115,11 +114,13 @@ function JapaneseFileReaderPage() {
     localStorage.setItem("japanese_text_reader_fileContents", fileContents);
   };
 
-  const handleUpload = (ev) => {
-    const file = ev.target.files[0];
+  const handleUpload: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    const file = event.target?.files?.[0];
     const reader = new FileReader();
     reader.onload = (e) => {
-      const contentBuffer = new Uint8Array(e.target.result);
+      const contentBuffer = new Uint8Array(
+        (e.target?.result as ArrayBufferLike) || 0
+      );
       const text = Encoding.convert(contentBuffer, {
         to: "unicode",
         from: Encoding.detect(contentBuffer),
@@ -132,9 +133,11 @@ function JapaneseFileReaderPage() {
       // TODO: handle footnotes (hover?)
       // TODO: handle other aozora bunko features
 
-      setYPos("0");
-      setFileName(file.name);
-      setFileContents(parsedContents);
+      if (file) {
+        setYPos("0");
+        setFileName(file.name);
+        setFileContents(parsedContents);
+      }
     };
     file && reader.readAsArrayBuffer(file);
   };
@@ -210,7 +213,11 @@ function JapaneseFileReaderPage() {
                   key={i}
                   word={attr.kanji}
                   reading={attr.furi}
-                  render={({ pairs }) => (
+                  render={({
+                    pairs,
+                  }: {
+                    pairs: [[furigana: string, text: string]];
+                  }) => (
                     <ReactFuriWrapper lang="ja">
                       {pairs.map(([furigana, text], i) => (
                         <ReactFuriPair key={i}>

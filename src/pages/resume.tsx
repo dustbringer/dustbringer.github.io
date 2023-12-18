@@ -23,7 +23,7 @@ const LinkBold = styled(Link)`
   font-weight: 600;
 `;
 
-function LinkNewTab(props) {
+function LinkNewTab(props: React.PropsWithChildren<{ href: string }>) {
   return <Link target="_blank" rel="noopener noreferrer" {...props} />;
 }
 
@@ -370,7 +370,7 @@ function ResumePage() {
                 variant="body1"
                 sx={{ ...style.bold, ...style.italic }}
               >
-                University of New South Wales (2019 - Present)
+                University of New South Wales (2019 - 2023)
               </Typography>
               <Typography variant="body1">
                 B Advanced Mathematics (Honours) / B Computer Science
@@ -388,17 +388,18 @@ function ResumePage() {
                     <strong>Weighted Average Mark:</strong> {unswMarks.wam}
                   </Typography>
                   <Typography variant="body1">
-                    <strong>Honours:</strong> Thesis 90; Presentation 9
+                    <strong>Honours (Class I):</strong> Thesis 90; Presentation
+                    9
                   </Typography>
                   <Typography variant="body1">
                     <strong>Awards</strong>
                     <ul>
                       <li>
-                        Faculty of Science Deans List 2020, 2021, 2022 (top 100)
+                        Faculty of Science Deans List 2019, 2020, 2021 (top 100)
                       </li>
                       <li>
-                        Faculty of Engineering Deans Award 2020, 2021, 2022 (top
-                        100)
+                        Faculty of Engineering Deans Award 2019, 2020, 2021,
+                        2022 (top 100)
                       </li>
                       <li>
                         School of Mathematics and Statistics Advanced
@@ -435,6 +436,7 @@ function ResumePage() {
                     <strong>Audited courses</strong>
                     <ul>
                       <li>MATH5425 (Graph Theory), 2023T1</li>
+                      <li>MATH5645 (Algebraic Number Theory), 2023T3</li>
                     </ul>
                   </Typography>
                 </Accordion>

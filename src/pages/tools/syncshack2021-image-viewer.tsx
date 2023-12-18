@@ -20,7 +20,7 @@ function ImageViewerPage() {
     showSuccess: () => {},
   };
   const [text, setText] = React.useState("");
-  const [json, setJson] = React.useState([]);
+  const [json, setJson] = React.useState<{ link: string }[]>([]);
   const [counter, setCounter] = React.useState(0);
 
   const parseInput = () => {
@@ -29,10 +29,12 @@ function ImageViewerPage() {
       setJson(output);
       setCounter(0);
       showSuccess && showSuccess("Successfully parsed");
-    } catch (err) {
-      setJson([]);
-      setCounter(0);
-      showError && showError(err.message);
+    } catch (error) {
+      if (error instanceof Error) {
+        setJson([]);
+        setCounter(0);
+        showError && showError(error.message);
+      }
     }
   };
 
@@ -106,7 +108,11 @@ function ImageViewerPage() {
           </Button>
         </Box>
 
-        <PageNavigation text={counter} onPrev={onPrev} onNext={onNext} />
+        <PageNavigation
+          text={String(counter)}
+          onPrev={onPrev}
+          onNext={onNext}
+        />
         {json && json.length !== 0 ? (
           <img src={json[counter].link} alt="parsed output" />
         ) : (

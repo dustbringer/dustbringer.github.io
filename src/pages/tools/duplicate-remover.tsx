@@ -24,8 +24,12 @@ const SmallText = styled(Typography)`
 `;
 
 // Edited from https://stackoverflow.com/a/61599269
-const remDupe = (arr, caseInsensitive) => {
-  const temp = [];
+// need this "extends unknown" otherwise the generic is read as JSX
+const remDupe = <T extends unknown>(
+  arr: (T | string)[],
+  caseInsensitive: boolean
+) => {
+  const temp: (T | string)[] = [];
   return [
     ...new Set(
       !caseInsensitive
@@ -45,40 +49,41 @@ const remDupe = (arr, caseInsensitive) => {
 // Arguments: text list, options
 // Return: array of parsed text with duplicates removed
 const parseInput = (
-  text,
-  useCustomInSep = false,
-  customInSep = "",
-  caseIns = false,
-  ignoreEmpty = false,
-  keepTrailingWhitespace = false
+  text: string,
+  useCustomInSep: boolean = false,
+  customInSep: string = "",
+  caseIns: boolean = false,
+  ignoreEmpty: boolean = false,
+  keepTrailingWhitespace: boolean = false
 ) => {
   let temp = text;
+  let result = [];
 
   if (keepTrailingWhitespace) {
     // temp = temp.split(/,|\r\n|\n|\r/);
-    temp = temp.split(
+    result = temp.split(
       new RegExp(useCustomInSep ? customInSep : /,|\r\n|\n|\r/)
     );
   } else {
-    // Strip whitespace off the ends of the input
-    temp = temp.replace(/^\s+|\s+$/g, "");
-
-    // Split the input into an array
-    // temp = temp.split(/\s*,\s*|\s*\n\s*|\s*\r\s*/);
-    temp = temp.split(
-      new RegExp(
-        useCustomInSep
-          ? String.raw`\s*${customInSep}\s*`
-          : /\s*,\s*|\s*\n\s*|\s*\r\s*/
-      )
-    );
+    result = temp
+      // Strip whitespace off the ends of the input
+      .replace(/^\s+|\s+$/g, "")
+      // Split the input into an array
+      // temp = temp.split(/\s*,\s*|\s*\n\s*|\s*\r\s*/);
+      .split(
+        new RegExp(
+          useCustomInSep
+            ? String.raw`\s*${customInSep}\s*`
+            : /\s*,\s*|\s*\n\s*|\s*\r\s*/
+        )
+      );
     // Note: Brackets in regex = keep the match in the resulting string
     // Examples/Source: https://stackoverflow.com/questions/12001953/javascript-and-regex-split-string-and-keep-the-separator
   }
 
   // Remove duplicates
   // Using sets: https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
-  let result = remDupe(temp, caseIns, ignoreEmpty);
+  result = remDupe(result, caseIns);
   if (ignoreEmpty) result = result.filter((x) => x);
 
   return { inputSize: temp.length, result: result };
@@ -102,16 +107,20 @@ function DuplicateRemoverPage() {
   const [outputDisplay, setOutputDisplay] = React.useState("none");
   const [outputSort, setOutputSort] = React.useState("none");
 
-  const handleOutputDisplayChange = (e, newDisplay) =>
-    newDisplay !== null && setOutputDisplay(newDisplay);
-  const handleOutputSortChange = (e, newSort) =>
-    newSort !== null && setOutputSort(newSort);
+  const handleOutputDisplayChange = (
+    event: React.MouseEvent<HTMLElement, MouseEvent>,
+    newDisplay: string
+  ) => newDisplay !== null && setOutputDisplay(newDisplay);
+  const handleOutputSortChange = (
+    event: React.MouseEvent<HTMLElement, MouseEvent>,
+    newSort: string
+  ) => newSort !== null && setOutputSort(newSort);
 
   // Extra data
   const [inputSize, setInputSize] = React.useState(0);
   const [outputSize, setOutputSize] = React.useState(0);
 
-  const run = (e) => {
+  const run: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
     const parsedInput = parseInput(

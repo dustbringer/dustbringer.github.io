@@ -31,22 +31,28 @@ function MarkdownFootnoteRelabel() {
   const [fileContents, setFileContents] = React.useState("");
   const [fileIndexFrom, setFileIndexFrom] = React.useState(1);
 
-  const handleFileChange = (ev) => {
-    ev.preventDefault();
-    const file = ev.target.files[0];
+  const handleFileChange: React.ChangeEventHandler<HTMLInputElement> = (
+    event
+  ) => {
+    event.preventDefault();
+    const file = event.target.files?.[0];
     const reader = new FileReader();
     reader.onload = (e) => {
-      const text = e.target.result;
-
-      setFileContents(text);
-      setFileName(file.name);
-      setFileSelected(true);
+      const text = e.target?.result;
+      if (file) {
+        setFileContents((text as string) || "");
+        setFileName(file.name);
+        setFileSelected(true);
+      }
     };
 
     file && reader.readAsText(file);
   };
 
-  const handleDownload = (ev, onlyInt = false) => {
+  const handleDownload = (
+    ev: React.MouseEvent<HTMLSpanElement, MouseEvent>,
+    onlyInt = false
+  ) => {
     ev.preventDefault();
     const output = !onlyInt
       ? relabelAll(fileContents, fileIndexFrom)
@@ -60,10 +66,13 @@ function MarkdownFootnoteRelabel() {
     link.setAttribute("download", `edited_${fileName}`);
     document.body.appendChild(link);
     link.click();
-    link.parentNode.removeChild(link);
+    link.parentNode?.removeChild(link);
   };
 
-  const handleParse = (ev, onlyInt = false) => {
+  const handleParse = (
+    ev: React.MouseEvent<HTMLSpanElement, MouseEvent>,
+    onlyInt = false
+  ) => {
     ev.preventDefault();
     const output = !onlyInt
       ? relabelAll(inputText, indexFrom)
@@ -78,10 +87,7 @@ function MarkdownFootnoteRelabel() {
     <>
       <Helmet>
         <title>{`Markdown Footnote Relabeller | dustbringer.github.io`}</title>
-        <meta
-          name="description"
-          content="Markdown Footnote Relabeller"
-        />
+        <meta name="description" content="Markdown Footnote Relabeller" />
       </Helmet>
       <Container maxWidth="md">
         <Typography variant="h4" gutterBottom>
@@ -125,7 +131,9 @@ function MarkdownFootnoteRelabel() {
                 step: "1",
               }}
               value={indexFrom}
-              onChange={(e) => setIndexFrom(Math.max(0, e.target.value))}
+              onChange={(e) =>
+                setIndexFrom(Math.max(0, parseInt(e.target.value, 10)))
+              }
               size="small"
               sx={{ margin: "10px 0" }}
             />
@@ -134,7 +142,7 @@ function MarkdownFootnoteRelabel() {
             <Button
               variant="contained"
               component="span"
-              onClick={(ev) => handleParse(ev)}
+              onClick={(e) => handleParse(e)}
               sx={{ margin: "5px 0", marginLeft: "10px" }}
             >
               Replace All
@@ -142,7 +150,7 @@ function MarkdownFootnoteRelabel() {
             <Button
               variant="contained"
               component="span"
-              onClick={(ev) => handleParse(ev, true)}
+              onClick={(e) => handleParse(e, true)}
               sx={{ margin: "5px 0", marginLeft: "10px" }}
             >
               Replace Int
@@ -212,7 +220,9 @@ function MarkdownFootnoteRelabel() {
                   step: "1",
                 }}
                 value={fileIndexFrom}
-                onChange={(e) => setFileIndexFrom(Math.max(0, e.target.value))}
+                onChange={(e) =>
+                  setFileIndexFrom(Math.max(0, parseInt(e.target.value, 10)))
+                }
                 disabled={!fileSelected}
                 size="small"
                 sx={{ margin: "10px 0" }}
@@ -222,7 +232,7 @@ function MarkdownFootnoteRelabel() {
               <Button
                 variant="contained"
                 component="span"
-                onClick={(ev) => handleDownload(ev)}
+                onClick={(e) => handleDownload(e)}
                 disabled={!fileSelected}
               >
                 Replace All
@@ -230,7 +240,7 @@ function MarkdownFootnoteRelabel() {
               <Button
                 variant="contained"
                 component="span"
-                onClick={(ev) => handleDownload(ev, true)}
+                onClick={(e) => handleDownload(e, true)}
                 disabled={!fileSelected}
                 sx={{ marginLeft: "10px" }}
               >

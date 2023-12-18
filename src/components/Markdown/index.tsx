@@ -93,13 +93,37 @@ const MarkdownFormatDiv = styled("div")`
   ${breakText};
 `;
 
-type Props = {
-  allowHTML: boolean;
-  components: Components;
-  children: string;
+export const rehypeRewriteOptions: RehypeRewriteOptions = {
+  selector: "code",
+  rewrite: (node, index, parent) => {
+    if (node.type !== "element") return;
+
+    // Indicate if code is inline or not
+    if ((parent as { tagName: string })?.tagName === "pre") {
+      // node.properties.className = "block";
+    } else {
+      node.properties && (node.properties.inline = "");
+    }
+
+    // Put language as an attribute
+    if (
+      node.properties?.className &&
+      Array.isArray(node.properties?.className) &&
+      node.properties.className.length > 0 &&
+      String(node.properties.className[0]).startsWith("language-")
+    ) {
+      // Jank, because the language is only included in the class
+      node.properties.language = String(node.properties.className[0]).replace(
+        "language-",
+        ""
+      );
+    } else {
+      node.properties && (node.properties.language = "plaintext");
+    }
+  },
 };
 
-const _mapProps = (props: { allowHTML: boolean } & Options) => ({
+const _mapProps = (props: { allowHTML?: boolean } & Options) => ({
   ...props,
   remarkPlugins: [remarkMathPlugin, remarkGFMPlugin, remarkFrontmatterPlugin],
 
@@ -121,29 +145,7 @@ const _mapProps = (props: { allowHTML: boolean } & Options) => ({
         strict: `ignore`,
       },
     ],
-    [
-      rehypeRewrite,
-      {
-        selector: "code",
-        // Type Error: The types for these defined in the module, are broken as of writing
-        rewrite: (node, index, parent) => {
-          // Put language as an attribute
-          if (
-            node.properties?.className &&
-            node.properties.className.length > 0 &&
-            node.properties.className[0].startsWith("language-")
-          ) {
-            // Jank, because the language is only included in the class
-            node.properties.language = node.properties.className[0].replace(
-              "language-",
-              ""
-            );
-          } else {
-            node.properties.language = "plaintext";
-          }
-        },
-      },
-    ],
+    [rehypeRewrite, rehypeRewriteOptions],
     // ...(!props.mathJax ? [rehypeKatex] : [rehypeMathjax]),
   ],
   components: {
@@ -171,6 +173,12 @@ const _mapProps = (props: { allowHTML: boolean } & Options) => ({
   },
 });
 
+type Props = {
+  allowHTML?: boolean;
+  components?: Components;
+  children: string;
+};
+
 // Repeated code
 // Add support for html https://github.com/remarkjs/react-markdown#appendix-a-html-in-markdown
 function _Markdown(props: Props) {
@@ -194,11 +202,10 @@ function Markdown(props: Props) {
       MdHeadings: [
         [
           {
-            text: "Error, no context",
+            value: "Error, no context",
             depth: 1,
             ref: null,
             id: "mdheading-error",
-            value: "",
           },
         ],
         () => {},
