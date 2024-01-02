@@ -63,22 +63,28 @@ function ReferenceListPage({
                   );
                 })}
               </ListContainer>
-              <PageNavigation
-                text={String(page)}
-                onPrev={() =>
-                  page > 1 &&
-                  navigate(`${location.pathname}?page=${Math.max(page - 1, 1)}`)
-                }
-                onNext={() =>
-                  page < Math.ceil(notes.length / N_PER_PAGE) &&
-                  navigate(
-                    `${location.pathname}?page=${Math.min(
-                      page + 1,
-                      Math.ceil(notes.length / N_PER_PAGE)
-                    )}`
-                  )
-                }
-              />
+              {notes.length > N_PER_PAGE && (
+                <PageNavigation
+                  text={String(page)}
+                  onPrev={() =>
+                    page > 1 &&
+                    navigate(
+                      `${location.pathname}?page=${Math.max(page - 1, 1)}`
+                    )
+                  }
+                  onNext={() =>
+                    page < Math.ceil(notes.length / N_PER_PAGE) &&
+                    navigate(
+                      `${location.pathname}?page=${Math.min(
+                        page + 1,
+                        Math.ceil(notes.length / N_PER_PAGE)
+                      )}`
+                    )
+                  }
+                  prevDisabled={page <= 1}
+                  nextDisabled={page >= Math.ceil(notes.length / N_PER_PAGE)}
+                />
+              )}
             </>
           ) : (
             <Typography>There seems to be nothing here...</Typography>

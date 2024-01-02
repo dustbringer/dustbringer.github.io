@@ -108,6 +108,8 @@ function ImageViewerPage() {
           text={String(counter)}
           onPrev={onPrev}
           onNext={onNext}
+          prevDisabled={counter <= 0}
+          nextDisabled={counter >= json.length - 1}
         />
         {json && json.length !== 0 ? (
           <img src={json[counter].link} alt="parsed output" />

@@ -106,7 +106,7 @@ function ResumePage() {
                 variant="body1"
                 sx={{ ...style.bold, ...style.italic }}
               >
-                Private Mathematics Tutor (2016 - Present)
+                Private Mathematics Tutor (2016 - 2023)
               </Typography>
               <Typography variant="body1" gutterBottom>
                 One-on-one private tutor for high school students, in topics up
