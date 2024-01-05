@@ -255,7 +255,7 @@ export default MarkdownFootnoteRelabel;
 export function Head() {
   return (
     <>
-      <title>{`Markdown Footnote Relabeller | dustbringer.github.io`}</title>
+      <title>Markdown Footnote Relabeller | dustbringer.github.io</title>
       <meta name="description" content="Markdown Footnote Relabeller" />
     </>
   );

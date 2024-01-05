@@ -34,7 +34,7 @@ const NoStyleLink = styled(GatsbyLink)`
   }
 `;
 
-export function LinkBare(props: { to: string }) {
+export function LinkBare(props: React.PropsWithChildren<{ to: string }>) {
   return (
     <NoStyleLink
       target="_blank"

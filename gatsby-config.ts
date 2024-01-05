@@ -8,8 +8,8 @@ const config: GatsbyConfig = {
   },
   siteMetadata: {
     siteUrl: "https://dustbringer.github.io",
-    title: "Victa's personal website",
-    description: "My portfolio and blog, built with ReactJS and Gatsby.js!",
+    title: "Victor's personal website",
+    description: "My portfolio and blog.",
   },
   plugins: [
     "gatsby-plugin-layout",

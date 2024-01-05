@@ -38,7 +38,7 @@ function Code(
   const theme = useTheme();
   const style = theme.palette.mode === "dark" ? tomorrow : prism;
 
-  return props.inline ? (
+  return props.inline !== undefined ? (
     <StyledCodeInline {...props} prismstyle={style}>
       {props.children}
     </StyledCodeInline>

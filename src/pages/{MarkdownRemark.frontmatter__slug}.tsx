@@ -188,7 +188,7 @@ export function Head({ data }: PageProps<DataTypeMarkdown<MdPageType>>) {
 
   return (
     <>
-      <title>{meta.title} | dustbringer.github.io</title>
+      <title>{`${meta.title}`} | dustbringer.github.io</title>
       <meta name="description" content={`${meta.title}`} />
     </>
   );

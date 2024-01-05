@@ -238,7 +238,7 @@ export default JapaneseFileReaderPage;
 export function Head() {
   return (
     <>
-      <title>{`Japanese File Reader | dustbringer.github.io`}</title>
+      <title>Japanese File Reader | dustbringer.github.io</title>
       <meta name="description" content="Japanese File Reader" />
     </>
   );
