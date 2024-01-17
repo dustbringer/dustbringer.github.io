@@ -1,0 +1,22 @@
+\documentclass[
+    tikz,
+    border=5px,
+    convert={
+        density=600,
+        size=400x400,
+        outext=.svg,
+        convertexe={dvisvgm},
+        command=\unexpanded{{\convertexe\space --pdf  --zoom=1.5 \infile}}}]
+    {standalone}
+\usetikzlibrary{cd} % commutative diagrams
+\usepackage{amsmath, amssymb, amsfonts, amscd}
+
+\begin{document}
+\begin{tikzcd}[sep=large]
+    (A,B)
+    & \Delta(A \times B) \arrow[l, "{(\pi_1,\pi_2)}"', red]
+    & A \times B \\
+    & \Delta(C) \arrow[ul, "{(f_1,f_2)}"] \arrow[u, "\Delta f"', dashed]
+    & C \arrow[u, "f"', dashed]
+\end{tikzcd}
+\end{document}

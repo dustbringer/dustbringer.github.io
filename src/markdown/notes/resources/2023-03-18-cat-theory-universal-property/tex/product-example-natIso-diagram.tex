@@ -1,0 +1,23 @@
+\documentclass[
+    tikz,
+    border=5px,
+    convert={
+        density=600,
+        size=400x400,
+        outext=.svg,
+        convertexe={dvisvgm},
+        command=\unexpanded{{\convertexe\space --pdf  --zoom=1.5 \infile}}}]
+    {standalone}
+\usetikzlibrary{cd} % commutative diagrams
+\usepackage{amsmath, amssymb, amsfonts, amscd}
+
+\begin{document}
+\begin{tikzcd}[sep=large]
+    \operatorname{Hom}_{\mathcal{C}\times\mathcal{C}}(\Delta D, (A,B)) \arrow[r, "\eta_D", red] \arrow[d, "{\operatorname{Hom}_{\mathcal{C}\times\mathcal{C}}(\Delta h, (A,B))}"']
+    & \operatorname{Hom}_\mathcal{C}(D, A \times B) \arrow[d, "{\operatorname{Hom}_\mathcal{C}(h, A \times B)}"]
+    & D \\
+    \operatorname{Hom}_{\mathcal{C}\times\mathcal{C}}(\Delta C, (A,B)) \arrow[r, "\eta_C"', red]
+    & \operatorname{Hom}_\mathcal{C}(C, A \times B)
+    & C \arrow[u,"h"']
+\end{tikzcd}
+\end{document}

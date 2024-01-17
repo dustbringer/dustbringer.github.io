@@ -27,8 +27,9 @@ The dual is the same with the arrows and composition reversed.
 **Definition.** [Reihl[^2], Definition 2.3.3 (page 62)]
 Let $\mathcal{C}$ be a category. A *universal property* of an object $c \in \mathcal{C}$ is expressed by a representable functor $F: \mathcal{C} \to \cat{Set}$ and an element $x \in Fc$ that defines a natural isomorphism $\mathcal{C}(c,-) \cong F$ by the Yoneda Lemma. The dual has the natural isomorphism $\mathcal{C}(-,c) \cong F$.
 
-
 We call $c$ the *universal object*, $x$ the *universal element* and say that $(x,c)$ has the *universal property* expressed by $F$. [^3]
+
+> **Note.** This is directly transcribed from the book, and the names do not line up. The correspondence appears in "Terminology and notation" below.
 
 
 ## Thoughts
@@ -50,6 +51,7 @@ The proposition says that saying $(a,u)$ is universal morphism is equivalent to 
 - an element $u \in \mathcal{C}(c,S\red{a})$, corresponding to the natural isomorphism (via Yoneda lemma), and
 - for any $d \in \mathcal{D}$ and morphism $f:c \to Sd$ in $\mathcal{C}(c,Sd)$
 - there is a *unique* morphism $f':a \to d$ in $\mathcal{D}(a,d)$ such that $f = Sf' \circ u$.
+  - the commuting property is a consequence of naturality (see Product example)
 
 ![](./resources/2023-03-18-cat-theory-universal-property/tex/maclane-def-commdiag.svg)
 
@@ -63,7 +65,7 @@ Mac Lane also provides a way to translate from a universal property on a functor
 It works as follows. Let $*$ be the set with one point, and let $\cat{Ens}$ be an appropriate [full small subcategory of the metacategory of sets](https://math.stackexchange.com/a/495763). Given a representing object $a$ and universal element $u \in F(a)$, consider $u$ as a morphism $* \to F(a)$ in $\cat{Ens}$. Then $(a,u)$ is exactly the universal morphism from $*$ to $F$. Note that doing this *changes* the universal morphism/object/element, because the functor is different so is represented differently.
 
 
-## Terminology and notation
+## Terminology and notation (and translation)
 Mac Lane's definition, let $S: \mathcal{D} \to \mathcal{C}$, $c \in \mathcal{C}$, $a \in \mathcal{D}$, $u: c \to Sa$ in $\mathcal{C}$.
 
 - **universal morphism** is $(a,u)$
@@ -82,6 +84,7 @@ Riehl's definition, let $F: \mathcal{D} \to \cat{Set}$ be represented by $a \in 
 
 Similarly named things here are *the same*, by [Maclane[^1], page 59 (Proposition 1)].
 
+**Note.** The dual universal property has the hom-functors reversed, eg. the Yoneda lemma statement will have $\Hom(\mathcal{D}(-,a), \mathcal{C}(S-,c)) \cong \mathcal{C}(Sa,c)$.
 
 ## Example: Free abelian group
 The free abelian group construction (from StackExchange[^3]).
@@ -147,6 +150,46 @@ $$
 $$
 Here the universal object is $X/\sim$ and the universal element is the canonical projection $q: X \to X/\sim$ in $F(X/\sim)$ (Yoneda). This has the same information as the first diagram above: given any object $Y$ and morphism $f: X \to Y$ in $F(Y)$ that respects the equivalence relation, there exists a unique morphism $\tilde{f} \in \mathcal{C}(X/\sim, Y)$ such that $f = \tilde{f} \circ q$. That is, all such morphisms $f$ *factor through* the quotient $X/\sim$.
 
+## Example: Products
+
+Let $\mathcal{C}$ be a category and elements $A,B \in \mathcal{C}$. The product of $A$ and $B$, we write as $A \times B$, is the element in $\mathcal{C}$ (along with projection maps $\pi_1: A \times B \to A, \pi_2: A \times B \to B$) with the following universal property. For any $C \in \mathcal{C}$ and maps $f_1:C \to A, f_2:C \to B$, there is a unique morphism $f:C \to A \times B$ such that $f_1 = \pi_1 \circ f$ and $f_2 = \pi_2 \circ f$. This is typically depicted by the following commutative diagram.
+
+![](./resources/2023-03-18-cat-theory-universal-property/tex/product-example-diagram1.svg)
+
+To write this like the triangle diagrams we have above, we define the **diagonal functor** $\Delta : \mathcal{C} \to \mathcal{C} \times \mathcal{C}, A \mapsto (A,A)$, from $\mathcal{C}$ to the product category $\mathcal{C} \times \mathcal{C}$ (excuse the apparent recursion). We can use this to "fold" the sides of the above diagram to the following equivalent commuting diagram.
+
+![](./resources/2023-03-18-cat-theory-universal-property/tex/product-example-diagram2.svg)
+
+This depicts a universal morphism from $\Delta$ to $(A,B)$ given by the product object $A \times B \in \mathcal{C}$ with the projection maps $(\pi_1,\pi_2)$. This is in the form of MacLane's definition.
+
+**In terms of Reihl's definition**: Note that this is the dual universal property as morphisms are reversed as in the definition, and thus we need to dualise the "translation" we gave above. The representable functor we have is $\Hom_{\mathcal{C} \times \mathcal{C}}(\Delta -, (A,B)): \mathcal{C}^{op} \to \cat{Set}$ (using $\Hom$ to make it easier to read), represented by $A \times B$. The universal element is $(\pi_1,\pi_2) \in \Hom_{\mathcal{C} \times \mathcal{C}}(\Delta (A \times B), (A,B))$. By Yoneda lemma (and (Reihl) definition of universal property), this universal element $(\pi_1,\pi_2)$ corresponds to the natural isomorphism
+$$
+\Hom_\mathcal{C}(-,A \times B) \cong \Hom_{\mathcal{C} \times \mathcal{C}}(\Delta -, (A,B))
+$$
+which is natural in $C$ (of the above diagram). To reiterate the connection between the definitions, this natural isomorphism (depending on the universal element $(\pi_1,\pi_2)$) is a one-to-one correspondence between morphisms $(f_1,f_2): \Delta C \to (A,B)$ and $f: C \to A \times B$ (which gives rise to $\Delta f: \Delta C \to \Delta(A \times B)$  in the diagram). In other words, given any $C \in \mathcal{C}$ and $(f_1,f_2) \in \mathcal{C} \times \mathcal{C}$, there exists $f: C \to A \times B$ in $\mathcal{C}$ such that the construction is natural in $C$ (the naturality gives rise to the commuting diagram).
+
+By the proof of the Yoneda lemma, the natural isomorphism associated with $(\pi_1,\pi_2)$ is
+$$
+\alpha_C: \Hom_\mathcal{C}(C,A \times B) \xto{\sim} \Hom_{\mathcal{C} \times \mathcal{C}}(\Delta C, (A,B))
+$$
+which takes $f: C \to A \times B$ to $\Hom_{\mathcal{C} \times \mathcal{C}}(\Delta f, (A,B)) (\pi_1,\pi_2) = (\pi_1 \circ f, \pi_2 \circ f) : \Delta C \to (A,B)$. We write the inverse as mapping $(f_1,f_2) \mapsto \angl{f_1,f_2}$ [^4], which, in $\cat{Set}$, is the function $\angl{f_1,f_2}: C \to A \times B, c \mapsto (f_1(c),f_2(c))$.
+
+**Naturality.** We use this chance to also explore the "natural" part of this natural isomorphism arising from the Yoneda lemma. Let
+$$
+\red{\eta}: \Hom_{\mathcal{C} \times \mathcal{C}}(\Delta -, (A,B)) \xto{\sim} \Hom_\mathcal{C}(-,A \times B)
+$$
+be the above natural isomorphism. Then naturality implies that the following diagram commutes (isomorphism implies that the inverse natural transformation gives a similar commuting diagram).
+
+![](./resources/2023-03-18-cat-theory-universal-property/tex/product-example-natiso-diagram.svg)
+
+Note that this is a natural transformation between two contrapositive functors, so the vertical arrows are reversed. The left arrow takes a morphism $\Delta D = (D,D) \to (A,B)$ and precomposes with $\Delta h = (h,h): (C,C) \to (D,D)$, and the right arrow takes a morphism $D \to A \times B$ and precomposes with $h: C \to D$.
+
+Chasing the diagram gives some intuition into what is happening. Take some arbitrary $(f_1,f_2) \in \Hom_{\mathcal{C}\times\mathcal{C}}(\Delta D, (A,B))$, the top arrow gives $\angl{f_1,f_2}: D \to A \times B$ and the right arrow gives a map $\angl{f_1,f_2} \circ h$. Along the other branch, the left arrow produces $(f_1 \circ h, f_2 \circ h)$ and the bottom gives $\angl{f_1 \circ h, f_2 \circ h}$. Commutativity is just the equality $\angl{f_1,f_2} \circ h = \angl{f_1 \circ h, f_2 \circ h}$, which should be clear on the level of sets.
+
+Taking $C$ arbitrary, $D = A \times B$, $h = \eta_C(f_1,f_2): C \to A \times B$ we can recover the commuting property. Let's chase $(\pi_1,\pi_2) \in \Hom_{\mathcal{C}\times\mathcal{C}}(\Delta (A \times B), (A,B))$ through the diagram. The top branch sends this to the identity $A\times B \to A \times B$ (of course the universal morphism factors through itself via the identity), then the right branch precomposes this with $h$, resulting in $h = \eta_C(f_1,f_2)$. Since $\eta$ is a natural *isomorphism*, we can invert along the bottom arrow to give $(f_1,f_2)$ in the bottom left set. Now the left branch precomposes $(\pi_1,\pi_2)$ with $\Delta h$, which results in $(\pi_1 \circ h, \pi_2 \circ h)$. Since the diagram commutes, we have that $(f_1,f_2) = (\pi_1 \circ h, \pi_2 \circ h)$ which is the commutativity of the original diagram.
+
+
+
 ## Uniqueness
 It can be shown that if a functor $F$ can be represented by two different universal objects $a, a'$, then $a$ and $a'$ are isomorphic (see [Reihl[^2], Proposition 2.3.1 (page 62)] or StackExchange[^3])
 
@@ -155,3 +198,8 @@ It can be shown that if a functor $F$ can be represented by two different univer
 [^1]: Mac Lane, *Categories for the working mathematician*.
 [^2]: Reihl, *Category Theory in Context*.
 [^3]: Math StackExchange, Understanding Universal Property and Universal Element (from Category Theory in Context, Riehl), https://math.stackexchange.com/questions/3688510/understanding-universal-property-and-universal-element-from-category-theory-in
+[^4]: Notation from [Wikipedia](https://en.wikipedia.org/wiki/Product_(category_theory)#Product_of_two_objects)
+
+
+
+

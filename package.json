@@ -13,7 +13,6 @@
     "@mui/styled-engine": "latest",
     "@mui/styles": "^5.3.0",
     "@mui/system": "^5.15.0",
-    "@primer/octicons-react": "^16.1.1",
     "better-react-mathjax": "^1.0.3",
     "canvas": "^2.8.0",
     "clsx": "^1.1.1",

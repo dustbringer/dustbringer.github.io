@@ -1,0 +1,21 @@
+\documentclass[
+    tikz,
+    border=5px,
+    convert={
+        density=600,
+        size=400x400,
+        outext=.svg,
+        convertexe={dvisvgm},
+        command=\unexpanded{{\convertexe\space --pdf \space --zoom=1.5 \space \infile}}}]
+    {standalone}
+\usetikzlibrary{cd} % commutative diagrams
+\usepackage{amsmath, amssymb, amsfonts, amscd}
+
+\begin{document}
+\begin{tikzcd}[sep=large]
+    & C \arrow[dl, "f_1"'] \arrow[d,"f", dashed] \arrow[dr,"f_2"] \\
+    A
+    & A \times B \arrow[l, "\pi_1", red] \arrow[r, "\pi_2"', red]
+    & B
+\end{tikzcd}
+\end{document}
