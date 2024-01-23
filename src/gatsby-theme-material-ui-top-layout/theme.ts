@@ -2,6 +2,19 @@ import { createTheme } from "@mui/material";
 
 // https://material-ui.com/customization/default-theme/
 // https://mui.com/customization/default-theme/#main-content
+const typography = {
+  fontFamily: "'Open Sans', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'",
+  fontSize: 14,
+  h1: {
+    fontSize: "3.75rem",
+    fontWeight: 400,
+  },
+  h2: {
+    fontSize: "3.25rem",
+    fontWeight: 400,
+  },
+};
+
 export const themeLight = {
   palette: {
     mode: "light",
@@ -15,18 +28,7 @@ export const themeLight = {
       primary: "#2f3241",
     },
   },
-  typography: {
-    fontFamily: "'Open Sans', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'",
-    fontSize: 14,
-    h1: {
-      fontSize: "3.75rem",
-      fontWeight: 400,
-    },
-    h2: {
-      fontSize: "3.25rem",
-      fontWeight: 400,
-    },
-  },
+  typography: typography,
 };
 
 export const themeDark = {
@@ -46,18 +48,7 @@ export const themeDark = {
       default: "#1A1A1A",
     },
   },
-  typography: {
-    fontFamily: "'Open Sans', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'",
-    fontSize: 14,
-    h1: {
-      fontSize: "3.75rem",
-      fontWeight: 400,
-    },
-    h2: {
-      fontSize: "3.25rem",
-      fontWeight: 400,
-    },
-  },
+  typography: typography,
 };
 
 export const themePicker = (mode: "dark" | "light") =>

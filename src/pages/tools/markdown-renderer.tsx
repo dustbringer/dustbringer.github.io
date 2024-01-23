@@ -5,11 +5,17 @@ import { Helmet } from "react-helmet";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
+import Switch from "@mui/material/Switch";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import TextField from "@mui/material/TextField";
 
 import Container from "../../components/Container";
 import TextFieldSave from "../../components/TextFieldSave";
-import { DivMarginBottom } from "../../components/styled/Divs";
+import {
+  DivFlexCenterHInside,
+  DivMarginBottom,
+  DivMarginCenterH,
+} from "../../components/styled/Divs";
 import Markdown, {
   MarkdownNoContents,
   MarkdownNoFormat,
@@ -34,6 +40,7 @@ const RenderedText = styled(Typography)`
 function MarkdownRendererPage() {
   const [text, _setText] = React.useState("");
   const [renderScale, setRenderScale] = React.useState(1.4);
+  const [useMathJax, setUseMathJax] = React.useState(false);
 
   const setText = (newText: string) => {
     sessionStorage.setItem("markdownRendererText", newText);
@@ -114,6 +121,17 @@ function MarkdownRendererPage() {
               max={3.0}
               valueLabelDisplay="auto"
             />
+            Renderer
+            <DivFlexCenterHInside sx={{ alignItems: "center" }}>
+              Katex
+              <Switch
+                checked={useMathJax}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                  setUseMathJax(event.target.checked)
+                }
+              />
+              MathJax
+            </DivFlexCenterHInside>
           </Accordion>
         </DivMarginBottom>
 
@@ -141,7 +159,7 @@ function MarkdownRendererPage() {
           component="div"
           sx={{ fontSize: `${renderScale}rem` }}
         >
-          <MarkdownNoContents children={text} />
+          <MarkdownNoContents children={text} mathJax={useMathJax} />
           {/* <Markdown children={text} /> */}
         </Typography>
       </Container>

@@ -17,8 +17,8 @@ import "katex/dist/katex.min.css"; // styling math symbols to look like latex
 import katexMacros from "./katexMacros";
 
 // This doesnt work for now, try again later
-// import rehypeMathjax from "rehype-mathjax";
-// import rehypeMathjaxChtml from "rehype-mathjax/chtml.js";
+import rehypeMathjax from "rehype-mathjax/browser"; // ie. lets me render it myself
+import { MathJaxContext, MathJax } from "better-react-mathjax";
 
 /* @matejmazur/react-katex */
 // import TeX from "@matejmazur/react-katex";
@@ -123,7 +123,9 @@ export const rehypeRewriteOptions: RehypeRewriteOptions = {
   },
 };
 
-const _mapProps = (props: { allowHTML?: boolean } & Options) => ({
+const _mapProps = (
+  props: { allowHTML?: boolean; mathJax?: boolean } & Options
+) => ({
   ...props,
   remarkPlugins: [remarkMathPlugin, remarkGFMPlugin, remarkFrontmatterPlugin],
 
@@ -135,18 +137,27 @@ const _mapProps = (props: { allowHTML?: boolean } & Options) => ({
           [rehypeSanitize, {}],
         ]
       : []),
-    [
-      rehypeKatex,
-      {
-        // Input options from https://katex.org/docs/options.html
-        // Supported latex https://katex.org/docs/supported.html
-        // Macros with inputs: https://github.com/KaTeX/KaTeX/issues/2070#issuecomment-519833558
-        macros: katexMacros,
-        strict: `ignore`,
-      },
-    ],
+    ...(!props.mathJax
+      ? [
+          rehypeKatex,
+          {
+            // Input options from https://katex.org/docs/options.html
+            // Supported latex https://katex.org/docs/supported.html
+            // Macros with inputs: https://github.com/KaTeX/KaTeX/issues/2070#issuecomment-519833558
+            macros: katexMacros,
+            strict: `ignore`,
+          },
+        ]
+      : [
+          rehypeMathjax,
+          {
+            chtml: {
+              fontURL:
+                "https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2",
+            },
+          },
+        ]),
     [rehypeRewrite, rehypeRewriteOptions],
-    // ...(!props.mathJax ? [rehypeKatex] : [rehypeMathjax]),
   ],
   components: {
     blockquote: BlockQuoteRenderer,
@@ -175,8 +186,22 @@ const _mapProps = (props: { allowHTML?: boolean } & Options) => ({
 
 type Props = {
   allowHTML?: boolean;
+  mathJax?: boolean;
   components?: Components;
   children: string;
+};
+
+const mathJaxConfig = {
+  tex: {
+    inlineMath: [
+      ["$", "$"],
+      ["\\(", "\\)"],
+    ],
+    displayMath: [
+      ["$$", "$$"],
+      ["\\[", "\\]"],
+    ],
+  },
 };
 
 // Repeated code
@@ -184,10 +209,18 @@ type Props = {
 function _Markdown(props: Props) {
   return (
     <MarkdownFormatDiv>
-      <ErrorBoundary fallback={<Typography>Error!</Typography>} showrerender>
-        {/* The module typing isn't clear, so the custom components cause errors */}
-        <ReactMarkdown {..._mapProps(props)} />
-      </ErrorBoundary>
+      <MathJaxContext config={mathJaxConfig}>
+        <ErrorBoundary fallback={<Typography>Error!</Typography>} showrerender>
+          {/* The module typing isn't clear, so the custom components cause errors */}
+          {props.mathJax ? (
+            <MathJax>
+              <ReactMarkdown {..._mapProps(props)} />
+            </MathJax>
+          ) : (
+            <ReactMarkdown {..._mapProps(props)} />
+          )}
+        </ErrorBoundary>
+      </MathJaxContext>
     </MarkdownFormatDiv>
   );
 }

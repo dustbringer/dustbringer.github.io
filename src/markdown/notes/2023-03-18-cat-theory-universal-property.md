@@ -4,7 +4,7 @@ title: "Category theory: Universal property"
 description: Details about universal properties.
 author: dustbringer
 date: 2023-03-18
-edited: 2023-08-03
+edited: 2024-01-17
 tags:
     - category theory
 ---
@@ -15,8 +15,8 @@ Notes in my attempt to consolidate two definitions of 'universal property'.
 
 ## Mac Lane Definition
 
-**Definition.** [Maclane[^1], page 57]
-Let $\mathcal{C}$ and $\mathcal{D}$ be categories. For a functor $S: \mathcal{D} \to \mathcal{C}$ and an object $c \in \mathcal{C}$, a *universal morphism* from $c$ to $S$ is a pair $(a,u)$, where $a \in \mathcal{D}$ and $u: c \to Sa$ in $\mathcal{C}$, such that for any pair $(d \in \mathcal{D}, f:c \to Sd)$ there exists a **unique** morphism $\tilde{f}: a \to d$ in $\mathcal{D}$ such that $Sf' \circ u = f$. In other words, every morphism $f: c \to Sd$ factors uniquely through the universal morphism $u$. In, again, other words, the following diagram commutes.
+**Definition.** [Maclane[^1], page 55]
+Let $\mathcal{C}$ and $\mathcal{D}$ be categories. For a functor $S: \mathcal{D} \to \mathcal{C}$ and an object $c \in \mathcal{C}$, a *universal morphism* from $c$ to $S$ is a pair $(a,u)$, where $a \in \mathcal{D}$ and $u: c \to Sa$ in $\mathcal{C}$, such that for any pair $(d \in \mathcal{D}, f:c \to Sd)$ there exists a **unique** morphism $f': a \to d$ in $\mathcal{D}$ such that $Sf' \circ u = f$. In other words, every morphism $f: c \to Sd$ factors uniquely through the universal morphism $u$. In, again, other words, the following diagram commutes.
 
 ![](./resources/2023-03-18-cat-theory-universal-property/tex/maclane-def-commdiag.svg)
 
@@ -35,7 +35,7 @@ We call $c$ the *universal object*, $x$ the *universal element* and say that $(x
 ## Thoughts
 ### Universal Morphism to Representation
 These two definitions are equivalent by [Maclane[^1], page 59 (Proposition 1)]. Roughly it says
-- for a functor $S: \mathcal{D} \to \mathcal{C}$ and object $c \in C$, $(a \in \mathcal{D}, u: c \to Sa)$ is a universal morphism from $c$ to $S$ **if and only if** the collection of functions
+- for a functor $S: \mathcal{D} \to \mathcal{C}$ and object $c \in \mathcal{C}$, $(a \in \mathcal{D}, u: c \to Sa)$ is a universal morphism from $c$ to $S$ **if and only if** the collection of functions
     $$
     \tau_d: (f': a \to d) \mapsto (Sf' \circ u: c \to Sd)
     $$
@@ -160,7 +160,7 @@ To write this like the triangle diagrams we have above, we define the **diagonal
 
 ![](./resources/2023-03-18-cat-theory-universal-property/tex/product-example-diagram2.svg)
 
-This depicts a universal morphism from $\Delta$ to $(A,B)$ given by the product object $A \times B \in \mathcal{C}$ with the projection maps $(\pi_1,\pi_2)$. This is in the form of MacLane's definition.
+This depicts a universal morphism from $\Delta$ to $(A,B)$ given by the product object $A \times B \in \mathcal{C}$ with the projection maps $(\pi_1,\pi_2)$, which is in the form of MacLane's definition.
 
 **In terms of Reihl's definition**: Note that this is the dual universal property as morphisms are reversed as in the definition, and thus we need to dualise the "translation" we gave above. The representable functor we have is $\Hom_{\mathcal{C} \times \mathcal{C}}(\Delta -, (A,B)): \mathcal{C}^{op} \to \cat{Set}$ (using $\Hom$ to make it easier to read), represented by $A \times B$. The universal element is $(\pi_1,\pi_2) \in \Hom_{\mathcal{C} \times \mathcal{C}}(\Delta (A \times B), (A,B))$. By Yoneda lemma (and (Reihl) definition of universal property), this universal element $(\pi_1,\pi_2)$ corresponds to the natural isomorphism
 $$
@@ -182,7 +182,7 @@ be the above natural isomorphism. Then naturality implies that the following dia
 
 ![](./resources/2023-03-18-cat-theory-universal-property/tex/product-example-natiso-diagram.svg)
 
-Note that this is a natural transformation between two contrapositive functors, so the vertical arrows are reversed. The left arrow takes a morphism $\Delta D = (D,D) \to (A,B)$ and precomposes with $\Delta h = (h,h): (C,C) \to (D,D)$, and the right arrow takes a morphism $D \to A \times B$ and precomposes with $h: C \to D$.
+Note that this is a natural transformation between two contravariant functors, so the vertical arrows are reversed. The left arrow takes a morphism $\Delta D = (D,D) \to (A,B)$ and precomposes with $\Delta h = (h,h): (C,C) \to (D,D)$, and the right arrow takes a morphism $D \to A \times B$ and precomposes with $h: C \to D$.
 
 Chasing the diagram gives some intuition into what is happening. Take some arbitrary $(f_1,f_2) \in \Hom_{\mathcal{C}\times\mathcal{C}}(\Delta D, (A,B))$, the top arrow gives $\angl{f_1,f_2}: D \to A \times B$ and the right arrow gives a map $\angl{f_1,f_2} \circ h$. Along the other branch, the left arrow produces $(f_1 \circ h, f_2 \circ h)$ and the bottom gives $\angl{f_1 \circ h, f_2 \circ h}$. Commutativity is just the equality $\angl{f_1,f_2} \circ h = \angl{f_1 \circ h, f_2 \circ h}$, which should be clear on the level of sets.
 
@@ -190,7 +190,7 @@ Taking $C$ arbitrary, $D = A \times B$, $h = \eta_C(f_1,f_2): C \to A \times B$ 
 
 
 
-## Uniqueness
+## Uniqueness of representing objects
 It can be shown that if a functor $F$ can be represented by two different universal objects $a, a'$, then $a$ and $a'$ are isomorphic (see [Reihl[^2], Proposition 2.3.1 (page 62)] or StackExchange[^3])
 
 
