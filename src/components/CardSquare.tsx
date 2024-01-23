@@ -37,16 +37,18 @@ function CardSquare({
   title,
   description,
   path,
+  externalLink = false,
 }: {
   name?: string;
   type?: string;
   title?: string;
   description: string;
   path: string;
+  externalLink?: boolean;
 }) {
   return (
     <Card sx={styles.root} variant="outlined">
-      <InternalLink to={path}>
+      <InternalLink to={path} inPlace={externalLink}>
         <CardActionArea title={name}>
           <CardContent
             sx={{

@@ -1,6 +1,7 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
 import { Link as GatsbyLink } from "gatsby";
+import { removeKey } from "../util/objects";
 
 const StyledLink = styled(GatsbyLink)`
   font-weight: 600;
@@ -34,12 +35,21 @@ const NoStyleLink = styled(GatsbyLink)`
   }
 `;
 
-export function LinkBare(props: React.PropsWithChildren<{ to: string }>) {
+export function LinkBare(
+  props: React.PropsWithChildren<{ to: string; inPlace?: boolean }>
+) {
+  const linkprops = props.inPlace
+    ? {}
+    : {
+        target: "_blank",
+        rel: "noopener noreferrer",
+      };
   return (
     <NoStyleLink
-      target="_blank"
-      rel="noopener noreferrer"
-      {...props}
+      {...linkprops}
+      {...(removeKey(props, "inPlace") as React.PropsWithChildren<{
+        to: string;
+      }>)}
     ></NoStyleLink>
   );
 }

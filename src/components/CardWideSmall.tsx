@@ -29,6 +29,7 @@ function CardWideSmall({
   description,
   date = "",
   path,
+  externalLink = false,
 }: {
   name?: string;
   type?: string;
@@ -36,10 +37,11 @@ function CardWideSmall({
   description: string;
   date?: string;
   path: string;
+  externalLink?: boolean;
 }) {
   return (
     <Card sx={styles.root} variant="outlined" title={name}>
-      <InternalLink to={path}>
+      <InternalLink to={path} inPlace={externalLink}>
         <CardActionArea>
           <CardContent sx={{ padding: "6px 10px" }}>
             <Typography

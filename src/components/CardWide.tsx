@@ -29,6 +29,7 @@ function CardWide({
   description,
   date = "",
   path,
+  externalLink = false,
 }: {
   name?: string;
   type?: string;
@@ -36,10 +37,11 @@ function CardWide({
   description: string;
   date?: string;
   path: string;
+  externalLink?: boolean;
 }) {
   return (
     <Card sx={styles.root} variant="outlined">
-      <InternalLink to={path}>
+      <InternalLink to={path} inPlace={externalLink}>
         <CardActionArea title={name}>
           <CardContent>
             <Typography variant="h5" component="h5" display="inline">
