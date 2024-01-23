@@ -5,6 +5,8 @@
   X-XSS-Protection: 1; mode=block
   X-Content-Type-Options: nosniff
   Referrer-Policy: same-origin
+/static/profile-bird-md-25fa8406418ff0cf80fff9473420b5e9.jpg
+  Cache-Control: public, max-age=31536000, immutable
 /static/KaTeX_AMS-Regular-73ea273a72f4aca30ca528cf9117470a.woff2
   Cache-Control: public, max-age=31536000, immutable
 /static/KaTeX_AMS-Regular-d562e886c52f12660a41eea8d05af757.woff
@@ -97,13 +99,11 @@
   Cache-Control: public, max-age=31536000, immutable
 /static/KaTeX_Typewriter-Regular-c5c02d763c89380dcb4ed359e15d0897.ttf
   Cache-Control: public, max-age=31536000, immutable
-/static/profile-bird-md-25fa8406418ff0cf80fff9473420b5e9.jpg
-  Cache-Control: public, max-age=31536000, immutable
 /styles.89516a099dd9dfbefd82.css
   Cache-Control: public, max-age=31536000, immutable
 /187d58fe-4bfe8d9040010eda842e.js.LICENSE.txt
   Cache-Control: public, max-age=31536000, immutable
-/1e988c188acd1277bcf9f052139033705f8b34fb-75b51a5fbf7c866468f0.js.LICENSE.txt
+/1e988c188acd1277bcf9f052139033705f8b34fb-542064bd503771e4bcee.js.LICENSE.txt
   Cache-Control: public, max-age=31536000, immutable
 /app-0c91bc34c70986b059ba.js.LICENSE.txt
   Cache-Control: public, max-age=31536000, immutable
@@ -116,8 +116,6 @@
 /framework-25c231ba39d25b04d0fa.js.LICENSE.txt
   Cache-Control: public, max-age=31536000, immutable
 /app-0c91bc34c70986b059ba.js
-  Cache-Control: public, max-age=31536000, immutable
-/webpack-runtime-78080e3b5097da776185.js
   Cache-Control: public, max-age=31536000, immutable
 /component---src-pages-404-tsx-f78498c4c9ea595fc4c3.js
   Cache-Control: public, max-age=31536000, immutable
@@ -165,8 +163,6 @@
   Cache-Control: public, max-age=31536000, immutable
 /b4f05d3ba0e63c18c00059e09c6738188b27c77f-6593926da0c1c607bee0.js
   Cache-Control: public, max-age=31536000, immutable
-/1e988c188acd1277bcf9f052139033705f8b34fb-75b51a5fbf7c866468f0.js
-  Cache-Control: public, max-age=31536000, immutable
 /9eb15412ba5a53c200107720e11afc998700762d-33db3b57c922e48501eb.js
   Cache-Control: public, max-age=31536000, immutable
 /0ffc7a173c6d06772aa71f0161ede4299f11ae82-0ee503fe169ff013c46b.js
@@ -178,8 +174,6 @@
 /6c9eeb62f149309efd8211ce764738c39d741926-45c4c2cd69bfd67e0586.js
   Cache-Control: public, max-age=31536000, immutable
 /app-0c91bc34c70986b059ba.js.map
-  Cache-Control: public, max-age=31536000, immutable
-/webpack-runtime-78080e3b5097da776185.js.map
   Cache-Control: public, max-age=31536000, immutable
 /component---src-pages-404-tsx-f78498c4c9ea595fc4c3.js.map
   Cache-Control: public, max-age=31536000, immutable
@@ -227,8 +221,6 @@
   Cache-Control: public, max-age=31536000, immutable
 /b4f05d3ba0e63c18c00059e09c6738188b27c77f-6593926da0c1c607bee0.js.map
   Cache-Control: public, max-age=31536000, immutable
-/1e988c188acd1277bcf9f052139033705f8b34fb-75b51a5fbf7c866468f0.js.map
-  Cache-Control: public, max-age=31536000, immutable
 /9eb15412ba5a53c200107720e11afc998700762d-33db3b57c922e48501eb.js.map
   Cache-Control: public, max-age=31536000, immutable
 /0ffc7a173c6d06772aa71f0161ede4299f11ae82-0ee503fe169ff013c46b.js.map
@@ -238,6 +230,20 @@
 /de4f764a6d3b93dc31b16479ec57344bf5b06c55-4a18b3f5a3a81948a700.js.map
   Cache-Control: public, max-age=31536000, immutable
 /6c9eeb62f149309efd8211ce764738c39d741926-45c4c2cd69bfd67e0586.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/webpack-runtime-2158dec7be3172fb378b.js
+  Cache-Control: public, max-age=31536000, immutable
+/1e988c188acd1277bcf9f052139033705f8b34fb-542064bd503771e4bcee.js
+  Cache-Control: public, max-age=31536000, immutable
+/webpack-runtime-2158dec7be3172fb378b.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/1e988c188acd1277bcf9f052139033705f8b34fb-542064bd503771e4bcee.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/1e988c188acd1277bcf9f052139033705f8b34fb-75b51a5fbf7c866468f0.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/1e988c188acd1277bcf9f052139033705f8b34fb-75b51a5fbf7c866468f0.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/webpack-runtime-78080e3b5097da776185.js.map
   Cache-Control: public, max-age=31536000, immutable
 /static/*
   Cache-Control: public, max-age=31536000, immutable
