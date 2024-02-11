@@ -103,17 +103,27 @@ function LyricSlidesPage() {
   ) => newType !== null && setSplitType(newType);
 
   // Add one more slide at the end, which will be the 'finished' slide
-  const pageNext = () =>
-    slideText.length !== 0 && setPage(Math.min(page + 1, slideText.length - 1));
-  const pagePrev = () => setPage(Math.max(page - 1, 0));
+  const pageNext = React.useCallback(
+    () =>
+      slideText.length !== 0 &&
+      setPage(Math.min(page + 1, slideText.length - 1)),
+    [slideText, page]
+  );
+  const pagePrev = React.useCallback(
+    () => setPage(Math.max(page - 1, 0)),
+    [slideText, page]
+  );
 
   // Not the full event handler, because we need to use for
   // React element (with type React.KeyboardEvent<HTMLDivElement>)
   // and div eventlistener (with type KeyboardEvent)
-  const _handleKeyDown = React.useCallback((key: string) => {
-    if (key === "ArrowLeft") pagePrev();
-    else if (key === "ArrowRight") pageNext();
-  }, []);
+  const _handleKeyDown = React.useCallback(
+    (key: string) => {
+      if (key === "ArrowLeft") pagePrev();
+      else if (key === "ArrowRight") pageNext();
+    },
+    [pageNext, pagePrev]
+  );
 
   // Update slide text (applying the new settings)
   const updateSlides = () => {
@@ -181,18 +191,21 @@ function LyricSlidesPage() {
 
   // New Window keypress handlers
   React.useEffect(() => {
+    const keypressListener = (e) => _handleKeyDown(e.key);
+
     if (popupRef.current) {
       // Attach keyboard event listener
-      popupRef.current.window.document.addEventListener("keydown", (e) =>
-        _handleKeyDown(e.key)
+      popupRef.current.window.document.addEventListener(
+        "keydown",
+        keypressListener
       );
     }
-
     // Remove keyboard event listener
     return () => {
       if (popupRef.current) {
-        popupRef.current.window.document.removeEventListener("keydown", (e) =>
-          _handleKeyDown(e.key)
+        popupRef.current.window.document.removeEventListener(
+          "keydown",
+          keypressListener
         );
       }
     };
