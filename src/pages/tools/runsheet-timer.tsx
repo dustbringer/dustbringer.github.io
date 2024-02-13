@@ -208,9 +208,10 @@ function TimerPage() {
                     const curDuration = moment.duration(
                       moment.min(curTime, endTime).diff(startTime)
                     );
-                    const curHours = Math.floor(curDuration.asHours());
-                    const curMinutes = Math.floor(curDuration.asMinutes()) % 60;
-                    const curSeconds = Math.floor(curDuration.asSeconds()) % 60;
+                    // use trunc instead of floor, so that negative time displays correctly
+                    const curHours = Math.trunc(curDuration.asHours());
+                    const curMinutes = Math.trunc(curDuration.asMinutes()) % 60;
+                    const curSeconds = Math.trunc(curDuration.asSeconds()) % 60;
                     return `${curHours}h ${curMinutes}m ${curSeconds}s of ${totalHours}h ${totalMinutes}m ${totalSeconds}s`;
                   })()}
                 </Typography>
