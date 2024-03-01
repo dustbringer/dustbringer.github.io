@@ -8,8 +8,8 @@ const config: GatsbyConfig = {
   },
   siteMetadata: {
     siteUrl: "https://dustbringer.github.io",
-    title: "Victor's personal website",
-    description: "My portfolio and blog.",
+    title: "Victor's website",
+    description: "Things to do with mathematics, computer science and other things I'm interested in.",
   },
   plugins: [
     "gatsby-plugin-layout",

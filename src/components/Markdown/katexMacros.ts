@@ -19,6 +19,7 @@ const macros: { [key in string]: string } = {
   "\\ep": "\\varepsilon",
   "\\vn": "\\varnothing",
   "\\Hom": "\\operatorname{Hom}",
+  "\\C": "\\mathbb{C}",
 };
 
 export default macros;
