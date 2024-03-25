@@ -34,10 +34,10 @@ For $GL(n,\R)$ to be a Lie group, it is left to show that the group multiplicati
 
 **Compactness**
 
-Since this is an embedded submanifold of $M_n(\R) \simeq R^{n^2}$, the Heine-Borel theorem says that compactness is equivalent to the statement that the topological space is *closed* and *bounded* in the usual norm.
+Since this is an embedded submanifold of $M_n(\R) \simeq R^{n^2}$, the Heine-Borel theorem says that compactness is equivalent to the statement that the topological space is *closed* and *bounded* in the usual norm. This applies to all the other matrix Lie groups we look at.
 
 $GL(n,\R)$ is not compact.
-- Consider the unbounded sequence of matrices $\{\lambda I\}_{\lambda > 0}$ where $I$ is the $n \times n$ identity matrix.
+- Consider the sequence of matrices $\{\lambda I\}_{\lambda > 0}$ where $I$ is the $n \times n$ identity matrix.
 - It is clear that $\op{det}(\lambda I) = \lambda^n > 0$, but its Eucildean norm is clearly unbounded. So this sequence in $GL(n,\R)$ is also unbounded.
 
 ## $GL(n,\C)$
@@ -64,19 +64,29 @@ where $V_i = \angl{e_1,...,e_i}$ with $e_1,...,e_n$ are the standard basis vecto
 
 Let $UT_n$ be the set of upper triangular matrices over $\R$. This is trivially a manifold by identifying it with $\R^{n(n+1)/2}$. Again, by considering the determinant map $\op{det}: UT_n(\R) \to \R$, we see that $B(n,\R) = \op{det}^{-1}(0) \subseteq UT_n$ is open in $UT_n$. Hence $B(n,\R)$ is a real manifold by (Prop 1). Similarly (or by extending the result from $GL(n,\R)$), the group structure is smooth with respect to this manifold structure, so $B(n,\R)$ is a real Lie group.
 
-*Alternative.* 
+*Alternative.* There is a theorem by Cartan (Closed Subgroup Theorem): Closed subgroups of a Lie group is an embedded manidold with smooth maps. We can see that $B(n,\R) \subseteq GL(n,\R)$ is clearly a subgroup and is closed because $UT_n \subseteq M_n$ is closed (it is a hyperplane in $\R^n$), and so $B(n,\R) = GL(n,\R) \cap UT_n$ is closed in $GL(n,\R)$. This theorem can be used to prove the other Lie groups as well, but isn't direct enough to satisfy me.
+
+Another argument for this being closed is the following. Consider the projection onto the "lower triangle", $f: GL(n,\R) \to \R^{n(n-1)/2}$ that maps matrices $(a_{ij})_{i,j}$ to the matrix with just the lower triangle entries $(a_{ij}, i > j)$ (and others are zero). This is a projection map so it is continuous. We have that $f^{-1}(\{0\}) = B(n,\R)$, which is closed as $\{0\}$ is closed in $\R$.
+
+**Compactness**
+$B(n,\R)$ is not compact. The same unbounded sequence we used for $GL(n,\R)$ is also in $B(n,\R)$.
+
+
+## $B(n,\C)$
+
+**Complex Lie group**
+
+Similar to the real case.
 
 **Compactness**
 
+Similar to the real case, this is non-compact.
 
+## $SL(n,\R)$
 
+A subgroup of $GL(n,\R)$, consisting of *matrices with determinant 1*. That is, volume and orientation preserving linear maps. It is also a normal subgroup of $GL(n,\R)$ since for $A \in SL(n,\R)$ and $M \in GL(n,\R)$ we have $MAM^{-1} \in SL(n,\R)$, as $\op{det}(MAM^{-1}) = \op{det}(M) \op{det}(A) \op{det}(M)^{-1} = \op{det}(A) = 1$.
 
-
-
-
-
-
-
+**Real Lie Group**
 
 
 
