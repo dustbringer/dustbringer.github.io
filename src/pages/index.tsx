@@ -61,16 +61,17 @@ function HomePage() {
           Victor Zhang
         </Typography>
         <Typography variant="body2" align="center" sx={{ marginBottom: "2em" }}>
-          Mathematician and Software Developer
+          Mathematician and Senior Bug Implementer
         </Typography>
 
         <Typography variant="body1" align="center" sx={{ marginBottom: "2em" }}>
-          Welcome to my website! Here you'll find a variety of sentences, tools
-          and pictures. There is a handful of blog posts in{" "}
-          <InternalLink to="/posts">Posts</InternalLink> and various
-          paraphernalia in <InternalLink to="/tools">Tools</InternalLink>. You
-          can learn more about me in{" "}
-          <InternalLink to="/about">About</InternalLink> and{" "}
+          Welcome to my website! You'll find a variety of sentences, tools and
+          pictures. There is a handful of readable blog posts in{" "}
+          <InternalLink to="/posts">Posts</InternalLink>, unreadable collection
+          of techinical posts in <InternalLink to="/notes">Notes</InternalLink>,{" "}
+          and miscellaneous paraphernalia in{" "}
+          <InternalLink to="/tools">Tools</InternalLink>. You can learn more
+          about me in <InternalLink to="/about">About</InternalLink> and{" "}
           <InternalLink to="/resume">Resume</InternalLink>.
         </Typography>
 

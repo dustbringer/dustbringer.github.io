@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { styled } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import TeX from "@matejmazur/react-katex";
 
 import Box from "@mui/material/Box";
@@ -13,6 +13,7 @@ import Code from "../components/Markdown/Code";
 import HorizontalRule from "../components/Markdown/HorizontalRule";
 import Table from "../components/Markdown/Table";
 import THead from "../components/Markdown/TableHead";
+import TBody from "../components/Markdown/TableBody";
 import TR from "../components/Markdown/TableRow";
 import TH from "../components/Markdown/TableCellHeader";
 import TD from "../components/Markdown/TableCellData";
@@ -38,6 +39,7 @@ const style = {
 
 function ResumePage() {
   // const history = useHistory();
+  const theme = useTheme();
 
   return (
     <>
@@ -45,7 +47,6 @@ function ResumePage() {
         <Typography variant="h4" gutterBottom>
           Resume
         </Typography>
-
         <Typography variant="h5">Proficiencies</Typography>
         <ul>
           <li>
@@ -85,162 +86,127 @@ function ResumePage() {
             </Typography>
           </li>
         </ul>
-
         <Typography variant="h5">Work Experience</Typography>
-        <Typography variant="body1" gutterBottom>
-          <ul>
-            <li>
-              <Typography
-                variant="body1"
-                sx={{ ...style.bold, ...style.italic }}
-              >
-                UNSW Casual Academic (2021 - Present)
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                Tutor at UNSW School of Mathematics Drop-in-centre and Lab
-                consultations.
-              </Typography>
-            </li>
-            <li>
-              <Typography
-                variant="body1"
-                sx={{ ...style.bold, ...style.italic }}
-              >
-                Private Mathematics Tutor (2016 - 2023)
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                One-on-one private tutor for high school students, in topics up
-                to the highest level of high school Mathematics. Helping
-                students deepen their understanding in difficult topics, on top
-                of plainly solving problems, and encouraging love for problem
-                solving and learning.
-              </Typography>
-            </li>
-            <li>
-              <Typography
-                variant="body1"
-                sx={{ ...style.bold, ...style.italic }}
-              >
-                Mathematics Tutor for Alchemy Tuition (2019 - 2020)
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                Supporting students in their learning and motivating an interest
-                in mathematics.
-              </Typography>
-            </li>
-          </ul>
-        </Typography>
-
+        <ul>
+          <li>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
+              UNSW Casual Academic (2021 - Present)
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              Tutor at UNSW School of Mathematics Drop-in-centre and Lab
+              consultations.
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
+              Private Mathematics Tutor (2016 - 2023)
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              One-on-one private tutor for high school students, in topics up to
+              the highest level of high school Mathematics. Helping students
+              deepen their understanding in difficult topics, on top of plainly
+              solving problems, and encouraging love for problem solving and
+              learning.
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
+              Mathematics Tutor for Alchemy Tuition (2019 - 2020)
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              Supporting students in their learning and motivating an interest
+              in mathematics.
+            </Typography>
+          </li>
+        </ul>
         <Typography variant="h5">Personal Projects</Typography>
-        <Typography variant="body1" gutterBottom>
-          <ul>
-            <li>
-              <Typography
-                variant="body1"
-                sx={{ ...style.bold, ...style.italic }}
-              >
-                <LinkNewTab href="https://dustbringer.github.io/">
-                  Personal Website
-                </LinkNewTab>{" "}
-                (
-                <LinkNewTab href="https://github.com/dustbringer/dustbringer.github.io">
-                  GitHub
-                </LinkNewTab>
-                )
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                The website you are using right now! It is currently written in
-                ReactJS and is statically generated by GatsbyJS.
-              </Typography>
-            </li>
-            <li>
-              <Typography
-                variant="body1"
-                sx={{ ...style.bold, ...style.italic }}
-              >
-                <LinkNewTab href="https://dustbringer.github.io/posts/2021-09-15-lockpicking-foundations/">
-                  Lockpicking Talk for UNSW SecSoc
-                </LinkNewTab>
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                A talk I gave on lockpicking for UNSW SecSoc, September 2021.
-                Content includes single pin picking and raking for common
-                pin-and-tumbler locks, and an introduction to security pins and
-                other types of locks.
-              </Typography>
-            </li>
-            <li>
-              <Typography
-                variant="body1"
-                sx={{ ...style.bold, ...style.italic }}
-              >
-                Custom D&D Calendar (
-                <LinkNewTab href="https://github.com/dustbringer/wombats-dnd">
-                  GitHub
-                </LinkNewTab>
-                )
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                An application made to display and organise user made events in
-                a custom calender for D&D. It is developed on a full stack -
-                ReactJS, Express.js and PostgreSQL - and was hosted on Heroku
-                when it had free dynos.
-              </Typography>
-            </li>
-            <li>
-              <Typography
-                variant="body1"
-                sx={{ ...style.bold, ...style.italic }}
-              >
-                SYNCSHACK 2021 - Phobia Exposure Therapy Web App (
-                <LinkNewTab href="https://github.com/4m1v/phobos">
-                  GitHub
-                </LinkNewTab>
-                )
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                A digital version of exposure therapy. Phobos showing its users
-                images related to their phobias and allows them to scale the
-                size of each image according to their comfort. This was
-                developed on a full stack: ReactJS, Express.js, with a team of 5
-                over a weekend.
-              </Typography>
-            </li>
-            <li>
-              <Typography
-                variant="body1"
-                sx={{ ...style.bold, ...style.italic }}
-              >
-                Tab Suspender Browser Extension (
-                <LinkNewTab href="https://github.com/dustbringer/tab-suspender">
-                  GitHub
-                </LinkNewTab>
-                )
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                A simple extension that replaces unused tabs with a static page
-                that can be refreshed to return to the original webpage.
-              </Typography>
-            </li>
-            <li>
-              <Typography
-                variant="body1"
-                sx={{ ...style.bold, ...style.italic }}
-              >
-                Puzzle Simulator for "The Witness" (
-                <LinkNewTab href="https://github.com/dustbringer/thewitness-puzzle">
-                  GitHub
-                </LinkNewTab>
-                )
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                A simulator for puzzles from the game "The Witness". Everything
-                is written with ReactJS, in a team of 2.
-              </Typography>
-            </li>
-          </ul>
-        </Typography>
-
+        <ul>
+          <li>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
+              <LinkNewTab href="https://dustbringer.github.io/">
+                Personal Website
+              </LinkNewTab>{" "}
+              (
+              <LinkNewTab href="https://github.com/dustbringer/dustbringer.github.io">
+                GitHub
+              </LinkNewTab>
+              )
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              The website you are using right now! It is currently written in
+              ReactJS and is statically generated by GatsbyJS.
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
+              <LinkNewTab href="https://dustbringer.github.io/posts/2021-09-15-lockpicking-foundations/">
+                Lockpicking Talk for UNSW SecSoc
+              </LinkNewTab>
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              A talk I gave on lockpicking for UNSW SecSoc, September 2021.
+              Content includes single pin picking and raking for common
+              pin-and-tumbler locks, and an introduction to security pins and
+              other types of locks.
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
+              Custom D&D Calendar (
+              <LinkNewTab href="https://github.com/dustbringer/wombats-dnd">
+                GitHub
+              </LinkNewTab>
+              )
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              An application made to display and organise user made events in a
+              custom calender for D&D. It is developed on a full stack -
+              ReactJS, Express.js and PostgreSQL - and was hosted on Heroku when
+              it had free dynos.
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
+              SYNCSHACK 2021 - Phobia Exposure Therapy Web App (
+              <LinkNewTab href="https://github.com/4m1v/phobos">
+                GitHub
+              </LinkNewTab>
+              )
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              A digital version of exposure therapy. Phobos showing its users
+              images related to their phobias and allows them to scale the size
+              of each image according to their comfort. This was developed on a
+              full stack: ReactJS, Express.js, with a team of 5 over a weekend.
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
+              Tab Suspender Browser Extension (
+              <LinkNewTab href="https://github.com/dustbringer/tab-suspender">
+                GitHub
+              </LinkNewTab>
+              )
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              A simple extension that replaces unused tabs with a static page
+              that can be refreshed to return to the original webpage.
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
+              Puzzle Simulator for "The Witness" (
+              <LinkNewTab href="https://github.com/dustbringer/thewitness-puzzle">
+                GitHub
+              </LinkNewTab>
+              )
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              A simulator for puzzles from the game "The Witness". Everything is
+              written with ReactJS, in a team of 2.
+            </Typography>
+          </li>
+        </ul>
         <Typography variant="h5" gutterBottom>
           Syllabus Projects
         </Typography>
@@ -251,168 +217,159 @@ function ResumePage() {
               from. A majority of these were designed ourselves given some loose
               functional requirements.
             </Typography>
-            <Typography variant="body1" gutterBottom>
-              <ul>
-                <li>
-                  <Typography
-                    variant="body1"
-                    sx={{ ...style.bold, ...style.italic }}
-                  >
-                    Messaging App Backend (COMP1531)
-                  </Typography>
-                  <Typography variant="body1" gutterBottom>
-                    A backend server to a messaging application written with
-                    Python using Flask, in a team of 4.
-                  </Typography>
-                </li>
-                <li>
-                  <Typography
-                    variant="body1"
-                    sx={{ ...style.bold, ...style.italic }}
-                  >
-                    Simple Shell Application (COMP1521)
-                  </Typography>
-                  <Typography variant="body1" gutterBottom>
-                    A simple shell written in C with functionalities implemented
-                    through system calls. It is capable of running new
-                    applications, changing directories, reading files, viewing
-                    directories, piping, and I/O redirection.
-                  </Typography>
-                </li>
-                <li>
-                  <Typography
-                    variant="body1"
-                    sx={{ ...style.bold, ...style.italic }}
-                  >
-                    Game of Life in an Assembly Language (COMP1521)
-                  </Typography>
-                  <Typography variant="body1" gutterBottom>
-                    A program that simulates Conway's Game of Life written in
-                    the MIPS R3000 instruction set.
-                  </Typography>
-                </li>
-                <li>
-                  <Typography
-                    variant="body1"
-                    sx={{ ...style.bold, ...style.italic }}
-                  >
-                    Text Buffer (COMP2521)
-                  </Typography>
-                  <Typography variant="body1" gutterBottom>
-                    A text buffer written in C that is capable of adding
-                    prefixes to every line, merging two buffers, cutting and
-                    pasting, searching for a string, and converting some
-                    Markdown formatting to HTML.
-                  </Typography>
-                </li>
-                <li>
-                  <Typography
-                    variant="body1"
-                    sx={{ ...style.bold, ...style.italic }}
-                  >
-                    2D Dungeon Crawling Game (COMP2511)
-                  </Typography>
-                  <Typography variant="body1" gutterBottom>
-                    A game written with Java (backend) and JavaFX (frontend), in
-                    a team of 2. The game has a GUI, a variety of static and
-                    dynamic entities, and uses a variety of OO-Design patterns
-                    to handle their interactions. We wrote tests for every
-                    backend functionality. In addition, I wrote a Python script
-                    for easily making maps, by translating an ASCII image to
-                    JSON map data.
-                  </Typography>
-                </li>
-                <li>
-                  <Typography
-                    variant="body1"
-                    sx={{ ...style.bold, ...style.italic }}
-                  >
-                    BigBrain (COMP6080)
-                  </Typography>
-                  <Typography variant="body1" gutterBottom>
-                    A quiz game frontend (heavily inspired by Kahoot) written
-                    with ReactJS, in a team of 2. The game allows multiple
-                    simultaneous players, separate screens for each player,
-                    scoreboard, quiz creation and management, account management
-                    etc.
-                  </Typography>
-                </li>
-                <li>
-                  <Typography
-                    variant="body1"
-                    sx={{ ...style.bold, ...style.italic }}
-                  >
-                    IndieBin (COMP3900)
-                  </Typography>
-                  <Typography variant="body1" gutterBottom>
-                    An Indie game platform written with a full stack (ReactJS,
-                    ExpressJS, Typescript, SQL), in a team of 5. This
-                    application was designed with indie developers in mind, with
-                    features such as the selling and buying of games,
-                    personalised user recommendations, developer blogs, and
-                    fundraisers to support new ideas.
-                  </Typography>
-                </li>
-              </ul>
-            </Typography>
+            <ul>
+              <li>
+                <Typography
+                  variant="body1"
+                  sx={{ ...style.bold, ...style.italic }}
+                >
+                  Messaging App Backend (COMP1531)
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  A backend server to a messaging application written with
+                  Python using Flask, in a team of 4.
+                </Typography>
+              </li>
+              <li>
+                <Typography
+                  variant="body1"
+                  sx={{ ...style.bold, ...style.italic }}
+                >
+                  Simple Shell Application (COMP1521)
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  A simple shell written in C with functionalities implemented
+                  through system calls. It is capable of running new
+                  applications, changing directories, reading files, viewing
+                  directories, piping, and I/O redirection.
+                </Typography>
+              </li>
+              <li>
+                <Typography
+                  variant="body1"
+                  sx={{ ...style.bold, ...style.italic }}
+                >
+                  Game of Life in an Assembly Language (COMP1521)
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  A program that simulates Conway's Game of Life written in the
+                  MIPS R3000 instruction set.
+                </Typography>
+              </li>
+              <li>
+                <Typography
+                  variant="body1"
+                  sx={{ ...style.bold, ...style.italic }}
+                >
+                  Text Buffer (COMP2521)
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  A text buffer written in C that is capable of adding prefixes
+                  to every line, merging two buffers, cutting and pasting,
+                  searching for a string, and converting some Markdown
+                  formatting to HTML.
+                </Typography>
+              </li>
+              <li>
+                <Typography
+                  variant="body1"
+                  sx={{ ...style.bold, ...style.italic }}
+                >
+                  2D Dungeon Crawling Game (COMP2511)
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  A game written with Java (backend) and JavaFX (frontend), in a
+                  team of 2. The game has a GUI, a variety of static and dynamic
+                  entities, and uses a variety of OO-Design patterns to handle
+                  their interactions. We wrote tests for every backend
+                  functionality. In addition, I wrote a Python script for easily
+                  making maps, by translating an ASCII image to JSON map data.
+                </Typography>
+              </li>
+              <li>
+                <Typography
+                  variant="body1"
+                  sx={{ ...style.bold, ...style.italic }}
+                >
+                  BigBrain (COMP6080)
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  A quiz game frontend (heavily inspired by Kahoot) written with
+                  ReactJS, in a team of 2. The game allows multiple simultaneous
+                  players, separate screens for each player, scoreboard, quiz
+                  creation and management, account management etc.
+                </Typography>
+              </li>
+              <li>
+                <Typography
+                  variant="body1"
+                  sx={{ ...style.bold, ...style.italic }}
+                >
+                  IndieBin (COMP3900)
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  An Indie game platform written with a full stack (ReactJS,
+                  ExpressJS, Typescript, SQL), in a team of 5. This application
+                  was designed with indie developers in mind, with features such
+                  as the selling and buying of games, personalised user
+                  recommendations, developer blogs, and fundraisers to support
+                  new ideas.
+                </Typography>
+              </li>
+            </ul>
           </Accordion>
         </Box>
-
         <Typography variant="h5">Education</Typography>
-        <Typography variant="body1" gutterBottom>
-          <ul>
-            <li>
-              <Typography
-                variant="body1"
-                sx={{ ...style.bold, ...style.italic }}
-              >
-                University of New South Wales (2019 - 2023)
-              </Typography>
-              <Typography variant="body1">
-                B Advanced Mathematics (Honours) / B Computer Science
-              </Typography>
-              <Typography variant="body1" gutterBottom>
-                Honours Thesis:{" "}
-                <LinkNewTab href="https://github.com/dustbringer/UNSW-Honours/blob/main/main.pdf">
-                  Diagrammatic Categories in Representation Theory
-                </LinkNewTab>
-              </Typography>
+        <ul>
+          <li>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
+              University of New South Wales (2019 - 2023)
+            </Typography>
+            <Typography variant="body1">
+              B Advanced Mathematics (Honours) / B Computer Science
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              Honours Thesis:{" "}
+              <LinkNewTab href="https://github.com/dustbringer/UNSW-Honours/blob/main/main.pdf">
+                Diagrammatic Categories in Representation Theory
+              </LinkNewTab>
+            </Typography>
 
-              <Box sx={{ marginBottom: "1em" }}>
-                <Accordion title="Details">
-                  <Typography variant="body1">
-                    <strong>Weighted Average Mark:</strong> {unswMarks.wam}
-                  </Typography>
-                  <Typography variant="body1">
-                    <strong>Honours (Class I):</strong> Thesis 90; Presentation
-                    9
-                  </Typography>
-                  <Typography variant="body1">
-                    <strong>Awards</strong>
-                    <ul>
-                      <li>
-                        Faculty of Science Deans List 2019, 2020, 2021 (top 100)
-                      </li>
-                      <li>
-                        Faculty of Engineering Deans Award 2019, 2020, 2021,
-                        2022 (top 100)
-                      </li>
-                      <li>
-                        School of Mathematics and Statistics Advanced
-                        Mathematics Honours Scholarship (for 2022)
-                      </li>
-                    </ul>
-                  </Typography>
-                  <HorizontalRule />
-                  <Box sx={{ "& table": { width: "100%" } }}>
-                    <Table>
-                      <THead>
-                        <TR>
-                          <TH>Course</TH>
-                          <TH>Term</TH>
-                          <TH>Mark</TH>
-                        </TR>
-                      </THead>
+            <Box sx={{ marginBottom: "1em" }}>
+              <Accordion title="Details">
+                <Typography variant="body1">
+                  <strong>Weighted Average Mark:</strong> {unswMarks.wam}
+                </Typography>
+                <Typography variant="body1">
+                  <strong>Honours (Class I):</strong> Thesis 90; Presentation 9
+                </Typography>
+                <Typography variant="body1" component="span">
+                  <strong>Awards</strong>
+                  <ul>
+                    <li>
+                      Faculty of Science Deans List 2019, 2020, 2021 (top 100)
+                    </li>
+                    <li>
+                      Faculty of Engineering Deans Award 2019, 2020, 2021, 2022
+                      (top 100)
+                    </li>
+                    <li>
+                      School of Mathematics and Statistics Advanced Mathematics
+                      Honours Scholarship (for 2022)
+                    </li>
+                  </ul>
+                </Typography>
+                <HorizontalRule />
+                <Box sx={{ "& table": { width: "100%" } }}>
+                  <Table>
+                    <THead>
+                      <TR>
+                        <TH>Course</TH>
+                        <TH>Term</TH>
+                        <TH>Mark</TH>
+                      </TR>
+                    </THead>
+                    <TBody>
                       {unswMarks.courses.map((c, i) => (
                         <TR key={c.term + c.code}>
                           <TD>
@@ -425,42 +382,44 @@ function ResumePage() {
                           </TD>
                         </TR>
                       ))}
-                    </Table>
-                  </Box>
+                    </TBody>
+                  </Table>
+                </Box>
 
-                  <Typography variant="body1">
-                    <strong>Audited courses</strong>
-                    <ul>
-                      <li>MATH5425 (Graph Theory), 2023T1</li>
-                      <li>MATH5645 (Algebraic Number Theory), 2023T3</li>
-                    </ul>
-                  </Typography>
-                </Accordion>
-              </Box>
-            </li>
-            <li>
-              <Typography
-                variant="body1"
-                sx={{ ...style.bold, ...style.italic }}
-                gutterBottom
-              >
-                Northern Beaches Secondary College Manly Selective Campus
-                (2012-2018)
-              </Typography>
+                <Typography variant="body1" component="span">
+                  <strong>Audited courses</strong>
+                  <ul>
+                    <li>MATH5425 (Graph Theory), 2023T1</li>
+                    <li>MATH5645 (Algebraic Number Theory), 2023T3</li>
+                  </ul>
+                </Typography>
+              </Accordion>
+            </Box>
+          </li>
+          <li>
+            <Typography
+              variant="body1"
+              sx={{ ...style.bold, ...style.italic }}
+              gutterBottom
+            >
+              Northern Beaches Secondary College Manly Selective Campus
+              (2012-2018)
+            </Typography>
 
-              <Box sx={{ marginBottom: "1em" }}>
-                <Accordion title="Details">
-                  <Typography variant="body1">
-                    <strong>ATAR:</strong> 97.55
-                  </Typography>
-                  <Box sx={{ "& table": { width: "100%" } }}>
-                    <Table>
-                      <THead>
-                        <TR>
-                          <TH>Subject</TH>
-                          <TH>Mark</TH>
-                        </TR>
-                      </THead>
+            <Box sx={{ marginBottom: "1em" }}>
+              <Accordion title="Details">
+                <Typography variant="body1">
+                  <strong>ATAR:</strong> 97.55
+                </Typography>
+                <Box sx={{ "& table": { width: "100%" } }}>
+                  <Table>
+                    <THead>
+                      <TR>
+                        <TH>Subject</TH>
+                        <TH>Mark</TH>
+                      </TR>
+                    </THead>
+                    <TBody>
                       <TR>
                         <TD>Mathematics Advanced (Accelerated)</TD>
                         <TD>99</TD>
@@ -489,45 +448,58 @@ function ResumePage() {
                         <TD>Physics</TD>
                         <TD>86</TD>
                       </TR>
-                    </Table>
-                  </Box>
-                </Accordion>
-              </Box>
-            </li>
-          </ul>
-        </Typography>
-
+                    </TBody>
+                  </Table>
+                </Box>
+              </Accordion>
+            </Box>
+          </li>
+        </ul>
         <Typography variant="h5" gutterBottom>
           Volunteering
         </Typography>
         <Box sx={{ marginBottom: "1em" }}>
           <Accordion title="Show All">
-            <Typography variant="body1" gutterBottom>
-              <ul>
-                <li>
-                  <Typography variant="body1">
-                    Packing Boxes for Operation Christmas Child (2019, 2020)
-                  </Typography>
-                </li>
-                <li>
-                  <Typography variant="body1">
-                    Christian Assembly of Sydney (2016 - Present): Audio-Visual
-                    Leader, Songs Leader, Youth Bible Study Leader
-                  </Typography>
-                </li>
-                <li>
-                  <Typography variant="body1">
-                    Library Volunteering (2015 - 2016)
-                  </Typography>
-                </li>
-              </ul>
-            </Typography>
+            <ul>
+              <li>
+                <Typography variant="body1">
+                  Packing Boxes for Operation Christmas Child (2019, 2020)
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body1">
+                  Christian Assembly of Sydney (2016 - Present): Audio-Visual
+                  Leader, Songs Leader, Youth Bible Study Leader
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body1">
+                  Library Volunteering (2015 - 2016)
+                </Typography>
+              </li>
+            </ul>
           </Accordion>
         </Box>
-
         <HorizontalRule />
+        <Typography variant="body1">
+          <strong>Contact E-mail:</strong> v
+          <span style={{ color: theme.palette.primary.main }}>
+            {decodeURI("%E2%98%85%E2%98%85%E2%98%85")}
+          </span>
+          z
+          <span style={{ color: theme.palette.primary.main }}>
+            {decodeURI("%E2%98%85%E2%98%85%E2%98%85")}
+          </span>
+          <span style={{ color: theme.palette.primary.main }}>
+            {decodeURI("%EF%BC%83")}
+          </span>
+          {decodeURI("%EF%BC%A0")}gmail.com where the stars are the rest of my
+          name (not necessarily the same length) and the hash is replaced with
+          the 3-bit number for the number of two dimensional irreducible representations of the dihedral group
+          of the regular heptagon.
+        </Typography>
 
-        <Typography>
+        {/* <Typography>
           See{" "}
           <LinkBold
             href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAD3sQp_YYM&#x2F;view?utm_content=DAD3sQp_YYM&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link"
@@ -537,7 +509,7 @@ function ResumePage() {
             here
           </LinkBold>{" "}
           for a PDF version.
-        </Typography>
+        </Typography> */}
       </Container>
     </>
   );
