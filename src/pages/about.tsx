@@ -1,16 +1,18 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { styled, useTheme } from "@mui/material/styles";
 
 import Typography from "@mui/material/Typography";
-import Link from "../components/Link";
 import Container from "../components/Container";
-
+import Link from "../components/Link";
 import InternalLink from "../components/InternalLink";
+import HorizontalRule from "../components/Markdown/HorizontalRule";
 
 import { currYear } from "../data/upToDate";
 
 function AboutPage() {
   // const history = useHistory();
+  const theme = useTheme();
 
   return (
     <>
@@ -22,6 +24,24 @@ function AboutPage() {
           This page is under construction, it will be filled soon... have a look
           at my <InternalLink to="/resume">resume</InternalLink> in the
           meantime.
+        </Typography>
+        <HorizontalRule />
+        <Typography variant="body1">
+          <strong>Contact:</strong> v
+          <span style={{ color: theme.palette.primary.main }}>
+            {decodeURI("%E2%98%85%E2%98%85%E2%98%85")}
+          </span>
+          z
+          <span style={{ color: theme.palette.primary.main }}>
+            {decodeURI("%E2%98%85%E2%98%85%E2%98%85")}
+          </span>
+          <span style={{ color: theme.palette.primary.main }}>
+            {decodeURI("%EF%BC%83")}
+          </span>
+          {decodeURI("%EF%BC%A0")}gmail.com where the stars are the rest of my
+          name (not necessarily the same length) and the hash is replaced with
+          the 3-bit number for the number of two dimensional irreducible
+          representations of the dihedral group of the regular heptagon.
         </Typography>
       </Container>
     </>

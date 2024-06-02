@@ -1,0 +1,27 @@
+\documentclass[
+    tikz,
+    border=5px,
+    convert={
+        density=600,
+        size=400x400,
+        outext=.svg,
+        convertexe={dvisvgm},
+        command=\unexpanded{{\convertexe\space --pdf  --zoom=1.5 \infile}}}]
+    {standalone}
+\usetikzlibrary{cd} % commutative diagrams
+\usepackage{amsmath, amssymb, amsfonts, amscd}
+
+\newcommand{\tensor}{\otimes}
+\newcommand{\op}[1]{\operatorname{#1}}
+\DeclareMathOperator{\Hom}{Hom}
+
+\begin{document}
+\begin{tikzcd}[sep=large]
+    B \arrow[d, "f"']
+    & {MA \times \Hom(A,MB)} \arrow[r, "{\beta_{A,B}}", red] \arrow[d, "{MA \times \Hom(A,Mf)}"']
+    & MB \arrow[d, "Mf"] \\
+    C
+    & {MA \times \Hom(A,MC)} \arrow[r, "{\beta_{A,C}}", red]
+    & MC
+\end{tikzcd}
+\end{document}

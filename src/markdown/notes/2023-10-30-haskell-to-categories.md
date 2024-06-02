@@ -4,7 +4,7 @@ title: Haskell and Types to Category theory
 description: Rewriting category theoretical structures in Haskell in category theory.
 author: dustbringer
 date: 2023-10-30
-edited: 2023-11-02
+edited: 2024-06-02
 tags:
     - category theory
     - haskell
@@ -37,7 +37,7 @@ In mathematics, a functor between categories $\mathcal{C}$ and $\mathcal{D}$ is 
 
 
 ### Correspondence
-The `f` in Haskell is exactly the categorical functor on objects, while `fmap` is  the categorical functor on morphisms. This had to be split into two different things because of the overloading of the functor in mathematics. The functor laws between the two are basically identical, taking the type inference in the Haskell version in to account.
+With the above notation, `f` in Haskell is exactly the categorical functor on objects, while `fmap` is  the categorical functor on morphisms. This had to be split into two different things because of the overloading of the functor in mathematics. The functor laws between the two are basically identical, taking the type inference in the Haskell version in to account.
 
 
 ## Parametrised polymorphic functions and Natural transformations
@@ -123,16 +123,197 @@ which are both pretty obvious properties you would expect from an evaluation fun
 
 ## Applicative Functors and Lax Closed Functors
 
-Coming soon.
-
+Possibly coming soon.
 
 ## Monads and Monads
 
-Coming soon.
+In Haskell, `Monad` is a typeclass defined by
+```hs
+class Monad m where
+  (>>=)  :: m a -> (a -> m b) -> m b -- "bind"  
+  return ::   a               -> m a
+```
+with three properties:
+- (left unit) `return a >>= k = k a`,
+- (right unit) `m >>= return = m`,
+- (associativity) `m >>= (\x -> k x >>= h) = (m >>= k) >>= h`.
+Note that in `Prelude`, we see an additional method `(>>) :: m a -> m b -> m b` which is derived from `>>=` by `m >> k = m >>= (\_ -> k)`. This is just included for convenience and is not required to define a `Monad`.
+
+In mathematics, a monad is *a monoid object in the category of endofunctors*. More precisely, for a category $\mathcal{C}$, the endofunctors of the category $\op{End}(\mathcal{C}) = \Hom(\mathcal{C},\mathcal{C})$ form a category where objects are endofunctors, morphisms are natural transformations and composition is vertical composition $\circ_v$ of natural transformations (we may write this as just $\circ$). Furthermore, this is a strict monoidal category with the unit object $\op{id} = \op{id}_\mathcal{C}$, tensor product of objects given by composition of functors and tensor product of morphisms is horizontal composition $\circ_h$ of natural transformations. Hence a monad (with respect to $\mathcal{C}$) is a monoid object $M$ in the monoidal category $\op{End}(\mathcal{C})$. That is, $M \in \op{End}(\mathcal{C})$ equipped with natural transformations
+- (unit) $\eta: \op{id} \to M$,
+- (multiplication) $\mu: M \circ M \to M$,
+such that the following diagrams commute:
+- (associativity) ![](./resources/2023-10-30-haskell-to-categories/monad--axiom-associativity.svg)
+- (unit) ![](./resources/2023-10-30-haskell-to-categories/monad--axiom-unit.svg)
+
+where $M\cdot \mu: M \circ (M \circ M) \to M \circ M$ etc. denotes whiskering (horizontal composition with the identity natural transformation $\op{id}_M$, see Appendix A1).
+Equationally, these diagrams correspond to the relations
+- (associativity) $\mu \circ_v (\mu \cdot M) = \mu \circ_v (M \cdot \mu)$,
+- (unit) $\mu \circ_v (\eta \cdot M) = \mu \circ_v (M \cdot \eta) = \op{id}_M$.
+
+### Correspondence
+> Note: we take advantage of having elements in the objects in our category, but proofs purely from morphism compositions can also be written down (although difficult).
+
+We first check that the structure maps agree.
+- `Monad`'s contain `return :: a -> m a` which corresponds to a singular component of the unit $\eta_A: A \to M A$.
+- The bind function `>>=` (which we will write as $\beta$, where $\beta_{A,B} : MA \times Hom(A,MB) \to MB$) appears to be completely different from the multiplication map $\mu$, but can be constructed from one another.
+  - (`>>=` to $\mu$)
+    - $\mu$ is called `join` in Haskell, and is defined using `>>=` by
+      ```hs
+      join :: m (m a) -> m a
+      join x = x >>= id
+      ```
+      where `id` is the identity function `id x = x`
+    - Mathematically, $\mu_A = \beta_{MA,A}(-,\op{id}_{MA}) : M^2 A \to MA$ (partial application of $\beta$)
+  - ($\mu$ to `>>=`)
+    - `>>=` is defined using `join` by
+      ```hs
+      (>>=) :: m a -> (a -> m b) -> m b
+      (>>=) x f = join (fmap f x)
+      ```
+      where Haskell infers `fmap` to be from the monad `m`
+    - Mathematically, $\beta_{A,B} = \mu_B \circ ev_{MA,M^2 B} \circ (MA \times M^{mor})$
+      $$
+      \beta_{A,B} : MA \times \Hom(A,MB) \xto{MA \times M^{mor}} MA \times \Hom(MA,M^2 B) \xto{ev_{MA,M^2 B}} M^2 B \xto{\mu_B} MB
+      $$
+      where $ev$ is the counit of the tensor-hom adjunction. For the sake of clarity, we may write
+      $$
+      \beta_{A,B}(m,f) = \mu_B \circ M(f) (m)
+      $$
+      where $m \in MA$ and $f: A \to MB$.
+
+Since parametrised functions in Haskell have "parametricity" properties, we expect $\beta$ to be a (di)natural transformation. Indeed we have the following.
+- $\beta_{A,B}$ is extranatural in $A$:
+  - For a morphism $f:A \to C$, we have
+    ![](./resources/2023-10-30-haskell-to-categories/monad--bind-extranat-transformation.svg)
+    which commutes because
+    - the top branch maps
+      $$
+      m \mapsto \beta_{A,B} \circ (MA \times \Hom(f,MB)) (m,g) = \beta_{A,B} (m,g \circ f) = \mu_B \circ M(g \circ f) (m)
+      $$
+    - and the bottom branch maps
+      $$
+      m \mapsto \beta_{C,B} \circ (Mf \times \Hom(C,MB)) (m,g) = \beta_{A,B} (M(f)(m),g) = \mu_B \circ M(g) \circ M(f) (m)
+      $$
+    - which are equal by functoriality of $M$.
+  - The corresponding parametricity relation is $\beta_{A,B} (m,g \circ f) = \beta_{C,B} (M(f)(m), g)$
+    - in Haskell, `x >>= (g . f) = (fmap f x) >>= g`
+- $\beta_{A,B}$ is natural in $B$:
+  - For a moprhism $f: B \to C$, we have
+    ![](./resources/2023-10-30-haskell-to-categories/monad--bind-nat-transformation.svg)
+    which commutes because
+    - the top-right branch maps $(m,g) \mapsto M(f) \circ \beta_{A,B}(m,g) = M(f) \circ \mu_B \circ M(g) (m)$
+    - and the left-bottom branch maps $(m,g) \mapsto \beta_{A,C} \circ (MA \times \Hom(A,Mf)) (m,g)$
+      - $= \beta_{A,C} (m, (Mf) \circ g)$
+      - $= \mu_C \circ M((Mf) \circ g)(m)$
+      - $= \mu_C \circ M^2(f) \circ M(g)(m)$
+        - by functoriality of $M$
+      - $= M(f) \circ \mu_B \circ M(g)(m)$
+        - by naturality of $\mu$
+      - which is equal.
+  - The corresponding parametricity relation is $M(f)(\beta_{A,B}(m,g)) = \beta_{A,C}(m, M(f) \circ g)$
+    - in Haskell, `fmap f (x >>= g) = x >>= fmap f . g` (note `fmap f . g = (fmap f) . g`)
+#### Relations: Cats to Haskell
+Now we observe that the `Monad` relations in Haskell are indeed true in the categorical counterpart.
+
+The `Monad` relations can be written mathematically as
+- (left unit) $\beta_{A,B}(\eta_A(x), f) = f(x)$
+- (right unit) $\beta_{A,A}(m,\eta_A) = m$
+- (associativity) $\beta_{A,C}(m,\beta_{B,C}(f(-),g)) = \beta_{B,C}(\beta_{A,B}(m,f),g)$
+where $f: A \to MB$, $g: B \to MC$, $x\in A$, $m \in MA$.
+
+##### Left Unit
+We have $\beta_{A,B} (\eta_A(x),f) = \mu_B \circ M(f) \circ \eta_A (x)$
+- $= \mu \circ \eta_{MB} \circ f (x)$
+  - by naturality of $\eta$
+- $= f(x)$
+  - since $\eta_{MB} = (\eta \cdot M)_B$,
+  - and we have the categorical left-unit relation $\mu \circ (\eta \cdot M) = \op{id}_M$ (which, at $B$, is $\mu_B \circ (\eta_{MB}) = \op{id}_{MB}$).
+
+##### Right Unit
+We have $\beta_{A,A} (m,\eta_A) = \mu_A \circ M(\eta_A)(m) = m$, by the categorical right-unit relation $\mu \circ (M \cdot \eta) = \op{id}_M$ (which, at $A$, is $\mu_A \circ (M(\eta_A)) = \op{id}_{MA}$).
+
+##### Associativity
+The right hand side is $\beta_{B,C}(\beta_{A,B}(m,f),g)$
+- $= \beta_{B,C}(\mu_B \circ M(f)(m), g)$
+- $= \mu_C \circ M(g)(\mu_B \circ M(f)(m))$
+- $= \mu_C \circ M(g) \circ \mu_B \circ M(f) (m)$.
+
+The left hand side is $\beta_{A,C}(m,\beta_{B,C}(f(-),g))$
+- $= \beta_{A,C}(m,\mu_C \circ M(g) \circ f)$
+- $= \mu_C \circ M(\mu_C \circ M(g) \circ f) (m)$
+- $= \mu_C \circ M(\mu_C) \circ M^2(g) \circ M(f) (m)$
+  - by functoriality of $M$
+- $= \mu_C \circ \mu_{MC} \circ M^2(g) \circ M(f) (m)$
+  - by the categorical associativity relation $\mu \circ (M \cdot \mu) = \mu \circ (\mu \cdot M)$. At $C$, this is $\mu_C \circ M(\mu_C) = \mu_C \circ \mu_{MC}$
+- $= \mu_C \circ M(g) \circ \mu_{B} \circ M(f) (m)$
+  - by naturality of $\mu$
+- which is the same as the right hand side.
+
+
+#### Relations: Haskell to Cats
+We can also use the `Monad` properties and relations in Haskell to show the categorical monad properties also hold.
+
+We still work in the math world, assuming the relations noted in the start of the previous section and assuming $\beta$ and $\eta$ are (di)natural in each component (this is sensible because such properties always exist for polymorphic functions (eg. the `Monad` structure maps), see *Theorems for free!*[^1] on parametricity).
+
+Since $\mu$ doesn't exist in Haskell, we use the translation mentioned before $\mu_A = \beta_{MA,A}(-,\op{id}_{MA})$.
+
+##### Left Unit
+We want to prove that $\mu \circ (\eta \cdot M) = \op{id}_M$. The component at $A$ is $\mu_A \circ \eta_{MA} = \op{id}_{MA}$. The left hand side applied to $x \in A$ is $\mu_A \circ \eta_{MA}(x) = \beta_{MA,A}(-,\op{id}_{MA}) \circ \eta_{MA}(x)$
+- $= \beta_{MA,A}(\eta_{MA}(x), \op{id}_{MA})$
+- $= \op{id}_{MA}(x) = x$
+  - by the Haskell left-unit relation.
+
+##### Right Unit
+We want to prove that $\mu \circ (M \cdot \eta) = \op{id}_{MA}$. The component at $A$ is $\mu_A \circ M(\eta_{A}) = \op{id}_{MA}$. The left hand side applied to $x \in A$ is $\mu_A \circ M(\eta_{A})(x) = \beta_{MA,A}(-, \op{id}_{MA}) \circ M(\eta_A)(x)$
+- $= \beta_{MA,A}(M(\eta_A)(x), \op{id}_{MA})$
+- $= \beta_{A,A}(x, \op{id}_{MA} \circ \eta_A) = \beta_{A,A}(x, \eta_A)$
+  - by extranaturality of $\beta$
+- $= x = \op{id}_{MA}(x)$
+  - by the Haskell right-unit relation.
+
+##### Associativity
+We want to prove that $\mu \circ (\mu \cdot M) = \mu \circ (M \cdot \mu)$. The component at $A$ is $\mu_A \circ \mu_{MA} = \mu_A \circ M(\mu_A)$. The left hand side applied to $x \in M^3 A$ is $\mu_A \circ \mu_{MA} (x) = \beta_{MA,A}(-, \op{id}_{MA}) \circ \beta_{M^2 A,MA}(-, \op{id}_{M^2 A})(x)$
+- $= \beta_{MA,A}(\beta_{M^2 A,MA}(-, \op{id}_{M^2 A})(x), \op{id}_{MA})$
+- $= \beta_{M^2 A,A}(x,\beta_{MA,A}(\op{id}_{M^2 A}(-), \op{id}_{MA}))$
+  - by the Haskell associativity relation
+- $= \beta_{M^2 A,A}(x,\op{id}_{MA} \circ \beta_{MA,A}(-, \op{id}_{MA}))$
+- $= \beta_{MA,A}(M(\beta_{MA,A}(-, \op{id}_{MA}))(x),\op{id}_{MA}) = \beta_{MA,A}(-,\op{id}_{MA}) \circ M(\beta_{MA,A}(-, \op{id}_{MA}))(x)$
+  - by extranaturality of $\beta$
+- this is equal to right side of the original equation!
+
+### Resources
+Have a look at [Monads Made Difficult (Stephen Diehl)](https://www.stephendiehl.com/posts/monads.html) for a softer mathematical introduction.
+
+
+## Appendix
+
+### A1. Horizontal and vertical composition of natural transformations
+
+**Definition** (Vertical composition). Let $F,G,H: \mathcal{C} \to \mathcal{D}$ be functors and $\alpha: F \to G$, $\beta: G \to H$ be natural transformations. Define the **vertical composition** of these natural transformations to be the natural transformation $\beta \circ_v \alpha: F \to H$, with $X \in \mathcal{C}$ component $(\beta \circ_v \alpha)_X := \beta_X \circ \alpha_X$.
+
+This is the usual composition of morphisms in the category of endofunctors, so it is often just written $\circ$.
+
+**Definition** (Horizontal composition). Let $F_1,G_1: \mathcal{C} \to \mathcal{D}$, $F_2,G_2: \mathcal{D} \to \mathcal{E}$ be functors and $\alpha: F_1 \to G_1$, $\beta: F_2 \to G_2$ be natural transformations. Define the **horizontal composition** (or **Godement product**) of these natural transformations to be the natural transformation $\beta \circ_h \alpha: F \to H$, with $X \in \mathcal{C}$ component
+- $(\beta \circ_h \alpha)_X := \beta_{G_1(X)} \circ F_2(\alpha_X)$
+- or $(\beta \circ_h \alpha)_X := G_2(\alpha_X) \circ \beta_{F_1(M)}$.
+- These two expressions are equal by the *interchange law* of $\cat{Cat}$ (the 2-category of small categories).
+This operation is a monoidal product in any monoidal category of endofunctors.
+
+To make sense of these, lets apply this to the special case of *whiskering*. Let $F,G: \mathcal{C} \to \mathcal{D}$ and $H: \mathcal{D} \to \mathcal{E}$ be functors, and $\alpha: F \to G$ be a natural transformation. Then define left and right whiskering to be
+- $H \cdot \alpha := \op{id}_H \circ_h \alpha : H \circ F \to H \circ G$
+- and $\alpha \cdot H := \alpha \circ_h \op{id}_H: F \circ H \to G \circ H$,
+where $\op{id}_H: H \to H$ is the identity natural transformation. Explicitly, these are natural transformations with the $X \in \mathcal{C}$ components
+- $(H \cdot \alpha)_X = (\op{id}_H \circ_h \alpha)_X = (\op{id}_H)_{G(X)} \circ H(\alpha_X) = H(\alpha_X)$,
+- $(\alpha \cdot H)_X = (\alpha \circ_h \op{id}_H)_X = \alpha_{H(X)} \circ F((\op{id}_F)_X) = \alpha_{H(X)}$.
+If we had defined this independently of horizontal composition, then we can alternatively write the definition of horizontal composition as
+- $\beta \circ_h \alpha := (\beta \cdot G_1) \circ_v (F_2 \cdot \alpha)$
+- or $\beta \circ_h \alpha := (G_2 \cdot \alpha) \circ_v (\beta \cdot F_1)$.
+
+Notice that left-whiskering is like pasting $H$ onto the left of $\alpha$ and leaving it unchanged, and right-whiskering is like pasting on the right. This hints at a visual interpretation of horizontal composition and the interchange law. These exist! A small taster can be found in Chapter 2.1 of my honours thesis[^2] in the case of monoidal categories (loop space of a 2-category with one object).
 
 
 
-[^1]: Wadler, Philip, [*Theorems for free!*](https://people.mpi-sws.org/~dreyer/tor/papers/wadler.pdf). 4th Int'l Conf. on Functional Programming and Computer Architecture. London.
 
 
 
@@ -142,6 +323,8 @@ Coming soon.
 
 
 
+[^1]: Wadler, Philip. [*Theorems for free!*](https://people.mpi-sws.org/~dreyer/tor/papers/wadler.pdf). 4th Int'l Conf. on Functional Programming and Computer Architecture. London.
+[^2]: Zhang, Victor. [*Diagrammatic Categories in Representation Theory*](https://github.com/dustbringer/UNSW-honours/blob/main/main.pdf). Honours Thesis, UNSW Sydney, 2023.
 
 
 

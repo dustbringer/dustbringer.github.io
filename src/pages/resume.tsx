@@ -480,24 +480,6 @@ function ResumePage() {
             </ul>
           </Accordion>
         </Box>
-        <HorizontalRule />
-        <Typography variant="body1">
-          <strong>Contact E-mail:</strong> v
-          <span style={{ color: theme.palette.primary.main }}>
-            {decodeURI("%E2%98%85%E2%98%85%E2%98%85")}
-          </span>
-          z
-          <span style={{ color: theme.palette.primary.main }}>
-            {decodeURI("%E2%98%85%E2%98%85%E2%98%85")}
-          </span>
-          <span style={{ color: theme.palette.primary.main }}>
-            {decodeURI("%EF%BC%83")}
-          </span>
-          {decodeURI("%EF%BC%A0")}gmail.com where the stars are the rest of my
-          name (not necessarily the same length) and the hash is replaced with
-          the 3-bit number for the number of two dimensional irreducible representations of the dihedral group
-          of the regular heptagon.
-        </Typography>
 
         {/* <Typography>
           See{" "}

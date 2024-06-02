@@ -89,7 +89,7 @@ A subgroup of $GL(n,\R)$, consisting of *matrices with determinant 1*. That is, 
 **Real Lie Group**
 
 
-
+[the rest is being written up...]
 
 
 

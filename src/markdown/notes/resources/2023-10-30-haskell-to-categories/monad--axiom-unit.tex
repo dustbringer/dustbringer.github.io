@@ -1,0 +1,25 @@
+\documentclass[
+    tikz,
+    border=5px,
+    convert={
+        density=600,
+        size=400x400,
+        outext=.svg,
+        convertexe={dvisvgm},
+        command=\unexpanded{{\convertexe\space --pdf  --zoom=1.5 \infile}}}]
+    {standalone}
+\usetikzlibrary{cd} % commutative diagrams
+\usepackage{amsmath, amssymb, amsfonts, amscd}
+
+\newcommand{\tensor}{\otimes}
+\newcommand{\op}[1]{\operatorname{#1}}
+\DeclareMathOperator{\Hom}{Hom}
+
+\begin{document}
+\begin{tikzcd}%[sep=large]
+    \op{id} \circ M \ar[r, "\eta \cdot M"] \ar[dr,equal]
+    & M \circ M \ar[d, "\mu"]
+    & M \circ \op{id} \ar[dl, equal] \ar[l,"M \cdot \eta"'] \\
+    & M
+\end{tikzcd}
+\end{document}

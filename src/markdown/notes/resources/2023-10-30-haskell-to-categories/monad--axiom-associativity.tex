@@ -1,0 +1,26 @@
+\documentclass[
+    tikz,
+    border=5px,
+    convert={
+        density=600,
+        size=400x400,
+        outext=.svg,
+        convertexe={dvisvgm},
+        command=\unexpanded{{\convertexe\space --pdf  --zoom=1.5 \infile}}}]
+    {standalone}
+\usetikzlibrary{cd} % commutative diagrams
+\usepackage{amsmath, amssymb, amsfonts, amscd}
+
+\newcommand{\tensor}{\otimes}
+\newcommand{\op}[1]{\operatorname{#1}}
+\DeclareMathOperator{\Hom}{Hom}
+
+\begin{document}
+\begin{tikzcd}%[sep=large]
+    & M \circ (M \circ M) \arrow[dr, "M \cdot \mu"] \\
+    (M \circ M) \circ M \arrow[ur, equal] \arrow[d, "\mu \cdot M"']
+        && M \circ M \arrow[d, "\mu"] \\
+    M \circ M \arrow[rr, "\mu"']
+        && M
+\end{tikzcd}
+\end{document}
