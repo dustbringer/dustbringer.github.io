@@ -121,9 +121,18 @@ In Haskell we can write `eval :: forall a. forall b. (a -> b) -> a -> b` for the
 which are both pretty obvious properties you would expect from an evaluation function. This idea can probably be extended to functions parametrised over multiple types.
 
 
-## Applicative Functors and Lax Closed Functors
+## Applicative Functors and Lax Monoidal/Closed Functors
 
-Possibly coming soon.
+
+
+
+
+The rest is possibly coming soon.
+
+### Resources
+
+The structure maps for this case (and another view via the Day convolution) are dealt with in [Bartosz Milewski's blog post on Applicative Functors](https://bartoszmilewski.com/2017/02/06/applicative-functors/).
+
 
 ## Monads and Monads
 
@@ -313,18 +322,43 @@ If we had defined this independently of horizontal composition, then we can alte
 Notice that left-whiskering is like pasting $H$ onto the left of $\alpha$ and leaving it unchanged, and right-whiskering is like pasting on the right. This hints at a visual interpretation of horizontal composition and the interchange law. These exist! A small taster can be found in Chapter 2.1 of my honours thesis[^2] in the case of monoidal categories (loop space of a 2-category with one object).
 
 
+### A2. Lax monoidal functors and lax closed functors
+There is an equivalence between lax monoidal functors and lax closed functors on *closed monoidal* categories. Let us assume we are working with such categories, then we describe how the structure maps correspond. We write $[X,Y]$ for the internal homs in these categories, defined to be right adjoint to the monoidal product $\otimes$. We mainly refer to a conference paper by Eilenberg and Kelly[^3] that lay out this correspondence and many others in excruciating detail.
+
+A lax monoidal functor is $F: \mathcal{C} \to \mathcal{D}$ with
+- a natural transformation $\tilde{F}_{A,B}: F(A) \otimes_\mathcal{D} F(B) \to F(A \otimes_\mathcal{C} B)$, natural in $A,B$,
+- a morphism $\eta: 1_\mathcal{D} \to F(1_\mathcal{C})$, where $1$ denotes the unit object in the corresponding category
+which satisfy particular commuting diagrams (see CF1, CF2, CF3 in Chapter 1 Section 3 of [^3]).
+
+A lax closed functor is $F: \mathcal{C} \to \mathcal{D}$ with
+- a natural transformation $\hat{F}_{A,B}: F([A,B]_\mathcal{C}) \to [FA, FB]_\mathcal{D}$, natural in $A,B$
+- a morphism $\eta: 1_\mathcal{D} \to F(1_\mathcal{C})$
+which satisfy particular commuting diagrams (see MF1, MF2, MF3 in Chapter 2 Section 1 of [^3]).
+
+Let us write $\pi_{A,B,C}: \Hom(A \otimes B, C) \xto{\sim} \Hom(A, [B,C])$ for the natural isomorphism defining the adjunction $- \otimes B \dashv [B,-]$. If this adjunction was initially defined by the unit $\eta_B: \op{Id} \to [B,-\otimes B]$ and counit $\epsilon_B: [B,-]\otimes B \to \op{Id}$ of adjunction, then we can describe what $\pi$ does to maps:
+- for $f \in \Hom(A \otimes B,C)$, we have $\pi_{A,B,C} (f) = [B,f] \circ \eta_{B,A} \in \Hom(A,[B,C])$, and
+- for $g \in \Hom(A,[B,C])$, we have $\pi_{A,B,C}^{-1}(g) = \epsilon_{B,C} \circ (g \otimes B) \in \Hom(A \otimes B, C)$.
+
+With this notation, Eilenberg and Kelly show that if we work with monoidal closed categories, then there the following diagram commutes ([^3], Chapter 2, (3.23)), giving a correspondence between $\hat{F}$ and $\tilde{F}$.
+
+<!-- TODO: insert diagram -->
 
 
 
 
 
+ 
 
 
 
 
+[^1]: Wadler, Philip. [*Theorems for free!*](https://people.mpi-sws.org/~dreyer/tor/papers/wadler.pdf). 4th Int'l Conf. on Functional Programming and Computer Architecture. London (1989).
+[^2]: Zhang, Victor. [*Diagrammatic Categories in Representation Theory*](https://github.com/dustbringer/UNSW-honours/blob/main/main.pdf). Honours Thesis, UNSW Sydney (2023).
+[^3]: Eilenberg, S., Kelly, G.M. Closed Categories. In: Eilenberg, S., Harrison, D.K., MacLane, S., Röhrl, H. (eds) Proceedings of the Conference on Categorical Algebra. Springer, Berlin, Heidelberg (1966). https://doi.org/10.1007/978-3-642-99902-4_22
 
-[^1]: Wadler, Philip. [*Theorems for free!*](https://people.mpi-sws.org/~dreyer/tor/papers/wadler.pdf). 4th Int'l Conf. on Functional Programming and Computer Architecture. London.
-[^2]: Zhang, Victor. [*Diagrammatic Categories in Representation Theory*](https://github.com/dustbringer/UNSW-honours/blob/main/main.pdf). Honours Thesis, UNSW Sydney, 2023.
+
+
+
 
 
 
