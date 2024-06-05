@@ -155,7 +155,7 @@ Equationally, these diagrams correspond to the relations
 > Note: we take advantage of having elements in the objects in our category, but proofs purely from morphism compositions can also be written down (although difficult).
 
 We first check that the structure maps agree.
-- `Monad`'s contain `return :: a -> m a` which corresponds to a singular component of the unit $\eta_A: A \to M A$.
+- the pure/return function `return :: a -> m a` corresponds the unit natural transformation $\eta_A: A \to M A$.
 - The bind function `>>=` (which we will write as $\beta$, where $\beta_{A,B} : MA \times Hom(A,MB) \to MB$) appears to be completely different from the multiplication map $\mu$, but can be constructed from one another.
   - (`>>=` to $\mu$)
     - $\mu$ is called `join` in Haskell, and is defined using `>>=` by
