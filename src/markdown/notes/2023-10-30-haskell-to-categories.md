@@ -4,7 +4,7 @@ title: Haskell and Types to Category theory
 description: Rewriting category theoretical structures in Haskell in category theory.
 author: dustbringer
 date: 2023-10-30
-edited: 2024-06-02
+edited: 2024-06-05
 tags:
     - category theory
     - haskell
@@ -120,25 +120,11 @@ In Haskell we can write `eval :: forall a. forall b. (a -> b) -> a -> b` for the
 - ("for $Y$") for all `f :: b -> b'`, we have `eval (g . f) x = eval g (f x)`,
 which are both pretty obvious properties you would expect from an evaluation function. This idea can probably be extended to functions parametrised over multiple types.
 
-
-## Applicative Functors and Lax Monoidal/Closed Functors
-
-
-
-
-
-The rest is possibly coming soon.
-
-### Resources
-
-The structure maps for this case (and another view via the Day convolution) are dealt with in [Bartosz Milewski's blog post on Applicative Functors](https://bartoszmilewski.com/2017/02/06/applicative-functors/).
-
-
 ## Monads and Monads
 
 In Haskell, `Monad` is a typeclass defined by
 ```hs
-class Monad m where
+class (Functor m) => Monad m where
   (>>=)  :: m a -> (a -> m b) -> m b -- "bind"  
   return ::   a               -> m a
 ```
@@ -146,7 +132,7 @@ with three properties:
 - (left unit) `return a >>= k = k a`,
 - (right unit) `m >>= return = m`,
 - (associativity) `m >>= (\x -> k x >>= h) = (m >>= k) >>= h`.
-Note that in `Prelude`, we see an additional method `(>>) :: m a -> m b -> m b` which is derived from `>>=` by `m >> k = m >>= (\_ -> k)`. This is just included for convenience and is not required to define a `Monad`.
+Note that in `Prelude`, we see an additional method `(>>) :: m a -> m b -> m b` which is derived from `>>=` by `m >> k = m >>= (\_ -> k)`. This is just included for convenience and is not required to define a `Monad`. Also the definition of `Monad` in Haskell requires `m` to be `Applicative`, but that can be derived from the methods here.
 
 In mathematics, a monad is *a monoid object in the category of endofunctors*. More precisely, for a category $\mathcal{C}$, the endofunctors of the category $\op{End}(\mathcal{C}) = \Hom(\mathcal{C},\mathcal{C})$ form a category where objects are endofunctors, morphisms are natural transformations and composition is vertical composition $\circ_v$ of natural transformations (we may write this as just $\circ$). Furthermore, this is a strict monoidal category with the unit object $\op{id} = \op{id}_\mathcal{C}$, tensor product of objects given by composition of functors and tensor product of morphisms is horizontal composition $\circ_h$ of natural transformations. Hence a monad (with respect to $\mathcal{C}$) is a monoid object $M$ in the monoidal category $\op{End}(\mathcal{C})$. That is, $M \in \op{End}(\mathcal{C})$ equipped with natural transformations
 - (unit) $\eta: \op{id} \to M$,
@@ -295,15 +281,95 @@ We want to prove that $\mu \circ (\mu \cdot M) = \mu \circ (M \cdot \mu)$. The c
 Have a look at [Monads Made Difficult (Stephen Diehl)](https://www.stephendiehl.com/posts/monads.html) for a softer mathematical introduction.
 
 
+
+## Applicative Functors and Lax Monoidal/Closed Functors
+
+Applicative functors were first defined for computer science as a generalisation of monads. As a result, the laws defined are mathematically unwieldly. In addition to the complexity of the structure of closed monoidal categories and closed/monoidal functors, I have not worked out all of them (likely due to not fully understanding closed categories) and probably will not anytime soon.
+
+In Haskell, `Applicative` is a typeclass defined by
+```hs
+class (Functor f) => Applicative f where
+  pure  :: a -> f a
+  (<*>) :: f (a -> b) -> f a -> f b
+```
+with the properties:
+- (identity) `pure id <*> v = v`
+- (homomorphism) `pure f <*> pure x = pure (f x)`
+- (interchange) `u <*> pure y = pure ($ y) <*> u`
+- (composition) `pure (.) <*> u <*> v <*> w = u <*> (v <*> w)`.
+The structure maps are related to `fmap` by `fmap f x = pure f <*> x`, which is a consequence of the previous laws.
+
+In mathematics, a lax closed functor is a structure preserving map $F: \mathcal{C} \to \mathcal{D}$ between closed categories with
+- a natural transformation $\hat{F}_{A,B}: F([A,B]_\mathcal{C}) \to [FA, FB]_\mathcal{D}$, natural in $A,B$
+- a morphism $\eta^F_{1}: 1_\mathcal{D} \to F(1_\mathcal{C})$
+that satisfy particular commuting diagrams (see MF1, MF2, MF3 in Chapter 2 Section 1 of [^2]). We work with this over lax monoidal functors (these are equivalent: see Appendix A2) because the structure maps already line up in this case. If we assume that $\mathcal{C}$ and $\mathcal{D}$ are closed monoidal, then this is equivalent to a lax monoidal functor. We also need one more thing, which is if $F$ is an endofunctor (i.e. $\mathcal{C} = \mathcal{D}$) then we can define *tensorial strength*: a natural isomorphism $\sigma: X \otimes FY \xto{\sim} F(X \otimes Y)$ satisfying certain commuting diagrams.
+
+> Note: Tensorial strength is particularly defined for the monoidal structure. There is an equivalent natural transformation for closed endofunctors $t_{A,B}: [A,B] \to [FA,FB]$ that deals with *enrichment* of endofunctors. The correspondence was studied by Kock [^3] (also see [Stack Exchange](https://math.stackexchange.com/questions/314416/internalising-the-functor-action-on-morphisms-e-g-to-exponential-objects), [nLab (Idea)](https://ncatlab.org/nlab/show/tensorial+strength)), called "strengths". I have not found how to use it.
+
+### Correspondence (Cats to Haskell)
+
+I have only worked out some of the correspondence in this direction: showing that Haskell `Applicative` is indeed a lax closed functor. We are choosing to work with closed functors because the structure maps line up nicely, so we don't need to translate everything to the monoidal functor world. The only downside is that tensorial strength doesn't work nicely here, and I don't know how to use it's closed functor counterpart.
+
+The structure maps are almost the same between `Applicative` and lax closed functors, however `pure` is parametrised whereas $\eta^F_1$ is only defined on the unit object. Paterson and McBride's paper[^4] describes how $\eta^F_1$ can be extended to a natural transformation $\eta^F_A$ using tensorial strength:
+$$
+\eta^F_A: A \xto{r_A^{-1}} A \otimes 1 \xto{A \otimes \eta^F_1} A \otimes F(1) \xto{\sigma_{A,1}} F(A \otimes 1) \xto{Fr_A} FA
+$$
+which evaluates to $\eta^F_1$ when $A = 1$. This is natural in $A$ because functors preserve naturality, vertical composition of naturals is natural, and each component is natural in $A$.
+
+The `Applicative` relations can be written mathematically as
+- (identity) $(\hat{F}_{A,A} \circ \eta^F_{[A,A]}(\op{id}_A))(v) = v$
+  - for $v \in FA$
+- (homomorphism) $(\hat{F}_{A,B} \circ \eta^F_{[A,B]}(f))(\eta^F_A(x)) = \eta^F_B(f(x))$
+  - for $f : A \to B$ (i.e. $f \in [A,B]$), $x \in A$
+- (interchange) $\hat{F}_{A,B}(u)(\eta^F_A(y)) = \hat{F}_{[A,B],B}(\eta^F_{[[A,B],B]} (\epsilon_{A,B}(-,y)))(u)$
+  - for $y \in A$, $u \in F[A,B]$ and $\epsilon_{A,B}: [A,B] \otimes A \to B$ is the counit of the tensor-hom adjunction
+- (composition) $\hat{F}_{A,C}(\hat{F}_{[A,B],[A,C]} ((\hat{F}_{[B,C],[[A,B],[A,C]]} \circ \eta^F_{[[B,C],[[A,B],[A,C]]]} (L^A_{B,C}))(u))(v))(w) = \hat{F}_{B,C}(u)(\hat{F}_{A,B}(v)(w))$
+  - for $u \in F[B,C], v \in F[A,B], w \in FA$ and $L^A_{B,C}$ is the composition structure map in the closed category.
+
+The last two of these will not be proven, so I'm not sure if they are the best way to translate the rules to mathematics. Also, since these axioms are defined in a category similar to $\cat{Set}$, we may take the liberty to think of $1 = \{*\}$, $[A,B] = \Hom(A,B)$ and $j_A(*) = \op{id}_A$, see Eilenberg-Kelly[^2] (2.4).
+
+#### Identity
+By construction the map $j$ in the definition of closed categories "picks out the identity morphism", so we have $j_A(*) = \op{id}_A$ as mentioned above. The following diagram commutes
+![](./resources/2023-10-30-haskell-to-categories/applicative--law-identity.svg)
+where the left square commutes by naturality of $\eta^F$ and the right square by property $\text{CF1}$[^2] of closed functors. Note that the bottom two arrows are identified, so the left-top branch is the same as the right arrow, i.e. $\hat{F}_{A,A} \circ \eta^F_{[A,A]} \circ j_A (*) = j_{FA}(*)$. Therefore
+- $(\hat{F}_{A,A} \circ \eta^F_{[A,A]}(\op{id}_A))(v) = (\hat{F}_{A,A} \circ \eta^F_{[A,A]} \circ j_A (*))(v) = (j_{FA}(*))(v) = \op{id}_{FA}(v) = v$
+
+#### Homomorphism
+We first prove the "bonus" identity in the `Applicative` definition, `fmap f x = pure f <*> x`.
+
+For a morphism $f: A \to B$ have the commutative diagram
+![](./resources/2023-10-30-haskell-to-categories/applicative--law-hom1.svg)
+where the left square commutes by property $\text{CF1}$[^2] of closed functors, and the right square commutes by naturality of $\hat{F}_{A,B}$ in $A$. If we write $j_f := [A,f] \circ j_A$, then the diagram becomes
+![](./resources/2023-10-30-haskell-to-categories/applicative--law-hom1-condensed.svg)
+which is the relation $j_{Ff} = \hat{F}_{A,B} \circ Fj_f \circ \eta^F_1$. Then we have the diagram
+![](./resources/2023-10-30-haskell-to-categories/applicative--law-hom2.svg)
+where the outside rectangle is the above diagram, and the top-left triangle commutes by naturality of $\eta^F$. Then the bottom right triangle commutes, which is that
+$$
+j_{Ff} = \hat{F}_{A,B} \circ \eta^F_{[A,B]} \circ j_f.
+$$
+Evaluating at $*$, we get exactly $Ff = \hat{F}_{A,B} \circ \eta^F_{[A,B]} (f)$.
+
+With this fact, we can prove the homomorphism relation with ease. Applying the above to the left side of the relation, we have $(\hat{F}_{A,B} \circ \eta^F_{[A,B]}(f))(\eta^F_A(x)) = Ff (\eta^F_A(x)) = \eta^F_B(f(x))$, where the second equality is naturality of $\eta^F$.
+
+#### Others?
+They are hard, but feel free to try it yourself...
+
+### Resources
+
+The structure maps for this case (and another view via the Day convolution) are dealt with a bit in [Bartosz Milewski's blog post on Applicative Functors](https://bartoszmilewski.com/2017/02/06/applicative-functors/), with reference to *Notions of Computation as Monoids*[^4].
+
+Applicatives were introduced in the paper by Paterson and McBride, *Applicative programming with effects*[^5] under the name of "Idiom". In Section 7, they also suggest the correspondence between `Applicative` and lax monoidal functors with tensorial strength, but without proof.
+
+
 ## Appendix
 
 ### A1. Horizontal and vertical composition of natural transformations
 
-**Definition** (Vertical composition). Let $F,G,H: \mathcal{C} \to \mathcal{D}$ be functors and $\alpha: F \to G$, $\beta: G \to H$ be natural transformations. Define the **vertical composition** of these natural transformations to be the natural transformation $\beta \circ_v \alpha: F \to H$, with $X \in \mathcal{C}$ component $(\beta \circ_v \alpha)_X := \beta_X \circ \alpha_X$.
+**Definition.** (Vertical composition) Let $F,G,H: \mathcal{C} \to \mathcal{D}$ be functors and $\alpha: F \to G$, $\beta: G \to H$ be natural transformations. Define the **vertical composition** of these natural transformations to be the natural transformation $\beta \circ_v \alpha: F \to H$, with $X \in \mathcal{C}$ component $(\beta \circ_v \alpha)_X := \beta_X \circ \alpha_X$.
 
 This is the usual composition of morphisms in the category of endofunctors, so it is often just written $\circ$.
 
-**Definition** (Horizontal composition). Let $F_1,G_1: \mathcal{C} \to \mathcal{D}$, $F_2,G_2: \mathcal{D} \to \mathcal{E}$ be functors and $\alpha: F_1 \to G_1$, $\beta: F_2 \to G_2$ be natural transformations. Define the **horizontal composition** (or **Godement product**) of these natural transformations to be the natural transformation $\beta \circ_h \alpha: F \to H$, with $X \in \mathcal{C}$ component
+**Definition.** (Horizontal composition) Let $F_1,G_1: \mathcal{C} \to \mathcal{D}$, $F_2,G_2: \mathcal{D} \to \mathcal{E}$ be functors and $\alpha: F_1 \to G_1$, $\beta: F_2 \to G_2$ be natural transformations. Define the **horizontal composition** (or **Godement product**) of these natural transformations to be the natural transformation $\beta \circ_h \alpha: F \to H$, with $X \in \mathcal{C}$ component
 - $(\beta \circ_h \alpha)_X := \beta_{G_1(X)} \circ F_2(\alpha_X)$
 - or $(\beta \circ_h \alpha)_X := G_2(\alpha_X) \circ \beta_{F_1(M)}$.
 - These two expressions are equal by the *interchange law* of $\cat{Cat}$ (the 2-category of small categories).
@@ -319,42 +385,72 @@ If we had defined this independently of horizontal composition, then we can alte
 - $\beta \circ_h \alpha := (\beta \cdot G_1) \circ_v (F_2 \cdot \alpha)$
 - or $\beta \circ_h \alpha := (G_2 \cdot \alpha) \circ_v (\beta \cdot F_1)$.
 
-Notice that left-whiskering is like pasting $H$ onto the left of $\alpha$ and leaving it unchanged, and right-whiskering is like pasting on the right. This hints at a visual interpretation of horizontal composition and the interchange law. These exist! A small taster can be found in Chapter 2.1 of my honours thesis[^2] in the case of monoidal categories (loop space of a 2-category with one object).
+Notice that left-whiskering is like pasting $H$ onto the left of $\alpha$ and leaving it unchanged, and right-whiskering is like pasting on the right. This hints at a visual interpretation of horizontal composition and the interchange law. These exist! A small taster can be found in Chapter 2.1 of my honours thesis[^6] in the case of monoidal categories (loop space of a 2-category with one object).
 
 
 ### A2. Lax monoidal functors and lax closed functors
-There is an equivalence between lax monoidal functors and lax closed functors on *closed monoidal* categories. Let us assume we are working with such categories, then we describe how the structure maps correspond. We write $[X,Y]$ for the internal homs in these categories, defined to be right adjoint to the monoidal product $\otimes$. We mainly refer to a conference paper by Eilenberg and Kelly[^3] that lay out this correspondence and many others in excruciating detail.
+There is an equivalence between lax monoidal functors and lax closed functors on *closed monoidal* categories. Let us assume we are working with such categories, then we describe how the structure maps correspond. We write $[X,Y]$ for the internal homs in these categories, defined to be right adjoint to the monoidal product $\otimes$. We mainly refer to a conference paper by Eilenberg and Kelly[^2] that lay out this correspondence and many others in excruciating detail.
 
 A lax monoidal functor is $F: \mathcal{C} \to \mathcal{D}$ with
 - a natural transformation $\tilde{F}_{A,B}: F(A) \otimes_\mathcal{D} F(B) \to F(A \otimes_\mathcal{C} B)$, natural in $A,B$,
-- a morphism $\eta: 1_\mathcal{D} \to F(1_\mathcal{C})$, where $1$ denotes the unit object in the corresponding category
-which satisfy particular commuting diagrams (see CF1, CF2, CF3 in Chapter 1 Section 3 of [^3]).
+- a morphism $\eta^F: 1_\mathcal{D} \to F(1_\mathcal{C})$, where $1$ denotes the unit object in the corresponding category
+which satisfy particular commuting diagrams (see CF1, CF2, CF3 in Chapter 1 Section 3 of [^2]).
 
 A lax closed functor is $F: \mathcal{C} \to \mathcal{D}$ with
 - a natural transformation $\hat{F}_{A,B}: F([A,B]_\mathcal{C}) \to [FA, FB]_\mathcal{D}$, natural in $A,B$
-- a morphism $\eta: 1_\mathcal{D} \to F(1_\mathcal{C})$
-which satisfy particular commuting diagrams (see MF1, MF2, MF3 in Chapter 2 Section 1 of [^3]).
+- a morphism $\eta^F: 1_\mathcal{D} \to F(1_\mathcal{C})$
+which satisfy particular commuting diagrams (see MF1, MF2, MF3 in Chapter 2 Section 1 of [^2]).
 
 Let us write $\pi_{A,B,C}: \Hom(A \otimes B, C) \xto{\sim} \Hom(A, [B,C])$ for the natural isomorphism defining the adjunction $- \otimes B \dashv [B,-]$. If this adjunction was initially defined by the unit $\eta_B: \op{Id} \to [B,-\otimes B]$ and counit $\epsilon_B: [B,-]\otimes B \to \op{Id}$ of adjunction, then we can describe what $\pi$ does to maps:
 - for $f \in \Hom(A \otimes B,C)$, we have $\pi_{A,B,C} (f) = [B,f] \circ \eta_{B,A} \in \Hom(A,[B,C])$, and
 - for $g \in \Hom(A,[B,C])$, we have $\pi_{A,B,C}^{-1}(g) = \epsilon_{B,C} \circ (g \otimes B) \in \Hom(A \otimes B, C)$.
 
-With this notation, Eilenberg and Kelly show that if we work with monoidal closed categories, then there the following diagram commutes ([^3], Chapter 2, (3.23)), giving a correspondence between $\hat{F}$ and $\tilde{F}$.
+With this notation, Eilenberg and Kelly show that if we work with monoidal closed categories, then there the following diagram commutes ([^2], Chapter 2, (3.23)), giving a correspondence between $\hat{F}$ and $\tilde{F}$.
 
-<!-- TODO: insert diagram -->
+![](./resources/2023-10-30-haskell-to-categories/closed-monoidal-functor-structure-corresp.svg)
 
+Following the morphism $f \in \Hom(A \otimes B, C)$ gives the relation
+$$
+\pi_{FA,FB,FC}(Ff \circ \tilde{F}_{A,B}) = \hat{F}_{B,C} \circ F \circ \pi_{A,B,C}(f).
+$$
+Setting $C = A \otimes B$ and $f = \op{id}_{A \otimes B}$, this becomes $\pi_{FA,FB,F(A \otimes B)}(\tilde{F}_{A,B}) = \hat{F}_{A,B} \circ F \circ \pi_{A,B,A \otimes B}(\op{id}) = \hat{F}_{A,B} \circ F([B,\op{id}] \circ \eta_{B,A}) = \hat{F}_{B,A \otimes B} \circ F(\eta_{B,A})$. Therefore
+$$
+\begin{align*}
+\tilde{F}_{A,B}
+=& \pi_{FA,FB,F(A \otimes B)}^{-1} (\hat{F}_{B,A \otimes B} \circ F\eta_{B,A}) \\
+=& \epsilon_{FB,F(A \otimes B)} \circ ((\hat{F}_{B,A \otimes B} \circ F\eta_{B,A}) \otimes FB) \\
+=& \epsilon_{FB,F(A \otimes B)} \circ (\hat{F}_{B,A \otimes B} \otimes FB) \circ (F\eta_{B,A} \otimes FB).
+\end{align*}
+$$
 
+Similarly, if we invert the top and bottom $\pi$ maps, following a morphism $f \in \Hom(A,[B,C])$ gives the relation
+$$
+\pi_{FA,FB,FC}^{-1}(\hat{F}_{B,C} \circ Ff) = F(\pi_{A,B,C}^{-1}(f)) \circ \tilde{F}_{A,B}
+$$
+and setting $A = [B,C]$ and $f = \op{id}_{[B,C]}$ this becomes $\pi_{F[B,C],FB,FC}^{-1}(\hat{F}_{B,C}) = F(\pi_{[B,C],B,C}^{-1}(\op{id})) \circ \tilde{F}_{[B,C],B} = F(\epsilon_{B,C} \circ (\op{id} \otimes B)) \circ \tilde{F}_{[B,C],B} = F\epsilon_{B,C} \circ \tilde{F}_{[B,C],B}$. Hence
+$$
+\begin{align*}
+\hat{F}_{B,C}
+=& \pi_{F[B,C],FB,FC}(F\epsilon_{B,C} \circ \tilde{F}_{[B,C],B}) \\
+=& [FB, F\epsilon_{B,C} \circ \tilde{F}_{[B,C],B}] \circ \eta_{FB,F[B,C]} \\
+=& [FB, F\epsilon_{B,C}] \circ [FB,\tilde{F}_{[B,C],B}] \circ \eta_{FB,F[B,C]}.
+\end{align*}
+$$
 
-
-
- 
-
+The other structure morphism $\eta^F$ just stays the same. What remains is to show that the defining relations of these functors correspond, this can be found in Chapter 2 Proposition 4.3 of [^2]. A further remark is that the correspondence between $\hat{F}$ and $\tilde{F}$ given in Example 3.1 in the nLab Closed Functor[^7] article gives the same equality, using $\pi$ and it's inverse to obtain adjuncts, and noting that $\eta_{B,A} = \pi_{A,B,A \otimes B}(\op{id}_{A \otimes B})$ and $\epsilon_{B,C} = \pi_{[B,C],B,C}^{-1}(\op{id}_{[B,C]})$ are adjuncts of the appropriate identity morphism.
 
 
 
 [^1]: Wadler, Philip. [*Theorems for free!*](https://people.mpi-sws.org/~dreyer/tor/papers/wadler.pdf). 4th Int'l Conf. on Functional Programming and Computer Architecture. London (1989).
-[^2]: Zhang, Victor. [*Diagrammatic Categories in Representation Theory*](https://github.com/dustbringer/UNSW-honours/blob/main/main.pdf). Honours Thesis, UNSW Sydney (2023).
-[^3]: Eilenberg, S., Kelly, G.M. Closed Categories. In: Eilenberg, S., Harrison, D.K., MacLane, S., Röhrl, H. (eds) Proceedings of the Conference on Categorical Algebra. Springer, Berlin, Heidelberg (1966). https://doi.org/10.1007/978-3-642-99902-4_22
+[^2]: Eilenberg, S., Kelly, G.M. Closed Categories. In: Eilenberg, S., Harrison, D.K., MacLane, S., Röhrl, H. (eds) Proceedings of the Conference on Categorical Algebra. Springer, Berlin, Heidelberg (1966). https://doi.org/10.1007/978-3-642-99902-4_22
+[^3]: Kock, A. Strong functors and monoidal monads. *Arch. Math* 23, 113–120 (1972). https://doi.org/10.1007/BF01304852
+[^4]: Rivas, E., Jaskelioff, M. Notions of computation as monoids. *Journal of Functional Programming*. Volume 27, e21 (2017). https://doi.org/10.1017/S0956796817000132 ([arxiv](https://www.arxiv.org/abs/1406.4823))
+[^5]: Mcbride C, Paterson R. Applicative programming with effects. *Journal of Functional Programming*. Volume 18, Issue 1, p1-13, (2008). https://doi.org/10.1017/S0956796807006326 ([pdf](https://www.staff.city.ac.uk/~ross/papers/Applicative.pdf))
+[^6]: Zhang, Victor. [*Diagrammatic Categories in Representation Theory*](https://github.com/dustbringer/UNSW-honours/blob/main/main.pdf). Honours Thesis, UNSW Sydney (2023).
+[^7]: nLab, [*Closed Functor*](https://ncatlab.org/nlab/show/closed+functor) (revision August 23, 2023)
+
+
+
 
 
 

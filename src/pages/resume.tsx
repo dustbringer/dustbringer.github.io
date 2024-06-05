@@ -55,8 +55,9 @@ function ResumePage() {
             </Typography>
             <Typography variant="body1" gutterBottom>
               C, Javascript (Typescript, Node.js, ReactJS, GatsbyJS,
-              Express.js), HTML5, CSS3, Python, Java, SQL (PostgreSQL, GraphQL,
-              MySQL), Bash, R, Maple, x86, <TeX math="\LaTeX" />, Markdown.
+              Express.js), HTML5, CSS3, Python (Sage, pyTorch), Java, SQL
+              (PostgreSQL, GraphQL, MySQL), Bash, R, Maple, x86,{" "}
+              <TeX math="\LaTeX" />, Markdown.
             </Typography>
           </li>
           <li>
@@ -78,11 +79,10 @@ function ResumePage() {
               Linear Algebra, Multivariate Calculus, Point Set Topology,
               Abstract Algebra (Groups, Rings, Fields, Modules, etc.), Category
               Theory, Representation Theory, Combinatorics, Differential
-              Equations (ordinary and partial), Graph Theory, Probability,
-              Statistics, Logic, Computability and Complexity Theory, Coding
-              Theory. The beginnings of Complex Analysis, Functional Analysis,
-              Galois Theory, Commutative Algebra, Algebraic Geometry and
-              Differential Geometry.
+              Equations, Graph Theory, Probability, Statistics, Logic,
+              Computability and Complexity Theory, Coding Theory. The beginnings
+              of Complex Analysis, Functional Analysis, Galois Theory,
+              Commutative Algebra, Algebraic Geometry and Differential Geometry.
             </Typography>
           </li>
         </ul>
@@ -93,8 +93,8 @@ function ResumePage() {
               UNSW Casual Academic (2021 - Present)
             </Typography>
             <Typography variant="body1" gutterBottom>
-              Tutor at UNSW School of Mathematics Drop-in-centre and Lab
-              consultations.
+              Tutor at UNSW School of Mathematics: First year courses
+              (MATH1131,1081), Drop-in centre and Lab consultations.
             </Typography>
           </li>
           <li>
@@ -182,15 +182,18 @@ function ResumePage() {
           </li>
           <li>
             <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
-              Tab Suspender Browser Extension (
+              Tab Utility Browser Extension (
               <LinkNewTab href="https://github.com/dustbringer/tab-suspender">
                 GitHub
               </LinkNewTab>
               )
             </Typography>
             <Typography variant="body1" gutterBottom>
-              A simple extension that replaces unused tabs with a static page
-              that can be refreshed to return to the original webpage.
+              An extension that suspends tabs and saves open tab information
+              locally every while. Tab suspender was motivated by the issues
+              surrounding The Great Suspender; tab saver is a safeguard from
+              losing a majority of my tabs from crashes. I use this extension
+              daily.
             </Typography>
           </li>
           <li>

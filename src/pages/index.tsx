@@ -71,8 +71,8 @@ function HomePage() {
           of techinical posts in <InternalLink to="/notes">Notes</InternalLink>,{" "}
           and miscellaneous paraphernalia in{" "}
           <InternalLink to="/tools">Tools</InternalLink>. You can learn more
-          about me in <InternalLink to="/about">About</InternalLink> and{" "}
-          <InternalLink to="/resume">Resume</InternalLink>.
+          about me in <InternalLink to="/about">About</InternalLink>.
+          {/* and <InternalLink to="/resume">Resume</InternalLink>. */}
         </Typography>
 
         <Typography variant="h5" align="center">

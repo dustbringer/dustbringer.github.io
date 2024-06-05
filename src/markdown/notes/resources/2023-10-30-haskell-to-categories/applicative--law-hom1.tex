@@ -1,0 +1,28 @@
+\documentclass[
+    tikz,
+    border=5px,
+    convert={
+        density=600,
+        size=400x400,
+        outext=.svg,
+        convertexe={dvisvgm},
+        command=\unexpanded{{\convertexe\space --pdf  --zoom=1.5 \infile}}}]
+    {standalone}
+\usetikzlibrary{cd} % commutative diagrams
+\usepackage{amsmath, amssymb, amsfonts, amscd}
+\DeclareMathAlphabet{\mathbbb}{U}{bbold}{m}{n}
+
+\newcommand{\tensor}{\otimes}
+\newcommand{\op}[1]{\operatorname{#1}}
+\DeclareMathOperator{\Hom}{Hom}
+
+\begin{document}
+\begin{tikzcd}[sep=large]
+    F\mathbbb{1} \ar[r,"Fj_A"]
+    & F[A,A] \ar[r,"{F[A,f]}"] \ar[d,"\hat{F}_{A,A}"]
+    & F[A,B] \ar[d,"\hat{F}_{A,B}"] \\
+    \mathbbb{1} \ar[u,"\eta^F_\mathbbb{1}"] \ar[r,"j_{FA}"']
+    & {[FA,FA]} \ar[r,"{[FA,Ff]}"']
+    & {[FA,FB]}
+\end{tikzcd}
+\end{document}

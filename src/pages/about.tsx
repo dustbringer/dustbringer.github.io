@@ -41,7 +41,9 @@ function AboutPage() {
           {decodeURI("%EF%BC%A0")}gmail.com where the stars are the rest of my
           name (not necessarily the same length) and the hash is replaced with
           the 3-bit number for the number of two dimensional irreducible
-          representations of the dihedral group of the regular heptagon.
+          representations of the dihedral group of the regular heptagon (or
+          alternatively the last digit of the unicode hexadecimal encoding of
+          the symbol).
         </Typography>
       </Container>
     </>
