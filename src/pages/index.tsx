@@ -113,7 +113,7 @@ export default HomePage;
 export function Head() {
   return (
     <>
-      <title>dustbringer.github.io</title>
+      <title>Victor Zhang | dustbringer.github.io</title>
       <meta name="description" content="Home" />
     </>
   );
