@@ -3,7 +3,7 @@ import { styled, css } from "@mui/material/styles";
 import { useTheme } from "@mui/material/styles";
 import { Prism } from "react-syntax-highlighter";
 import {
-  prism,
+  oneLight,
   tomorrow,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -36,7 +36,7 @@ function Code(
   }
 ) {
   const theme = useTheme();
-  const style = theme.palette.mode === "dark" ? tomorrow : prism;
+  const style = theme.palette.mode === "dark" ? tomorrow : oneLight;
 
   return props.inline !== undefined ? (
     <StyledCodeInline {...props} prismstyle={style}>
