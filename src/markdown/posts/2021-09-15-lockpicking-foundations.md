@@ -15,7 +15,7 @@ tags:
 
 > Slides for this talk are [here on Canva](https://www.canva.com/design/DAEp9qYT_pQ/Pp1XErle3E52z5tE0PKAnw/view?utm_content=DAEp9qYT_pQ&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
 
-## Ethics and Law
+# Ethics and Law
 **Important rules that should always be kept in mind**
 - **Do not** attempt to pick a lock that you do not have **explicit written permission** to pick.
   - Emphasis on *explicit* and *written*.
@@ -31,10 +31,10 @@ Read more from [this document](https://www.pickpals.com.au/wp-content/uploads/20
 
 So, this is talk is not about teaching you how to do something illegal, but to spark an interest in and appreciation of locks and lockpicking.
 
-## Brief Background
+# Brief Background
 As long as locks existed, people have been looking for ways to open them without its key. Lockpicking is all about this - making a lock believe with have its key without actually having the key. There are also other methods of bypassing different aspects of a lock, which we will covered briefly at the end, but we will mainly be focusing on imitating a key.
 
-## Lockpicking
+# Lockpicking
 > There may be some unfamiliar terminology. We will learn them as we go.
 
 Many people like lockpicking because its an exotic puzzle with many levels of difficulties. One popular style of lockpicking for hobbyists, single pin picking, involves knowing how the lock works and attempting to figure out the internal unlocking pattern by physically feeling the mechanism with a lock pick. Much of lockpicking relies of the tactile feel of the mechanism, so without hands-on experience it is difficult to fully grasp lock picking.
@@ -45,7 +45,7 @@ For all the different kinds of locking mechanisms, there are a spectrum of tools
 
 The picks labelled blue are enough to get past most locks we see today, we will be learning about them later on. The picks labelled yellow are assorted rakes and the ones labelled red  are more specialised tools (left is for a dimple lock, right is a different type of rake but can be used to pull out snapped keys).
 
-### Locks
+## Locks
 When we look at a lock, it is made up of different parts.
 
 ![Lock deconstructed](./resources/2021-09-08-lockpicking-foundations/lock-parts.png)
@@ -66,7 +66,7 @@ There are an assortment of (physical) key-oriented locking mechanisms that exist
 
 We will be exploring the pin-and-tumbler mechanism.
 
-#### Pin and Tumbler Locks
+### Pin and Tumbler Locks
 
 First, a diagram to go over some terminology and structure.
 
@@ -92,7 +92,7 @@ The key is cut in such a way that when inserted fully, the line between the key 
 
 Now that we have some idea of how the lock works under normal conditions, lets look at some lock picking tools.
 
-### Tools
+## Tools
 The most basic (and sufficient) lock pick that we need for single pin picking is the **hook**. Here is an image of a standard Peterson's hook.
 
 ![](./resources/2021-09-08-lockpicking-foundations/peterson-hook.jpg)
@@ -111,7 +111,7 @@ The [bottom tool](https://www.youtube.com/watch?v=NDSWx8Fngi0) is placed in the 
 
 The top-of-keyway tensioner is the most popular of the two.
 
-#### Improvised tools
+### Improvised tools
 You may have seen guides online about making your own lockpicking tools out of paperclips and bobby pins. Of course they may work as temporary lock picking tools, but they are never as effective as dedicated steel lock picks since we feel less feedback from most improvised tools. These makeshift tools may even cause a boat load of frustration when learning how to pick even the simplest locks.
 - Paperclips: too malleable, we cannot truly apply the force we want
 - Bobby pins: better than paperclips but still too bendy for picking
@@ -119,7 +119,7 @@ You may have seen guides online about making your own lockpicking tools out of p
 There are some tools that may work well, for example a bent piece of windshield wiper wire works well as a tensioner, but the process for making viable lockpicks is too much trouble for what its worth (in my opinion).
 
 
-### Single pin picking
+## Single pin picking
 
 You might be wondering, **how can we push all the pins up at once using just a hook? Won't they just fall down after you push one up?** **Why do we need a tension wrench when we cant even turn the core in the first place?**
 
@@ -158,7 +158,7 @@ Repeat this process of finding a binding pin and pushing it up to hear a click, 
 > Demo of what it looks and sounds like (https://youtu.be/WAXj7NK0G9I)
 > <iframe width="560" height="315" src="https://www.youtube.com/embed/WAXj7NK0G9I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### Raking
+## Raking
 Raking is another lock picking technique that is cool but arguably less fun. We will need a new class of tools, called **rakes**. Here is an image of a Peterson's wave rake (also called a Bogota).
 
 ![Peterson's wave rake](./resources/2021-09-08-lockpicking-foundations/peterson-wave-rake.jpg)
@@ -179,10 +179,10 @@ In general, raking opens a lock up much faster than single pin picking. Single p
 Professionally (locksmiths, military Explosive Ordnance Disposal units etc.), where opening a lock quickly is in your best interest, rakes are one of the first tools to try on locks. Especially if it is a dangerous job, you don't want to be fumbling with single pins when your/someone's life is on the line.
 
 
-## Security
+# Security
 Once you practice a bit, the steps to single pin picking feel rather simple and basic. We will introduce some features of higher security locks that make lockpicking life harder. Different locks may implement different security features, so a lockpicker will need to understand specifics about particular locks to be able to effectively pick them.
 
-### Security pins
+## Security pins
 Security pins are often variant driver pins that makes single pin picking difficult, and makes raking ineffective. These feel different from regular pins (such as imitating a set pin click before being set) and require special techniques to pick. Some common ones are serrated, spool, T and mushroom pins.
 
 ![Security pins](./resources/2021-09-08-lockpicking-foundations/security-pins.png)
@@ -198,11 +198,11 @@ For rotation based mechanisms such as disk detainer locks and combination locks,
 
 > Look up the mechanisms for these locks if you are interested, or want to know the reason for the name. -->
 
-### More than just pins in the lock
+## More than just pins in the lock
 Locks may also include more little pieces or moving parts that prohibit the core from turning unless the right key is inserted. These could be hidden pins (usually at the back-bottom of the keyway) or a sidebar etc. Sidebars are often spring loaded bars in the cylinder which may be retracted when the certain conditions are met (these vary from lock to lock).
 
 
-## Getting started
+# Getting started
 Note, I recommend avoiding cheap lockpick sets and practice locks. These are usually manufactured poorly so the picks are made from soft/brittle metal. The sets usually include a whole load of useless picks, and the clear practice lock included is so easy that it can be 'raked' open with the back of a hook! Of course if you don't mind, then go for those sets.
 
 The picks, sets and locks linked below are a little bit more expensive, but are higher quality and very durable.
@@ -243,7 +243,7 @@ The picks, sets and locks linked below are a little bit more expensive, but are 
   - Abus Titalium 80Ti/50
 
 
-## Resources
+# Resources
 There are many fantastic websites, communities and Youtube channels that help a lot with getting to know lockpicking. Examples include
 - [BosbianBill (Youtube)](https://www.youtube.com/user/bosnianbill)
 - [LockPickingLawyer (Youtube)](https://www.youtube.com/channel/UCm9K6rby98W8JigLoZOh6FQ)

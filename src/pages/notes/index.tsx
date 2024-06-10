@@ -57,7 +57,7 @@ function ReferenceListPage({
                       description={meta.description}
                       date={meta.edited} // or meta.date
                       tags={meta.tags}
-                      name={fields.slug.match(/^.*\/(.+?)$/)?.[1]}
+                      name={fields.slug?.match(/^.*\/(.+?)$/)?.[1]}
                       path={path}
                     />
                   );
