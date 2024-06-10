@@ -15,7 +15,7 @@ const FormatDiv = styled("div")`
   width: 200px;
   position: sticky;
   top: 1vw;
-  margin-left: -210px;
+  margin-left: -215px;
   margin-top: 50px;
   border-left: 2px solid
     ${(props) => (props.theme.palette.mode === "dark" ? "#333" : "#BBB")};

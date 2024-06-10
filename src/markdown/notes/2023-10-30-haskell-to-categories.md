@@ -205,7 +205,8 @@ Since parametrised functions in Haskell have "parametricity" properties, we expe
       - which is equal.
   - The corresponding parametricity relation is $M(f)(\beta_{A,B}(m,g)) = \beta_{A,C}(m, M(f) \circ g)$
     - in Haskell, `fmap f (x >>= g) = x >>= fmap f . g` (note `fmap f . g = (fmap f) . g`)
-    ### Relations: Cats to Haskell
+
+### Relations: Cats to Haskell
 Now we observe that the `Monad` relations in Haskell are indeed true in the categorical counterpart.
 
 The `Monad` relations can be written mathematically as

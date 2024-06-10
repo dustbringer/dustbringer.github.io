@@ -88,7 +88,7 @@ const config: GatsbyConfig = {
               //use "front" for Wikipedia style ^ links
               footnoteBackRefInnerTextStartPosition: "front",
               useFootnoteMarkerText: true, // Defaults to false
-              useCustomDivider: "<hr/><strong>Footnotes</strong>", // Defaults to <hr/>
+              useCustomDivider: "<hr/><h1>Footnotes</h1>", // Defaults to <hr/>
             },
           },
           {

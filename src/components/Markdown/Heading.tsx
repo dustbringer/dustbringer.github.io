@@ -21,7 +21,7 @@ export const StyledH1 = styled("h1")`
   font-size: 2.3em;
   font-weight: 500;
   line-height: 1em;
-  margin: 0.6em 0 0.4em;
+  margin: 1em 0 0.4em;
 `;
  
 export const StyledH2 = styled("h2")`
@@ -39,7 +39,7 @@ export const StyledH3 = styled("h3")`
   font-size: 1.4em;
   line-height: 1.2em;
   font-weight: 600;
-  margin: 2em 0 0.4em;
+  margin: 1em 0 0em;
 `;
 
 export const StyledH4 = styled("h4")`

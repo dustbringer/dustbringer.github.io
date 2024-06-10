@@ -28,7 +28,7 @@ import {
 } from "../components/Markdown/Heading";
 import HorizontalRule from "../components/Markdown/HorizontalRule";
 import Image from "../components/Markdown/Image";
-import Link from "../components/Markdown/Link";
+import MDLink from "../components/Markdown/Link";
 import ListItem from "../components/Markdown/ListItem";
 import Checkbox from "../components/Markdown/Checkbox";
 import Table from "../components/Markdown/Table";
@@ -40,6 +40,7 @@ import Code from "../components/Markdown/Code";
 import CodePre from "../components/Markdown/CodePre";
 import { ContentsWithLinksTop } from "../components/Markdown/Contents";
 import transition from "../styles/transition";
+import Link from "../components/Link";
 
 // References
 // https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/
@@ -105,11 +106,7 @@ function MarkdownTemplate({
   location,
 }: PageProps<DataTypeMarkdown<MdPageType>>) {
   const { markdownRemark } = data;
-  const { frontmatter: meta, htmlAst, headings } = markdownRemark;
-
-  {
-    console.log(markdownRemark);
-  }
+  const { frontmatter: meta, htmlAst, headings, fields } = markdownRemark;
 
   // console.log(htmlAst);
 
@@ -133,7 +130,7 @@ function MarkdownTemplate({
         h6: StyledH6,
         hr: HorizontalRule,
         img: Image,
-        a: Link,
+        a: MDLink,
         li: ListItem,
         table: Table,
         td: TableCellData,
@@ -164,6 +161,14 @@ function MarkdownTemplate({
             meta.edited !== meta.date &&
             `(Edited ${meta.edited})`}
           {/* Date and/or edited is optional, can have any combination of them*/}
+          . View{" "}
+          <Link
+            href={`https://raw.githubusercontent.com/dustbringer/dustbringer.github.io/dev/src/markdown${fields.slug}.md`}
+            sx={{ color: "#aaaaaa" }}
+          >
+            source
+          </Link>
+          .
         </Frontmatter>
 
         <ContentsPositionDiv>
