@@ -1,13 +1,15 @@
 export type PostType = {
   id: string;
   frontmatter: {
-    slug: string;
     title: string;
     description: string;
     date: string;
     edited: string;
     tags: string[];
   };
+  fields: {
+    slug: string;
+  }
   path: string;
 };
 

@@ -18,6 +18,7 @@ import type { Heading, MdPageType, DataTypeMarkdown } from "./markdown";
 import Container from "../components/Container";
 import BlockQuote from "../components/Markdown/BlockQuote";
 import {
+  color,
   StyledH1,
   StyledH2,
   StyledH3,
@@ -38,11 +39,14 @@ import TableRow from "../components/Markdown/TableRow";
 import Code from "../components/Markdown/Code";
 import CodePre from "../components/Markdown/CodePre";
 import { ContentsWithLinksTop } from "../components/Markdown/Contents";
+import transition from "../styles/transition";
 
 // References
 // https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/
 // https://www.reddit.com/r/gatsbyjs/comments/xn8j1j/filesystem_routing_api_for_multiple_markdown/
 // https://github.com/PaulMorel1/eMPress/blob/master/gatsby-node.js
+
+// See https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/ for info on the file name
 
 const Frontmatter = styled(Typography)`
   font-size: 0.8em;
@@ -83,12 +87,29 @@ const ContentsPositionDiv = styled("div")`
   flex-direction: row;
 `;
 
+const MainTitle = styled("h1")`
+  margin: 0;
+  ${(props) => color(props.theme)};
+  font-size: 2.5em;
+  font-weight: 500;
+  line-height: 1em;
+  margin-top: 0.6em;
+  padding-bottom: 0.5em;
+  border-bottom: 0.1em solid
+    ${(props) => (props.theme.palette.mode === "dark" ? "#333" : "#e1e4e8")};
+  ${transition("border-bottom-color")}
+`;
+
 function MarkdownTemplate({
   data,
   location,
 }: PageProps<DataTypeMarkdown<MdPageType>>) {
   const { markdownRemark } = data;
   const { frontmatter: meta, htmlAst, headings } = markdownRemark;
+
+  {
+    console.log(markdownRemark);
+  }
 
   // console.log(htmlAst);
 
@@ -138,8 +159,7 @@ function MarkdownTemplate({
     <>
       <Container maxWidth="md">
         <Frontmatter variant="body1">
-          {meta.title}, written by {meta.author}{" "}
-          {meta.date && `on ${meta.date} `}
+          Written by {meta.author} {meta.date && `on ${meta.date} `}
           {meta.edited &&
             meta.edited !== meta.date &&
             `(Edited ${meta.edited})`}
@@ -152,6 +172,7 @@ function MarkdownTemplate({
             <ContentsWithLinksTop headings={headings} />
           </div>
           <MarkdownFormatDiv>
+            <MainTitle>{meta.title}</MainTitle>
             {processor.stringify(processor.runSync(htmlAst))}
           </MarkdownFormatDiv>
         </ContentsPositionDiv>
@@ -169,7 +190,6 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "DD MMMM YYYY")
         edited(formatString: "DD MMMM YYYY")
-        slug
         title
         author
       }
@@ -177,6 +197,9 @@ export const pageQuery = graphql`
         depth
         id
         value
+      }
+      fields {
+        slug
       }
     }
   }

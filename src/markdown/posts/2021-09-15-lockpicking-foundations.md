@@ -1,5 +1,4 @@
 ---
-slug: "/posts/2021-09-15-lockpicking-foundations"
 title: Lockpicking Foundations
 description: UNSW SecSoc talk about lockpicking
 author: dustbringer
@@ -12,7 +11,6 @@ tags:
 
 <!-- something about prizes - idk whats happening with that -->
 
-# Lockpicking Foundations
 > Diagrams and images are sourced from [Art of Lockpicking](https://www.art-of-lockpicking.com/), Wikipedia and online store pages
 
 > Slides for this talk are [here on Canva](https://www.canva.com/design/DAEp9qYT_pQ/Pp1XErle3E52z5tE0PKAnw/view?utm_content=DAEp9qYT_pQ&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)

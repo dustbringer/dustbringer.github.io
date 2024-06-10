@@ -1,5 +1,4 @@
 ---
-slug: "/posts/2022-12-03-polya-enumeration"
 title: Counting circular arrangements of objects
 description: An exploration of counting using group theory.
 author: dustbringer
@@ -9,8 +8,6 @@ tags:
     - combinatorics
     - group theory
 ---
-
-# Counting circular arrangements of objects
 
 In high-school mathematics you've probably come across the term *combinatorics*. In its most basic form, combinatorics is about counting the number of ways you can arrange some objects in a particular fashion. For example, to arrange $n$ (distinct) objects in a line, there are $n! = n(n-1) \dots 2 \times 1$ possible permutations. If there are repeated objects, we divide by the permutations of the identical objects. For example arranging the letters of $BALLOON$ in a line, the letters $L$ and $O$ both repeat twice, so there are $\frac{7!}{2!2!}$ permutations. On the other hand, if we wanted to arrange $n$ (distinct) objects in a *circle*, each arrangement can be rotated and it is considered "identical". So we arrange the items in a line and divide by the number of different rotations of these objects (to remove the overcounted arrangements) $n!/n = (n-1)!$.
 

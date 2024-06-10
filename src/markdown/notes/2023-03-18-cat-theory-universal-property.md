@@ -1,5 +1,4 @@
 ---
-slug: "/notes/2023-03-18-cat-theory-universal-property"
 title: "Category theory: Universal property"
 description: Details about universal properties.
 author: dustbringer
@@ -9,11 +8,9 @@ tags:
     - category theory
 ---
 
-# Universal Property (Category Theory)
-
 Notes in my attempt to consolidate two definitions of 'universal property'.
 
-## Mac Lane Definition
+# Mac Lane Definition
 
 **Definition.** [Maclane[^1], page 55]
 Let $\mathcal{C}$ and $\mathcal{D}$ be categories. For a functor $S: \mathcal{D} \to \mathcal{C}$ and an object $c \in \mathcal{C}$, a *universal morphism* from $c$ to $S$ is a pair $(a,u)$, where $a \in \mathcal{D}$ and $u: c \to Sa$ in $\mathcal{C}$, such that for any pair $(d \in \mathcal{D}, f:c \to Sd)$ there exists a **unique** morphism $f': a \to d$ in $\mathcal{D}$ such that $Sf' \circ u = f$. In other words, every morphism $f: c \to Sd$ factors uniquely through the universal morphism $u$. In, again, other words, the following diagram commutes.
@@ -22,7 +19,7 @@ Let $\mathcal{C}$ and $\mathcal{D}$ be categories. For a functor $S: \mathcal{D}
 
 The dual is the same with the arrows and composition reversed.
 
-## Alternate (Riehl) Definition
+# Alternate (Riehl) Definition
 
 **Definition.** [Reihl[^2], Definition 2.3.3 (page 62)]
 Let $\mathcal{C}$ be a category. A *universal property* of an object $c \in \mathcal{C}$ is expressed by a representable functor $F: \mathcal{C} \to \cat{Set}$ and an element $x \in Fc$ that defines a natural isomorphism $\mathcal{C}(c,-) \cong F$ by the Yoneda Lemma. The dual has the natural isomorphism $\mathcal{C}(-,c) \cong F$.
@@ -32,8 +29,8 @@ We call $c$ the *universal object*, $x$ the *universal element* and say that $(x
 > **Note.** This is directly transcribed from the book, and the names do not line up. The correspondence appears in "Terminology and notation" below.
 
 
-## Thoughts
-### Universal Morphism to Representation
+# Thoughts
+## Universal Morphism to Representation
 These two definitions are equivalent by [Maclane[^1], page 59 (Proposition 1)]. Roughly it says
 - for a functor $S: \mathcal{D} \to \mathcal{C}$ and object $c \in \mathcal{C}$, $(a \in \mathcal{D}, u: c \to Sa)$ is a universal morphism from $c$ to $S$ **if and only if** the collection of functions
     $$
@@ -58,14 +55,14 @@ The proposition says that saying $(a,u)$ is universal morphism is equivalent to 
 We can interpret any representable functor in a similar way, regardless of if they are of the form $\mathcal{C}(c,S-)$.
 
 
-### Representation to Universal Morphism
+## Representation to Universal Morphism
 
 Mac Lane also provides a way to translate from a universal property on a functor $F: \mathcal{D} \to \cat{Set}$ (given by a representing object $a$ and what he calls a universal element $u$ in $F(a)$) to a universal morphism to $F$ (see [Maclane[^1], page 57-58]). This can be used to construct a universal morphism from a universal property from Riehl's definition & Yoneda's Lemma.
 
 It works as follows. Let $*$ be the set with one point, and let $\cat{Ens}$ be an appropriate [full small subcategory of the metacategory of sets](https://math.stackexchange.com/a/495763). Given a representing object $a$ and universal element $u \in F(a)$, consider $u$ as a morphism $* \to F(a)$ in $\cat{Ens}$. Then $(a,u)$ is exactly the universal morphism from $*$ to $F$. Note that doing this *changes* the universal morphism/object/element, because the functor is different so is represented differently.
 
 
-## Terminology and notation (and translation)
+# Terminology and notation (and translation)
 Mac Lane's definition, let $S: \mathcal{D} \to \mathcal{C}$, $c \in \mathcal{C}$, $a \in \mathcal{D}$, $u: c \to Sa$ in $\mathcal{C}$.
 
 - **universal morphism** is $(a,u)$
@@ -86,7 +83,7 @@ Similarly named things here are *the same*, by [Maclane[^1], page 59 (Propositio
 
 **Note.** The dual universal property has the hom-functors reversed, eg. the Yoneda lemma statement will have $\Hom(\mathcal{D}(-,a), \mathcal{C}(S-,c)) \cong \mathcal{C}(Sa,c)$.
 
-## Example: Free abelian group
+# Example: Free abelian group
 The free abelian group construction (from StackExchange[^3]).
 
 Let $S$ be a set and $U: \cat{Ab} \to \cat{Set}$ be the forgetful functor from the category of abelian groups. Write $\Z\{S\}$ for the free abelian group on the set $S$, that is formal $\Z$-linear combinations of elements in $S$, and write $[s] \in \Z\{S\}$ for the basis element corresponding to $s \in S$.
@@ -108,7 +105,7 @@ The *universal object* (representing) is $\Z\{S\} \in \cat{Ab}$ and the *univers
 
 Note that this universal property arises from the forgetful-free adjunction where the universal element $\eta$ is the unit of adjunction. For the general case see [Wikipedia](https://en.wikipedia.org/wiki/Universal_property#Relation_to_adjoint_functors).
 
-## Example: Tensor Product (Vector spaces)
+# Example: Tensor Product (Vector spaces)
 
 The tensor products for vector space construction (from StackExchange[^3], [Maclane[^1], page 58], [Reihl[^2], Example 2.3.7 (page 63)]).
 
@@ -134,7 +131,7 @@ Recall (from [Thoughts](#Universal-Morphism-to-Representation)) that this biject
 ![](./resources/2023-03-18-cat-theory-universal-property/tex/tensor-product-example-univ-mor.svg)
 
 
-## Example: Quotients
+# Example: Quotients
 
 Quotients in algebra arise from considering equivalence classes of an equivalence relation. Let $\mathcal{C}$ be a category, $X \in \mathcal{C}$ an object, and $\sim$ an equivalence relation on elements in $X$. Then the universal property of the quotient $X/\sim$ (the set of equivalence classes of $\sim$) is that for any $Y \in \mathcal{C}$ and morphism $f: X \to Y$ that respects the equivalence relation $\sim$, there is a unique morphism $\tilde{f}$ such that $f = \tilde{f} \circ q$. Where $q: X \to X/\sim$ is the canonical quotient map.
 
@@ -150,7 +147,7 @@ $$
 $$
 Here the universal object is $X/\sim$ and the universal element is the canonical projection $q: X \to X/\sim$ in $F(X/\sim)$ (Yoneda). This has the same information as the first diagram above: given any object $Y$ and morphism $f: X \to Y$ in $F(Y)$ that respects the equivalence relation, there exists a unique morphism $\tilde{f} \in \mathcal{C}(X/\sim, Y)$ such that $f = \tilde{f} \circ q$. That is, all such morphisms $f$ *factor through* the quotient $X/\sim$.
 
-## Example: Products
+# Example: Products
 
 Let $\mathcal{C}$ be a category and elements $A,B \in \mathcal{C}$. The product of $A$ and $B$, we write as $A \times B$, is the element in $\mathcal{C}$ (along with projection maps $\pi_1: A \times B \to A, \pi_2: A \times B \to B$) with the following universal property. For any $C \in \mathcal{C}$ and maps $f_1:C \to A, f_2:C \to B$, there is a unique morphism $f:C \to A \times B$ such that $f_1 = \pi_1 \circ f$ and $f_2 = \pi_2 \circ f$. This is typically depicted by the following commutative diagram.
 
@@ -190,7 +187,7 @@ Taking $C$ arbitrary, $D = A \times B$, $h = \eta_C(f_1,f_2): C \to A \times B$ 
 
 
 
-## Uniqueness of representing objects
+# Uniqueness of representing objects
 It can be shown that if a functor $F$ can be represented by two different universal objects $a, a'$, then $a$ and $a'$ are isomorphic (see [Reihl[^2], Proposition 2.3.1 (page 62)] or StackExchange[^3])
 
 

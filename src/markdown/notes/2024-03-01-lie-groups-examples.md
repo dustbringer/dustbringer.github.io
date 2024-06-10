@@ -1,5 +1,4 @@
 ---
-slug: "/notes/2024-03-01-lie-group-examples"
 title: Lie Group Examples
 description: Examples of Lie groups
 author: dustbringer
@@ -10,9 +9,7 @@ tags:
     - lie theory
 ---
 
-# Lie Group Examples
-
-## Useful results
+# Useful results
 
 **Proposition 1.** Open subsets of (smooth) manifolds are (smooth) manifolds with subset topology.
 
@@ -22,7 +19,7 @@ tags:
 - Note: if we replaced "diffeomorphism" with "homeomorphism", the same proof gives the result for general (not-necessarily-smooth) manifolds.
 
 
-## $GL(n, \R)$
+# $GL(n, \R)$
 
 **Real Lie group**
 
@@ -40,7 +37,7 @@ $GL(n,\R)$ is not compact.
 - Consider the sequence of matrices $\{\lambda I\}_{\lambda > 0}$ where $I$ is the $n \times n$ identity matrix.
 - It is clear that $\op{det}(\lambda I) = \lambda^n > 0$, but its Eucildean norm is clearly unbounded. So this sequence in $GL(n,\R)$ is also unbounded.
 
-## $GL(n,\C)$
+# $GL(n,\C)$
 
 **Complex Lie group**
 
@@ -52,7 +49,7 @@ Note that this is also a real Lie group, by identifying $\C = \R^2$; this forget
 
 Similar to the real case, this is non-compact.
 
-## $B(n,\R)$
+# $B(n,\R)$
 
 A subgroup of $GL(n,\R)$, consisting of *invertible upper triangular matrices*. Alternatively, this consists of linear maps that perserve the flag
 $$
@@ -72,7 +69,7 @@ Another argument for this being closed is the following. Consider the projection
 $B(n,\R)$ is not compact. The same unbounded sequence we used for $GL(n,\R)$ is also in $B(n,\R)$.
 
 
-## $B(n,\C)$
+# $B(n,\C)$
 
 **Complex Lie group**
 
@@ -82,7 +79,7 @@ Similar to the real case.
 
 Similar to the real case, this is non-compact.
 
-## $SL(n,\R)$
+# $SL(n,\R)$
 
 A subgroup of $GL(n,\R)$, consisting of *matrices with determinant 1*. That is, volume and orientation preserving linear maps. It is also a normal subgroup of $GL(n,\R)$ since for $A \in SL(n,\R)$ and $M \in GL(n,\R)$ we have $MAM^{-1} \in SL(n,\R)$, as $\op{det}(MAM^{-1}) = \op{det}(M) \op{det}(A) \op{det}(M)^{-1} = \op{det}(A) = 1$.
 

@@ -49,7 +49,7 @@ function ReferenceListPage({
             <>
               <ListContainer>
                 {getPage(notes, page, N_PER_PAGE).map((note, i) => {
-                  const { id, path, frontmatter: meta } = note;
+                  const { id, path, frontmatter: meta, fields } = note;
                   return (
                     <BlogListCardSmall
                       key={`${i}-${id}`}
@@ -57,7 +57,7 @@ function ReferenceListPage({
                       description={meta.description}
                       date={meta.edited} // or meta.date
                       tags={meta.tags}
-                      name={meta.slug.match(/^.*\/(.+?)$/)?.[1]}
+                      name={fields.slug.match(/^.*\/(.+?)$/)?.[1]}
                       path={path}
                     />
                   );
@@ -101,19 +101,21 @@ export const pageQuery = graphql`
   query GetNotes {
     allMarkdownRemark(
       sort: { frontmatter: { date: DESC } }
-      filter: { frontmatter: { slug: { regex: "/^/?notes//" } } }
+      filter: { fields: { slug: { regex: "/^/?notes//" } } }
     ) {
       nodes {
         id
         frontmatter {
-          slug
           title
           description
           date(formatString: "DD MMMM, YYYY")
           edited(formatString: "DD MMMM, YYYY")
           tags
         }
-        path: gatsbyPath(filePath: "/{MarkdownRemark.frontmatter__slug}")
+        fields {
+          slug
+        }
+        path: gatsbyPath(filePath: "/{MarkdownRemark.fields__slug}")
       }
     }
   }

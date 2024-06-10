@@ -1,5 +1,4 @@
 ---
-slug: "/posts/2021-02-04-React-Markdown-Rendering"
 title: "[Old] Rendering Markdown in ReactJS"
 description: My process in developing the markdown renderers and more for this website.
 author: dustbringer
@@ -12,7 +11,6 @@ tags:
 
 > **Note**: This is the old implementation in `create-react-app`. The current one involves tapping into GatsbyJS's markdown engine.
 
-# Rendering Markdown in ReactJS
 This post will take you through my process of creating this markdown renderer you're seeing right now for Markdown.
 
 My aim is to render each Markdown component cleanly in HTML and have $\LaTeX$ renderering.

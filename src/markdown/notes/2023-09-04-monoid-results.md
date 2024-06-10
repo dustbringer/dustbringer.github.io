@@ -1,5 +1,4 @@
 ---
-slug: "/notes/monoid-results"
 title: "Monoid Results"
 description: Some interesting results in monoids.
 author: dustbringer
@@ -10,11 +9,9 @@ tags:
     - monoid
 ---
 
-# Monoid Results
-
 Recall that a monoid $M$ is a set equipped with an associative binary operation $* : M \times M \to M$ and an identity element $e \in M$ such that for any $m \in M$, $e*m = m = m*e$. We sometimes omit $*$ and concatenate the symbols.
 
-## Inverses
+# Inverses
 A *left (resp. right) inverse* of $m \in M$ is an element $n \in M$ such that $nm = e$ (resp. $mn = e$).
 
 **Proposition.** (Equality of left and right inverses)

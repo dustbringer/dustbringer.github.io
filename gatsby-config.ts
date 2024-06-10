@@ -42,29 +42,8 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown-posts`,
-        path: `${__dirname}/src/markdown/posts`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `markdown-post-resources`,
-        path: `${__dirname}/src/markdown/posts/resources`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `markdown-notes`,
-        path: `${__dirname}/src/markdown/notes`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `markdown-note-resources`,
-        path: `${__dirname}/src/markdown/notes/resources`,
+        name: `markdown-files`,
+        path: `${__dirname}/src/markdown/`,
       },
     },
     {

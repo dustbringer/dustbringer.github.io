@@ -1,5 +1,4 @@
 ---
-slug: "/notes/2021-11-27-git-prompt"
 title: Putting git info onto shell prompt
 description: Notes for self about git-prompt
 author: dustbringer
@@ -10,7 +9,7 @@ tags:
     - bash
 ---
 
-# `git-prompt.sh`
+`git-prompt.sh`
 > Allows you to see repository status in your command prompt.
 
 The script can be found [here](https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh).

@@ -1,5 +1,4 @@
 ---
-slug: "/notes/2023-10-30-haskell-to-categories"
 title: Haskell and Types to Category theory
 description: Rewriting category theoretical structures in Haskell in category theory.
 author: dustbringer
@@ -11,14 +10,12 @@ tags:
     - type theory
 ---
 
-# Haskell (and Types) to Category theory
-
 Some type structures in Haskell, and type theory in general, are inspired by algebraic objects in category theory. For example, there are correspondences between
 - `Functor` in Haskell and categorical functors;
 - `Applicative` functors in Haskell and lax monoidal/closed functors (with some more properties) in category theory;
 - `Monad` in Haskell and monads in category theory.
 
-## Functors and Functors
+# Functors and Functors
 In Haskell, `Functor` is a typeclass defined by
 ```hs
 class Functor f where
@@ -36,11 +33,11 @@ In mathematics, a functor between categories $\mathcal{C}$ and $\mathcal{D}$ is 
   - (Composition) for any morphism $f:X \to Y$, $g: Y \to Z$ in $\mathcal{C}$, we have $F(g \circ f) = F(g) \circ F(f)$;
 
 
-### Correspondence
+## Correspondence
 With the above notation, `f` in Haskell is exactly the categorical functor on objects, while `fmap` is  the categorical functor on morphisms. This had to be split into two different things because of the overloading of the functor in mathematics. The functor laws between the two are basically identical, taking the type inference in the Haskell version in to account.
 
 
-## Parametrised polymorphic functions and Natural transformations
+# Parametrised polymorphic functions and Natural transformations
 
 In Haskell, a (parametrised) polymorphic function is a function parametrised over some of it's types, for example:
 ```hs
@@ -57,14 +54,14 @@ In mathematics, a natural transformation is a mapping between functors. For func
 The commutativity of the diagram is the same as saying $\eta_Y \circ F(f) = G(f) \circ \eta_X$.
 - More genersally, a dinatural transformation adds one edge to each of the two branches to account for contravariance in the domain and the codomain, leading to a hexagonal shape rather than a square. The contravariant parts reverse the direction of the function $f$. For a concrete example, see `filter` below.
 
-### Correspondence
+## Correspondence
 It is pretty clear that parametrised polymorphic functions have some correspondence to natural transformations, and parametricity corresponds to the commutativity of the diagram. To give more clarity to the Haskell version, we describe it more explicitly. Let `F,G :: * -> *` be (covariant) functors and `η :: forall t. F t -> G t` be a polymorphic function. Then parametricity we stated above says that for any function `f :: a -> b`,
 ```hs
 η . fmap f = fmap f . η
 ```
 To break down the types, the left has `η :: F b -> G b` (where `b` is the codomain of `f`) and `fmap f :: F a -> F b`. The right has `η :: F a -> G a` (where `a` is the domain of `f`) and `fmap f :: G a -> G b`. These are deduced in Haskell with type inference.
 
-### Examples
+## Examples
 Here are some standard examples (see [Wadler[^1], Figure 1]).
 
 **Notation.** For a polymorphic function $\eta : \forall A. F(A) \to G(A)$ we write $\eta_X : F(X) \to G(X)$ (as above) for the polymorphic function applied to a specific type $X$.
@@ -110,7 +107,7 @@ Here are some standard examples (see [Wadler[^1], Figure 1]).
 
 Some more general examples can be found at [Bartosz Milewski's Programming Cafe](https://bartoszmilewski.com/2014/09/22/parametricity-money-for-nothing-and-theorems-for-free/).
 
-### A comment on parametric functions on multiple variables
+## A comment on parametric functions on multiple variables
 The analogous concept is collections of morphisms with multiple indexing variables, where we can be eg. natural in one variable and extranatural in another. This leads to multiple properties that they satisfy. An easy example is the evaluation map $\op{eval}_{X,Y} : \Hom(Y,X) \times Y \to X$ (the counit of the tensor-hom adjunction), which is natural in $X$ with commutative diagram
 ![](resources/2023-10-30-haskell-to-categories/parametricity--nat-transformation-eval.svg)
 and extranatural in $Y$ (because fixing $X$ in $\Hom(Y,X)$ makes that component contravariant) with:
@@ -120,7 +117,7 @@ In Haskell we can write `eval :: forall a. forall b. (a -> b) -> a -> b` for the
 - ("for $Y$") for all `f :: b -> b'`, we have `eval (g . f) x = eval g (f x)`,
 which are both pretty obvious properties you would expect from an evaluation function. This idea can probably be extended to functions parametrised over multiple types.
 
-## Monads and Monads
+# Monads and Monads
 
 In Haskell, `Monad` is a typeclass defined by
 ```hs
@@ -146,7 +143,7 @@ Equationally, these diagrams correspond to the relations
 - (associativity) $\mu \circ_v (\mu \cdot M) = \mu \circ_v (M \cdot \mu)$,
 - (unit) $\mu \circ_v (\eta \cdot M) = \mu \circ_v (M \cdot \eta) = \op{id}_M$.
 
-### Correspondence
+## Correspondence
 > Note: we take advantage of having elements in the objects in our category, but proofs purely from morphism compositions can also be written down (although difficult).
 
 We first check that the structure maps agree.
@@ -208,7 +205,7 @@ Since parametrised functions in Haskell have "parametricity" properties, we expe
       - which is equal.
   - The corresponding parametricity relation is $M(f)(\beta_{A,B}(m,g)) = \beta_{A,C}(m, M(f) \circ g)$
     - in Haskell, `fmap f (x >>= g) = x >>= fmap f . g` (note `fmap f . g = (fmap f) . g`)
-#### Relations: Cats to Haskell
+    ### Relations: Cats to Haskell
 Now we observe that the `Monad` relations in Haskell are indeed true in the categorical counterpart.
 
 The `Monad` relations can be written mathematically as
@@ -217,7 +214,7 @@ The `Monad` relations can be written mathematically as
 - (associativity) $\beta_{A,C}(m,\beta_{B,C}(f(-),g)) = \beta_{B,C}(\beta_{A,B}(m,f),g)$
 where $f: A \to MB$, $g: B \to MC$, $x\in A$, $m \in MA$.
 
-##### Left Unit
+#### Left Unit
 We have $\beta_{A,B} (\eta_A(x),f) = \mu_B \circ M(f) \circ \eta_A (x)$
 - $= \mu \circ \eta_{MB} \circ f (x)$
   - by naturality of $\eta$
@@ -225,10 +222,10 @@ We have $\beta_{A,B} (\eta_A(x),f) = \mu_B \circ M(f) \circ \eta_A (x)$
   - since $\eta_{MB} = (\eta \cdot M)_B$,
   - and we have the categorical left-unit relation $\mu \circ (\eta \cdot M) = \op{id}_M$ (which, at $B$, is $\mu_B \circ (\eta_{MB}) = \op{id}_{MB}$).
 
-##### Right Unit
+#### Right Unit
 We have $\beta_{A,A} (m,\eta_A) = \mu_A \circ M(\eta_A)(m) = m$, by the categorical right-unit relation $\mu \circ (M \cdot \eta) = \op{id}_M$ (which, at $A$, is $\mu_A \circ (M(\eta_A)) = \op{id}_{MA}$).
 
-##### Associativity
+#### Associativity
 The right hand side is $\beta_{B,C}(\beta_{A,B}(m,f),g)$
 - $= \beta_{B,C}(\mu_B \circ M(f)(m), g)$
 - $= \mu_C \circ M(g)(\mu_B \circ M(f)(m))$
@@ -246,20 +243,20 @@ The left hand side is $\beta_{A,C}(m,\beta_{B,C}(f(-),g))$
 - which is the same as the right hand side.
 
 
-#### Relations: Haskell to Cats
+### Relations: Haskell to Cats
 We can also use the `Monad` properties and relations in Haskell to show the categorical monad properties also hold.
 
 We still work in the math world, assuming the relations noted in the start of the previous section and assuming $\beta$ and $\eta$ are (di)natural in each component (this is sensible because such properties always exist for polymorphic functions (eg. the `Monad` structure maps), see *Theorems for free!*[^1] on parametricity).
 
 Since $\mu$ doesn't exist in Haskell, we use the translation mentioned before $\mu_A = \beta_{MA,A}(-,\op{id}_{MA})$.
 
-##### Left Unit
+#### Left Unit
 We want to prove that $\mu \circ (\eta \cdot M) = \op{id}_M$. The component at $A$ is $\mu_A \circ \eta_{MA} = \op{id}_{MA}$. The left hand side applied to $x \in A$ is $\mu_A \circ \eta_{MA}(x) = \beta_{MA,A}(-,\op{id}_{MA}) \circ \eta_{MA}(x)$
 - $= \beta_{MA,A}(\eta_{MA}(x), \op{id}_{MA})$
 - $= \op{id}_{MA}(x) = x$
   - by the Haskell left-unit relation.
 
-##### Right Unit
+#### Right Unit
 We want to prove that $\mu \circ (M \cdot \eta) = \op{id}_{MA}$. The component at $A$ is $\mu_A \circ M(\eta_{A}) = \op{id}_{MA}$. The left hand side applied to $x \in A$ is $\mu_A \circ M(\eta_{A})(x) = \beta_{MA,A}(-, \op{id}_{MA}) \circ M(\eta_A)(x)$
 - $= \beta_{MA,A}(M(\eta_A)(x), \op{id}_{MA})$
 - $= \beta_{A,A}(x, \op{id}_{MA} \circ \eta_A) = \beta_{A,A}(x, \eta_A)$
@@ -267,7 +264,7 @@ We want to prove that $\mu \circ (M \cdot \eta) = \op{id}_{MA}$. The component a
 - $= x = \op{id}_{MA}(x)$
   - by the Haskell right-unit relation.
 
-##### Associativity
+#### Associativity
 We want to prove that $\mu \circ (\mu \cdot M) = \mu \circ (M \cdot \mu)$. The component at $A$ is $\mu_A \circ \mu_{MA} = \mu_A \circ M(\mu_A)$. The left hand side applied to $x \in M^3 A$ is $\mu_A \circ \mu_{MA} (x) = \beta_{MA,A}(-, \op{id}_{MA}) \circ \beta_{M^2 A,MA}(-, \op{id}_{M^2 A})(x)$
 - $= \beta_{MA,A}(\beta_{M^2 A,MA}(-, \op{id}_{M^2 A})(x), \op{id}_{MA})$
 - $= \beta_{M^2 A,A}(x,\beta_{MA,A}(\op{id}_{M^2 A}(-), \op{id}_{MA}))$
@@ -277,12 +274,12 @@ We want to prove that $\mu \circ (\mu \cdot M) = \mu \circ (M \cdot \mu)$. The c
   - by extranaturality of $\beta$
 - this is equal to right side of the original equation!
 
-### Resources
+## Resources
 Have a look at [Monads Made Difficult (Stephen Diehl)](https://www.stephendiehl.com/posts/monads.html) for a softer mathematical introduction.
 
 
 
-## Applicative Functors and Lax Monoidal/Closed Functors
+# Applicative Functors and Lax Monoidal/Closed Functors
 
 Applicative functors were first defined for computer science as a generalisation of monads. As a result, the laws defined are mathematically unwieldly. In addition to the complexity of the structure of closed monoidal categories and closed/monoidal functors, I have not worked out all of them (likely due to not fully understanding closed categories) and probably will not anytime soon.
 
@@ -306,7 +303,7 @@ that satisfy particular commuting diagrams (see MF1, MF2, MF3 in Chapter 2 Secti
 
 > Note: Tensorial strength is particularly defined for the monoidal structure. There is an equivalent natural transformation for closed endofunctors $t_{A,B}: [A,B] \to [FA,FB]$ that deals with *enrichment* of endofunctors. The correspondence was studied by Kock [^3] (also see [Stack Exchange](https://math.stackexchange.com/questions/314416/internalising-the-functor-action-on-morphisms-e-g-to-exponential-objects), [nLab (Idea)](https://ncatlab.org/nlab/show/tensorial+strength)), called "strengths". I have not found how to use it.
 
-### Correspondence (Cats to Haskell)
+## Correspondence (Cats to Haskell)
 
 I have only worked out some of the correspondence in this direction: showing that Haskell `Applicative` is indeed a lax closed functor. We are choosing to work with closed functors because the structure maps line up nicely, so we don't need to translate everything to the monoidal functor world. The only downside is that tensorial strength doesn't work nicely here, and I don't know how to use it's closed functor counterpart.
 
@@ -328,13 +325,13 @@ The `Applicative` relations can be written mathematically as
 
 The last two of these will not be proven, so I'm not sure if they are the best way to translate the rules to mathematics. Also, since these axioms are defined in a category similar to $\cat{Set}$, we may take the liberty to think of $1 = \{*\}$, $[A,B] = \Hom(A,B)$ and $j_A(*) = \op{id}_A$, see Eilenberg-Kelly[^2] (2.4).
 
-#### Identity
+### Identity
 By construction the map $j$ in the definition of closed categories "picks out the identity morphism", so we have $j_A(*) = \op{id}_A$ as mentioned above. The following diagram commutes
 ![](./resources/2023-10-30-haskell-to-categories/applicative--law-identity.svg)
 where the left square commutes by naturality of $\eta^F$ and the right square by property $\text{CF1}$[^2] of closed functors. Note that the bottom two arrows are identified, so the left-top branch is the same as the right arrow, i.e. $\hat{F}_{A,A} \circ \eta^F_{[A,A]} \circ j_A (*) = j_{FA}(*)$. Therefore
 - $(\hat{F}_{A,A} \circ \eta^F_{[A,A]}(\op{id}_A))(v) = (\hat{F}_{A,A} \circ \eta^F_{[A,A]} \circ j_A (*))(v) = (j_{FA}(*))(v) = \op{id}_{FA}(v) = v$
 
-#### Homomorphism
+### Homomorphism
 We first prove the "bonus" identity in the `Applicative` definition, `fmap f x = pure f <*> x`.
 
 For a morphism $f: A \to B$ have the commutative diagram
@@ -351,19 +348,19 @@ Evaluating at $*$, we get exactly $Ff = \hat{F}_{A,B} \circ \eta^F_{[A,B]} (f)$.
 
 With this fact, we can prove the homomorphism relation with ease. Applying the above to the left side of the relation, we have $(\hat{F}_{A,B} \circ \eta^F_{[A,B]}(f))(\eta^F_A(x)) = Ff (\eta^F_A(x)) = \eta^F_B(f(x))$, where the second equality is naturality of $\eta^F$.
 
-#### Others?
+### Others?
 They are hard, but feel free to try it yourself...
 
-### Resources
+## Resources
 
 The structure maps for this case (and another view via the Day convolution) are dealt with a bit in [Bartosz Milewski's blog post on Applicative Functors](https://bartoszmilewski.com/2017/02/06/applicative-functors/), with reference to *Notions of Computation as Monoids*[^4].
 
 Applicatives were introduced in the paper by Paterson and McBride, *Applicative programming with effects*[^5] under the name of "Idiom". In Section 7, they also suggest the correspondence between `Applicative` and lax monoidal functors with tensorial strength, but without proof.
 
 
-## Appendix
+# Appendix
 
-### A1. Horizontal and vertical composition of natural transformations
+## A1. Horizontal and vertical composition of natural transformations
 
 **Definition.** (Vertical composition) Let $F,G,H: \mathcal{C} \to \mathcal{D}$ be functors and $\alpha: F \to G$, $\beta: G \to H$ be natural transformations. Define the **vertical composition** of these natural transformations to be the natural transformation $\beta \circ_v \alpha: F \to H$, with $X \in \mathcal{C}$ component $(\beta \circ_v \alpha)_X := \beta_X \circ \alpha_X$.
 
@@ -388,7 +385,7 @@ If we had defined this independently of horizontal composition, then we can alte
 Notice that left-whiskering is like pasting $H$ onto the left of $\alpha$ and leaving it unchanged, and right-whiskering is like pasting on the right. This hints at a visual interpretation of horizontal composition and the interchange law. These exist! A small taster can be found in Chapter 2.1 of my honours thesis[^6] in the case of monoidal categories (loop space of a 2-category with one object).
 
 
-### A2. Lax monoidal functors and lax closed functors
+## A2. Lax monoidal functors and lax closed functors
 There is an equivalence between lax monoidal functors and lax closed functors on *closed monoidal* categories. Let us assume we are working with such categories, then we describe how the structure maps correspond. We write $[X,Y]$ for the internal homs in these categories, defined to be right adjoint to the monoidal product $\otimes$. We mainly refer to a conference paper by Eilenberg and Kelly[^2] that lay out this correspondence and many others in excruciating detail.
 
 A lax monoidal functor is $F: \mathcal{C} \to \mathcal{D}$ with

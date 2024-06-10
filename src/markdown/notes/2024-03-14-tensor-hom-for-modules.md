@@ -1,5 +1,4 @@
 ---
-slug: "/notes/2024-03-14-tensor-hom-for-modules"
 title: Tensor-Hom adjunctions for modules
 description: Explicit proof of some tensor-hom adjunctions for modules
 author: dustbringer
@@ -10,18 +9,16 @@ tags:
     - category theory
 ---
 
-# Tensor-Hom Adjunctions for Modules
-
 To make the module structures explicit, we may write $_A M_B$ for an $(A,B)$-bimodule $M$. Also we write $\Hom_{R_\ell}(-,-)$ for morphisms of *left* $R$-modules, and $\Hom_{R_r}(-,-)$ for morphisms of *right* $R$-modules.
 
-## $\Hom$ as a (bi)module
+# $\Hom$ as a (bi)module
 
 Let $A,B,C$ be rings. Then let
 - $M$ be an $(A,B)$-bimodule,
 - $N$ be a $(B,C)$-bimodule,
 - and $K$ be an $(A,C)$-bimodule.
 
-### $_B \Hom_{A_\ell}(_A M_B,_A K_C) _C$
+## $_B \Hom_{A_\ell}(_A M_B,_A K_C) _C$
 
 The additive group $\Hom_{A_\ell}(_A M_B,_A K_C)$ can be endowed with the structure of a $(B,C)$-bimodule. That is, for some left $A$-module homomorphism $f: M \to K$, define
 - the left $B$-action to be $(b \cdot f)(m) = f(m \cdot b)$
@@ -42,7 +39,7 @@ This is a bimodule because $((b \cdot f) \cdot c)(m) = (b \cdot f)(m) \cdot c = 
 
 Notice that the bimodule structure was inherited from the "unused" right module structures of $M$ and $K$.
 
-### $_B \Hom_{C_r}(_A K_C,_B N_C) _A$
+## $_B \Hom_{C_r}(_A K_C,_B N_C) _A$
 
 Similarly on the right, we can endow the additive group $\Hom_{C_r}(_A K_C,_B N_C)$ with the structure of a $(B,A)$-bimodule. That is, for some right $C$-module homomorphism $f: K \to N$, define
 - the left $B$-action to be $(b \cdot f)(k) = b \cdot f(k)$
@@ -64,7 +61,7 @@ Now notice that this is flipped (compared to above): the left $B$-module structu
 
 
 
-## Tensor-Hom Adjunctions
+# Tensor-Hom Adjunctions
 
 Let $A,B,C,D$ be rings. Then let
 - $M$ be an $(A,B)$-bimodule,
@@ -72,7 +69,7 @@ Let $A,B,C,D$ be rings. Then let
 - $K$ be a $(D,C)$-bimodule,
 - and $L$ be a $(A,D)$-bimodule
 
-### $- \otimes_B N_C \dashv \Hom_{C_r}(_B N_C, -)$
+## $- \otimes_B N_C \dashv \Hom_{C_r}(_B N_C, -)$
 
 We prove that $_D \Hom_{C_r}(_A M \otimes_B N_C, _D K_C)_A \simeq {_D\Hom_{B_r}(_A M_B, _D \Hom_{C_r}(_B N_C,_D K_C)_B)_A}$ as $(D,A)$-bimodules.
 
@@ -133,7 +130,7 @@ $$
 Therefore $\phi$ and $\psi$ define the desired bijection.
 
 
-### $_A M \otimes_B - \dashv \Hom_{A_\ell}(_A M_B, -)$
+## $_A M \otimes_B - \dashv \Hom_{A_\ell}(_A M_B, -)$
 
 We prove that $_C \Hom_{A_\ell}(_A M \otimes_B N_C, _A L_D)_D \simeq {_C \Hom_{B_\ell}(_B N_C, _B\Hom_{A_\ell}(_A M_B, _A L_D)_D)_D}$ as $(C,D)$-bimodules.
 
@@ -175,7 +172,7 @@ $$
 
 These functions are clearly inverses (by construction). The calculation looks very similar to the previous adjunction.
 
-### Remark
+## Remark
 
 All the above isomorphisms also hold for left modules and right modules separately.
 
