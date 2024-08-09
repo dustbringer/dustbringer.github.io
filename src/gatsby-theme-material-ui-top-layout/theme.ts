@@ -26,6 +26,7 @@ export const themeLight = {
     },
     text: {
       primary: "#2f3241",
+      secondary: "#82848d",
     },
   },
   typography: typography,
@@ -42,7 +43,7 @@ export const themeDark = {
     },
     text: {
       primary: "#DDD",
-      secondary: "#c3b4a7",
+      secondary: "#807A75",
     },
     background: {
       default: "#1A1A1A",

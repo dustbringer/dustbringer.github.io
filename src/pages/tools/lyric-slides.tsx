@@ -29,6 +29,7 @@ import {
   MarkdownNoContents,
   MarkdownNoFormat,
 } from "../../components/Markdown";
+import useFocus from "../../hooks/useFocus";
 import { GlobalContext } from "../../context/GlobalContext";
 
 type LyricsContainerProps = {
@@ -80,6 +81,8 @@ function LyricSlidesPage() {
   // Access new window through a ref
   // https://github.com/rmariuzzo/react-new-window/issues/34#issuecomment-651939230
   const popupRef = React.useRef<Window>(null);
+  const [presenterDisplayRef, setFocusPresenterDisplay] =
+    useFocus<HTMLButtonElement>();
   const [text, setText] = React.useState("");
   const [slideText, setSlideText] = React.useState([""]);
   const [showSlides, setShowSlides] = React.useState(false);
@@ -119,8 +122,14 @@ function LyricSlidesPage() {
   // and div eventlistener (with type KeyboardEvent)
   const _handleKeyDown = React.useCallback(
     (key: string) => {
-      if (key === "ArrowLeft") pagePrev();
-      else if (key === "ArrowRight") pageNext();
+      if (key === "ArrowLeft" || key === "PageUp" || key === "ArrowUp")
+        pagePrev();
+      else if (
+        key === "ArrowRight" ||
+        key === "PageDown" ||
+        key === "ArrowDown"
+      )
+        pageNext();
     },
     [pageNext, pagePrev]
   );
@@ -191,7 +200,10 @@ function LyricSlidesPage() {
 
   // New Window keypress handlers
   React.useEffect(() => {
-    const keypressListener = (e) => _handleKeyDown(e.key);
+    const keypressListener = (e) => {
+      e.preventDefault();
+      _handleKeyDown(e.key);
+    };
 
     if (popupRef.current) {
       // Attach keyboard event listener
@@ -415,20 +427,37 @@ function LyricSlidesPage() {
         <Box
           tabIndex={0}
           sx={{
-            padding: "5px",
-            borderRadius: "5px",
-            border: `2px solid white`,
-            "&:hover": { border: `2px solid lightgrey` },
-            "&:focus": { border: `2px solid grey` },
+            padding: "6px",
+            borderRadius: "4px",
+            border: (theme) => `1px solid ${theme.palette.text.secondary}`,
+            "&:hover": {
+              border: (theme) => `1px solid ${theme.palette.secondary.main}`,
+            },
+            "&:focus": {
+              padding: "5px",
+              border: (theme) => `2px solid ${theme.palette.primary.main}`,
+            },
+            color: (theme) => theme.palette.text.secondary,
+            textAlign: "center",
           }}
           component="div"
-          onKeyDown={(e) => _handleKeyDown(e.key)}
+          onKeyDown={(e) => {
+            e.preventDefault();
+            _handleKeyDown(e.key);
+          }}
+          ref={presenterDisplayRef}
         >
           Preview
           <PageNavigation
             text={`${page + 1}/${slideText.length}`}
-            onPrev={pagePrev}
-            onNext={pageNext}
+            onPrev={() => {
+              setFocusPresenterDisplay();
+              pagePrev();
+            }}
+            onNext={() => {
+              setFocusPresenterDisplay();
+              pageNext();
+            }}
             prevDisabled={page + 1 <= 1}
             nextDisabled={page + 1 >= slideText.length}
           />

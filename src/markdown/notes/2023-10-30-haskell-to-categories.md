@@ -148,7 +148,7 @@ Equationally, these diagrams correspond to the relations
 
 We first check that the structure maps agree.
 - the pure/return function `return :: a -> m a` corresponds the unit natural transformation $\eta_A: A \to M A$.
-- The bind function `>>=` (which we will write as $\beta$, where $\beta_{A,B} : MA \times Hom(A,MB) \to MB$) appears to be completely different from the multiplication map $\mu$, but can be constructed from one another.
+- The bind function `>>=` (which we will write as $\beta$, where $\beta_{A,B} : MA \times \Hom(A,MB) \to MB$) appears to be completely different from the multiplication map $\mu$, but can be constructed from one another.
   - (`>>=` to $\mu$)
     - $\mu$ is called `join` in Haskell, and is defined using `>>=` by
       ```hs
