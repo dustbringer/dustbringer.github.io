@@ -40,7 +40,7 @@ import Code from "../components/Markdown/Code";
 import CodePre from "../components/Markdown/CodePre";
 import { ContentsWithLinksTop } from "../components/Markdown/Contents";
 import transition from "../styles/transition";
-import Link from "../components/Link";
+import Link from "../components/LinkBold";
 
 // References
 // https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/

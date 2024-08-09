@@ -3,12 +3,12 @@ import { styled } from "@mui/material/styles";
 import MUILink from "@mui/material/Link";
 
 const StyledMUILink = styled(MUILink)({
-  color: "#0f6dd8",
-  textDecoration: "none",
-  "&:hover": {
-    color: "#0f6dd8",
-    textDecoration: "underline",
-  },
+  // color: "#0f6dd8",
+  // textDecoration: "none",
+  // "&:hover": {
+  //   color: "#0f6dd8",
+  //   textDecoration: "underline",
+  // },
 });
 
 // Links to open in new tab

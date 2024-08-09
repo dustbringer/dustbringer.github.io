@@ -7,7 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import { LinkBare as InternalLink } from "./InternalLink";
+import { LinkBare as InternalLink } from "./LinkBoldInternal";
 
 const styles = {
   root: {

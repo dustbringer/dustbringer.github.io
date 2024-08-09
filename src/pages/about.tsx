@@ -4,8 +4,8 @@ import { styled, useTheme } from "@mui/material/styles";
 
 import Typography from "@mui/material/Typography";
 import Container from "../components/Container";
-import Link from "../components/Link";
-import InternalLink from "../components/InternalLink";
+import Link from "../components/LinkBold";
+import InternalLink from "../components/LinkBoldInternal";
 import HorizontalRule from "../components/Markdown/HorizontalRule";
 
 import { currYear } from "../data/upToDate";
@@ -39,11 +39,15 @@ function AboutPage() {
             {decodeURI("%EF%BC%83")}
           </span>
           {decodeURI("%EF%BC%A0")}gmail.com where the stars are the rest of my
-          name (not necessarily the same length) and the hash is replaced with
+          name (not necessarily the same length) and the hash is the 3-bit
+          number for the number of irreducible representations of the dihedral
+          group of the equilateral triangle (or alternatively the last digit of
+          the unicode hexadecimal encoding of the symbol).
+          {/* and the hash is replaced with
           the 3-bit number for the number of two dimensional irreducible
           representations of the dihedral group of the regular heptagon (or
           alternatively the last digit of the unicode hexadecimal encoding of
-          the symbol).
+          the symbol). */}
         </Typography>
       </Container>
     </>

@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 import Container from "../components/Container";
-import InternalLink from "../components/InternalLink";
+import InternalLink from "../components/LinkBoldInternal";
 import CardSquare from "../components/CardSquare";
 
 import ProfileBird from "../images/profile-bird-md.jpg";

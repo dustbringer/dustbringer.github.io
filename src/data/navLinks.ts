@@ -6,6 +6,7 @@ export type Link = {
 const navLinks: Link[] = [
   { name: "Posts", path: "/posts" },
   { name: "Notes", path: "/notes" },
+  { name: "Talks", path: "/talks" },
   { name: "Tools", path: "/tools" },
   // { name: "Resume", path: "/resume" },
   { name: "About", path: "/about" },

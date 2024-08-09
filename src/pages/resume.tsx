@@ -1,16 +1,17 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { styled, useTheme } from "@mui/material/styles";
 import TeX from "@matejmazur/react-katex";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
+import { styled, useTheme } from "@mui/material/styles";
 
 import Container from "../components/Container";
 import Accordion from "../components/Accordion";
 import Code from "../components/Markdown/Code";
 import HorizontalRule from "../components/Markdown/HorizontalRule";
+import LinkExternal from "../components/LinkExternal";
 import Table from "../components/Markdown/Table";
 import THead from "../components/Markdown/TableHead";
 import TBody from "../components/Markdown/TableBody";
@@ -19,14 +20,6 @@ import TH from "../components/Markdown/TableCellHeader";
 import TD from "../components/Markdown/TableCellData";
 
 import unswMarks from "../data/unswMarks";
-
-const LinkBold = styled(Link)`
-  font-weight: 600;
-`;
-
-function LinkNewTab(props: React.PropsWithChildren<{ href: string }>) {
-  return <Link target="_blank" rel="noopener noreferrer" {...props} />;
-}
 
 const style = {
   bold: {
@@ -123,13 +116,13 @@ function ResumePage() {
         <ul>
           <li>
             <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
-              <LinkNewTab href="https://dustbringer.github.io/">
+              <LinkExternal href="https://dustbringer.github.io/">
                 Personal Website
-              </LinkNewTab>{" "}
+              </LinkExternal>{" "}
               (
-              <LinkNewTab href="https://github.com/dustbringer/dustbringer.github.io">
+              <LinkExternal href="https://github.com/dustbringer/dustbringer.github.io">
                 GitHub
-              </LinkNewTab>
+              </LinkExternal>
               )
             </Typography>
             <Typography variant="body1" gutterBottom>
@@ -139,9 +132,9 @@ function ResumePage() {
           </li>
           <li>
             <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
-              <LinkNewTab href="https://dustbringer.github.io/posts/2021-09-15-lockpicking-foundations/">
+              <LinkExternal href="https://dustbringer.github.io/posts/2021-09-15-lockpicking-foundations/">
                 Lockpicking Talk for UNSW SecSoc
-              </LinkNewTab>
+              </LinkExternal>
             </Typography>
             <Typography variant="body1" gutterBottom>
               A talk I gave on lockpicking for UNSW SecSoc, September 2021.
@@ -153,9 +146,9 @@ function ResumePage() {
           <li>
             <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
               Custom D&D Calendar (
-              <LinkNewTab href="https://github.com/dustbringer/wombats-dnd">
+              <LinkExternal href="https://github.com/dustbringer/wombats-dnd">
                 GitHub
-              </LinkNewTab>
+              </LinkExternal>
               )
             </Typography>
             <Typography variant="body1" gutterBottom>
@@ -168,9 +161,9 @@ function ResumePage() {
           <li>
             <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
               SYNCSHACK 2021 - Phobia Exposure Therapy Web App (
-              <LinkNewTab href="https://github.com/4m1v/phobos">
+              <LinkExternal href="https://github.com/4m1v/phobos">
                 GitHub
-              </LinkNewTab>
+              </LinkExternal>
               )
             </Typography>
             <Typography variant="body1" gutterBottom>
@@ -183,9 +176,9 @@ function ResumePage() {
           <li>
             <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
               Tab Utility Browser Extension (
-              <LinkNewTab href="https://github.com/dustbringer/tab-suspender">
+              <LinkExternal href="https://github.com/dustbringer/tab-suspender">
                 GitHub
-              </LinkNewTab>
+              </LinkExternal>
               )
             </Typography>
             <Typography variant="body1" gutterBottom>
@@ -199,9 +192,9 @@ function ResumePage() {
           <li>
             <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
               Puzzle Simulator for "The Witness" (
-              <LinkNewTab href="https://github.com/dustbringer/thewitness-puzzle">
+              <LinkExternal href="https://github.com/dustbringer/thewitness-puzzle">
                 GitHub
-              </LinkNewTab>
+              </LinkExternal>
               )
             </Typography>
             <Typography variant="body1" gutterBottom>
@@ -333,9 +326,9 @@ function ResumePage() {
             </Typography>
             <Typography variant="body1" gutterBottom>
               Honours Thesis:{" "}
-              <LinkNewTab href="https://github.com/dustbringer/UNSW-Honours/blob/main/main.pdf">
+              <LinkExternal href="https://github.com/dustbringer/UNSW-Honours/blob/main/main.pdf">
                 Diagrammatic Categories in Representation Theory
-              </LinkNewTab>
+              </LinkExternal>
             </Typography>
 
             <Box sx={{ marginBottom: "1em" }}>

@@ -9,7 +9,8 @@ const config: GatsbyConfig = {
   siteMetadata: {
     siteUrl: "https://dustbringer.github.io",
     title: "Victor's website",
-    description: "Things to do with mathematics, computer science and other things I'm interested in.",
+    description:
+      "Things to do with mathematics, computer science and other things I'm interested in.",
   },
   plugins: [
     "gatsby-plugin-layout",
@@ -44,6 +45,13 @@ const config: GatsbyConfig = {
       options: {
         name: `markdown-files`,
         path: `${__dirname}/src/markdown/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `talk-files`,
+        path: `${__dirname}/src/pages/talks/resources`,
       },
     },
     {

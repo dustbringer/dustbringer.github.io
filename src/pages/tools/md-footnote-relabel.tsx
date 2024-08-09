@@ -11,7 +11,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 
 import Container from "../../components/Container";
-import Link from "../../components/Link";
+import Link from "../../components/LinkBold";
 import Accordion from "../../components/Accordion";
 
 import { relabelAll, relabelInt } from "../../util/tools/md-footnote-relabel";

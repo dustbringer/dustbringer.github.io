@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 import Container from "../../components/Container";
-import Link from "../../components/Link";
+import Link from "../../components/LinkBold";
 
 /**
  * Regex for most kanji
