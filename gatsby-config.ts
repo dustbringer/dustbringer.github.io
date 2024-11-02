@@ -13,6 +13,7 @@ const config: GatsbyConfig = {
       "Things to do with mathematics, computer science and other things I'm interested in.",
   },
   plugins: [
+    "gatsby-plugin-pnpm",
     "gatsby-plugin-layout",
     // "gatsby-plugin-react-helmet",
     {

@@ -2,6 +2,7 @@
   "homepage": "https://dustbringer.github.io/",
   "name": "dustbringer.github.io",
   "version": "1.0.0",
+  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.0",
@@ -23,6 +24,7 @@
     "gatsby-plugin-manifest": "^5.13.0",
     "gatsby-plugin-material-ui": "^4.1.0",
     "gatsby-plugin-netlify": "^5.1.1",
+    "gatsby-plugin-pnpm": "^1.2.10",
     "gatsby-plugin-react-helmet": "^6.13.0",
     "gatsby-plugin-sharp": "^5.13.0",
     "gatsby-plugin-sitemap": "^6.13.0",
@@ -72,6 +74,7 @@
     "unist-util-visit": "^4.1.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.13.0",
     "@types/node": "^20.10.4",
     "@types/prop-types": "^15",
     "@types/react": "^18.2.45",
@@ -79,11 +82,13 @@
     "@types/react-helmet": "^6.1.11",
     "@types/react-is": "^18",
     "@types/react-syntax-highlighter": "^15.5.11",
-    "eslint": "^8.23.1",
-    "eslint-plugin-react": "^7.31.8",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react": "^7.33.2",
     "gh-pages": "^6.1.0",
+    "globals": "^15.11.0",
     "prettier": "^2.5.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "typescript-eslint": "^8.12.2"
   },
   "scripts": {
     "develop": "gatsby develop",
@@ -93,7 +98,7 @@
     "cleanstart": "gatsby clean && gatsby develop",
     "cleanbuild": "gatsby clean && gatsby build",
     "serve": "gatsby serve",
-    "deploy": "yarn run build && gh-pages -d public"
+    "deploy": "pnpm run build && gh-pages -d public"
   },
   "eslintConfig": {
     "extends": [
@@ -112,6 +117,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "packageManager": "yarn@4.2.2"
+  }
 }

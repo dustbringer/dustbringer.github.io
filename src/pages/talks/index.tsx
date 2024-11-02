@@ -47,9 +47,27 @@ function TalkNotesPage() {
           <ul>
             <li>
               <Typography variant="body1">
+                UNSW Research Group Meetings, 11 Oct 2024;{" "}
+                <LinkBold
+                  href={getFile("2024-10-diagrammatic-lv-cat-for-sl2R", "pdf")}
+                >
+                  Diagrammatics Lusztig-Vogan category for{" "}
+                  <TeX math="SL(2,\R)" />
+                </LinkBold>{" "}
+                (
+                <Link href="https://sites.google.com/view/group-meetings-24/home">
+                  website
+                </Link>
+                )
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body1">
                 One Tree Island Conference, Aug 2024;{" "}
                 <LinkBold href={getFile("2024-08-oti-talk", "pdf")}>
-                  Represenations of <TeX math="S_n" /> in characteristic <TeX math="p" /> and the basic representation of <TeX math="\hat{\mathfrak{sl}}_p" />
+                  Represenations of <TeX math="S_n" /> in characteristic{" "}
+                  <TeX math="p" /> and the basic representation of{" "}
+                  <TeX math="\hat{\mathfrak{sl}}_p" />
                 </LinkBold>
               </Typography>
             </li>
