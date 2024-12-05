@@ -47,6 +47,17 @@ function TalkNotesPage() {
           <ul>
             <li>
               <Typography variant="body1">
+                Australian Mathematical Sciences Students Conference, 6 Dec 2024;{" "}
+                <LinkBold
+                  href={getFile("2024-12-aams-presentation", "pdf")}
+                >
+                  Diagrammatics Lusztig-Vogan category for{" "}
+                  <TeX math="SL(2,\R)" />
+                </LinkBold>
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body1">
                 UNSW Research Group Meetings, 11 Oct 2024;{" "}
                 <LinkBold
                   href={getFile("2024-10-diagrammatic-lv-cat-for-sl2R", "pdf")}

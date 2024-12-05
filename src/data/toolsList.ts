@@ -58,6 +58,12 @@ const toolsList: ToolType[] = [
 
 export const externalToolList: ToolType[] = [
   {
+    title: "Knot Invariant Comparison",
+    description:
+      "Interactive plots comparing knot invariants.",
+    path: "https://dustbringer.github.io/web--knot-invariant-comparison",
+  },
+  {
     title: "SO(3) Webs",
     description: "Tools for examining SO(3) webs.",
     path: "https://dustbringer.github.io/web--so3webs/#/translator",
@@ -66,7 +72,7 @@ export const externalToolList: ToolType[] = [
     title: "String diagram maker",
     description:
       "A online tool to design basic string diagrams to export to TikZ.",
-    path: "https://dustbringer.github.io/web--string-diagram-maker/",
+    path: "https://dustbringer.github.io/web--string-diagram-maker",
   },
 ];
 
