@@ -5,8 +5,6 @@
   X-XSS-Protection: 1; mode=block
   X-Content-Type-Options: nosniff
   Referrer-Policy: same-origin
-/static/profile-bird-md-25fa8406418ff0cf80fff9473420b5e9.jpg
-  Cache-Control: public, max-age=31536000, immutable
 /static/KaTeX_AMS-Regular-73ea273a72f4aca30ca528cf9117470a.woff2
   Cache-Control: public, max-age=31536000, immutable
 /static/KaTeX_AMS-Regular-d562e886c52f12660a41eea8d05af757.woff
@@ -99,11 +97,13 @@
   Cache-Control: public, max-age=31536000, immutable
 /static/KaTeX_Typewriter-Regular-c5c02d763c89380dcb4ed359e15d0897.ttf
   Cache-Control: public, max-age=31536000, immutable
+/static/profile-bird-md-25fa8406418ff0cf80fff9473420b5e9.jpg
+  Cache-Control: public, max-age=31536000, immutable
 /styles.89516a099dd9dfbefd82.css
   Cache-Control: public, max-age=31536000, immutable
 /9092a32bd92de95106187fbc016cc2a5864ce74a-ecdc7d90a05f0b1119c4.js.LICENSE.txt
   Cache-Control: public, max-age=31536000, immutable
-/app-0eeb6da2bc8f43793f1a.js.LICENSE.txt
+/app-b53104aa9c407b57a12d.js.LICENSE.txt
   Cache-Control: public, max-age=31536000, immutable
 /c7ccbcbccf94cdb706504997bdbd7259a054cc4c-13796404a33ffd756d34.js.LICENSE.txt
   Cache-Control: public, max-age=31536000, immutable
@@ -113,13 +113,9 @@
   Cache-Control: public, max-age=31536000, immutable
 /d3a2d874-5c5739644cc8ef77d5a2.js.LICENSE.txt
   Cache-Control: public, max-age=31536000, immutable
-/app-0eeb6da2bc8f43793f1a.js
-  Cache-Control: public, max-age=31536000, immutable
 /component---src-pages-404-tsx-8b36eb044ae6d41f2d83.js
   Cache-Control: public, max-age=31536000, immutable
 /component---src-pages-about-tsx-aeaf4418423c9a93b0f9.js
-  Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-index-tsx-6781eff98ba4e3652932.js
   Cache-Control: public, max-age=31536000, immutable
 /component---src-pages-markdown-remark-fields-slug-tsx-7bcc9fe281f6c89f1197.js
   Cache-Control: public, max-age=31536000, immutable
@@ -173,13 +169,9 @@
   Cache-Control: public, max-age=31536000, immutable
 /6c9eeb62f149309efd8211ce764738c39d741926-4bfbfd2975c45b9cf1b6.js
   Cache-Control: public, max-age=31536000, immutable
-/app-0eeb6da2bc8f43793f1a.js.map
-  Cache-Control: public, max-age=31536000, immutable
 /component---src-pages-404-tsx-8b36eb044ae6d41f2d83.js.map
   Cache-Control: public, max-age=31536000, immutable
 /component---src-pages-about-tsx-aeaf4418423c9a93b0f9.js.map
-  Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-index-tsx-6781eff98ba4e3652932.js.map
   Cache-Control: public, max-age=31536000, immutable
 /component---src-pages-markdown-remark-fields-slug-tsx-7bcc9fe281f6c89f1197.js.map
   Cache-Control: public, max-age=31536000, immutable
@@ -233,15 +225,35 @@
   Cache-Control: public, max-age=31536000, immutable
 /6c9eeb62f149309efd8211ce764738c39d741926-4bfbfd2975c45b9cf1b6.js.map
   Cache-Control: public, max-age=31536000, immutable
-/webpack-runtime-ca05096b51b78127f44c.js
+/app-b53104aa9c407b57a12d.js
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-talks-index-tsx-e2200e27cfbe70564c14.js
+/webpack-runtime-65ad175517ee865588f4.js
   Cache-Control: public, max-age=31536000, immutable
-/webpack-runtime-ca05096b51b78127f44c.js.map
+/component---src-pages-index-tsx-d4d391b5a2910e528bf0.js
   Cache-Control: public, max-age=31536000, immutable
-/component---src-pages-talks-index-tsx-e2200e27cfbe70564c14.js.map
+/component---src-pages-papers-index-tsx-a76014c2a7eec0a16513.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-talks-index-tsx-6ba79be9ee0a18cc98b2.js
+  Cache-Control: public, max-age=31536000, immutable
+/app-b53104aa9c407b57a12d.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/webpack-runtime-65ad175517ee865588f4.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-index-tsx-d4d391b5a2910e528bf0.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-papers-index-tsx-a76014c2a7eec0a16513.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-talks-index-tsx-6ba79be9ee0a18cc98b2.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/app-0eeb6da2bc8f43793f1a.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/app-0eeb6da2bc8f43793f1a.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-index-tsx-6781eff98ba4e3652932.js.map
   Cache-Control: public, max-age=31536000, immutable
 /component---src-pages-talks-index-tsx-04c19a94918cfe2024f7.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-talks-index-tsx-e2200e27cfbe70564c14.js.map
   Cache-Control: public, max-age=31536000, immutable
 /component---src-pages-tools-external-tools-tsx-820de60be07b1a5fc573.js.map
   Cache-Control: public, max-age=31536000, immutable
@@ -256,6 +268,8 @@
 /webpack-runtime-66fb465deec89f958930.js.map
   Cache-Control: public, max-age=31536000, immutable
 /webpack-runtime-7ba1baeef710dcd4067b.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/webpack-runtime-ca05096b51b78127f44c.js.map
   Cache-Control: public, max-age=31536000, immutable
 /static/*
   Cache-Control: public, max-age=31536000, immutable
