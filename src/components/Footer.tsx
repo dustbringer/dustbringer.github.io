@@ -80,7 +80,6 @@ function Footer() {
                   fontSize: "0.75rem",
                 }}
               >
-                Copyright &copy; {`${currYear} `}
                 <Link
                   href="https://github.com/dustbringer"
                   target="_blank"
@@ -90,6 +89,7 @@ function Footer() {
                 >
                   dustbringer
                 </Link>
+                {` ${currYear}`}
               </Typography>
               <SocialIcons>
                 <IconButton

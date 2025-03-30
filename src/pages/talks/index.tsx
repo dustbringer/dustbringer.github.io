@@ -43,14 +43,29 @@ function TalkNotesPage() {
           Talks
         </Typography>
         <div>
+          <Typography variant="h5">2025</Typography>
+          <ul>
+            <li>
+              <Typography variant="body1">
+                UNSW PhD/Masters seminar, 31 Mar 2025;{" "}
+                <LinkBold
+                  href={getFile("2025-03-so3webs-and-b1inv-slides", "pdf")}
+                >
+                  Graph colouring, <TeX math="SO(3)" /> webs and the{" "}
+                  <TeX math="B1" /> invariant
+                </LinkBold>
+              </Typography>
+            </li>
+          </ul>
+        </div>
+        <div>
           <Typography variant="h5">2024</Typography>
           <ul>
             <li>
               <Typography variant="body1">
-                Australian Mathematical Sciences Students Conference, 6 Dec 2024;{" "}
-                <LinkBold
-                  href={getFile("2024-12-aams-presentation", "pdf")}
-                >
+                Australian Mathematical Sciences Students Conference, 6 Dec
+                2024;{" "}
+                <LinkBold href={getFile("2024-12-aams-presentation", "pdf")}>
                   Diagrammatics Lusztig-Vogan category for{" "}
                   <TeX math="SL(2,\R)" />
                 </LinkBold>

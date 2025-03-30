@@ -61,7 +61,7 @@ function HomePage() {
           Victor Zhang
         </Typography>
         <Typography variant="body2" align="center" sx={{ marginBottom: "2em" }}>
-          Mathematician and Senior Bug Implementer
+          Mathematician and Senior Bug Designer
         </Typography>
 
         <Typography variant="body1" align="center" sx={{ marginBottom: "2em" }}>

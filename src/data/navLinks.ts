@@ -7,6 +7,7 @@ const navLinks: Link[] = [
   { name: "Posts", path: "/posts" },
   { name: "Notes", path: "/notes" },
   { name: "Talks", path: "/talks" },
+  { name: "Papers", path: "/papers" },
   { name: "Tools", path: "/tools" },
   // { name: "Resume", path: "/resume" },
   { name: "About", path: "/about" },
