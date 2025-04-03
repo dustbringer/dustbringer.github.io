@@ -34,10 +34,10 @@ const quickLinks = [
     path: "/tools/runsheet-timer",
   },
   {
-    type: "Post",
+    type: "Note",
     title: "Circular arrangements",
     description: "Counting using group theory",
-    path: "/posts/2022-12-03-polya-enumeration",
+    path: "/notes/2022-12-03-polya-enumeration",
   },
 ];
 
@@ -61,18 +61,19 @@ function HomePage() {
           Victor Zhang
         </Typography>
         <Typography variant="body2" align="center" sx={{ marginBottom: "2em" }}>
-          Mathematician and Senior Bug Designer
+          Mathematics PhD student and Senior Bug Designer
         </Typography>
 
+        <Typography variant="body1" align="center">
+          Welcome to my website! Many of the things here are just for your (and
+          my own) reference.
+        </Typography>
         <Typography variant="body1" align="center" sx={{ marginBottom: "2em" }}>
-          Welcome to my website! You'll find a variety of sentences, tools and
-          pictures. There is a handful of readable blog posts in{" "}
-          <InternalLink to="/posts">Posts</InternalLink>, unreadable collection
-          of techinical posts in <InternalLink to="/notes">Notes</InternalLink>,{" "}
-          and miscellaneous paraphernalia in{" "}
-          <InternalLink to="/tools">Tools</InternalLink>. You can learn more
-          about me in <InternalLink to="/about">About</InternalLink>.
-          {/* and <InternalLink to="/resume">Resume</InternalLink>. */}
+          For general things about me see{" "}
+          <InternalLink to="/about">About</InternalLink>, for my work and
+          education see <InternalLink to="/about/resume">Resume</InternalLink>,
+          and for my research see{" "}
+          <InternalLink to="/about/research">Research</InternalLink>.
         </Typography>
 
         <Typography variant="h5" align="center">

@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 import Container from "../../components/Container";
-import Link from "../../components/LinkBold";
+import Link from "../../components/LinkExternal";
 
 /**
  * Regex for most kanji
@@ -214,7 +214,7 @@ function JapaneseFileReaderPage() {
                   }) => (
                     <ReactFuriWrapper lang="ja">
                       {pairs.map(([furigana, text], i) => (
-                        <ReactFuriPair key={i}>
+                        <ReactFuriPair key={`${furigana}-${text}-${i}`}>
                           <ReactFuriFuri>{furigana}</ReactFuriFuri>
                           <ReactFuriText>{text}</ReactFuriText>
                         </ReactFuriPair>

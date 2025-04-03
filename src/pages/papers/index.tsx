@@ -24,7 +24,7 @@ function PapersPage() {
             <li>
               <Typography variant="body1">
                 Daniel Tubbenhauer and Victor Zhang,{" "}
-                <em>Big data comparison of quantum invariants</em>;{" "}
+                <em>Big data comparison of quantum invariants</em> (Mar 2025);{" "}
                 <LinkBold href={"https://arxiv.org/abs/2503.15810"}>
                   arXiv preprint
                 </LinkBold>

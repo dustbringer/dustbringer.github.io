@@ -7,19 +7,19 @@ import Typography from "@mui/material/Typography";
 // import Link from "@mui/material/Link";
 import { styled, useTheme } from "@mui/material/styles";
 
-import Container from "../components/Container";
-import Accordion from "../components/Accordion";
-import Code from "../components/Markdown/Code";
-import HorizontalRule from "../components/Markdown/HorizontalRule";
-import LinkExternal from "../components/LinkExternal";
-import Table from "../components/Markdown/Table";
-import THead from "../components/Markdown/TableHead";
-import TBody from "../components/Markdown/TableBody";
-import TR from "../components/Markdown/TableRow";
-import TH from "../components/Markdown/TableCellHeader";
-import TD from "../components/Markdown/TableCellData";
+import Container from "../../components/Container";
+import Accordion from "../../components/Accordion";
+import Code from "../../components/Markdown/Code";
+import HorizontalRule from "../../components/Markdown/HorizontalRule";
+import LinkExternal from "../../components/LinkExternal";
+import Table from "../../components/Markdown/Table";
+import THead from "../../components/Markdown/TableHead";
+import TBody from "../../components/Markdown/TableBody";
+import TR from "../../components/Markdown/TableRow";
+import TH from "../../components/Markdown/TableCellHeader";
+import TD from "../../components/Markdown/TableCellData";
 
-import unswMarks from "../data/unswMarks";
+import unswMarks from "../../data/unswMarks";
 
 const style = {
   bold: {

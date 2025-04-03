@@ -3,7 +3,6 @@ import { Link, navigate, graphql } from "gatsby";
 import type { PageProps } from "gatsby";
 import { Helmet } from "react-helmet";
 import { styled } from "@mui/material/styles";
-import moment from "moment";
 import qs from "query-string";
 
 import Typography from "@mui/material/Typography";
@@ -20,11 +19,18 @@ const ListContainer = styled("div")`
   min-height: 75vh;
 `;
 
-function ReferenceListPage({
+const TitleContainer = styled("div")`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+function NotesListPage({
   location,
   data,
 }: PageProps<DataTypeAllMarkdown<PostType>>) {
   const { nodes: notes } = data.allMarkdownRemark;
+  // const [loading, setLoading] = React.useState(true);
   const [page, setPage] = React.useState(1);
 
   React.useEffect(() => {
@@ -41,9 +47,31 @@ function ReferenceListPage({
   return (
     <>
       <Container maxWidth="md">
-        <Typography variant="h4" gutterBottom>
-          Notes
-        </Typography>
+        <TitleContainer>
+          <Typography variant="h4" gutterBottom>
+            Notes
+          </Typography>
+          {notes.length > N_PER_PAGE && (
+            <PageNavigation
+              text={String(page)}
+              onPrev={() =>
+                page > 1 &&
+                navigate(`${location.pathname}?page=${Math.max(page - 1, 1)}`)
+              }
+              onNext={() =>
+                page < Math.ceil(notes.length / N_PER_PAGE) &&
+                navigate(
+                  `${location.pathname}?page=${Math.min(
+                    page + 1,
+                    Math.ceil(notes.length / N_PER_PAGE)
+                  )}`
+                )
+              }
+              prevDisabled={page <= 1}
+              nextDisabled={page >= Math.ceil(notes.length / N_PER_PAGE)}
+            />
+          )}
+        </TitleContainer>
         <div>
           {notes.length > 0 ? (
             <>
@@ -63,28 +91,6 @@ function ReferenceListPage({
                   );
                 })}
               </ListContainer>
-              {notes.length > N_PER_PAGE && (
-                <PageNavigation
-                  text={String(page)}
-                  onPrev={() =>
-                    page > 1 &&
-                    navigate(
-                      `${location.pathname}?page=${Math.max(page - 1, 1)}`
-                    )
-                  }
-                  onNext={() =>
-                    page < Math.ceil(notes.length / N_PER_PAGE) &&
-                    navigate(
-                      `${location.pathname}?page=${Math.min(
-                        page + 1,
-                        Math.ceil(notes.length / N_PER_PAGE)
-                      )}`
-                    )
-                  }
-                  prevDisabled={page <= 1}
-                  nextDisabled={page >= Math.ceil(notes.length / N_PER_PAGE)}
-                />
-              )}
             </>
           ) : (
             <Typography>There seems to be nothing here...</Typography>
@@ -95,7 +101,7 @@ function ReferenceListPage({
   );
 }
 
-export default ReferenceListPage;
+export default NotesListPage;
 
 export const pageQuery = graphql`
   query GetNotes {

@@ -3,12 +3,11 @@ import { SxProps, Theme, styled } from "@mui/material/styles";
 import MUILink from "@mui/material/Link";
 
 const StyledMUILink = styled(MUILink)({
-  // color: "#0f6dd8",
-  // textDecoration: "none",
-  // "&:hover": {
-  //   color: "#0f6dd8",
-  //   textDecoration: "underline",
-  // },
+  fontWeight: "600",
+  textDecoration: "none",
+  "&:hover": {
+    textDecoration: "underline",
+  },
 });
 
 function Link(

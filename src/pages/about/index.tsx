@@ -3,12 +3,12 @@ import { Helmet } from "react-helmet";
 import { styled, useTheme } from "@mui/material/styles";
 
 import Typography from "@mui/material/Typography";
-import Container from "../components/Container";
-import Link from "../components/LinkBold";
-import InternalLink from "../components/LinkBoldInternal";
-import HorizontalRule from "../components/Markdown/HorizontalRule";
+import Container from "../../components/Container";
+import Link from "../../components/LinkExternal";
+import InternalLink from "../../components/LinkBoldInternal";
+import HorizontalRule from "../../components/Markdown/HorizontalRule";
 
-import { currYear } from "../data/upToDate";
+import { currYear } from "../../data/upToDate";
 
 function AboutPage() {
   // const history = useHistory();
@@ -22,7 +22,8 @@ function AboutPage() {
         </Typography>
         <Typography variant="body1" gutterBottom>
           This page is under construction, it will be filled soon... have a look
-          at my <InternalLink to="/resume">resume</InternalLink> in the
+          at my <InternalLink to="/about/resume">resume</InternalLink> and{" "}
+          <InternalLink to="/about/research">research</InternalLink> in the
           meantime.
         </Typography>
         <HorizontalRule />

@@ -26,6 +26,8 @@ function PageNavigation({
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
+        // backgroundColor: "#efefef",
+        // borderRadius: "1em",
       }}
     >
       <IconButton

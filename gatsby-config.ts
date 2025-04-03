@@ -56,6 +56,13 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `about-files`,
+        path: `${__dirname}/src/pages/about/resources`,
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         // Footnotes mode (default: true)

@@ -20,7 +20,7 @@ import Markdown, {
   MarkdownNoContents,
   MarkdownNoFormat,
 } from "../../components/Markdown";
-import Link from "../../components/LinkBold";
+import Link from "../../components/LinkExternal";
 import Accordion from "../../components/Accordion";
 import Code from "../../components/Markdown/Code";
 import HorizontalRule from "../../components/Markdown/HorizontalRule";

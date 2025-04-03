@@ -66,7 +66,16 @@ function TalkNotesPage() {
                 Australian Mathematical Sciences Students Conference, 6 Dec
                 2024;{" "}
                 <LinkBold href={getFile("2024-12-aams-presentation", "pdf")}>
-                  Diagrammatics Lusztig-Vogan category for{" "}
+                  The Diagrammatic Lusztig-Vogan category for{" "}
+                  <TeX math="SL(2,\R)" />
+                </LinkBold>
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body1">
+                UNSW Research Progress Review Talk, 18 Nov 2024;{" "}
+                <LinkBold href={getFile("2024-11-rpr-presentation", "pdf")}>
+                  The Diagrammatic Lusztig-Vogan category for{" "}
                   <TeX math="SL(2,\R)" />
                 </LinkBold>
               </Typography>
@@ -77,7 +86,7 @@ function TalkNotesPage() {
                 <LinkBold
                   href={getFile("2024-10-diagrammatic-lv-cat-for-sl2R", "pdf")}
                 >
-                  Diagrammatics Lusztig-Vogan category for{" "}
+                  The Diagrammatic Lusztig-Vogan category for{" "}
                   <TeX math="SL(2,\R)" />
                 </LinkBold>{" "}
                 (

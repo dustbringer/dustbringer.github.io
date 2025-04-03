@@ -16,7 +16,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 import Container from "../../components/Container";
-import Link from "../../components/LinkBold";
+import Link from "../../components/LinkExternal";
 
 const SmallText = styled(Typography)`
   font-size: 0.8em;
