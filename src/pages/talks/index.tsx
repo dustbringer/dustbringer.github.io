@@ -98,7 +98,7 @@ function TalkNotesPage() {
             </li>
             <li>
               <Typography variant="body1">
-                One Tree Island Conference, Aug 2024;{" "}
+                One Tree Island Workshop in Representation Theory, Aug 2024;{" "}
                 <LinkBold href={getFile("2024-08-oti-talk", "pdf")}>
                   Represenations of <TeX math="S_n" /> in characteristic{" "}
                   <TeX math="p" /> and the basic representation of{" "}

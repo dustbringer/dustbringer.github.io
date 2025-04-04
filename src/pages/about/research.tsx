@@ -141,7 +141,7 @@ function ResearchPage() {
           </li>
           <li>
             <Typography variant="body1">
-              2024 Aug, <em>One Tree Island Conference</em>
+              2024 Aug, <em>One Tree Island Workshop in Representation Theory</em>
             </Typography>
           </li>
           <li>
@@ -161,7 +161,7 @@ function ResearchPage() {
         <ul>
           <li>
             <Typography variant="body1">
-              2024, UNSW Research group Shut-up and write
+              2024, UNSW Math. Research group Shut-up and write
             </Typography>
           </li>
         </ul>
