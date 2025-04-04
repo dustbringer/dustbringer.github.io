@@ -141,7 +141,8 @@ function ResearchPage() {
           </li>
           <li>
             <Typography variant="body1">
-              2024 Aug, <em>One Tree Island Workshop in Representation Theory</em>
+              2024 Aug,{" "}
+              <em>One Tree Island Workshop in Representation Theory</em>
             </Typography>
           </li>
           <li>
@@ -157,11 +158,28 @@ function ResearchPage() {
             </Typography>
           </li>
         </ul>
-        <Typography variant="h5">Organising</Typography>
+
+        <Typography variant="h5">Service</Typography>
         <ul>
           <li>
             <Typography variant="body1">
-              2024, UNSW Math. Research group Shut-up and write
+              2024, Organising, UNSW Math. Research group Shut-up and write
+            </Typography>
+          </li>
+        </ul>
+
+        <Typography variant="h5">Technical Skills</Typography>
+        <ul>
+          <li>
+            <Typography variant="body1">
+              <strong>Computer Algebra Systems</strong>: GAP, MAGMA, Maple,
+              Mathematica/Wolframscript, Maxima, SageMath.
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1">
+              <strong>General programming</strong>: Bash, C, Haskell, Java,
+              Javascript, Python, R, Rust, SQL.
             </Typography>
           </li>
         </ul>
