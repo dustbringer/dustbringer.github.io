@@ -53,7 +53,14 @@ function TalkNotesPage() {
                 >
                   Graph colouring, <TeX math="SO(3)" /> webs and the{" "}
                   <TeX math="B1" /> invariant
+                </LinkBold>{" "}
+                (
+                <LinkBold
+                  href={"https://sites.google.com/view/dominic-matan/seminar"}
+                >
+                  website
                 </LinkBold>
+                )
               </Typography>
             </li>
           </ul>

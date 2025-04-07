@@ -68,11 +68,16 @@ function HomePage() {
           Welcome to my website! Many of the things here are just for your (and
           my own) reference.
         </Typography>
-        <Typography variant="body1" align="center" sx={{ marginBottom: "2em" }}>
+        <Typography variant="body1" align="center">
           For general things about me see{" "}
-          <InternalLink to="/about">About</InternalLink>, for my work and
-          education see <InternalLink to="/about/resume">Resume</InternalLink>,
-          and for my research see{" "}
+          <InternalLink to="/about">About</InternalLink>;
+        </Typography>
+        <Typography variant="body1" align="center">
+          for my work and education see{" "}
+          <InternalLink to="/about/resume">Resume</InternalLink>;
+        </Typography>
+        <Typography variant="body1" align="center" sx={{ marginBottom: "2em" }}>
+          for my research see{" "}
           <InternalLink to="/about/research">Research</InternalLink>.
         </Typography>
 
