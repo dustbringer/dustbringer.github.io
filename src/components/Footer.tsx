@@ -81,7 +81,7 @@ function Footer() {
                 }}
               >
                 <Link
-                  href="https://github.com/dustbringer"
+                  href="https://github.com/dustbringer/dustbringer.github.io/tree/deploy"
                   target="_blank"
                   rel="noopener noreferrer"
                   underline="hover"
