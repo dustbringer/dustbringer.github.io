@@ -59,9 +59,13 @@ const toolsList: ToolType[] = [
 export const externalToolList: ToolType[] = [
   {
     title: "Knot Invariant Comparison",
-    description:
-      "Interactive plots comparing knot invariants.",
+    description: "Interactive plots comparing knot invariants.",
     path: "https://dustbringer.github.io/web--knot-invariant-comparison",
+  },
+  {
+    title: "Line Graph Plotter",
+    description: "Quick and dirty way to plot your line graphs",
+    path: "https://dustbringer.github.io/web--knot-invariant-comparison/plot",
   },
   {
     title: "SO(3) Webs",
