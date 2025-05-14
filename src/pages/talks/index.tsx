@@ -47,6 +47,25 @@ function TalkNotesPage() {
           <ul>
             <li>
               <Typography variant="body1">
+                UNSW Research Group Meetings, 15 May 2025;{" "}
+                <LinkBold
+                  href={getFile(
+                    "2025-05-lv-module-and-diagrammatics-su(n,1)",
+                    "pdf"
+                  )}
+                >
+                  The LV-category (and LV-module) for{" "}
+                  <TeX math="SU(n,1), n \geq 1" />
+                </LinkBold>{" "}
+                (
+                <Link href="https://sites.google.com/view/group-meetings-24/home">
+                  website
+                </Link>
+                )
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body1">
                 UNSW PhD/Masters seminar, 31 Mar 2025;{" "}
                 <LinkBold
                   href={getFile("2025-03-so3webs-and-b1inv-slides", "pdf")}
