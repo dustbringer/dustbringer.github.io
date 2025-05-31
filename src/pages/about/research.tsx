@@ -69,7 +69,7 @@ function ResearchPage() {
 
         <Typography variant="body1" gutterBottom>
           View{" "}
-          <LinkBold href={getFile("research-cv-victor-zhang-2025-04", "pdf")}>
+          <LinkBold href={getFile("research-cv-victor-zhang-2025-06", "pdf")}>
             here
           </LinkBold>{" "}
           for a PDF version of my CV.
@@ -134,6 +134,12 @@ function ResearchPage() {
         <ul>
           <li>
             <Typography variant="body1">
+              2025 June, <em>Representation Theory Down Under</em>,
+              University of Sydney
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1">
               2024 Dec,{" "}
               <em>Australian Mathematical Sciences Students Conference</em>,
               University of Western Sydney
@@ -163,7 +169,7 @@ function ResearchPage() {
         <ul>
           <li>
             <Typography variant="body1">
-              2024, Organising, UNSW Math. Research group Shut-up and write
+              2024 - ongoing, Organising, UNSW Math. Research group Shut-up and write
             </Typography>
           </li>
         </ul>
