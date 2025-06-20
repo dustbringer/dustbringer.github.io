@@ -47,7 +47,7 @@ function TalkNotesPage() {
           <ul>
             <li>
               <Typography variant="body1">
-                UNSW Research Group Meetings, 16 June 2025;{" "}
+                UNSW Research Group Meetings, 19 June 2025;{" "}
                 <LinkBold
                   href={getFile(
                     "2025-06-bruhat-order",
