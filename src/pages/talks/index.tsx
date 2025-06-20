@@ -47,6 +47,24 @@ function TalkNotesPage() {
           <ul>
             <li>
               <Typography variant="body1">
+                UNSW Research Group Meetings, 16 June 2025;{" "}
+                <LinkBold
+                  href={getFile(
+                    "2025-06-bruhat-order",
+                    "pdf"
+                  )}
+                >
+                  Incarnations of the Bruhat Order: classical and for the LV-module
+                </LinkBold>{" "}
+                (
+                <Link href="https://sites.google.com/view/group-meetings-24/home">
+                  website
+                </Link>
+                )
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body1">
                 UNSW Research Group Meetings, 15 May 2025;{" "}
                 <LinkBold
                   href={getFile(
