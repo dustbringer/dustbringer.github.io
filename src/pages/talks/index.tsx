@@ -47,13 +47,23 @@ function TalkNotesPage() {
           <ul>
             <li>
               <Typography variant="body1">
-                UNSW Research Group Meetings, 03 July 2025;{" "}
+                UNSW Research Group Meetings, 31 July 2025;{" "}
                 <LinkBold
-                  href={getFile(
-                    "2025-07-standard-filtrations",
-                    "pdf"
-                  )}
+                  href={getFile("2025-07-grassmannian-and-schubert", "pdf")}
                 >
+                  Grassmannians and Schubert Cells
+                </LinkBold>{" "}
+                (
+                <Link href="https://sites.google.com/view/group-meetings-24/home">
+                  website
+                </Link>
+                )
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body1">
+                UNSW Research Group Meetings, 03 July 2025;{" "}
+                <LinkBold href={getFile("2025-07-standard-filtrations", "pdf")}>
                   Standard filtrations and localisation of Soergel Bimodules
                 </LinkBold>{" "}
                 (
@@ -66,13 +76,9 @@ function TalkNotesPage() {
             <li>
               <Typography variant="body1">
                 UNSW Research Group Meetings, 19 June 2025;{" "}
-                <LinkBold
-                  href={getFile(
-                    "2025-06-bruhat-order",
-                    "pdf"
-                  )}
-                >
-                  Incarnations of the Bruhat Order: classical and for the LV-module
+                <LinkBold href={getFile("2025-06-bruhat-order", "pdf")}>
+                  Incarnations of the Bruhat Order: classical and for the
+                  LV-module
                 </LinkBold>{" "}
                 (
                 <Link href="https://sites.google.com/view/group-meetings-24/home">
