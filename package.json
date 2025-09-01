@@ -96,8 +96,7 @@
     "clean": "gatsby clean",
     "cleanstart": "gatsby clean && gatsby develop",
     "cleanbuild": "gatsby clean && gatsby build",
-    "serve": "gatsby serve",
-    "deploy": "pnpm run build && gh-pages -d public"
+    "serve": "gatsby serve"
   },
   "eslintConfig": {
     "extends": [

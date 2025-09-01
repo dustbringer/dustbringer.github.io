@@ -47,6 +47,14 @@ function TalkNotesPage() {
           <ul>
             <li>
               <Typography variant="body1">
+                UNSW Math. Postgrad. Conference, 11 Aug 2025;{" "}
+                <LinkBold href={getFile("2025-08-postgrad-math-conf", "pdf")}>
+                  A Diagram Calculus for a few Type-A Lusztig–Vogan Categories
+                </LinkBold>
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body1">
                 UNSW Research Group Meetings, 31 July 2025;{" "}
                 <LinkBold
                   href={getFile("2025-07-grassmannian-and-schubert", "pdf")}
