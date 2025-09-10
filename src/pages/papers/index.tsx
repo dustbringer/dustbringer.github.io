@@ -23,8 +23,47 @@ function PapersPage() {
           <ul>
             <li>
               <Typography variant="body1">
-                Daniel Tubbenhauer and Victor Zhang,{" "}
+                <em>
+                  Semisimplifying categorical Heisenberg actions and periodic
+                  equivalences
+                </em>{" "}
+                (Sep 2025); Chris Hone, Finn Klein, Bregje Pauwels, Alexander
+                Sherman, Oded Yacobi, and Victor L. Zhang;{" "}
+                <LinkBold href={"https://arxiv.org/abs/2509.07377"}>
+                  arXiv preprint
+                </LinkBold>
+                .
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body1">
+                <em>On detection probabilities of link invariants</em> (Sep
+                2025); Abel Lacabanne, Daniel Tubbenhauer, Pedro Vaz, and Victor
+                L. Zhang;{" "}
+                <LinkBold href={"https://arxiv.org/abs/2509.05574"}>
+                  arXiv preprint
+                </LinkBold>
+                ,{" "}
+                <LinkBold
+                  href={
+                    "https://dustbringer.github.io/web--knot-invariant-comparison/stats/homology"
+                  }
+                >
+                  interactive website
+                </LinkBold>
+                ,{" "}
+                <LinkBold
+                  href={"https://github.com/dtubbenhauer/knotdetection"}
+                >
+                  data and code
+                </LinkBold>
+                .
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body1">
                 <em>Big data comparison of quantum invariants</em> (Mar 2025);{" "}
+                Daniel Tubbenhauer and Victor L. Zhang;{" "}
                 <LinkBold href={"https://arxiv.org/abs/2503.15810"}>
                   arXiv preprint
                 </LinkBold>
