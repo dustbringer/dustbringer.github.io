@@ -83,10 +83,11 @@ const parseInput = (
 
   // Remove duplicates
   // Using sets: https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
+  const inputSize = result.length;
   result = remDupe(result, caseIns);
   if (ignoreEmpty) result = result.filter((x) => x);
 
-  return { inputSize: temp.length, result: result };
+  return { inputSize: inputSize, result: result };
 };
 
 function DuplicateRemoverPage() {
