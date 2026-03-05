@@ -43,8 +43,64 @@ function TalkNotesPage() {
           Talks
         </Typography>
         <div>
+          <Typography variant="h5">2026</Typography>
+          <ul>
+            <li>
+              <Typography variant="body1">
+                UNSW Research Group Meetings, 27 Feb 2026;{" "}
+                <LinkBold href={getFile("2026-02-sl2-fd-reps", "pdf")}>
+                  Classification of finite dimensional repreesntations of{" "}
+                  <TeX math="\mathfrak{sl}_2(\mathbb{C})" />
+                </LinkBold>{" "}
+                (
+                <Link href="https://sites.google.com/view/group-meetings-24/home">
+                  website
+                </Link>
+                )
+              </Typography>
+            </li>
+          </ul>
+        </div>
+        <div>
           <Typography variant="h5">2025</Typography>
           <ul>
+            <li>
+              <Typography variant="body1">
+                AustMS Conference 2025, 09 Dec 2025;{" "}
+                <LinkBold href={getFile("2025-12-austms-conf", "pdf")}>
+                  A Diagram Calculus for a few Type-A Lusztig–Vogan Categories
+                </LinkBold>{" "}
+                (<Link href="https://austms2025.org.au/">website</Link>)
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body1">
+                ICERM Workshop: Diagrammatic Categorification, 21 Oct 2025;{" "}
+                <LinkBold href={getFile("2025-10-icerm-lightning", "pdf")}>
+                  Lightning talk: Diagrammatics for a few Lusztig–Vogan
+                  categories
+                </LinkBold>{" "}
+                (
+                <Link href="https://icerm.brown.edu/program/semester_program_workshop/sp-f25-w2">
+                  website
+                </Link>
+                )
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body1">
+                MATRIX-MFO Workshop: Machine Learning and AI for Mathematics, 25
+                Sep 2025;{" "}
+                <LinkBold href={getFile("2025-09-matrix-knot-data", "pdf")}>
+                  Data analysis and Quantum knot invariants
+                </LinkBold>{" "}
+                (
+                <Link href="https://www.matrix-inst.org.au/events/matrix-mfo-tandem-workshop-machine-learning-and-ai-for-mathematics/">
+                  website
+                </Link>
+                )
+              </Typography>
+            </li>
             <li>
               <Typography variant="body1">
                 UNSW Math. Postgrad. Conference, 11 Aug 2025;{" "}
@@ -101,7 +157,7 @@ function TalkNotesPage() {
                 <LinkBold
                   href={getFile(
                     "2025-05-lv-module-and-diagrammatics-su(n,1)",
-                    "pdf"
+                    "pdf",
                   )}
                 >
                   The LV-category (and LV-module) for{" "}
