@@ -9,7 +9,8 @@ import TeX from "@matejmazur/react-katex";
 import type { FileType, DataTypeAllFile } from "../file.d.ts";
 import Container from "../../components/Container";
 
-const LinkBold = styled(Link)({ fontWeight: "700" });
+const LinkStyled = styled(Link)({ fontWeight: "600" });
+const TitleStyled = styled("span")({ fontStyle: "italic", fontWeight: "600" });
 
 function PapersPage() {
   return (
@@ -23,63 +24,69 @@ function PapersPage() {
           <ul>
             <li>
               <Typography variant="body1">
-                <em>
+                <TitleStyled>
                   Semisimplifying categorical Heisenberg actions and periodic
                   equivalences
-                </em>{" "}
+                </TitleStyled>{" "}
                 (Sep 2025); Chris Hone, Finn Klein, Bregje Pauwels, Alexander
                 Sherman, Oded Yacobi, and Victor L. Zhang;{" "}
-                <LinkBold href={"https://arxiv.org/abs/2509.07377"}>
+                <LinkStyled href={"https://arxiv.org/abs/2509.07377"}>
                   arXiv preprint
-                </LinkBold>
-                .
+                </LinkStyled>
+                . Submitted.
               </Typography>
             </li>
             <li>
               <Typography variant="body1">
-                <em>On detection probabilities of link invariants</em> (Sep
-                2025); Abel Lacabanne, Daniel Tubbenhauer, Pedro Vaz, and Victor
-                L. Zhang;{" "}
-                <LinkBold href={"https://arxiv.org/abs/2509.05574"}>
+                <TitleStyled>
+                  On detection probabilities of link invariants
+                </TitleStyled>{" "}
+                (Sep 2025); Abel Lacabanne, Daniel Tubbenhauer, Pedro Vaz, and
+                Victor L. Zhang;{" "}
+                <LinkStyled href={"https://arxiv.org/abs/2509.05574"}>
                   arXiv preprint
-                </LinkBold>
+                </LinkStyled>
                 ,{" "}
-                <LinkBold
+                <LinkStyled
                   href={
                     "https://dustbringer.github.io/web--knot-invariant-comparison/stats/homology"
                   }
                 >
                   interactive website
-                </LinkBold>
+                </LinkStyled>
                 ,{" "}
-                <LinkBold
+                <LinkStyled
                   href={"https://github.com/dtubbenhauer/knotdetection"}
                 >
                   data and code
-                </LinkBold>
-                .
+                </LinkStyled>
+                . Submitted.
               </Typography>
             </li>
             <li>
               <Typography variant="body1">
-                <em>Big data comparison of quantum invariants</em> (Mar 2025);{" "}
-                Daniel Tubbenhauer and Victor L. Zhang;{" "}
-                <LinkBold href={"https://arxiv.org/abs/2503.15810"}>
+                <TitleStyled>
+                  Big data comparison of quantum invariants
+                </TitleStyled>{" "}
+                (Mar 2025); Daniel Tubbenhauer and Victor L. Zhang;{" "}
+                <LinkStyled href={"https://arxiv.org/abs/2503.15810"}>
                   arXiv preprint
-                </LinkBold>
+                </LinkStyled>
                 ,{" "}
-                <LinkBold
+                <LinkStyled
                   href={
                     "https://dustbringer.github.io/web--knot-invariant-comparison/"
                   }
                 >
                   interactive website
-                </LinkBold>
+                </LinkStyled>
                 ,{" "}
-                <LinkBold href={"https://github.com/dtubbenhauer/quantumdata"}>
+                <LinkStyled
+                  href={"https://github.com/dtubbenhauer/quantumdata"}
+                >
                   data and code
-                </LinkBold>
-                .
+                </LinkStyled>
+                . To appear in <em>J. Exp. Math.</em>
               </Typography>
             </li>
           </ul>

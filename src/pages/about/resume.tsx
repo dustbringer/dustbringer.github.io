@@ -87,7 +87,7 @@ function ResumePage() {
             </Typography>
             <Typography variant="body1" gutterBottom>
               Tutor at UNSW School of Mathematics: First year courses
-              (MATH1131,1081), Drop-in centre and Lab consultations.
+              (MATH1131/1141,MATH1081), Drop-in centre and Lab consultations.
             </Typography>
           </li>
           <li>
@@ -317,6 +317,15 @@ function ResumePage() {
         </Box>
         <Typography variant="h5">Education</Typography>
         <ul>
+          <li>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
+              University of New South Wales (2024 - 2027)
+            </Typography>
+            <Typography variant="body1">PhD Mathematics</Typography>
+            <Typography variant="body1" gutterBottom>
+              Thesis Title: Diagrammatic Lusztig–Vogan Categories
+            </Typography>
+          </li>
           <li>
             <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
               University of New South Wales (2019 - 2023)

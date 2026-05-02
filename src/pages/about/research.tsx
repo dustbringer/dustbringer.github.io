@@ -23,7 +23,7 @@ import TR from "../../components/Markdown/TableRow";
 import TH from "../../components/Markdown/TableCellHeader";
 import TD from "../../components/Markdown/TableCellData";
 
-const LinkBold = styled(LinkExternal)({ fontWeight: "700" });
+const LinkBold = styled(LinkExternal)({ fontWeight: "600" });
 
 const style = {
   bold: {
@@ -69,10 +69,17 @@ function ResearchPage() {
 
         <Typography variant="body1" gutterBottom>
           View{" "}
-          <LinkBold href={getFile("research-cv-victor-zhang-2025-06", "pdf")}>
+          <LinkBold href={getFile("research-cv-victor-zhang-2026-05", "pdf")}>
             here
           </LinkBold>{" "}
           for a PDF version of my CV.
+        </Typography>
+
+        <Typography variant="h5" gutterBottom>
+          Papers
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          See <LinkInternal to="/papers">papers</LinkInternal> page.
         </Typography>
 
         <Typography variant="h5">History</Typography>
@@ -102,40 +109,107 @@ function ResearchPage() {
             </Typography>
           </li>
         </ul>
+
         <Typography variant="h5">Research interests</Typography>
         <ul>
           <li>
             <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
               Diagrammatic categories and algebras
             </Typography>
-            <Typography variant="body1" gutterBottom>
-              The Lusztig–Vogan categories and other module categories over
-              Soergel bimodules;
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              Quantum knot invariants from representations of quantum groups and
-              other braided tensor categories;
-            </Typography>
+            <ul>
+              <Typography variant="body1" component="li">
+                The Lusztig–Vogan categories and other module categories over
+                Soergel bimodules;
+              </Typography>
+              <Typography variant="body1" component="li">
+                Quantum knot invariants from representations of quantum groups
+                and other braided tensor categories;
+              </Typography>
+            </ul>
           </li>
           <li>
             <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
               Representation theory
             </Typography>
-            <Typography variant="body1" gutterBottom>
-              Representations of (real) Lie algebras;
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              Representations of symmetric groups in characteristic{" "}
-              <TeX math="p" />;
-            </Typography>
+            <ul>
+              <Typography variant="body1" component="li">
+                Representations of (real) Lie algebras;
+              </Typography>
+              <Typography variant="body1" component="li">
+                Representations of symmetric groups in characteristic{" "}
+                <TeX math="p" />;
+              </Typography>
+            </ul>
           </li>
         </ul>
         <Typography variant="h5">Conferences</Typography>
         <ul>
           <li>
             <Typography variant="body1">
-              2025 June, <em>Representation Theory Down Under</em>,
-              University of Sydney
+              2025 Dec,{" "}
+              <em>
+                <LinkBold href="https://austms2025.org.au/">
+                  AustMS Meeting 2025
+                </LinkBold>
+              </em>
+              , La Trobe University
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1">
+              2025 Oct,{" "}
+              <em>
+                <LinkBold href="https://icerm.brown.edu/program/semester_program_workshop/sp-f25-w2">
+                  ICERM Workshop in Diagrammatic Categorification
+                </LinkBold>
+              </em>
+              , Brown University
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1">
+              2025 Sep,{" "}
+              <em>
+                <LinkBold href="https://www.matrix-inst.org.au/events/matrix-mfo-tandem-workshop-machine-learning-and-ai-for-mathematics/">
+                  MATRIX-MFO Workshop 2025
+                </LinkBold>{" "}
+                (Machine Learning and AI for Mathematics)
+              </em>
+              , University of Melbourne
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1">
+              2025 Aug,{" "}
+              <em>
+                <LinkBold href="https://www.unsw.edu.au/science/our-schools/maths/news-events/events/postgraduate-conference-2025">
+                  Mathematics Postgraduate Conference
+                </LinkBold>
+              </em>
+              , University of New South Wales
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1">
+              2025 Aug,{" "}
+              <em>
+                <LinkBold href="https://pages.uoregon.edu/belias/WARTHOG/BraidVar/index.html">
+                  WARTHOG 2025
+                </LinkBold>{" "}
+                (Cluster Algebras and Braid Varieties)
+              </em>
+              , University of Oregon
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1">
+              2025 Jun,{" "}
+              <em>
+                <LinkBold href="https://www.maths.usyd.edu.au/u/repdown/#/">
+                  Representation Theory Down Under
+                </LinkBold>
+              </em>
+              , University of Sydney
             </Typography>
           </li>
           <li>
@@ -153,14 +227,24 @@ function ResearchPage() {
           </li>
           <li>
             <Typography variant="body1">
-              2024 Aug, <em>Mathematics Postgraduate Conference</em>, University
-              of New South Wales
+              2024 Aug,{" "}
+              <em>
+                <LinkBold href="https://www.unsw.edu.au/science/our-schools/maths/news-events/events/postgraduate-conference-2024">
+                  Mathematics Postgraduate Conference
+                </LinkBold>
+              </em>
+              , University of New South Wales
             </Typography>
           </li>
           <li>
             <Typography variant="body1">
-              2023 Feb, <em>Categorification in representation theory</em>,
-              University of Sydney
+              2023 Feb,{" "}
+              <em>
+                <LinkBold href="https://www.maths.usyd.edu.au/u/catrep/#/">
+                  Categorification in representation theory
+                </LinkBold>
+              </em>
+              , University of Sydney
             </Typography>
           </li>
         </ul>
@@ -169,7 +253,7 @@ function ResearchPage() {
         <ul>
           <li>
             <Typography variant="body1">
-              2024 - ongoing, Organising, UNSW Math. Research group Shut-up and write
+              2024 - ongoing, Organising, UNSW Research group Shut-up and write
             </Typography>
           </li>
         </ul>

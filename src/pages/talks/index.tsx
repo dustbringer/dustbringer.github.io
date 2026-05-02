@@ -47,9 +47,22 @@ function TalkNotesPage() {
           <ul>
             <li>
               <Typography variant="body1">
+                USyd Canonical Basis Learning Seminar, 1 Apr 2026;{" "}
+                <LinkBold href={getFile("2026-04-canonical-basis", "pdf")}>
+                  Existence of the Canonical Basis
+                </LinkBold>{" "}
+                (
+                <Link href="https://sites.google.com/view/canonicalbases/">
+                  website
+                </Link>
+                )
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body1">
                 UNSW Research Group Meetings, 27 Feb 2026;{" "}
                 <LinkBold href={getFile("2026-02-sl2-fd-reps", "pdf")}>
-                  Classification of finite dimensional repreesntations of{" "}
+                  Classification of finite dimensional representations of{" "}
                   <TeX math="\mathfrak{sl}_2(\mathbb{C})" />
                 </LinkBold>{" "}
                 (
@@ -263,7 +276,7 @@ function TalkNotesPage() {
             </li>
             <li>
               <Typography variant="body1">
-                USyd Tensor Categories Seminar, 6 Mar 2024;{" "}
+                USyd Tensor Categories Learning Seminar, 6 Mar 2024;{" "}
                 <LinkBold href={getFile("2024-03-tensor-cats-lec3", "pdf")}>
                   Drawing Monoidal Categories
                 </LinkBold>{" "}
