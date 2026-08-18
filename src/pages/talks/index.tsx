@@ -47,6 +47,14 @@ function TalkNotesPage() {
           <ul>
             <li>
               <Typography variant="body1">
+                UNSW Math. Postgrad. Conference, 10 Aug 2025;{" "}
+                <LinkBold href={getFile("2026-08-postgrad-math-conf", "pdf")}>
+                  Diagrammatic Lusztig–Vogan Categories
+                </LinkBold>
+              </Typography>
+            </li>
+            <li>
+              <Typography variant="body1">
                 USyd Canonical Basis Learning Seminar, 1 Apr 2026;{" "}
                 <LinkBold href={getFile("2026-04-canonical-basis", "pdf")}>
                   Existence of the Canonical Basis
