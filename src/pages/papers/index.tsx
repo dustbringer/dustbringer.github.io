@@ -20,6 +20,21 @@ function PapersPage() {
           Papers
         </Typography>
         <div>
+          <Typography variant="h5">2026</Typography>
+          <ul>
+            <li>
+              <Typography variant="body1">
+                <TitleStyled>
+                  Lusztig–Vogan categories of equal rank 2
+                </TitleStyled>{" "}
+                (Aug 2026); Daniel Dunmore, Anna Romanov and Victor L. Zhang;{" "}
+                <LinkStyled href={"https://arxiv.org/abs/2608.28024"}>
+                  arXiv preprint
+                </LinkStyled>
+                . Submitted.
+              </Typography>
+            </li>
+          </ul>
           <Typography variant="h5">2025</Typography>
           <ul>
             <li>

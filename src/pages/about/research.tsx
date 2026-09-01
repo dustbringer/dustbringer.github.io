@@ -69,7 +69,7 @@ function ResearchPage() {
 
         <Typography variant="body1" gutterBottom>
           View{" "}
-          <LinkBold href={getFile("research-cv-victor-zhang-2026-05", "pdf")}>
+          <LinkBold href={getFile("research-cv-victor-zhang-2026-09", "pdf")}>
             here
           </LinkBold>{" "}
           for a PDF version of my CV.
@@ -108,6 +108,28 @@ function ResearchPage() {
               Expected time of completion: 2027 August
             </Typography>
           </li>
+
+          <li>
+            <Typography variant="body1" sx={{ ...style.bold, ...style.italic }}>
+              B Advanced Mathematics (Honours) / B Computer Science (2019 - 2023)
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              At the University of New South Wales (Sydney). Honours thesis:{" "}
+              <em><LinkExternal href="https://github.com/dustbringer/UNSW-Honours/blob/main/main.pdf">
+                Diagrammatic Categories in Representation Theory
+              </LinkExternal></em>{" "}
+              (supervised by{" "}
+              <LinkExternal href={"https://web.maths.unsw.edu.au/~aromanov/"}>
+                Anna Romanov
+              </LinkExternal>{" "}
+              (primary) and{" "}
+              <LinkExternal
+                href={"https://sites.google.com/site/arnaudbrothier/"}
+              >
+                Arnaud Brothier
+              </LinkExternal>)
+            </Typography>
+          </li>
         </ul>
 
         <Typography variant="h5">Research interests</Typography>
@@ -144,6 +166,50 @@ function ResearchPage() {
         </ul>
         <Typography variant="h5">Conferences</Typography>
         <ul>
+          <li>
+            <Typography variant="body1">
+              2026 Sep,{" "}
+              <em>
+                <LinkBold href="https://nehme.docs.mpim-bonn.mpg.de/ai-for-mathematical-discovery/">
+                  Actions and Intuition: Algebra via AI
+                </LinkBold>
+              </em>
+              , Hausdorff Institute for Mathematics (HIM)
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1">
+              2026 Aug,{" "}
+              <em>
+                <LinkBold href="https://sites.google.com/view/reptensor">
+                  Tensor categories in representation theory & vice versa
+                </LinkBold>
+              </em>
+              , Uppsala universitet
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1">
+              2026 Aug,{" "}
+              <em>
+                <LinkBold href="https://www.unsw.edu.au/science/our-schools/maths/news-events/events/postgraduate-conference-2026">
+                  Mathematics Postgraduate Conference
+                </LinkBold>
+              </em>
+              , University of New South Wales
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1">
+              2026 June,{" "}
+              <em>
+                <LinkBold href="https://www.simis.cn/bei-shang-summer-school/BeiShangHome_26.html">
+                  Beijing-Shanghai Summer School in Mathematics (Midsummer Skein)
+                </LinkBold>
+              </em>
+              , Shanghai Institute for Mathematics and Interdisciplinary Sciences (SIMIS)
+            </Typography>
+          </li>
           <li>
             <Typography variant="body1">
               2025 Dec,{" "}

@@ -15,7 +15,7 @@
     "@mui/styles": "^5.15.0",
     "@mui/system": "^5.15.0",
     "better-react-mathjax": "^2.0.3",
-    "canvas": "^2.11.2",
+    "canvas": "^3.2.3",
     "clsx": "^1.2.1",
     "encoding-japanese": "^1.0.30",
     "gatsby": "^5.16.1",
@@ -97,6 +97,7 @@
   },
   "scripts": {
     "dev": "gatsby develop",
+    "dev2": "gatsby develop --host 0.0.0.0 --port 8000",
     "build": "gatsby build",
     "clean": "gatsby clean",
     "cleanstart": "gatsby clean && gatsby develop",
